@@ -1,49 +1,39 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taller El Progreso</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Encabezado -->
-  <header>
-    <div class="logo">
-      <span class="icon">🔧</span>
-      <h1>Taller <span>El Progreso</span></h1>
-    </div>
-    <p class="slogan">Confianza y calidad en cada reparación</p>
-    <nav>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+#galeria {
+  padding: 40px;
+  background: #f9f9f9;
+}
 
-  <!-- Sección Servicios -->
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="servicios">
-      <div class="card">Mecánica General</div>
-      <div class="card">Alineación y Balanceo</div>
-      <div class="card">Cambio de Aceite</div>
-      <div class="card">Latonería y Pintura</div>
-      <div class="card">Revisión Preventiva</div>
-    </div>
-  </section>
+#galeria h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: #333;
+}
 
-  <!-- Sección Contacto -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p><strong>Teléfono:</strong> 322 599 0026</p>
-    <p><strong>Email:</strong> tallerelprogreso2022@gmail.com</p>
-    <p><strong>Dirección:</strong> (Próximamente)</p>
-    <a class="whatsapp" href="https://wa.me/573225990026" target="_blank">📲 Escríbenos por WhatsApp</a>
-  </section>
+.galeria-seccion {
+  margin-bottom: 40px;
+}
 
-  <!-- Pie de página -->
-  <footer>
-    <p>© 2025 Taller El Progreso - Todos los derechos reservados</p>
-  </footer>
-</body>
-</html>
+.galeria-seccion h3 {
+  font-size: 1.5em;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.imagenes {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.imagenes img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.imagenes img:hover {
+  transform: scale(1.05);
+}
