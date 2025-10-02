@@ -24,7 +24,7 @@ Nos especializamos en brindar un servicio de calidad en:
 ## 📞 Contacto
 📍 Dirección: *[Aquí pones tu dirección]*  
 📱 WhatsApp: **3225990026**  
-✉️ Correo: *[tuemail@ejemplo.com]*  
+✉️ Correo: **tallerautomotrizelprogreso2022@gmail.com**
 
 ---
 
