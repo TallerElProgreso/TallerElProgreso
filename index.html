@@ -5,28 +5,172 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taller El Progreso</title>
   <style>
+    /* Estilos generales */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f9f9f9;
+      background-color: #f5f5f5;
       color: #333;
     }
+
     header {
-      background: #2c3e50;
-      color: #fff;
-      text-align: center;
+      background-color: #111;
+      color: white;
       padding: 20px;
+      text-align: center;
     }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .logo svg {
+      width: 60px;
+      height: 60px;
+      margin-right: 12px;
+    }
+
+    .logo-text {
+      font-size: 26px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #ccc, #fff, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      font-style: italic;
+      margin: 5px 0 0;
+      color: #d4af37;
+    }
+
     nav {
-      background: #34495e;
+      background: #222;
       padding: 10px;
       text-align: center;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 15px;
+      font-weight: bold;
     }
-    nav a:hov
 
+    nav a:hover {
+      color: #d4af37;
+    }
 
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #111;
+      border-bottom: 2px solid #d4af37;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .service {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .contact {
+      margin-top: 10px;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: #25d366;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .whatsapp-btn:hover {
+      background: #1ebe57;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header>
+    <div class="logo">
+      <!-- Logo SVG -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="45" fill="#222" stroke="#d4af37" stroke-width="5"/>
+        <path d="M40 30 L60 50 L50 60 L30 40 Z" fill="#ccc"/>
+        <circle cx="35" cy="35" r="6" fill="#d4af37"/>
+        <rect x="30" y="72" width="40" height="6" rx="3" fill="#d4af37"/>
+      </svg>
+      <div class="logo-text">Taller El Progreso</div>
+    </div>
+    <p>Confianza y calidad en cada reparación</p>
+  </header>
+
+  <!-- NAVEGACIÓN -->
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- SECCIÓN SERVICIOS -->
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <div class="services">
+      <div class="service">Mecánica General</div>
+      <div class="service">Alineación y Balanceo</div>
+      <div class="service">Cambio de Aceite</div>
+      <div class="service">Latonería y Pintura</div>
+      <div class="service">Revisión Preventiva</div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p class="contact">
+      📞 Teléfono: <strong>322 599 0026</strong><br>
+      📧 Email: <strong>tallerelprogreso2022@gmail.com</strong><br>
+      📍 Dirección: (Próximamente)
+    </p>
+    <a class="whatsapp-btn" href="https://wa.me/573225990026" target="_blank">
+      📲 Escríbenos por WhatsApp
+    </a>
+  </section>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>&copy; 2025 Taller El Progreso - Todos los derechos reservados</p>
+  </footer>
+
+</body>
+</html>
