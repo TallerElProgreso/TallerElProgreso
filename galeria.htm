@@ -264,4 +264,101 @@
 <div class="gallery" id="pintura">
     <img src
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Taller El Progreso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            color: #333;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #ddd;
+            margin: 0 5px;
+            border-radius: 5px 5px 0 0;
+        }
+        .tab.active {
+            background: #fff;
+            border-bottom: 2px solid #fff;
+            font-weight: bold;
+        }
+        .gallery {
+            display: none;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 0 20px 40px 20px;
+        }
+        .gallery.active {
+            display: flex;
+        }
+        .gallery img {
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Galería Taller El Progreso</h1>
+
+<div class="tabs">
+    <div class="tab active" data-target="restauracion">Restauración</div>
+    <div class="tab" data-target="pintura">Pintura</div>
+</div>
+
+<div class="gallery active" id="restauracion">
+    <img src="imagenes/restauracion1.jpg" alt="Restauración 1">
+    <img src="imagenes/restauracion2.jpg" alt="Restauración 2">
+    <img src="imagenes/restauracion3.jpg" alt="Restauración 3">
+</div>
+
+<div class="gallery" id="pintura">
+    <img src="imagenes/pintura1.jpg" alt="Pintura 1">
+    <img src="imagenes/pintura2.jpg" alt="Pintura 2">
+    <img src="imagenes/pintura3.jpg" alt="Pintura 3">
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab');
+    const galleries = document.querySelectorAll('.gallery');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            galleries.forEach(g => g.classList.remove('active'));
+
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.target).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
+
 
