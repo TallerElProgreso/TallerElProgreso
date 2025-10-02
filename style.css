@@ -164,3 +164,149 @@ footer {
 .imagenes img:hover {
   transform: scale(1.05);
 }
+
+/* Estilo general */
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    padding: 25px 0;
+    font-size: 2.2em;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(90deg, #d4af37, #fff8dc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Pestañas de modelos */
+.model-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.model-tab {
+    padding: 12px 28px;
+    cursor: pointer;
+    background: linear-gradient(145deg, #fef9e7, #f7e7b9);
+    border-radius: 10px 10px 0 0;
+    font-family: 'Verdana', sans-serif;
+    font-weight: 600;
+    color: #6b4c1d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.4s;
+}
+
+.model-tab:hover {
+    background: linear-gradient(145deg, #f7e7b9, #fef9e7);
+    transform: scale(1.05);
+}
+
+.model-tab.active {
+    background: linear-gradient(145deg, #d4af37, #ffd700);
+    color: #fff;
+    border-bottom: 3px solid #ffd700;
+}
+
+/* Sub-pestañas Antes / Después */
+.sub-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.sub-tab {
+    padding: 8px 20px;
+    cursor: pointer;
+    background: #fff8dc;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #6b4c1d;
+    transition: all 0.3s;
+}
+
+.sub-tab:hover {
+    background: #f7e7b9;
+}
+
+.sub-tab.active {
+    background: linear-gradient(145deg, #d4af37, #ffd700);
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Galería */
+.gallery {
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 0 20px 50px 20px;
+}
+
+.gallery.active {
+    display: flex;
+}
+
+.gallery img {
+    width: 260px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.lightbox:target {
+    display: flex;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #ffd700;
+    font-size: 32px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #fff;
+}
