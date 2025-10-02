@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería de Trabajo - Taller El Progreso</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+        padding: 20px 0;
+        color: #333;
+    }
+    .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        background: #ddd;
+        margin: 0 5px;
+        border-radius: 5px 5px 0 0;
+    }
+    .tab.active {
+        background: #fff;
+        border-bottom: 2px solid #fff;
+        font-weight: bold;
+    }
+    .gallery {
+        display: none;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 0 20px 40px 20px;
+    }
+    .gallery.active {
+        display: flex;
+    }
+    .gallery img {
+        width: 250px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+    .gallery img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 5px;
+    }
+    .lightbox:target {
+        display: flex;
+    }
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 30px;
+        text-decoration: none;
+    }
+</style>
+</head>
+<body>
+
+<h1>Galería de Trabajo - Taller El Progreso</h1>
+
+<!-- Pestañas -->
+<div class="tabs">
+    <div class="tab active" data-target="restauracion">Restauración</div>
+    <div class="tab" data-target="pintura">Pintura</div>
+</div>
+
+<!-- Galerías -->
+<div class="gallery active" id="restauracion">
+    <a href="#img1"><img src="imagenes/restauracion1.jpg" alt="Restauración 1"></a>
+    <a href="#img2"><img src="imagenes/restauracion2.jpg" alt="Restauración 2"></a>
+    <a href="#img3"><img src="imagenes/restauracion3.jpg" alt="Restauración 3"></a>
+</div>
+
+<div class="gallery" id="pintura">
+    <a href="#img4"><img src="imagenes/pintura1.jpg" alt="Pintura 1"></a>
+    <a href="#img5"><img src="imagenes/pintura2.jpg" alt="Pintura 2"></a>
+    <a href="#img6"><img src="imagenes/pintura3.jpg" alt="Pintura 3"></a>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="img1">
+    <a href="#" class="close">&times;</a>
+    <img src="imagenes/restauracion1.jpg" alt="Restauración 1">
+</div>
+<div class="lightbox" id="img2">
+    <a href="#" class="close">&times;</a>
+    <img src="imagenes/restauracion2.jpg" alt="Restauración 2">
+</div>
+<div class="lightbox" id="img3">
+    <a href="#" class="close">&times;</a>
+    <img src="imagenes/restauracion3.jpg" alt="Restauración 3">
+</div>
+<div class="lightbox" id="img4">
+    <a href="#" class="close">&times;</a>
+    <img src="imagenes/pintura1.jpg" alt="Pintura 1">
+</div>
+<div class="lightbox" id="img5">
+    <a href="#" class="close">&times;</a>
+    <img src="imagenes/pintura2.jpg" alt="Pintura 2">
+</div>
+<div class="lightbox" id="img6">
+    <a href="#" class="close">&times;</a>
+    <img src="imagenes/pintura3.jpg" alt="Pintura 3">
+</div>
+
+<script>
+    // Activar pestañas
+    const tabs = document.querySelectorAll('.tab');
+    const galleries = document.querySelectorAll('.gallery');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            galleries.forEach(g => g.classList.remove('active'));
+
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.target).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
+
 
