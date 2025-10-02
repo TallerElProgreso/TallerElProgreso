@@ -7,7 +7,7 @@
 <style>
 body { font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:0; }
 h1 { text-align:center; padding:20px 0; color:#333; }
-.model-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:20px; }
+.model-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:20px; flex-wrap: wrap; }
 .model-tab { padding:10px 20px; cursor:pointer; background:#ddd; border-radius:5px 5px 0 0; }
 .model-tab.active { background:#fff; border-bottom:2px solid #fff; font-weight:bold; }
 .sub-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:10px; }
@@ -32,7 +32,10 @@ h1 { text-align:center; padding:20px 0; color:#333; }
 <div class="model-tabs">
     <div class="model-tab active" data-target="modelo1">Volkswagen 2012</div>
     <div class="model-tab" data-target="modelo2">Bolqueta</div>
-    <div class="model-tab" data-target="modelo3">Modelo3</div>
+    <div class="model-tab" data-target="modelo3">Renault Sandero 2015</div>
+    <div class="model-tab" data-target="modelo4">Chevrolet Dmax 2008</div>
+    <div class="model-tab" data-target="modelo5">Kia Picante 2016</div>
+    <div class="model-tab" data-target="modelo6">Honda 2020</div>
 </div>
 
 <!-- Contenido Modelo1 -->
@@ -54,7 +57,7 @@ h1 { text-align:center; padding:20px 0; color:#333; }
     </div>
 </div>
 
-<!-- Contenido Modelo2: Bolqueta -->
+<!-- Contenido Modelo2 -->
 <div class="model-content" id="modelo2">
     <div class="sub-tabs">
         <div class="sub-tab active" data-target="m2-antes">Antes</div>
@@ -73,21 +76,125 @@ h1 { text-align:center; padding:20px 0; color:#333; }
     </div>
 </div>
 
-<!-- Lightbox Volkswagen -->
+<!-- Contenido Modelo3 -->
+<div class="model-content" id="modelo3">
+    <div class="sub-tabs">
+        <div class="sub-tab active" data-target="m3-antes">Antes</div>
+        <div class="sub-tab" data-target="m3-despues">Después</div>
+    </div>
+    <h2 style="text-align:center;">Renault Sandero 2015</h2>
+    <div class="gallery active" id="m3-antes">
+        <a href="#m3a1"><img src="imagenes/renault_antes1.jpg"></a>
+        <a href="#m3a2"><img src="imagenes/renault_antes2.jpg"></a>
+        <a href="#m3a3"><img src="imagenes/renault_antes3.jpg"></a>
+    </div>
+    <div class="gallery" id="m3-despues">
+        <a href="#m3d1"><img src="imagenes/renault_despues1.jpg"></a>
+        <a href="#m3d2"><img src="imagenes/renault_despues2.jpg"></a>
+        <a href="#m3d3"><img src="imagenes/renault_despues3.jpg"></a>
+    </div>
+</div>
+
+<!-- Contenido Modelo4 -->
+<div class="model-content" id="modelo4">
+    <div class="sub-tabs">
+        <div class="sub-tab active" data-target="m4-antes">Antes</div>
+        <div class="sub-tab" data-target="m4-despues">Después</div>
+    </div>
+    <h2 style="text-align:center;">Chevrolet Dmax 2008</h2>
+    <div class="gallery active" id="m4-antes">
+        <a href="#m4a1"><img src="imagenes/dmax_antes1.jpg"></a>
+        <a href="#m4a2"><img src="imagenes/dmax_antes2.jpg"></a>
+        <a href="#m4a3"><img src="imagenes/dmax_antes3.jpg"></a>
+    </div>
+    <div class="gallery" id="m4-despues">
+        <a href="#m4d1"><img src="imagenes/dmax_despues1.jpg"></a>
+        <a href="#m4d2"><img src="imagenes/dmax_despues2.jpg"></a>
+        <a href="#m4d3"><img src="imagenes/dmax_despues3.jpg"></a>
+    </div>
+</div>
+
+<!-- Contenido Modelo5 -->
+<div class="model-content" id="modelo5">
+    <div class="sub-tabs">
+        <div class="sub-tab active" data-target="m5-antes">Antes</div>
+        <div class="sub-tab" data-target="m5-despues">Después</div>
+    </div>
+    <h2 style="text-align:center;">Kia Picante 2016 (Choque lateral)</h2>
+    <div class="gallery active" id="m5-antes">
+        <a href="#m5a1"><img src="imagenes/kia_antes1.jpg"></a>
+        <a href="#m5a2"><img src="imagenes/kia_antes2.jpg"></a>
+        <a href="#m5a3"><img src="imagenes/kia_antes3.jpg"></a>
+    </div>
+    <div class="gallery" id="m5-despues">
+        <a href="#m5d1"><img src="imagenes/kia_despues1.jpg"></a>
+        <a href="#m5d2"><img src="imagenes/kia_despues2.jpg"></a>
+        <a href="#m5d3"><img src="imagenes/kia_despues3.jpg"></a>
+    </div>
+</div>
+
+<!-- Contenido Modelo6 -->
+<div class="model-content" id="modelo6">
+    <div class="sub-tabs">
+        <div class="sub-tab active" data-target="m6-antes">Antes</div>
+        <div class="sub-tab" data-target="m6-despues">Después</div>
+    </div>
+    <h2 style="text-align:center;">Honda 2020</h2>
+    <div class="gallery active" id="m6-antes">
+        <a href="#m6a1"><img src="imagenes/honda_antes1.jpg"></a>
+        <a href="#m6a2"><img src="imagenes/honda_antes2.jpg"></a>
+        <a href="#m6a3"><img src="imagenes/honda_antes3.jpg"></a>
+    </div>
+    <div class="gallery" id="m6-despues">
+        <a href="#m6d1"><img src="imagenes/honda_despues1.jpg"></a>
+        <a href="#m6d2"><img src="imagenes/honda_despues2.jpg"></a>
+        <a href="#m6d3"><img src="imagenes/honda_despues3.jpg"></a>
+    </div>
+</div>
+
+<!-- Lightboxes para los modelos 1 a 6 -->
+<!-- Volkswagen -->
 <div class="lightbox" id="m1a1"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_antes1.jpg"></div>
 <div class="lightbox" id="m1a2"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_antes2.jpg"></div>
 <div class="lightbox" id="m1a3"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_antes3.jpg"></div>
 <div class="lightbox" id="m1d1"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_despues1.jpg"></div>
 <div class="lightbox" id="m1d2"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_despues2.jpg"></div>
 <div class="lightbox" id="m1d3"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_despues3.jpg"></div>
-
-<!-- Lightbox Bolqueta -->
+<!-- Bolqueta -->
 <div class="lightbox" id="m2a1"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_antes1.jpg"></div>
 <div class="lightbox" id="m2a2"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_antes2.jpg"></div>
 <div class="lightbox" id="m2a3"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_antes3.jpg"></div>
 <div class="lightbox" id="m2d1"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_despues1.jpg"></div>
 <div class="lightbox" id="m2d2"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_despues2.jpg"></div>
 <div class="lightbox" id="m2d3"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_despues3.jpg"></div>
+<!-- Renault -->
+<div class="lightbox" id="m3a1"><a href="#" class="close">&times;</a><img src="imagenes/renault_antes1.jpg"></div>
+<div class="lightbox" id="m3a2"><a href="#" class="close">&times;</a><img src="imagenes/renault_antes2.jpg"></div>
+<div class="lightbox" id="m3a3"><a href="#" class="close">&times;</a><img src="imagenes/renault_antes3.jpg"></div>
+<div class="lightbox" id="m3d1"><a href="#" class="close">&times;</a><img src="imagenes/renault_despues1.jpg"></div>
+<div class="lightbox" id="m3d2"><a href="#" class="close">&times;</a><img src="imagenes/renault_despues2.jpg"></div>
+<div class="lightbox" id="m3d3"><a href="#" class="close">&times;</a><img src="imagenes/renault_despues3.jpg"></div>
+<!-- Dmax -->
+<div class="lightbox" id="m4a1"><a href="#" class="close">&times;</a><img src="imagenes/dmax_antes1.jpg"></div>
+<div class="lightbox" id="m4a2"><a href="#" class="close">&times;</a><img src="imagenes/dmax_antes2.jpg"></div>
+<div class="lightbox" id="m4a3"><a href="#" class="close">&times;</a><img src="imagenes/dmax_antes3.jpg"></div>
+<div class="lightbox" id="m4d1"><a href="#" class="close">&times;</a><img src="imagenes/dmax_despues1.jpg"></div>
+<div class="lightbox" id="m4d2"><a href="#" class="close">&times;</a><img src="imagenes/dmax_despues2.jpg"></div>
+<div class="lightbox" id="m4d3"><a href="#" class="close">&times;</a><img src="imagenes/dmax_despues3.jpg"></div>
+<!-- Kia -->
+<div class="lightbox" id="m5a1"><a href="#" class="close">&times;</a><img src="imagenes/kia_antes1.jpg"></div>
+<div class="lightbox" id="m5a2"><a href="#" class="close">&times;</a><img src="imagenes/kia_antes2.jpg"></div>
+<div class="lightbox" id="m5a3"><a href="#" class="close">&times;</a><img src="imagenes/kia_antes3.jpg"></div>
+<div class="lightbox" id="m5d1"><a href="#" class="close">&times;</a><img src="imagenes/kia_despues1.jpg"></div>
+<div class="lightbox" id="m5d2"><a href="#" class="close">&times;</a><img src="imagenes/kia_despues2.jpg"></div>
+<div class="lightbox" id="m5d3"><a href="#" class="close">&times;</a><img src="imagenes/kia_despues3.jpg"></div>
+<!-- Honda -->
+<div class="lightbox" id="m6a1"><a href="#" class="close">&times;</a><img src="imagenes/honda_antes1.jpg"></div>
+<div class="lightbox" id="m6a2"><a href="#" class="close">&times;</a><img src="imagenes/honda_antes2.jpg"></div>
+<div class="lightbox" id="m6a3"><a href="#" class="close">&times;</a><img src="imagenes/honda_antes3.jpg"></div>
+<div class="lightbox" id="m6d1"><a href="#" class="close">&times;</a><img src="imagenes/honda_despues1.jpg"></div>
+<div class="lightbox" id="m6d2"><a href="#" class="close">&times;</a><img src="imagenes/honda_despues2.jpg"></div>
+<div class="lightbox" id="m6d3"><a href="#" class="close">&times;</a><img src="imagenes/honda_despues3.jpg"></div>
 
 <script>
 // Cambiar modelo
