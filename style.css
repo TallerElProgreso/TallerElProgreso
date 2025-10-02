@@ -1,8 +1,126 @@
-/* ===== Galería ===== */
-#galeria { padding: 40px; background: #f9f9f9; text-align: center; }
-#galeria h2 { font-size: 1.8rem; margin-bottom: 20px; color: #111; }
-.galeria-seccion { margin-bottom: 30px; }
-.galeria-seccion h3 { font-size: 1.3rem; margin-bottom: 12px; color: #333; }
-.imagenes { display:flex; gap:15px; flex-wrap:wrap; justify-content:center; }
-.imagenes img { width: 300px; max-width: 90%; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition: transform .25s ease; cursor: pointer; }
-.imagenes img:hover { transform: scale(1.05); }
+/* ===== Estilos generales ===== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f5f5f5;
+  color: #222;
+}
+
+/* ===== Encabezado ===== */
+header {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+header .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: white;
+}
+
+header h1 span {
+  color: #d4af37; /* Dorado */
+}
+
+header .slogan {
+  font-size: 1rem;
+  color: #d4af37; /* Dorado */
+  margin-top: 5px;
+}
+
+nav {
+  margin-top: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #d4af37; /* Dorado */
+}
+
+/* ===== Servicios ===== */
+#servicios {
+  padding: 40px;
+  text-align: center;
+}
+
+#servicios h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.servicios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.card {
+  background: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  font-weight: bold;
+  cursor: default;
+}
+
+.card:hover {
+  background: #d4af37; /* Dorado */
+  color: white;
+}
+
+/* ===== Contacto ===== */
+#contacto {
+  background: #eee;
+  padding: 40px;
+  text-align: center;
+}
+
+#contacto h2 {
+  margin-bottom: 20px;
+  color: #111;
+}
+
+#contacto p {
+  margin: 5px 0;
+}
+
+.whatsapp {
+  display: inline-block;
+  margin-top: 15px;
+  background: #25d366;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.whatsapp:hover {
+  background: #1ebe5d;
+}
+
+/* ===== Pie de página ===== */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
