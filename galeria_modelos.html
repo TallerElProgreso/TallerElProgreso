@@ -5,168 +5,83 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galería de Modelos - Taller El Progreso</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
-    h1, h2 {
-        text-align: center;
-        color: #333;
-        padding: 20px 0 10px 0;
-    }
-    /* Pestañas de modelos */
-    .model-tabs {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-    .model-tab {
-        padding: 10px 20px;
-        cursor: pointer;
-        background: #ddd;
-        border-radius: 5px 5px 0 0;
-    }
-    .model-tab.active {
-        background: #fff;
-        font-weight: bold;
-        border-bottom: 2px solid #fff;
-    }
-    /* Sub-pestañas Antes/Después */
-    .sub-tabs {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
-        gap: 5px;
-    }
-    .sub-tab {
-        padding: 8px 16px;
-        cursor: pointer;
-        background: #eee;
-        border-radius: 5px;
-    }
-    .sub-tab.active {
-        background: #fff;
-        font-weight: bold;
-        border-bottom: 2px solid #fff;
-    }
-    /* Galerías de imágenes */
-    .model-content {
-        display: none;
-    }
-    .model-content.active {
-        display: block;
-    }
-    .gallery {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        padding: 0 20px 40px 20px;
-    }
-    .gallery img {
-        width: 250px;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 5px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-    .gallery img:hover {
-        transform: scale(1.05);
-    }
-    /* Lightbox */
-    .lightbox {
-        position: fixed;
-        top:0;
-        left:0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.8);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
-    .lightbox img {
-        max-width: 90%;
-        max-height: 90%;
-        border-radius: 5px;
-    }
-    .lightbox:target {
-        display: flex;
-    }
-    .close {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        color: white;
-        font-size: 30px;
-        text-decoration: none;
-    }
+body { font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:0; }
+h1 { text-align:center; padding:20px 0; color:#333; }
+.model-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:20px; }
+.model-tab { padding:10px 20px; cursor:pointer; background:#ddd; border-radius:5px 5px 0 0; }
+.model-tab.active { background:#fff; border-bottom:2px solid #fff; font-weight:bold; }
+.sub-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:10px; }
+.sub-tab { padding:5px 15px; cursor:pointer; background:#eee; border-radius:5px; }
+.sub-tab.active { background:#ccc; font-weight:bold; }
+.gallery { display:none; justify-content:center; flex-wrap:wrap; gap:15px; padding:0 20px 40px 20px; }
+.gallery.active { display:flex; }
+.gallery img { width:250px; height:180px; object-fit:cover; border-radius:5px; box-shadow:0 3px 6px rgba(0,0,0,0.2); cursor:pointer; transition:transform 0.3s; }
+.gallery img:hover { transform:scale(1.05); }
+/* Lightbox */
+.lightbox { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:1000; }
+.lightbox img { max-width:90%; max-height:90%; border-radius:5px; }
+.lightbox:target { display:flex; }
+.close { position:absolute; top:20px; right:30px; color:white; font-size:30px; text-decoration:none; }
 </style>
 </head>
 <body>
 
 <h1>Galería de Modelos - Taller El Progreso</h1>
 
-<!-- Pestañas de modelos -->
+<!-- Pestañas de Modelos -->
 <div class="model-tabs">
     <div class="model-tab active" data-target="modelo1">Volkswagen 2012</div>
     <div class="model-tab" data-target="modelo2">Bolqueta</div>
+    <div class="model-tab" data-target="modelo3">Modelo3</div>
 </div>
 
-<!-- Modelo 1: Volkswagen 2012 -->
+<!-- Contenido Modelo1 -->
 <div class="model-content active" id="modelo1">
     <div class="sub-tabs">
         <div class="sub-tab active" data-target="m1-antes">Antes</div>
         <div class="sub-tab" data-target="m1-despues">Después</div>
     </div>
-    <h2>Volkswagen 2012</h2>
+    <h2 style="text-align:center;">Volkswagen modelo 2012</h2>
     <div class="gallery active" id="m1-antes">
-        <a href="#m1a1"><img src="imagenes/restauracion1.jpg" alt="VW Antes 1"></a>
-        <a href="#m1a2"><img src="imagenes/restauracion2.jpg" alt="VW Antes 2"></a>
-        <a href="#m1a3"><img src="imagenes/restauracion3.jpg" alt="VW Antes 3"></a>
+        <a href="#m1a1"><img src="imagenes/volkswagen_antes1.jpg"></a>
+        <a href="#m1a2"><img src="imagenes/volkswagen_antes2.jpg"></a>
+        <a href="#m1a3"><img src="imagenes/volkswagen_antes3.jpg"></a>
     </div>
     <div class="gallery" id="m1-despues">
-        <a href="#m1d1"><img src="imagenes/pintura1.jpg" alt="VW Después 1"></a>
-        <a href="#m1d2"><img src="imagenes/pintura2.jpg" alt="VW Después 2"></a>
-        <a href="#m1d3"><img src="imagenes/pintura3.jpg" alt="VW Después 3"></a>
+        <a href="#m1d1"><img src="imagenes/volkswagen_despues1.jpg"></a>
+        <a href="#m1d2"><img src="imagenes/volkswagen_despues2.jpg"></a>
+        <a href="#m1d3"><img src="imagenes/volkswagen_despues3.jpg"></a>
     </div>
 </div>
 
-<!-- Modelo 2: Bolqueta -->
+<!-- Contenido Modelo2: Bolqueta -->
 <div class="model-content" id="modelo2">
     <div class="sub-tabs">
         <div class="sub-tab active" data-target="m2-antes">Antes</div>
         <div class="sub-tab" data-target="m2-despues">Después</div>
     </div>
-    <h2>Bolqueta - Modelo 2</h2>
+    <h2 style="text-align:center;">Bolqueta</h2>
     <div class="gallery active" id="m2-antes">
-        <a href="#m2a1"><img src="imagenes/bolqueta_antes1.jpg" alt="Bolqueta Antes 1"></a>
-        <a href="#m2a2"><img src="imagenes/bolqueta_antes2.jpg" alt="Bolqueta Antes 2"></a>
-        <a href="#m2a3"><img src="imagenes/bolqueta_antes3.jpg" alt="Bolqueta Antes 3"></a>
+        <a href="#m2a1"><img src="imagenes/bolqueta_antes1.jpg"></a>
+        <a href="#m2a2"><img src="imagenes/bolqueta_antes2.jpg"></a>
+        <a href="#m2a3"><img src="imagenes/bolqueta_antes3.jpg"></a>
     </div>
     <div class="gallery" id="m2-despues">
-        <a href="#m2d1"><img src="imagenes/bolqueta_despues1.jpg" alt="Bolqueta Después 1"></a>
-        <a href="#m2d2"><img src="imagenes/bolqueta_despues2.jpg" alt="Bolqueta Después 2"></a>
-        <a href="#m2d3"><img src="imagenes/bolqueta_despues3.jpg" alt="Bolqueta Después 3"></a>
+        <a href="#m2d1"><img src="imagenes/bolqueta_despues1.jpg"></a>
+        <a href="#m2d2"><img src="imagenes/bolqueta_despues2.jpg"></a>
+        <a href="#m2d3"><img src="imagenes/bolqueta_despues3.jpg"></a>
     </div>
 </div>
 
-<!-- Lightbox Modelo 1 -->
-<div class="lightbox" id="m1a1"><a href="#" class="close">&times;</a><img src="imagenes/restauracion1.jpg"></div>
-<div class="lightbox" id="m1a2"><a href="#" class="close">&times;</a><img src="imagenes/restauracion2.jpg"></div>
-<div class="lightbox" id="m1a3"><a href="#" class="close">&times;</a><img src="imagenes/restauracion3.jpg"></div>
-<div class="lightbox" id="m1d1"><a href="#" class="close">&times;</a><img src="imagenes/pintura1.jpg"></div>
-<div class="lightbox" id="m1d2"><a href="#" class="close">&times;</a><img src="imagenes/pintura2.jpg"></div>
-<div class="lightbox" id="m1d3"><a href="#" class="close">&times;</a><img src="imagenes/pintura3.jpg"></div>
+<!-- Lightbox Volkswagen -->
+<div class="lightbox" id="m1a1"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_antes1.jpg"></div>
+<div class="lightbox" id="m1a2"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_antes2.jpg"></div>
+<div class="lightbox" id="m1a3"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_antes3.jpg"></div>
+<div class="lightbox" id="m1d1"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_despues1.jpg"></div>
+<div class="lightbox" id="m1d2"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_despues2.jpg"></div>
+<div class="lightbox" id="m1d3"><a href="#" class="close">&times;</a><img src="imagenes/volkswagen_despues3.jpg"></div>
 
-<!-- Lightbox Modelo 2 -->
+<!-- Lightbox Bolqueta -->
 <div class="lightbox" id="m2a1"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_antes1.jpg"></div>
 <div class="lightbox" id="m2a2"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_antes2.jpg"></div>
 <div class="lightbox" id="m2a3"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_antes3.jpg"></div>
@@ -175,33 +90,30 @@
 <div class="lightbox" id="m2d3"><a href="#" class="close">&times;</a><img src="imagenes/bolqueta_despues3.jpg"></div>
 
 <script>
-    // Cambiar entre modelos
-    const modelTabs = document.querySelectorAll('.model-tab');
-    const modelContents = document.querySelectorAll('.model-content');
-
-    modelTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            modelTabs.forEach(t => t.classList.remove('active'));
-            modelContents.forEach(c => c.classList.remove('active'));
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.target).classList.add('active');
-        });
+// Cambiar modelo
+const modelTabs = document.querySelectorAll('.model-tab');
+const modelContents = document.querySelectorAll('.model-content');
+modelTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        modelTabs.forEach(t => t.classList.remove('active'));
+        modelContents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
     });
+});
 
-    // Cambiar entre sub-pestañas (Antes/Después)
-    const subTabs = document.querySelectorAll('.sub-tab');
-    const galleries = document.querySelectorAll('.gallery');
-
-    subTabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const parent = tab.closest('.model-content');
-            parent.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
-            parent.querySelectorAll('.gallery').forEach(g => g.classList.remove('active'));
-
-            tab.classList.add('active');
-            parent.querySelector('#' + tab.dataset.target).classList.add('active');
-        });
+// Cambiar antes/despues
+const subTabs = document.querySelectorAll('.sub-tab');
+subTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const parent = tab.parentElement.parentElement;
+        const galleries = parent.querySelectorAll('.gallery');
+        tab.parentElement.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+        galleries.forEach(g => g.classList.remove('active'));
+        tab.classList.add('active');
+        parent.querySelector('#' + tab.dataset.target).classList.add('active');
     });
+});
 </script>
 
 </body>
