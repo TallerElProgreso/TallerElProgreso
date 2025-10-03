@@ -543,3 +543,46 @@ html {
     transform: scale(1.07);
     box-shadow: 0 6px 14px rgba(0,0,0,0.6);
 }
+
+/* Título dorado elegante */
+.titulo-modelo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+/* Subtítulos */
+.subtitulo {
+    text-align: center;
+    font-size: 20px;
+    color: #b8860b;
+    margin-bottom: 10px;
+}
+
+/* Galería */
+.galeria {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+}
+
+.galeria img {
+    width: 240px;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.galeria img:hover {
+    transform: scale(1.07);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+}
