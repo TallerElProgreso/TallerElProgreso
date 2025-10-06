@@ -1,28 +1,107 @@
-<!-- 🔶 SECCIÓN GALERÍA DE MOTOS -->
-<section id="galeria-motos" class="galeria-section">
-  <h2 class="titulo-modelo">Galería de Motos</h2>
-  <p class="subtitulo">Trabajos de pintura en motocicletas — Antes y Después</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería de Motos - Taller El Progreso</title>
+<style>
+body { font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:0; }
+h1 { text-align:center; padding:20px 0; color:#333; }
+.model-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:20px; flex-wrap: wrap; }
+.model-tab { padding:10px 20px; cursor:pointer; background:#ddd; border-radius:5px 5px 0 0; }
+.model-tab.active { background:#fff; border-bottom:2px solid #fff; font-weight:bold; }
+.sub-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:10px; }
+.sub-tab { padding:5px 15px; cursor:pointer; background:#eee; border-radius:5px; }
+.sub-tab.active { background:#ccc; font-weight:bold; }
+.gallery { display:none; justify-content:center; flex-wrap:wrap; gap:15px; padding:0 20px 40px 20px; }
+.gallery.active { display:flex; }
+.gallery img { width:250px; height:180px; object-fit:cover; border-radius:5px; box-shadow:0 3px 6px rgba(0,0,0,0.2); cursor:pointer; transition:transform 0.3s; }
+.gallery img:hover { transform:scale(1.05); }
+/* Lightbox */
+.lightbox { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:1000; }
+.lightbox img { max-width:90%; max-height:90%; border-radius:5px; }
+.lightbox:target { display:flex; }
+.close { position:absolute; top:20px; right:30px; color:white; font-size:30px; text-decoration:none; }
+</style>
+</head>
+<body>
 
-  <div class="galeria">
-    <!-- Moto 1 -->
-    <div class="modelo">
-      <h3 class="subtitulo">Próximamente</h3>
-      <div class="antes-despues">
-        <div>
-          <p class="etiqueta">Antes</p>
-          <div class="img-container">
-            <img src="imagenes/Motos/placeholder-antes.jpg" alt="Moto antes de pintura">
-            <div class="brillo"></div>
-          </div>
-        </div>
-        <div>
-          <p class="etiqueta">Después</p>
-          <div class="img-container">
-            <img src="imagenes/Motos/placeholder-despues.jpg" alt="Moto después de pintura">
-            <div class="brillo"></div>
-          </div>
-        </div>
-      </div>
+<h1>Galería de Motos - Taller El Progreso</h1>
+
+<!-- Pestañas de Motos -->
+<div class="model-tabs">
+    <div class="model-tab active" data-target="moto1">Hero Hunk 125R</div>
+    <div class="model-tab" data-target="moto2">AKT 125</div>
+    <div class="model-tab" data-target="moto3">Yamaha FZ</div>
+    <div class="model-tab" data-target="moto4">Bajaj Pulsar</div>
+    <div class="model-tab" data-target="moto5">Honda CB 160</div>
+</div>
+
+<!-- Contenido Moto1 -->
+<div class="model-content active" id="moto1">
+    <div class="sub-tabs">
+        <div class="sub-tab active" data-target="m1-antes">Antes</div>
+        <div class="sub-tab" data-target="m1-despues">Pintura Final</div>
     </div>
-  </div>
-</section>
+    <h2 style="text-align:center;">Hero Hunk 125R - Trabajo de Pintura</h2>
+    <div class="gallery active" id="m1-antes">
+        <a href="#m1a1"><img src="Motos/hunk_antes1.jpg" alt="Hero Hunk antes 1"></a>
+        <a href="#m1a2"><img src="Motos/hunk_antes2.jpg" alt="Hero Hunk antes 2"></a>
+        <a href="#m1a3"><img src="Motos/hunk_antes3.jpg" alt="Hero Hunk antes 3"></a>
+    </div>
+    <div class="gallery" id="m1-despues">
+        <a href="#m1d1"><img src="Motos/hunk_despues1.jpg" alt="Hero Hunk después 1"></a>
+        <a href="#m1d2"><img src="Motos/hunk_despues2.jpg" alt="Hero Hunk después 2"></a>
+        <a href="#m1d3"><img src="Motos/hunk_despues3.jpg" alt="Hero Hunk después 3"></a>
+    </div>
+</div>
+
+<!-- Contenido Moto2 -->
+<div class="model-content" id="moto2">
+    <div class="sub-tabs">
+        <div class="sub-tab active" data-target="m2-antes">Antes</div>
+        <div class="sub-tab" data-target="m2-despues">Pintura Final</div>
+    </div>
+    <h2 style="text-align:center;">AKT 125 - Trabajo de Pintura</h2>
+    <div class="gallery active" id="m2-antes">
+        <a href="#m2a1"><img src="Motos/akt_antes1.jpg" alt="AKT antes"></a>
+    </div>
+    <div class="gallery" id="m2-despues">
+        <a href="#m2d1"><img src="Motos/akt_despues1.jpg" alt="AKT después"></a>
+    </div>
+</div>
+
+<!-- Puedes copiar el mismo bloque para más motos -->
+<!-- Solo cambia el id (moto3, moto4...), los nombres y las rutas de las imágenes -->
+
+<script>
+// Tabs principales (motos)
+const tabs = document.querySelectorAll('.model-tab');
+const contents = document.querySelectorAll('.model-content');
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.target).classList.add('active');
+    });
+});
+
+// Subtabs (antes/después)
+const subTabs = document.querySelectorAll('.sub-tab');
+const galleries = document.querySelectorAll('.gallery');
+
+subTabs.forEach(sub => {
+    sub.addEventListener('click', () => {
+        const parent = sub.closest('.model-content');
+        parent.querySelectorAll('.sub-tab').forEach(s => s.classList.remove('active'));
+        parent.querySelectorAll('.gallery').forEach(g => g.classList.remove('active'));
+        sub.classList.add('active');
+        parent.querySelector(#${sub.dataset.target}).classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>
