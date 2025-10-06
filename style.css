@@ -749,3 +749,36 @@ html {
   margin-bottom: 5px;
   display: inline-block;
 }
+
+.main-nav-abs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px; /* deja espacio lateral para nav */
+  background: #000;
+}
+
+/* centra el logo con absolute */
+.logo-link-abs {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.logo-abs { height: 90px; width: auto; display:block; }
+
+/* enlaces */
+.nav-left, .nav-right { display:flex; gap:20px; align-items:center;}
+.nav-left a, .nav-right a { color:#fff; text-decoration:none; }
+
+/* responsive: en pantallas pequeñas quitamos absolute */
+@media (max-width:760px) {
+  .logo-link-abs { position: static; transform: none; margin: 0 auto; display:block; }
+  .main-nav-abs { padding: 12px; flex-direction: column; gap: 8px; }
+  .nav-left, .nav-right { justify-content:center; flex-wrap:wrap; }
+  .logo-abs { height:70px; }
+}
