@@ -26,7 +26,7 @@
 
     header {
         text-align: center;
-        padding: 20px 0;
+        padding: 40px 20px;
     }
 
     header img {
@@ -35,34 +35,11 @@
         filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
     }
 
-    nav {
-        display: flex;
-        justify-content: center;
-        gap: 25px;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 15px 0;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    nav a {
-        text-decoration: none;
-        color: #222;
-        font-weight: bold;
-        transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-        color: #d4af37; /* dorado */
-    }
-
-    section {
-        max-width: 1000px;
-        margin: 50px auto;
-        padding: 0 20px;
+    h2 {
         text-align: center;
+        margin-top: 50px;
+        color: #222;
+        font-size: 2rem;
     }
 
     .marcas {
@@ -99,28 +76,6 @@
         animation: slide 18s linear infinite;
     }
 
-    .por-que-elegirnos {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 40px 20px;
-        margin: 50px auto;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        text-align: left;
-    }
-
-    .por-que-elegirnos h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        color: #222;
-    }
-
-    .por-que-elegirnos ul {
-        list-style-type: disc;
-        padding-left: 40px;
-        color: #333;
-        font-size: 1.1rem;
-    }
-
     footer {
         background: #111;
         color: white;
@@ -138,46 +93,6 @@
     <img src="imagenes/logo.png" alt="Logo Taller El Progreso">
 </header>
 
-<nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#galeria-motos">Galería Motos</a>
-    <a href="#galeria-modelos">Galería Modelos</a>
-    <a href="#por-que-elegirnos">Por qué elegirnos</a>
-    <a href="#contacto">Contacto</a>
-</nav>
-
-<section id="inicio">
-    <h2>Bienvenido a Taller Automotriz El Progreso</h2>
-    <p>Calidad, confianza y experiencia a tu servicio.</p>
-</section>
-
-<section id="servicios">
-    <h2>Servicios</h2>
-    <p>Aquí van los detalles de tus servicios.</p>
-</section>
-
-<section id="galeria-motos">
-    <h2>Galería de Motos</h2>
-    <p>Aquí van tus fotos de motos.</p>
-</section>
-
-<section id="galeria-modelos">
-    <h2>Galería de Modelos</h2>
-    <p>Aquí van tus fotos de modelos.</p>
-</section>
-
-<section id="por-que-elegirnos" class="por-que-elegirnos">
-    <h2>Por qué elegirnos</h2>
-    <ul>
-        <li>Calidad: Solo trabajamos con lo mejor.</li>
-        <li>Confianza: Clientes satisfechos y recomendaciones.</li>
-        <li>Experiencia: Más de 10 años en el sector automotriz.</li>
-        <li>Atención: Servicio personalizado y cercano.</li>
-        <li>Garantía: Todos nuestros trabajos cuentan con respaldo.</li>
-    </ul>
-</section>
-
 <h2>Las marcas con las que trabajamos</h2>
 <div class="marcas">
     <div class="carrusel">
@@ -186,7 +101,7 @@
         <img src="imagenes/logo3.jpg" alt="Marca 3">
         <img src="imagenes/logo4.jpg" alt="Marca 4">
         <img src="imagenes/logo5.jpg" alt="Marca 5">
-        <!-- repetición para efecto infinito -->
+        <!-- se repiten para el efecto infinito -->
         <img src="imagenes/logo1.jpg" alt="Marca 1">
         <img src="imagenes/logo2.jpg" alt="Marca 2">
         <img src="imagenes/logo3.jpg" alt="Marca 3">
@@ -195,7 +110,7 @@
     </div>
 </div>
 
-<footer id="contacto">
+<footer>
     © 2025 Taller Automotriz El Progreso. Todos los derechos reservados.
 </footer>
 
@@ -225,7 +140,7 @@
         draw(){
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            ctx.fillStyle = 'rgba(212, 175, 55, 0.5)'; // dorado suave
+            ctx.fillStyle = 'rgba(0,0,0,0.08)';
             ctx.fill();
         }
         update(){
