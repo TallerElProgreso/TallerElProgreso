@@ -1,129 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Taller El Progreso</title>
   <style>
-    /* ===== Reset y generales ===== */
-    :root {
-      --gold: #d4af37;
-      --dark: #111;
-      --muted: #f5f5f5;
-    }
+    :root{--gold:#d4af37;--dark:#111}
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Arial, sans-serif;background:#0b0b0b;color:#222;scroll-behavior:smooth}
+    html,body{height:100%;margin:0;font-family:Arial, sans-serif;background:#0b0b0b;color:#fff;scroll-behavior:smooth}
     a{color:inherit}
-    /* ===== Partículas (canvas full) ===== */
-    #particles {
-      position:fixed;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-      background: radial-gradient(ellipse at top, rgba(255,255,255,0.02), rgba(0,0,0,0));
-    }
-
-    /* ===== Header ===== */
-    header {
-      position:relative;
-      text-align:center;
-      padding:60px 20px 40px;
-      color:white;
-      z-index:5;
-      overflow:hidden;
-      background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.35));
-      backdrop-filter: blur(0.5px);
-    }
-    header::after{
-      content:"";
-      position:absolute;left:-70%;top:0;width:60%;height:100%;
-      background:linear-gradient(120deg,transparent, rgba(212,175,55,0.08), transparent);
-      animation:shine 6s linear infinite;
-      z-index:1;
-      pointer-events:none;
-    }
+    /* Partículas */
+    #particles{position:fixed;inset:0;z-index:0;pointer-events:none}
+    /* Header */
+    header{position:relative;text-align:center;padding:60px 20px 40px;z-index:5;background:linear-gradient(180deg,rgba(0,0,0,0.6),rgba(0,0,0,0.35))}
+    header::after{content:"";position:absolute;left:-70%;top:0;width:60%;height:100%;background:linear-gradient(120deg,transparent, rgba(212,175,55,0.08), transparent);animation:shine 6s linear infinite;z-index:1;pointer-events:none}
     @keyframes shine{0%{left:-70%}100%{left:170%}}
-
-    .logo {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:18px;
-      z-index:3;
-      position:relative;
-    }
-    .logo svg{width:130px;height:130px;flex:0 0 130px; filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6)); animation:logoPop 1.2s ease;}
-    @keyframes logoPop {0%{transform:scale(.6) rotate(-10deg);opacity:0}60%{transform:scale(1.05) rotate(3deg)}100%{transform:scale(1) rotate(0)}}
-    .logo-text {
-      font-size:40px;
-      font-weight:900;
-      letter-spacing:0.6px;
-      background: linear-gradient(90deg, #fff, #f7f1df 30%, var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      z-index:3;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    }
-    header p { margin:8px 0 0; color:var(--gold); font-style:italic; z-index:3; }
-
-    /* ===== Nav ===== */
-    nav{
-      position:sticky; top:0; z-index:8;
-      display:flex;align-items:center;justify-content:center;gap:22px;padding:14px;background:rgba(17,17,17,0.9);backdrop-filter: blur(4px);
-    }
-    nav a{ color:#fff;text-decoration:none;font-weight:bold;padding:6px 12px;border-radius:8px;transition:all .18s ease}
-    nav a:hover{ color:var(--gold); transform:translateY(-3px); }
-    nav img{height:86px; border-radius:10px; display:block; margin:0 10px}
-
-    /* ===== Layout sections ===== */
+    .logo{display:flex;align-items:center;justify-content:center;gap:18px;z-index:3;position:relative}
+    .logo svg{width:130px;height:130px;flex:0 0 130px;filter:drop-shadow(0 6px 12px rgba(0,0,0,0.6));animation:logoPop 1.2s ease}
+    @keyframes logoPop{0%{transform:scale(.6) rotate(-10deg);opacity:0}60%{transform:scale(1.05) rotate(3deg)}100%{transform:scale(1) rotate(0)}}
+    .logo-text{font-size:40px;font-weight:900;letter-spacing:0.6px;background:linear-gradient(90deg,#fff,#f7f1df 30%,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 2px 6px rgba(0,0,0,0.6)}
+    header p{margin:8px 0 0;color:var(--gold);font-style:italic}
+    /* Nav */
+    nav{position:sticky;top:0;z-index:8;display:flex;align-items:center;justify-content:center;gap:22px;padding:14px;background:rgba(17,17,17,0.9);backdrop-filter:blur(4px)}
+    nav a{color:#fff;text-decoration:none;font-weight:bold;padding:6px 12px;border-radius:8px;transition:all .18s}
+    nav a:hover{color:var(--gold);transform:translateY(-3px)}
+    nav img{height:86px;border-radius:10px;display:block;margin:0 10px}
+    /* Layout */
     .container{max-width:1100px;margin:40px auto;padding:0 18px;position:relative;z-index:4}
     section{margin-bottom:40px;padding-top:6px;opacity:0;transform:translateY(20px);transition:all .8s cubic-bezier(.22,.9,.27,1)}
     section.visible{opacity:1;transform:none}
     h2{display:inline-block;border-bottom:3px solid var(--gold);padding-bottom:6px;margin-bottom:18px;color:#fff}
-
-    /* ===== Servicios ===== */
+    /* Services */
     .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-    .service{
-      background:rgba(255,255,255,0.03);
-      color:#fff;padding:20px;border-radius:12px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.55);
-      text-align:center;font-weight:700;transition:transform .22s ease, box-shadow .22s;
-      border:1px solid rgba(212,175,55,0.06)
-    }
-    .service:hover{transform:translateY(-8px); box-shadow:0 14px 36px rgba(0,0,0,0.7)}
-
-    /* ===== Logo central grande ===== */
+    .service{background:rgba(255,255,255,0.03);color:#fff;padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.55);text-align:center;font-weight:700;transition:transform .22s,box-shadow .22s;border:1px solid rgba(212,175,55,0.06)}
+    .service:hover{transform:translateY(-8px);box-shadow:0 14px 36px rgba(0,0,0,0.7)}
+    /* Logo centro */
     .logo-centro{display:flex;justify-content:center;margin:22px 0}
-    .logo-centro img{height:190px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.6);transition:transform .35s ease}
-    .logo-centro img:hover{transform:scale(1.06); box-shadow:0 18px 44px rgba(212,175,55,0.25)}
-
-    /* ===== Galería ===== */
+    .logo-centro img{height:190px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.6);transition:transform .35s}
+    .logo-centro img:hover{transform:scale(1.06);box-shadow:0 18px 44px rgba(212,175,55,0.25)}
+    /* Gallery preview (small) */
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
     .gallery-item{background:#111;padding:6px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.03)}
-    .gallery-item img{width:100%;height:140px;object-fit:cover;display:block;border-radius:6px;cursor:pointer;transition:transform .25s ease,filter .25s}
+    .gallery-item img{width:100%;height:140px;object-fit:cover;display:block;border-radius:6px;cursor:pointer;transition:transform .25s,filter .25s}
     .gallery-item img:hover{transform:scale(1.04);filter:brightness(1.06)}
-
-    /* ===== Modal / Lightbox ===== */
-    .lightbox{
-      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.85);
-      z-index:9999;opacity:0;pointer-events:none;transition:opacity .25s ease;
-      padding:18px;
-    }
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.85);z-index:9999;opacity:0;pointer-events:none;transition:opacity .25s;padding:18px}
     .lightbox.open{opacity:1;pointer-events:auto}
     .lightbox img{max-width:95%;max-height:85%;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,0.8)}
     .lightbox .close{position:absolute;top:18px;right:18px;color:#fff;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.06);padding:8px 10px;border-radius:8px;cursor:pointer;font-weight:700}
-
-    /* ===== Razones ===== */
+    /* Razones */
     .razones{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
     .razon{background:rgba(255,255,255,0.03);padding:18px;border-radius:10px;color:#fff;border:1px solid rgba(212,175,55,0.05)}
     .razon h3{color:var(--gold);margin-top:0}
-
-    /* ===== Contacto & Footer ===== */
+    /* Contacto */
     .contact{color:#fff;line-height:1.8}
     .whatsapp-btn{display:inline-block;margin-top:12px;padding:12px 18px;background:#25d366;color:#fff;border-radius:10px;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,0.6)}
     footer{padding:22px;text-align:center;color:#fff;background:rgba(0,0,0,0.4);border-top:1px solid rgba(255,255,255,0.02)}
-
-    /* ===== Responsive tweaks ===== */
     @media (max-width:640px){
       .logo-text{font-size:26px}
       .logo svg{width:92px;height:92px}
@@ -133,11 +65,8 @@
   </style>
 </head>
 <body>
-
-  <!-- canvas de partículas -->
   <canvas id="particles"></canvas>
 
-  <!-- encabezado -->
   <header>
     <div class="logo">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
@@ -151,22 +80,19 @@
     <p>Confianza y calidad en cada reparación</p>
   </header>
 
-  <!-- nav -->
   <nav>
     <a href="index.html">Inicio</a>
     <a href="#servicios">Servicios</a>
-    <a href="#galeria-motos">Galería de Motos</a>
+    <a href="galeria_Motos.html">Galería de Motos</a>
     <img src="imagenes/logo.png" alt="Logo Taller El Progreso">
     <a href="#contacto">Contacto</a>
     <a href="galeria_modelos.html">Galería de Modelos</a>
   </nav>
 
-  <!-- logo central -->
   <div class="logo-centro container">
     <img src="imagenes/logo.png" alt="Logo Taller El Progreso">
   </div>
 
-  <!-- servicios -->
   <div class="container">
     <section id="servicios">
       <h2>Servicios</h2>
@@ -180,25 +106,31 @@
     </section>
   </div>
 
-  <!-- galería motos -->
   <div class="container">
     <section id="galeria-motos">
       <h2>Galería de Motos</h2>
-      <p style="color:#ddd;margin-bottom:8px;">Haz clic sobre cualquier imagen para verla en grande.</p>
-      <div id="gallery-motos" class="gallery-grid" aria-live="polite"></div>
+      <p style="color:#ddd;margin-bottom:8px;">Haz clic sobre cualquier imagen para verla en grande. (Ir a la galería completa)</p>
+      <div class="gallery-grid">
+        <!-- Previews: intentamos cargar algunas miniaturas comunes -->
+        <div class="gallery-item"><a href="galeria_Motos.html" style="display:block;text-decoration:none;color:inherit"><img src="motos/1.jpg" alt="moto 1" onerror="this.style.display='none'"></a></div>
+        <div class="gallery-item"><a href="galeria_Motos.html" style="display:block;text-decoration:none;color:inherit"><img src="motos/2.jpg" alt="moto 2" onerror="this.style.display='none'"></a></div>
+        <div class="gallery-item"><a href="galeria_Motos.html" style="display:block;text-decoration:none;color:inherit"><img src="motos/3.jpg" alt="moto 3" onerror="this.style.display='none'"></a></div>
+      </div>
     </section>
   </div>
 
-  <!-- galería modelos -->
   <div class="container">
     <section id="galeria-modelos">
       <h2>Galería de Modelos</h2>
-      <p style="color:#ddd;margin-bottom:8px;">Haz clic sobre cualquier imagen para verla en grande.</p>
-      <div id="gallery-modelos" class="gallery-grid" aria-live="polite"></div>
+      <p style="color:#ddd;margin-bottom:8px;">Haz clic sobre cualquier imagen para verla en grande. (Ir a la galería completa)</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><a href="galeria_modelos.html" style="display:block;text-decoration:none;color:inherit"><img src="imagenes/1.jpg" alt="modelo 1" onerror="this.style.display='none'"></a></div>
+        <div class="gallery-item"><a href="galeria_modelos.html" style="display:block;text-decoration:none;color:inherit"><img src="imagenes/2.jpg" alt="modelo 2" onerror="this.style.display='none'"></a></div>
+        <div class="gallery-item"><a href="galeria_modelos.html" style="display:block;text-decoration:none;color:inherit"><img src="imagenes/3.jpg" alt="modelo 3" onerror="this.style.display='none'"></a></div>
+      </div>
     </section>
   </div>
 
-  <!-- contacto -->
   <div class="container">
     <section id="contacto">
       <h2>Contacto</h2>
@@ -221,7 +153,6 @@
     </section>
   </div>
 
-  <!-- marcas (carrusel simple) -->
   <div style="margin:30px 0;">
     <section class="container">
       <div style="background:#0a0a0a;padding:28px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)">
@@ -233,7 +164,6 @@
             <img src="imagenes/logo3.png" alt="" style="height:72px;opacity:.9">
             <img src="imagenes/logo4.png" alt="" style="height:72px;opacity:.9">
             <img src="imagenes/logo5.png" alt="" style="height:72px;opacity:.9">
-            <!-- Repetimos para efecto infinito -->
             <img src="imagenes/logo1.png" alt="" style="height:72px;opacity:.9">
             <img src="imagenes/logo2.png" alt="" style="height:72px;opacity:.9">
           </div>
@@ -242,7 +172,6 @@
     </section>
   </div>
 
-  <!-- por qué elegirnos -->
   <div class="container">
     <section id="porque-elegirnos">
       <h2>Por Qué Elegirnos</h2>
@@ -255,209 +184,41 @@
     </section>
   </div>
 
-  <!-- footer -->
   <footer>
     <p>&copy; 2025 Taller El Progreso - Todos los derechos reservados</p>
   </footer>
 
-  <!-- lightbox -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <button class="close" id="lightboxClose">✕</button>
     <img id="lightboxImg" src="" alt="Imagen ampliada">
   </div>
 
 <script>
-/* ============================
-   PARTICLES (canvas) - efecto dorado sutil
-   ============================ */
+/* PARTICLES */
 (function(){
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-  let w = canvas.width = innerWidth;
-  let h = canvas.height = innerHeight;
-  const particles = [];
-  const num = Math.floor((w*h)/90000); // density
-
-  function rand(min,max){ return Math.random()*(max-min)+min }
-
-  class P {
-    constructor(){
-      this.reset();
-    }
-    reset(){
-      this.x = rand(0,w);
-      this.y = rand(0,h);
-      this.vx = rand(-0.15,0.15);
-      this.vy = rand(-0.2,0.1);
-      this.r = rand(0.6,2.6);
-      this.alpha = rand(0.04,0.7);
-      this.phase = rand(0, Math.PI*2);
-    }
-    step(){
-      this.x += this.vx;
-      this.y += this.vy + Math.sin((Date.now()/1000)+this.phase)*0.15;
-      if(this.x<-50 || this.x > w+50 || this.y<-50 || this.y>h+50) this.reset();
-    }
-    draw(){
-      ctx.beginPath();
-      const grd = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r*6);
-      grd.addColorStop(0,'rgba(212,175,55,'+this.alpha+')');
-      grd.addColorStop(1,'rgba(212,175,55,0)');
-      ctx.fillStyle = grd;
-      ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-      ctx.fill();
-    }
-  }
-
-  function init(){
-    particles.length=0;
-    for(let i=0;i<num;i++) particles.push(new P());
-  }
-
-  function resize(){
-    w = canvas.width = innerWidth;
-    h = canvas.height = innerHeight;
-    init();
-  }
-  addEventListener('resize', resize);
-  init();
-
-  function anim(){
-    ctx.clearRect(0,0,w,h);
-    for(let p of particles){ p.step(); p.draw(); }
-    requestAnimationFrame(anim);
-  }
-  anim();
+  const canvas = document.getElementById('particles'), ctx = canvas.getContext('2d');
+  let w=canvas.width=innerWidth, h=canvas.height=innerHeight; const particles=[];
+  const num = Math.floor((w*h)/90000);
+  function rand(a,b){return Math.random()*(b-a)+a}
+  class P{constructor(){this.reset()}reset(){this.x=rand(0,w);this.y=rand(0,h);this.vx=rand(-0.15,0.15);this.vy=rand(-0.2,0.1);this.r=rand(0.6,2.6);this.alpha=rand(0.04,0.7);this.phase=rand(0,Math.PI*2)}step(){this.x+=this.vx;this.y+=this.vy+Math.sin((Date.now()/1000)+this.phase)*0.15; if(this.x<-50||this.x>w+50||this.y<-50||this.y>h+50) this.reset()}draw(){ctx.beginPath(); const grd = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r*6); grd.addColorStop(0,'rgba(212,175,55,'+this.alpha+')'); grd.addColorStop(1,'rgba(212,175,55,0)'); ctx.fillStyle=grd; ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fill()}}
+  function init(){particles.length=0; for(let i=0;i<num;i++) particles.push(new P())}
+  function resize(){w=canvas.width=innerWidth; h=canvas.height=innerHeight; init()}
+  addEventListener('resize', resize); init();
+  (function anim(){ctx.clearRect(0,0,w,h); for(const p of particles){p.step();p.draw()} requestAnimationFrame(anim)})();
 })();
 
-/* ============================
-   ANIMACIONES DE SECCIONES (IntersectionObserver)
-   ============================ */
-(function(){
-  const secs = document.querySelectorAll('section');
-  const io = new IntersectionObserver((entries)=>{
-    for(const e of entries){
-      if(e.isIntersecting) e.target.classList.add('visible');
-    }
-  },{threshold:0.15});
-  secs.forEach(s=>io.observe(s));
+/* SECTION ANIM */
+(function(){const secs=document.querySelectorAll('section'); const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); })},{threshold:0.15}); secs.forEach(s=>io.observe(s));})();
+
+/* LIGHTBOX */
+(function(){const lb=document.getElementById('lightbox'), img=document.getElementById('lightboxImg'), btn=document.getElementById('lightboxClose');
+  window.openLightbox=function(src,alt=''){img.src=src;img.alt=alt;lb.classList.add('open');lb.setAttribute('aria-hidden','false')};
+  function close(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true'); setTimeout(()=>img.src='',200)}
+  btn.addEventListener('click',close); lb.addEventListener('click',e=>{ if(e.target===lb) close() });
 })();
 
-/* ============================
-   LIGHTBOX (modal) para ver imágenes grande
-   ============================ */
-(function(){
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightboxImg');
-  const closeBtn = document.getElementById('lightboxClose');
-  function open(src, alt=''){
-    lbImg.src = src;
-    lbImg.alt = alt;
-    lightbox.classList.add('open');
-    lightbox.setAttribute('aria-hidden','false');
-  }
-  function close(){
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden','true');
-    // limpiar src para liberar memoria
-    setTimeout(()=> lbImg.src = '', 200);
-  }
-  closeBtn.addEventListener('click', close);
-  lightbox.addEventListener('click', e=>{ if(e.target===lightbox) close(); });
-  window.openLightbox = open;
-})();
-
-/* ============================
-   CARGA AUTOMÁTICA DE IMÁGENES PARA LAS GALERÍAS
-   - Estrategia: probamos un conjunto de patrones (según tus capturas).
-   - Si la imagen existe, la añadimos. Si no, la ignoramos.
-   ============================ */
-(function(){
-  // Prefijos / patrones detectados de tus capturas (motos/)
-  const motosPatterns = [
-    'honda125i_antes', 'honda125i_despues',
-    'hunk_antes', 'hunk_despues',
-    'dmx_antes','dmx_despues',
-    'otro_antes','otro_despues'
-  ];
-  // Prefijos detectados para la carpeta imagenes/ (modelos)
-  const modelosPatterns = [
-    'bolqueta_antes','bolqueta_despues',
-    'bolquetaverde_antes','bolquetaverde_despues',
-    'ama_antes','ama_despues'
-  ];
-
-  // opcionales: si tienes otros nombres raros, agrégalos aquí:
-  const extraMotos = [
-    // 'nombre personalizado sin extension'
-  ];
-  const extraModelos = [
-    // 'otro_nombre_modelo'
-  ];
-
-  // Max índice que probamos (por ejemplo 1..6)
-  const maxIndex = 6;
-
-  // Función para intentar cargar imágenes y añadir solo si existen
-  function tryLoadAndAppend(basePath, name, container){
-    const img = new Image();
-    img.src = basePath + name + '.jpg';
-    img.alt = name;
-    img.onload = () => {
-      const wrap = document.createElement('div');
-      wrap.className = 'gallery-item';
-      img.addEventListener('click', ()=> window.openLightbox(img.src, img.alt));
-      wrap.appendChild(img);
-      container.appendChild(wrap);
-    };
-    // onerror: ignoramos silenciosamente
-  }
-
-  // Rellenar galería con patrones + índices
-  function populateGallery(containerId, folder, patterns, extras){
-    const container = document.getElementById(containerId);
-    // Primero los patrones numerados
-    for(const p of patterns){
-      for(let i=1;i<=maxIndex;i++){
-        // ejemplo: honda125i_antes1.jpg
-        tryLoadAndAppend(folder, ${p}${i}, container);
-      }
-    }
-    // También probamos nombres sin número (por si)
-    for(const p of patterns){
-      tryLoadAndAppend(folder, p, container);
-    }
-    // Extras explícitos (si los añades)
-    for(const e of extras){
-      tryLoadAndAppend(folder, e, container);
-    }
-  }
-
-  // Lanzar la población:
-  populateGallery('gallery-motos', 'motos/', motosPatterns.concat(), extraMotos);
-  populateGallery('gallery-modelos', 'imagenes/', modelosPatterns.concat(), extraModelos);
-
-  // Si quieres forzar al usuario a ver un mensaje si no hay imágenes:
-  setTimeout(()=>{
-    const gm = document.getElementById('gallery-motos');
-    if(gm && gm.children.length===0){
-      gm.innerHTML = '<p style="color:#ddd">No se encontraron imágenes en <strong>motos/</strong>. Si ya subiste las fotos, revisa nombres o agrega patrones en el script.</p>';
-    }
-    const gmdl = document.getElementById('gallery-modelos');
-    if(gmdl && gmdl.children.length===0){
-      gmdl.innerHTML = '<p style="color:#ddd">No se encontraron imágenes en <strong>imagenes/</strong>. Si ya subiste las fotos, revisa nombres o agrega patrones en el script.</p>';
-    }
-  }, 900);
-})();
-
-/* ============================
-   util: animación logos (carrusel)
-   ============================ */
-(function(){
-  const style = document.createElement('style');
-  style.innerHTML = '@keyframes scrollLogos{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}';
-  document.head.appendChild(style);
-})();
+/* scroll logos keyframe */
+(function(){const s=document.createElement('style'); s.innerHTML='@keyframes scrollLogos{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}'; document.head.appendChild(s)})();
 </script>
 </body>
 </html>
