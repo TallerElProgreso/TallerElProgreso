@@ -33,31 +33,18 @@ a { color: inherit; }
   pointer-events: none;
 }
 
-/* Header */
+/* Header limpio con fondo blanco y logo visible */
 header {
   position: relative;
   text-align: center;
-  padding: 60px 20px 40px;
+  padding: 40px 20px 20px;
   z-index: 5;
-  background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.25));
+  background: #fff; /* Fondo blanco */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 header::after {
-  content: "";
-  position: absolute;
-  left: -70%;
-  top: 0;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(212,175,55,0.08), transparent);
-  animation: shine 6s linear infinite;
-  z-index: 1;
-  pointer-events: none;
-}
-
-@keyframes shine {
-  0% { left: -70% }
-  100% { left: 170% }
+  display: none; /* Quitamos efecto de brillo */
 }
 
 .logo {
@@ -69,28 +56,29 @@ header::after {
   position: relative;
 }
 
-.logo svg {
-  width: 130px;
-  height: 130px;
-  flex: 0 0 130px;
-  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
-  animation: logoPop 1.2s ease;
+.logo img {
+  width: 160px;
+  height: auto;
+  flex: 0 0 auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
 }
 
-@keyframes logoPop {
-  0% { transform: scale(.6) rotate(-10deg); opacity: 0 }
-  60% { transform: scale(1.05) rotate(3deg) }
-  100% { transform: scale(1) rotate(0) }
+.logo img:hover {
+  transform: scale(1.05);
 }
 
+/* Quitamos .logo-text */
 .logo-text {
-  font-size: 40px;
-  font-weight: 900;
-  letter-spacing: 0.6px;
-  background: linear-gradient(90deg, #fff, #f7f1df 30%, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  display: none;
+}
+
+header p {
+  margin: 8px 0 0;
+  color: #555;
+  font-style: italic;
+  font-size: 16px;
 }
 
 header p {
@@ -518,6 +506,7 @@ footer {
 </script>
 </body>
 </html>
+
 
 
 
