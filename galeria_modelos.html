@@ -434,28 +434,44 @@ h1 { text-align:center; padding:20px 0; color:#333; }
 <div class="lightbox" id="m15d2"><a href="#" class="close">&times;</a><img src="imagenes/bolquetaverde_despues2.jpg"></div>
 <div class="lightbox" id="m15d3"><a href="#" class="close">&times;</a><img src="imagenes/bolquetaverde_despues3.jpg"></div>
 <script>
-// Cambiar modelo
-const modelTabs = document.querySelectorAll('.model-tab');
+// Cambio de modelos
+const tabs = document.querySelectorAll('.model-tab');
 const modelContents = document.querySelectorAll('.model-content');
-modelTabs.forEach(tab => {
+
+tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        modelTabs.forEach(t => t.classList.remove('active'));
-        modelContents.forEach(c => c.classList.remove('active'));
+        tabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-        document.getElementById(tab.dataset.target).classList.add('active');
+
+        const target = tab.dataset.target;
+        modelContents.forEach(c => c.classList.remove('active'));
+        document.getElementById(target).classList.add('active');
+
+        // Resetea sub-tabs y galerías
+        const subTabs = document.querySelectorAll(`#${target} .sub-tab`);
+        const galleries = document.querySelectorAll(`#${target} .gallery`);
+        subTabs.forEach((st, index) => {
+            st.classList.remove('active');
+            if(index === 0) st.classList.add('active');
+        });
+        galleries.forEach((g, index) => {
+            g.classList.remove('active');
+            if(index === 0) g.classList.add('active');
+        });
     });
 });
 
-// Cambiar antes/despues
+// Cambio de sub-tabs
 const subTabs = document.querySelectorAll('.sub-tab');
-subTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        const parent = tab.parentElement.parentElement;
-        const galleries = parent.querySelectorAll('.gallery');
-        tab.parentElement.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
-        galleries.forEach(g => g.classList.remove('active'));
-        tab.classList.add('active');
-        parent.querySelector('#' + tab.dataset.target).classList.add('active');
+subTabs.forEach(sub => {
+    sub.addEventListener('click', () => {
+        const parent = sub.closest('.model-content');
+        parent.querySelectorAll('.sub-tab').forEach(s => s.classList.remove('active'));
+        sub.classList.add('active');
+
+        const target = sub.dataset.target;
+        parent.querySelectorAll('.gallery').forEach(g => g.classList.remove('active'));
+        document.getElementById(target).classList.add('active');
     });
 });
 </script>
