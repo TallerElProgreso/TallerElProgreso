@@ -361,6 +361,13 @@ footer {
     <h2>Marcas que trabajamos</h2>
     <div style="overflow:hidden;margin-top:14px">
       <div style="display:flex;gap:40px;animation:scrollLogos 30s linear infinite">
+        <!-- Logos originales -->
+        <img src="imagenes/logo1.png" alt="" style="height:72px;opacity:.9">
+        <img src="imagenes/logo2.png" alt="" style="height:72px;opacity:.9">
+        <img src="imagenes/logo3.png" alt="" style="height:72px;opacity:.9">
+        <img src="imagenes/logo4.png" alt="" style="height:72px;opacity:.9">
+        <img src="imagenes/logo5.png" alt="" style="height:72px;opacity:.9">
+        <!-- Repetidos para efecto infinito -->
         <img src="imagenes/logo1.png" alt="" style="height:72px;opacity:.9">
         <img src="imagenes/logo2.png" alt="" style="height:72px;opacity:.9">
         <img src="imagenes/logo3.png" alt="" style="height:72px;opacity:.9">
@@ -370,6 +377,13 @@ footer {
     </div>
   </section>
 </div>
+
+<style>
+@keyframes scrollLogos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
 
 <!-- Por qué elegirnos -->
 <div class="container">
@@ -483,3 +497,4 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
