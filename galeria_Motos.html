@@ -7,18 +7,19 @@
 <style>
 body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background: linear-gradient(to bottom, #e0f7ff, #fdfdfd); 
+    background: #111; 
+    background: linear-gradient(180deg, #111 0%, #1a1a1a 100%); 
     margin:0; 
     padding:0; 
-    color:#222;
+    color:#eee;
 }
 
 h1 { 
     text-align:center; 
     padding:30px 0; 
-    color:#0a1f44; 
-    font-size:2.2em; 
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    color:#ffcc00; 
+    font-size:2.4em; 
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 .model-tabs { 
@@ -32,21 +33,23 @@ h1 {
 .model-tab { 
     padding:12px 28px; 
     cursor:pointer; 
-    background: linear-gradient(145deg, #007BFF, #339FFF); 
-    color:white; 
+    background: #222; 
+    color:#ffcc00; 
     border-radius:12px 12px 0 0; 
     font-weight:bold; 
-    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+    box-shadow:0 4px 8px rgba(0,0,0,0.6);
     transition: 0.3s all; 
 }
 
 .model-tab.active { 
-    background: linear-gradient(145deg, #0056b3, #2277cc); 
-    border-bottom:2px solid #fff; 
+    background:#ffcc00; 
+    color:#111; 
+    border-bottom:2px solid #111; 
 }
 
 .model-tab:hover {
-    background: linear-gradient(145deg, #0069d9, #55a3ff);
+    background:#e6b800; 
+    color:#111;
 }
 
 .sub-tabs { 
@@ -59,20 +62,22 @@ h1 {
 .sub-tab { 
     padding:7px 20px; 
     cursor:pointer; 
-    background: linear-gradient(145deg, #17a2b8, #4fc1d0); 
-    color:white; 
+    background:#333; 
+    color:#ffcc00; 
     border-radius:8px; 
     font-weight:bold; 
-    box-shadow:0 2px 5px rgba(0,0,0,0.15);
+    box-shadow:0 2px 5px rgba(0,0,0,0.5);
     transition: 0.3s all; 
 }
 
 .sub-tab.active { 
-    background: linear-gradient(145deg, #138496, #34a0ad); 
+    background:#ffcc00; 
+    color:#111; 
 }
 
 .sub-tab:hover {
-    background: linear-gradient(145deg, #0f6674, #2193a4);
+    background:#e6b800; 
+    color:#111;
 }
 
 .gallery { 
@@ -92,14 +97,14 @@ h1 {
     height:180px; 
     object-fit:cover; 
     border-radius:12px; 
-    box-shadow:0 6px 15px rgba(0,0,0,0.3); 
+    box-shadow:0 6px 20px rgba(0,0,0,0.8); 
     cursor:pointer; 
     transition: transform 0.4s, box-shadow 0.4s; 
 }
 
 .gallery img:hover { 
     transform:scale(1.1); 
-    box-shadow:0 10px 25px rgba(0,0,0,0.35);
+    box-shadow:0 10px 30px rgba(255,204,0,0.8);
 }
 
 /* Lightbox */
@@ -107,7 +112,7 @@ h1 {
     position:fixed; 
     top:0; left:0; 
     width:100%; height:100%; 
-    background:rgba(10,10,10,0.95); 
+    background:rgba(0,0,0,0.95); 
     display:none; 
     justify-content:center; 
     align-items:center; 
@@ -118,7 +123,7 @@ h1 {
     max-width:92%; 
     max-height:92%; 
     border-radius:12px; 
-    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    box-shadow:0 10px 30px rgba(255,204,0,0.8);
 }
 
 .lightbox:target { 
@@ -129,11 +134,18 @@ h1 {
     position:absolute; 
     top:25px; 
     right:35px; 
-    color:white; 
+    color:#ffcc00; 
     font-size:36px; 
     text-decoration:none; 
     font-weight:bold;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
+
+h2 { 
+    text-align:center; 
+    color:#ffdd33; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    margin-bottom:15px;
 }
 </style>
 </head>
@@ -153,7 +165,7 @@ h1 {
         <div class="sub-tab active" data-target="m1-antes">Antes</div>
         <div class="sub-tab" data-target="m1-despues">Después</div>
     </div>
-    <h2 style="text-align:center;">Hero Hunk 125R</h2>
+    <h2>Hero Hunk 125R</h2>
     <div class="gallery active" id="m1-antes">
         <a href="#m1a1"><img src="motos/hunk_antes1.jpg"></a>
         <a href="#m1a2"><img src="motos/hunk_antes2.jpg"></a>
@@ -172,14 +184,12 @@ h1 {
         <div class="sub-tab active" data-target="honda125i-antes">Antes</div>
         <div class="sub-tab" data-target="honda125i-despues">Después</div>
     </div>
-    <h2 style="text-align:center;">Honda Click 125i</h2>
-    <!-- Galería Antes -->
+    <h2>Honda Click 125i</h2>
     <div class="gallery active" id="honda125i-antes">
         <a href="#h125i-a1"><img src="motos/honda125i_antes1.jpg" alt="Honda Click 125i antes 1"></a>
         <a href="#h125i-a2"><img src="motos/honda125i_antes2.jpg" alt="Honda Click 125i antes 2"></a>
         <a href="#h125i-a3"><img src="motos/honda125i_antes3.jpg" alt="Honda Click 125i antes 3"></a>
     </div>
-    <!-- Galería Después -->
     <div class="gallery" id="honda125i-despues">
         <a href="#h125i-d1"><img src="motos/honda125i_despues1.jpg" alt="Honda Click 125i después 1"></a>
         <a href="#h125i-d2"><img src="motos/honda125i_despues2.jpg" alt="Honda Click 125i después 2"></a>
