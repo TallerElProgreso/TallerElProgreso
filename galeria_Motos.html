@@ -6,79 +6,81 @@
 <title>Galería de Motos - Taller El Progreso</title>
 <style>
 body { 
-    font-family: Arial, sans-serif; 
-    background: linear-gradient(to bottom, #e0f0ff, #f4f4f4); 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: linear-gradient(to bottom, #e0f7ff, #fdfdfd); 
     margin:0; 
     padding:0; 
+    color:#222;
 }
 
 h1 { 
     text-align:center; 
-    padding:25px 0; 
-    color:#1a1a1a; 
-    font-size:2em; 
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    padding:30px 0; 
+    color:#0a1f44; 
+    font-size:2.2em; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
 }
 
 .model-tabs { 
     display:flex; 
     justify-content:center; 
-    gap:12px; 
-    margin-bottom:20px; 
+    gap:15px; 
+    margin-bottom:25px; 
     flex-wrap:wrap; 
 }
 
 .model-tab { 
-    padding:10px 25px; 
+    padding:12px 28px; 
     cursor:pointer; 
-    background:#007BFF; 
+    background: linear-gradient(145deg, #007BFF, #339FFF); 
     color:white; 
-    border-radius:8px 8px 0 0; 
+    border-radius:12px 12px 0 0; 
     font-weight:bold; 
-    box-shadow:0 3px 6px rgba(0,0,0,0.15);
-    transition: 0.3s; 
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+    transition: 0.3s all; 
 }
 
 .model-tab.active { 
-    background:#0056b3; 
+    background: linear-gradient(145deg, #0056b3, #2277cc); 
     border-bottom:2px solid #fff; 
 }
 
 .model-tab:hover {
-    background:#0069d9;
+    background: linear-gradient(145deg, #0069d9, #55a3ff);
 }
 
 .sub-tabs { 
     display:flex; 
     justify-content:center; 
-    gap:10px; 
-    margin-bottom:15px; 
+    gap:12px; 
+    margin-bottom:18px; 
 }
 
 .sub-tab { 
-    padding:6px 18px; 
+    padding:7px 20px; 
     cursor:pointer; 
-    background:#17a2b8; 
+    background: linear-gradient(145deg, #17a2b8, #4fc1d0); 
     color:white; 
-    border-radius:6px; 
+    border-radius:8px; 
     font-weight:bold; 
-    transition:0.3s; 
+    box-shadow:0 2px 5px rgba(0,0,0,0.15);
+    transition: 0.3s all; 
 }
 
 .sub-tab.active { 
-    background:#138496; 
+    background: linear-gradient(145deg, #138496, #34a0ad); 
 }
 
 .sub-tab:hover {
-    background:#0f6674;
+    background: linear-gradient(145deg, #0f6674, #2193a4);
 }
 
 .gallery { 
     display:none; 
     justify-content:center; 
     flex-wrap:wrap; 
-    gap:15px; 
-    padding:0 20px 40px 20px; 
+    gap:18px; 
+    padding:0 20px 50px 20px; 
 }
 
 .gallery.active { 
@@ -86,18 +88,18 @@ h1 {
 }
 
 .gallery img { 
-    width:250px; 
+    width:260px; 
     height:180px; 
     object-fit:cover; 
-    border-radius:8px; 
-    box-shadow:0 5px 10px rgba(0,0,0,0.25); 
+    border-radius:12px; 
+    box-shadow:0 6px 15px rgba(0,0,0,0.3); 
     cursor:pointer; 
-    transition:transform 0.4s, box-shadow 0.3s; 
+    transition: transform 0.4s, box-shadow 0.4s; 
 }
 
 .gallery img:hover { 
-    transform:scale(1.08); 
-    box-shadow:0 8px 16px rgba(0,0,0,0.35);
+    transform:scale(1.1); 
+    box-shadow:0 10px 25px rgba(0,0,0,0.35);
 }
 
 /* Lightbox */
@@ -105,7 +107,7 @@ h1 {
     position:fixed; 
     top:0; left:0; 
     width:100%; height:100%; 
-    background:rgba(0,0,0,0.9); 
+    background:rgba(10,10,10,0.95); 
     display:none; 
     justify-content:center; 
     align-items:center; 
@@ -113,10 +115,10 @@ h1 {
 }
 
 .lightbox img { 
-    max-width:90%; 
-    max-height:90%; 
-    border-radius:8px; 
-    box-shadow:0 8px 20px rgba(0,0,0,0.5);
+    max-width:92%; 
+    max-height:92%; 
+    border-radius:12px; 
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 .lightbox:target { 
@@ -125,12 +127,13 @@ h1 {
 
 .close { 
     position:absolute; 
-    top:20px; 
-    right:30px; 
+    top:25px; 
+    right:35px; 
     color:white; 
-    font-size:32px; 
+    font-size:36px; 
     text-decoration:none; 
     font-weight:bold;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
 }
 </style>
 </head>
