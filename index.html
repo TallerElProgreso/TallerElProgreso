@@ -336,13 +336,7 @@ footer {
 
 <header>
   <div class="logo">
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-      <circle cx="50" cy="50" r="45" fill="#222" stroke="#d4af37" stroke-width="5"/>
-      <path d="M40 30 L60 50 L50 60 L30 40 Z" fill="#ccc"/>
-      <circle cx="35" cy="35" r="6" fill="#d4af37"/>
-      <rect x="30" y="72" width="40" height="6" rx="3" fill="#d4af37"/>
-    </svg>
-     <img src="imagenes/logo.png" alt="Logo Taller El Progreso">
+    <img src="imagenes/logo.png" alt="Taller El Progreso">
   </div>
   <p>Confianza y calidad en cada reparación</p>
 </header>
@@ -460,18 +454,54 @@ footer {
   </div>
 
 <script>
-/* PARTICLES */
+/* PARTICLES GRANDES */
 (function(){
-  const canvas = document.getElementById('particles'), ctx = canvas.getContext('2d');
-  let w=canvas.width=innerWidth, h=canvas.height=innerHeight; const particles=[];
-  const num = Math.floor((w*h)/90000);
-  function rand(a,b){return Math.random()*(b-a)+a}
-  class P{constructor(){this.reset()}reset(){this.x=rand(0,w);this.y=rand(0,h);this.vx=rand(-0.15,0.15);this.vy=rand(-0.2,0.1);this.r=rand(0.6,2.6);this.alpha=rand(0.04,0.7);this.phase=rand(0,Math.PI*2)}step(){this.x+=this.vx;this.y+=this.vy+Math.sin((Date.now()/1000)+this.phase)*0.15; if(this.x<-50||this.x>w+50||this.y<-50||this.y>h+50) this.reset()}draw(){ctx.beginPath(); const grd = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r*6); grd.addColorStop(0,'rgba(212,175,55,'+this.alpha+')'); grd.addColorStop(1,'rgba(212,175,55,0)'); ctx.fillStyle=grd; ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fill()}}
-  function init(){particles.length=0; for(let i=0;i<num;i++) particles.push(new P())}
-  function resize(){w=canvas.width=innerWidth; h=canvas.height=innerHeight; init()}
-  addEventListener('resize', resize); init();
-  (function anim(){ctx.clearRect(0,0,w,h); for(const p of particles){p.step();p.draw()} requestAnimationFrame(anim)})();
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = innerWidth;
+  let h = canvas.height = innerHeight;
+
+  const particles = [];
+  const num = Math.floor((w * h) / 60000); // más partículas
+  function rand(a,b){ return Math.random()*(b-a)+a }
+
+  class P {
+    constructor(){ this.reset() }
+    reset(){
+      this.x = rand(0,w);
+      this.y = rand(0,h);
+      this.vx = rand(-0.3,0.3);
+      this.vy = rand(-0.3,0.3);
+      this.r = rand(3,6); // partículas más grandes
+      this.alpha = rand(0.3,0.9);
+      this.phase = rand(0, Math.PI*2);
+    }
+    step(){
+      this.x += this.vx;
+      this.y += this.vy + Math.sin((Date.now()/1000)+this.phase)*0.3;
+      if(this.x<-50 || this.x>w+50 || this.y<-50 || this.y>h+50) this.reset();
+    }
+    draw(){
+      ctx.beginPath();
+      const grd = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.r*2);
+      grd.addColorStop(0,'rgba(212,175,55,'+this.alpha+')');
+      grd.addColorStop(1,'rgba(212,175,55,0)');
+      ctx.fillStyle = grd;
+      ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  function init(){ particles.length=0; for(let i=0;i<num;i++) particles.push(new P()) }
+  function resize(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; init() }
+
+  addEventListener('resize', resize);
+  init();
+
+  (function anim(){ ctx.clearRect(0,0,w,h); for(const p of particles){ p.step(); p.draw() } requestAnimationFrame(anim) })();
 })();
+</script>
+
 
 /* SECTION ANIM */
 (function(){const secs=document.querySelectorAll('section'); const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); })},{threshold:0.15}); secs.forEach(s=>io.observe(s));})();
@@ -488,6 +518,7 @@ footer {
 </script>
 </body>
 </html>
+
 
 
 
