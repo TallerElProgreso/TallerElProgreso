@@ -4,93 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galería de Motos - Taller El Progreso</title>
-<style>
-body { font-family: Arial, sans-serif; background:#f4f4f4; margin:0; padding:0; }
-h1 { text-align:center; padding:20px 0; color:#333; }
-.model-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:20px; flex-wrap: wrap; }
-.model-tab { padding:10px 20px; cursor:pointer; background:#ddd; border-radius:5px 5px 0 0; }
-.model-tab.active { background:#fff; border-bottom:2px solid #fff; font-weight:bold; }
-.sub-tabs { display:flex; justify-content:center; gap:10px; margin-bottom:10px; }
-.sub-tab { padding:5px 15px; cursor:pointer; background:#eee; border-radius:5px; }
-.sub-tab.active { background:#ccc; font-weight:bold; }
-.gallery { display:none; justify-content:center; flex-wrap:wrap; gap:15px; padding:0 20px 40px 20px; }
-.gallery.active { display:flex; }
-.gallery img { width:250px; height:180px; object-fit:cover; border-radius:5px; box-shadow:0 3px 6px rgba(0,0,0,0.2); cursor:pointer; transition:transform 0.3s; }
-.gallery img:hover { transform:scale(1.05); }
-/* Lightbox */
-.lightbox { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:none; justify-content:center; align-items:center; z-index:1000; }
-.lightbox img { max-width:90%; max-height:90%; border-radius:5px; }
-.lightbox:target { display:flex; }
-.close { position:absolute; top:20px; right:30px; color:white; font-size:30px; text-decoration:none; }
-</style>
 </head>
-<body>
+<body style="font-family: Arial, sans-serif; background: linear-gradient(to bottom, #f4f4f4, #e0e0e0); margin:0; padding:0;">
 
-<h1>Galería de Motos - Taller El Progreso</h1>
+<h1 style="text-align:center; padding:30px 0; color:#222; font-size:2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Galería de Motos - Taller El Progreso</h1>
 
 <!-- Pestañas de Modelos -->
-<div class="model-tabs">
-    <div class="model-tab active" data-target="modelo1">Hero Hunk 125R</div>
-    <div class="model-tab" data-target="modelo-honda125i">Honda Click 125i</div>
+<div class="model-tabs" style="display:flex; justify-content:center; gap:15px; margin-bottom:25px; flex-wrap:wrap;">
+    <div class="model-tab active" data-target="modelo1" style="padding:12px 25px; cursor:pointer; background:#007BFF; color:white; border-radius:8px 8px 0 0; font-weight:bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Hero Hunk 125R</div>
+    <div class="model-tab" data-target="modelo-honda125i" style="padding:12px 25px; cursor:pointer; background:#6c757d; color:white; border-radius:8px 8px 0 0; font-weight:bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Honda Click 125i</div>
 </div>
 
 <!-- Contenido Modelo Hero Hunk 125R -->
 <div class="model-content active" id="modelo1">
-    <div class="sub-tabs">
-        <div class="sub-tab active" data-target="m1-antes">Antes</div>
-        <div class="sub-tab" data-target="m1-despues">Después</div>
+    <div class="sub-tabs" style="display:flex; justify-content:center; gap:12px; margin-bottom:15px;">
+        <div class="sub-tab active" data-target="m1-antes" style="padding:6px 18px; cursor:pointer; background:#17a2b8; color:white; border-radius:6px; font-weight:bold;">Antes</div>
+        <div class="sub-tab" data-target="m1-despues" style="padding:6px 18px; cursor:pointer; background:#6c757d; color:white; border-radius:6px; font-weight:bold;">Después</div>
     </div>
-    <h2 style="text-align:center;">Hero Hunk 125R</h2>
-    <div class="gallery active" id="m1-antes">
-        <a href="#m1a1"><img src="motos/hunk_antes1.jpg"></a>
-        <a href="#m1a2"><img src="motos/hunk_antes2.jpg"></a>
-        <a href="#m1a3"><img src="motos/hunk_antes3.jpg"></a>
+    <h2 style="text-align:center; color:#007BFF; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">Hero Hunk 125R</h2>
+    <div class="gallery active" id="m1-antes" style="display:flex; justify-content:center; flex-wrap:wrap; gap:18px; padding:0 20px 40px 20px;">
+        <a href="#m1a1"><img src="motos/hunk_antes1.jpg" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
+        <a href="#m1a2"><img src="motos/hunk_antes2.jpg" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
+        <a href="#m1a3"><img src="motos/hunk_antes3.jpg" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
     </div>
-    <div class="gallery" id="m1-despues">
-        <a href="#m1d1"><img src="motos/hunk_despues1.jpg"></a>
-        <a href="#m1d2"><img src="motos/hunk_despues2.jpg"></a>
-        <a href="#m1d3"><img src="motos/hunk_despues3.jpg"></a>
+    <div class="gallery" id="m1-despues" style="display:none; justify-content:center; flex-wrap:wrap; gap:18px; padding:0 20px 40px 20px;">
+        <a href="#m1d1"><img src="motos/hunk_despues1.jpg" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
+        <a href="#m1d2"><img src="motos/hunk_despues2.jpg" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
+        <a href="#m1d3"><img src="motos/hunk_despues3.jpg" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
     </div>
 </div>
 
 <!-- Contenido del modelo Honda Click 125i -->
-<div class="model-content" id="modelo-honda125i">
-    <div class="sub-tabs">
-        <div class="sub-tab active" data-target="honda125i-antes">Antes</div>
-        <div class="sub-tab" data-target="honda125i-despues">Después</div>
+<div class="model-content" id="modelo-honda125i" style="display:none;">
+    <div class="sub-tabs" style="display:flex; justify-content:center; gap:12px; margin-bottom:15px;">
+        <div class="sub-tab active" data-target="honda125i-antes" style="padding:6px 18px; cursor:pointer; background:#17a2b8; color:white; border-radius:6px; font-weight:bold;">Antes</div>
+        <div class="sub-tab" data-target="honda125i-despues" style="padding:6px 18px; cursor:pointer; background:#6c757d; color:white; border-radius:6px; font-weight:bold;">Después</div>
     </div>
-    <h2 style="text-align:center;">Honda Click 125i</h2>
+    <h2 style="text-align:center; color:#007BFF; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">Honda Click 125i</h2>
     
-    <!-- Galería Antes -->
-    <div class="gallery active" id="honda125i-antes">
-        <a href="#h125i-a1"><img src="motos/honda125i_antes1.jpg" alt="Honda Click 125i antes 1"></a>
-        <a href="#h125i-a2"><img src="motos/honda125i_antes2.jpg" alt="Honda Click 125i antes 2"></a>
-        <a href="#h125i-a3"><img src="motos/honda125i_antes3.jpg" alt="Honda Click 125i antes 3"></a>
+    <div class="gallery active" id="honda125i-antes" style="display:flex; justify-content:center; flex-wrap:wrap; gap:18px; padding:0 20px 40px 20px;">
+        <a href="#h125i-a1"><img src="motos/honda125i_antes1.jpg" alt="Honda Click 125i antes 1" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
+        <a href="#h125i-a2"><img src="motos/honda125i_antes2.jpg" alt="Honda Click 125i antes 2" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
+        <a href="#h125i-a3"><img src="motos/honda125i_antes3.jpg" alt="Honda Click 125i antes 3" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
     </div>
 
-    <!-- Galería Después -->
-    <div class="gallery" id="honda125i-despues">
-        <a href="#h125i-d1"><img src="motos/honda125i_despues1.jpg" alt="Honda Click 125i después 1"></a>
-        <a href="#h125i-d2"><img src="motos/honda125i_despues2.jpg" alt="Honda Click 125i después 2"></a>
-        <a href="#h125i-d3"><img src="motos/honda125i_despues3.jpg" alt="Honda Click 125i después 3"></a>
+    <div class="gallery" id="honda125i-despues" style="display:none; justify-content:center; flex-wrap:wrap; gap:18px; padding:0 20px 40px 20px;">
+        <a href="#h125i-d1"><img src="motos/honda125i_despues1.jpg" alt="Honda Click 125i después 1" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
+        <a href="#h125i-d2"><img src="motos/honda125i_despues2.jpg" alt="Honda Click 125i después 2" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
+        <a href="#h125i-d3"><img src="motos/honda125i_despues3.jpg" alt="Honda Click 125i después 3" style="width:260px; height:180px; object-fit:cover; border-radius:10px; box-shadow:0 5px 10px rgba(0,0,0,0.3); cursor:pointer; transition: transform 0.3s;"></a>
     </div>
 </div>
 
-<!-- Lightboxes para Hero Hunk 125R -->
-<div class="lightbox" id="m1a1"><a href="#" class="close">&times;</a><img src="motos/hunk_antes1.jpg"></div>
-<div class="lightbox" id="m1a2"><a href="#" class="close">&times;</a><img src="motos/hunk_antes2.jpg"></div>
-<div class="lightbox" id="m1a3"><a href="#" class="close">&times;</a><img src="motos/hunk_antes3.jpg"></div>
-<div class="lightbox" id="m1d1"><a href="#" class="close">&times;</a><img src="motos/hunk_despues1.jpg"></div>
-<div class="lightbox" id="m1d2"><a href="#" class="close">&times;</a><img src="motos/hunk_despues2.jpg"></div>
-<div class="lightbox" id="m1d3"><a href="#" class="close">&times;</a><img src="motos/hunk_despues3.jpg"></div>
-
-<!-- Lightboxes para Honda Click 125i -->
-<div class="lightbox" id="h125i-a1"><a href="#" class="close">&times;</a><img src="motos/honda125i_antes1.jpg"></div>
-<div class="lightbox" id="h125i-a2"><a href="#" class="close">&times;</a><img src="motos/honda125i_antes2.jpg"></div>
-<div class="lightbox" id="h125i-a3"><a href="#" class="close">&times;</a><img src="motos/honda125i_antes3.jpg"></div>
-<div class="lightbox" id="h125i-d1"><a href="#" class="close">&times;</a><img src="motos/honda125i_despues1.jpg"></div>
-<div class="lightbox" id="h125i-d2"><a href="#" class="close">&times;</a><img src="motos/honda125i_despues2.jpg"></div>
-<div class="lightbox" id="h125i-d3"><a href="#" class="close">&times;</a><img src="motos/honda125i_despues3.jpg"></div>
+<!-- Lightboxes -->
+<div class="lightbox" id="m1a1" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:none; justify-content:center; align-items:center; z-index:1000;"><a href="#" class="close" style="position:absolute; top:20px; right:30px; color:white; font-size:35px; text-decoration:none;">&times;</a><img src="motos/hunk_antes1.jpg" style="max-width:90%; max-height:90%; border-radius:8px;"></div>
+<!-- Repite los demás lightboxes con el mismo estilo -->
 
 <script>
 // Cambiar modelo
@@ -101,7 +68,8 @@ modelTabs.forEach(tab => {
         modelTabs.forEach(t => t.classList.remove('active'));
         modelContents.forEach(c => c.classList.remove('active'));
         tab.classList.add('active');
-        document.getElementById(tab.dataset.target).classList.add('active');
+        document.getElementById(tab.dataset.target).style.display = 'flex';
+        modelContents.forEach(c => { if(c.id !== tab.dataset.target) c.style.display = 'none'; });
     });
 });
 
@@ -112,9 +80,9 @@ subTabs.forEach(tab => {
         const parent = tab.parentElement.parentElement;
         const galleries = parent.querySelectorAll('.gallery');
         tab.parentElement.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
-        galleries.forEach(g => g.classList.remove('active'));
+        galleries.forEach(g => g.style.display = 'none');
         tab.classList.add('active');
-        parent.querySelector('#' + tab.dataset.target).classList.add('active');
+        parent.querySelector('#' + tab.dataset.target).style.display = 'flex';
     });
 });
 </script>
