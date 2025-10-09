@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Taller El Progreso - Mecánica Automotriz</title>
 <meta name="description" content="Taller El Progreso ofrece servicios de mecánica general, latonería, pintura, cambio de aceite, alineación y balanceo, con calidad y confianza.">
-<meta name="keywords" content="taller mecánico, mecánica general, taller automotriz, alineación, balanceo, cambio de aceite, latonería y pintura, revisión preventiva, mecánica de motos, mantenimiento de autos, vehículos, reparación, autoservicio, mecánica en Colombia, taller en Cúcuta, reparación de motores, taller El Progreso, taller de confianza">
+<meta name="keywords" content="taller mecánico, mecánica general, taller automotriz, alineación, balanceo, cambio de aceite, latonería y pintura, revisión preventiva, mecánica de motos, mantenimiento de autos, autos, vehículos, reparación, autoservicio, mecánica en Colombia, taller en Cúcuta, reparación de motores, taller El Progreso, taller de confianza">
 <meta name="author" content="Taller El Progreso">
 <link rel="icon" type="image/png" href="imagenes/logo.png">
 <style>
@@ -79,55 +79,17 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
 }
 .service:hover { transform: translateY(-12px); box-shadow:0 22px 60px rgba(0,0,0,0.7); }
 
-/* NUEVA SECCIÓN - Servicios Destacados */
-#servicios-destacados {
-  text-align: center;
-  position: relative;
-}
-.car-container {
-  position: relative;
-  display: inline-block;
-  max-width: 100%;
-}
-.car-container img {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-}
-.icon {
-  position: absolute;
-  width: 55px;
-  height: 55px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-.icon:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 8px var(--gold));
-}
-.tooltip {
-  visibility: hidden;
-  width: 120px;
-  background-color: rgba(0,0,0,0.7);
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 6px 8px;
-  position: absolute;
-  z-index: 1;
-  bottom: 130%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.4s;
-  font-size: 14px;
-}
-.icon:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
-}
+/* Galerías */
+.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; }
+.gallery-item { overflow:hidden; border-radius:12px; border:1px solid rgba(255,255,255,0.03); background: var(--card-bg); cursor:pointer; }
+.gallery-item img { width:100%; height:150px; object-fit:cover; transition: transform 0.35s, filter 0.35s; border-radius:10px; }
+.gallery-item img:hover { transform: scale(1.08); filter: brightness(1.08) drop-shadow(0 6px 14px rgba(212,175,55,0.6)); }
+
+/* Lightbox */
+.lightbox { position: fixed; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.9); z-index:9999; opacity:0; pointer-events:none; transition: opacity .25s; padding:18px; }
+.lightbox.open { opacity:1; pointer-events:auto; }
+.lightbox img { max-width:95%; max-height:85%; border-radius:12px; box-shadow:0 30px 80px rgba(0,0,0,0.8); }
+.lightbox .close { position:absolute; top:18px; right:18px; color:#fff; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.06); padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
 
 /* Marcas */
 .marcas-scroll { overflow:hidden; margin-top:14px; border-radius:14px; border:1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.3); padding:14px 0; }
@@ -159,8 +121,7 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 @media(max-width:640px){ 
   .logo img{height:120px} 
   .gallery-item img{height:120px} 
-  h2{font-size:24px}
-  .icon{width:38px;height:38px}
+  h2{font-size:24px} 
 }
 </style>
 </head>
@@ -175,7 +136,6 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 <nav>
   <a href="index.html">Inicio</a>
   <a href="#servicios">Servicios</a>
-  <a href="#servicios-destacados">Servicios Destacados</a>
   <a href="galeria_Motos.html">Galería de Motos</a>
   <img src="imagenes/logo.png" alt="Logo">
   <a href="#contacto">Contacto</a>
@@ -183,8 +143,6 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 </nav>
 
 <div class="container">
-
-  <!-- SERVICIOS -->
   <section id="servicios">
     <h2>Servicios</h2>
     <div class="services">
@@ -196,25 +154,6 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
     </div>
   </section>
 
-  <!-- NUEVA SECCIÓN: SERVICIOS DESTACADOS -->
-  <section id="servicios-destacados">
-    <h2>Servicios Destacados</h2>
-    <div class="car-container">
-      <img src="imagenes/auto-azul-metalico.png" alt="Auto azul metálico">
-      <div class="icon" style="top:25%;left:32%;"><img src="imagenes/icono-diagnostico.png"><span class="tooltip">Diagnóstico</span></div>
-      <div class="icon" style="top:35%;left:46%;"><img src="imagenes/icono-motor.png"><span class="tooltip">Motor</span></div>
-      <div class="icon" style="top:50%;left:42%;"><img src="imagenes/icono-liquidos.png"><span class="tooltip">Líquidos</span></div>
-      <div class="icon" style="top:70%;left:25%;"><img src="imagenes/icono-llantas.png"><span class="tooltip">Llantas</span></div>
-      <div class="icon" style="top:70%;left:68%;"><img src="imagenes/icono-transmision.png"><span class="tooltip">Transmisión</span></div>
-      <div class="icon" style="top:40%;left:18%;"><img src="imagenes/icono-baterias.png"><span class="tooltip">Baterías</span></div>
-      <div class="icon" style="top:62%;left:83%;"><img src="imagenes/icono-mofle.png"><span class="tooltip">Mofle / Exosto</span></div>
-      <div class="icon" style="top:30%;left:72%;"><img src="imagenes/icono-pintura.png"><span class="tooltip">Pintura</span></div>
-      <div class="icon" style="top:58%;left:50%;"><img src="imagenes/icono-suspension.png"><span class="tooltip">Suspensión</span></div>
-      <div class="icon" style="top:68%;left:55%;"><img src="imagenes/icono-frenos.png"><span class="tooltip">Frenos</span></div>
-    </div>
-  </section>
-
-  <!-- RESTO DE SECCIONES (idéntico al tuyo) -->
   <section id="galeria-motos">
     <h2>Galería de Motos</h2>
     <div class="gallery-grid">
@@ -278,7 +217,7 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 </div>
 
 <script>
-// Animación secciones
+// Intersection Observer para animar secciones
 (function(){
   const secs=document.querySelectorAll('section');
   const io=new IntersectionObserver((entries)=>{
@@ -296,18 +235,20 @@ function openLightbox(src,alt){
 }
 function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
 
-// Partículas doradas
+// Partículas doradas suaves
 const canvas=document.getElementById('particles'), ctx=canvas.getContext('2d');
 canvas.width=window.innerWidth; canvas.height=window.innerHeight;
 let particles=[];
-for(let i=0;i<60;i++){
-  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.5, dy:(Math.random()-0.5)*0.5});
+for(let i=0;i<60;i++){ // antes 120
+  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5+0.5, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3});
 }
 function animate(){
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle="rgba(212,175,55,0.5)";
   particles.forEach(p=>{
-    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle='rgba(212,175,55,0.6)';
+    ctx.fill();
     p.x+=p.dx; p.y+=p.dy;
     if(p.x<0||p.x>canvas.width) p.dx*=-1;
     if(p.y<0||p.y>canvas.height) p.dy*=-1;
@@ -315,6 +256,7 @@ function animate(){
   requestAnimationFrame(animate);
 }
 animate();
+window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
 </body>
 </html>
