@@ -123,6 +123,93 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
   .gallery-item img{height:120px} 
   h2{font-size:24px} 
 }
+  .servicios-destacados {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f4f4f4;
+}
+
+.servicios-destacados h2 {
+  font-size: 2.2rem;
+  color: #004aad;
+  margin-bottom: 10px;
+}
+
+.servicios-destacados p {
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.contenedor-auto {
+  position: relative;
+  display: inline-block;
+  max-width: 900px;
+}
+
+.auto-imagen {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Íconos sobre el carro */
+.icono {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #004aad;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.icono img {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+}
+
+/* Animación hover */
+.icono:hover {
+  transform: scale(1.2);
+  background: #0077ff;
+}
+
+/* Tooltip */
+.icono::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 65px;
+  background: #222;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.icono:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Posiciones aproximadas (ajustables según el auto) */
+#icono-diagnostico { top: 15%; left: 25%; }
+#icono-motor { top: 30%; left: 35%; }
+#icono-liquidos { top: 25%; left: 45%; }
+#icono-llantas { top: 80%; left: 25%; }
+#icono-transmision { top: 55%; left: 50%; }
+#icono-baterias { top: 40%; left: 60%; }
+#icono-mofle { top: 75%; left: 70%; }
+#icono-pintura { top: 45%; left: 50%; }
+#icono-suspension { top: 70%; left: 40%; }
+#icono-frenos { top: 75%; left: 55%; }
+
 </style>
 </head>
 <body>
@@ -153,6 +240,47 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
       <div class="service">Revisión Preventiva</div>
     </div>
   </section>
+<!-- Sección de Servicios Destacados -->
+<section class="servicios-destacados" id="servicios-destacados">
+  <h2>Nuestros Servicios Destacados</h2>
+  <p>Ofrecemos diagnóstico, reparación y mantenimiento de automóviles</p>
+  
+  <div class="contenedor-auto">
+    <img src="imagenes/auto-azul-metalico.png" alt="Auto metálico" class="auto-imagen">
+
+    <!-- Íconos interactivos -->
+    <div class="icono" id="icono-diagnostico" data-tooltip="Diagnóstico">
+      <img src="imagenes/icono-diagnostico.png" alt="Diagnóstico">
+    </div>
+    <div class="icono" id="icono-motor" data-tooltip="Motor">
+      <img src="imagenes/icono-motor.png" alt="Motor">
+    </div>
+    <div class="icono" id="icono-liquidos" data-tooltip="Líquidos">
+      <img src="imagenes/icono-liquidos.png" alt="Líquidos">
+    </div>
+    <div class="icono" id="icono-llantas" data-tooltip="Llantas">
+      <img src="imagenes/icono-llantas.png" alt="Llantas">
+    </div>
+    <div class="icono" id="icono-transmision" data-tooltip="Transmisión">
+      <img src="imagenes/icono-transmision.png" alt="Transmisión">
+    </div>
+    <div class="icono" id="icono-baterias" data-tooltip="Baterías">
+      <img src="imagenes/icono-baterias.png" alt="Baterías">
+    </div>
+    <div class="icono" id="icono-mofle" data-tooltip="Mofle/Exosto">
+      <img src="imagenes/icono-mofle.png" alt="Mofle">
+    </div>
+    <div class="icono" id="icono-pintura" data-tooltip="Pintura">
+      <img src="imagenes/icono-pintura.png" alt="Pintura">
+    </div>
+    <div class="icono" id="icono-suspension" data-tooltip="Suspensión">
+      <img src="imagenes/icono-suspension.png" alt="Suspensión">
+    </div>
+    <div class="icono" id="icono-frenos" data-tooltip="Frenos">
+      <img src="imagenes/icono-frenos.png" alt="Frenos">
+    </div>
+  </div>
+</section>
 
   <section id="galeria-motos">
     <h2>Galería de Motos</h2>
@@ -260,3 +388,4 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
