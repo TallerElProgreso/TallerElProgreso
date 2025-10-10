@@ -314,12 +314,29 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 <!-- ============================= -->
 <!-- SECCIÓN MEJORADA: NUESTROS SERVICIOS DESTACADOS -->
 <!-- ============================= -->
-<section id="servicios" class="servicios-destacados">
-  <h2 class="titulo-dorado">⚙️ Nuestros Servicios Destacados</h2>
-      <p class="intro-texto">En <strong>Taller El Progreso</strong> tu vehículo recibe atención experta y detallada. 
+<section class="servicios-destacados" aria-label="Nuestros servicios destacados">
+  <div class="info-servicios">
+    <h2 class="titulo-dorado fade-in-up">⚙️ Nuestros Servicios Destacados</h2>
+    <p class="intro-texto fade-in-up">
+      En <strong>Taller El Progreso</strong> tu vehículo recibe atención experta y detallada. 
       Utilizamos tecnología avanzada y personal calificado para ofrecer resultados confiables, 
       duraderos y con acabado profesional.
     </p>
+
+    <div class="contenedor-auto fade-in-up">
+      <img src="https://servicioscannerautomotriz.com/wp-content/uploads/2020/04/service-tab.png" alt="Auto lateral elegante" class="auto-imagen">
+      <!-- tus íconos -->
+    </div>
+
+    <p class="texto-secundario fade-in-up">
+      Si tu motor presenta fallas o luces de advertencia, contamos con equipos especializados 
+      para detectar y solucionar cualquier problema de manera precisa y eficiente.
+    </p>
+
+    <a href="#contacto" class="btn btn-luminoso fade-in-up">🚗 Saber más</a>
+  </div>
+</section>
+
 
     <div class="contenedor-auto">
       <img src="https://servicioscannerautomotriz.com/wp-content/uploads/2020/04/service-tab.png" alt="Auto lateral elegante" class="auto-imagen">
@@ -479,5 +496,6 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
+
 
 
