@@ -176,6 +176,17 @@
   box-sizing: border-box;
 }
 
+/* ==== Animación suave de entrada (fade + subida) ==== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Reset */
 * { box-sizing: border-box; margin:0; padding:0; }
@@ -496,6 +507,7 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
+
 
 
 
