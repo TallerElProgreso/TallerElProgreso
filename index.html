@@ -218,15 +218,84 @@ header .logo img {
 header .logo img:hover { transform: scale(1.1); box-shadow:0 18px 50px rgba(212,175,55,0.8); }
 header p { margin:10px 0 0; font-style:italic; color: var(--gold); font-size:18px; letter-spacing:0.5px; }
 
-/* Nav */
-nav {
-  position: sticky; top:0; display:flex; justify-content:center; flex-wrap:wrap; gap:20px; padding:14px;
-  background: var(--glass-bg); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(212,175,55,0.2);
-  z-index:8;
+/* === Nueva barra de navegación moderna === */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  z-index: 1000;
+  transition: background 0.3s ease;
 }
-nav a { padding:8px 14px; border-radius:12px; font-weight:700; transition: all 0.25s; }
-nav a:hover { color: var(--gold); transform: translateY(-4px); text-shadow:0 2px 6px rgba(0,0,0,0.5);}
-nav img { height:86px; border-radius:10px; margin:0 10px; }
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.nav-logo img {
+  height: 48px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(212,175,55,0.6);
+  transition: transform 0.3s ease;
+}
+.nav-logo:hover img {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #eee;
+  font-weight: 600;
+  position: relative;
+  padding: 6px 8px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+.nav-links a.active {
+  color: var(--gold);
+}
+
 
 /* Contenedor principal */
 .container { max-width:1100px; margin:40px auto; padding:0 18px; position:relative; z-index:4; }
@@ -238,15 +307,55 @@ section.visible { opacity:1; transform:none; }
 /* Títulos */
 h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6px; margin-bottom:18px; font-weight:700; letter-spacing:0.5px; font-size:28px; color:#fff; }
 
-/* Servicios */
-.services { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; }
-.service {
-  background: linear-gradient(145deg, rgba(212,175,55,0.1), rgba(17,17,17,0.3));
-  padding:24px; border-radius:16px; text-align:center;
-  box-shadow:0 12px 36px rgba(0,0,0,0.6); font-weight:700; transition: transform 0.3s, box-shadow 0.3s;
-  border:1px solid rgba(212,175,55,0.07);
+/* === Nueva grilla de servicios con estilo dorado === */
+.servicios-grid {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #0E1425 0%, #1C243B 100%);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
-.service:hover { transform: translateY(-12px); box-shadow:0 22px 60px rgba(0,0,0,0.7); }
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: linear-gradient(145deg, rgba(255,215,0,0.08), rgba(0,0,0,0.5));
+  border: 1px solid rgba(255,215,0,0.15);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 45px rgba(255,215,0,0.3);
+}
+
+.service-card img {
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 4px 8px rgba(255,215,0,0.4));
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
 
 /* Galerías */
 .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; }
@@ -302,26 +411,59 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
   <p>Confianza y calidad en cada reparación</p>
 </header>
 
-<nav>
-  <a href="index.html">Inicio</a>
-  <a href="#servicios">Servicios</a>
-  <a href="galeria_Motos.html">Galería de Motos</a>
-  <img src="imagenes/logo.png" alt="Logo">
-  <a href="#contacto">Contacto</a>
-  <a href="galeria_modelos.html">Galería de Modelos</a>
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <img src="imagenes/logo.png" alt="Taller El Progreso">
+      <span>Taller El Progreso</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="galeria_Motos.html">Galería de Motos</a>
+      <a href="#contacto">Contacto</a>
+      <a href="galeria_modelos.html">Galería de Modelos</a>
+    </div>
+  </div>
 </nav>
 
 <div class="container">
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="services">
-      <div class="service">Mecánica General</div>
-      <div class="service">Alineación y Balanceo</div>
-      <div class="service">Cambio de Aceite</div>
-      <div class="service">Latonería y Pintura</div>
-      <div class="service">Revisión Preventiva</div>
+  <section id="servicios" class="servicios-grid">
+  <h2 class="titulo-dorado fade-in-up">🔧 Nuestros Servicios</h2>
+  <p class="intro-texto fade-in-up">
+    En <strong>Taller El Progreso</strong> ofrecemos soluciones integrales para tu vehículo, combinando
+    experiencia, tecnología y compromiso para mantenerlo siempre en óptimas condiciones.
+  </p>
+
+  <div class="services fade-in-up">
+    <div class="service-card">
+      <img src="imagenes/icono-motor.png" alt="Mecánica General">
+      <h3>Mecánica General</h3>
+      <p>Diagnóstico, mantenimiento y reparación completa del motor y sistemas del vehículo.</p>
     </div>
-  </section>
+    <div class="service-card">
+      <img src="imagenes/icono-llantas.png" alt="Alineación y Balanceo">
+      <h3>Alineación y Balanceo</h3>
+      <p>Precisión total en el balanceo de ruedas para una conducción más suave y segura.</p>
+    </div>
+    <div class="service-card">
+      <img src="imagenes/icono-liquidos.png" alt="Cambio de Aceite">
+      <h3>Cambio de Aceite</h3>
+      <p>Lubricantes de alta calidad para proteger y alargar la vida útil de tu motor.</p>
+    </div>
+    <div class="service-card">
+      <img src="imagenes/icono-pintura.png" alt="Latonería y Pintura">
+      <h3>Latonería y Pintura</h3>
+      <p>Reparación estética con acabados brillantes y duraderos, como recién salido de fábrica.</p>
+    </div>
+    <div class="service-card">
+      <img src="imagenes/icono-diagnostico.png" alt="Revisión Preventiva">
+      <h3>Revisión Preventiva</h3>
+      <p>Inspección completa con tecnología avanzada para detectar fallas antes de que ocurran.</p>
+    </div>
+  </div>
+</section>
 <!-- ============================= -->
 <!-- SECCIÓN MEJORADA: NUESTROS SERVICIOS DESTACADOS -->
 <!-- ============================= -->
@@ -492,6 +634,7 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
+
 
 
 
