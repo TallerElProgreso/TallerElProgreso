@@ -18,6 +18,92 @@
   --shadow: rgba(0,0,0,0.6);
   --font-primary: 'Arial', sans-serif;
 }
+.servicios-destacados {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f4f4f4;
+}
+
+.servicios-destacados h2 {
+  font-size: 2.2rem;
+  color: #004aad;
+  margin-bottom: 10px;
+}
+
+.servicios-destacados p {
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.contenedor-auto {
+  position: relative;
+  display: inline-block;
+  max-width: 900px;
+}
+
+.auto-imagen {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Íconos sobre el carro */
+.icono {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #004aad;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.icono img {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+}
+
+/* Animación hover */
+.icono:hover {
+  transform: scale(1.2);
+  background: #0077ff;
+}
+
+/* Tooltip */
+.icono::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 65px;
+  background: #222;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.icono:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Posiciones aproximadas (ajustables según el auto) */
+#icono-diagnostico { top: 15%; left: 25%; }
+#icono-motor { top: 30%; left: 35%; }
+#icono-liquidos { top: 25%; left: 45%; }
+#icono-llantas { top: 80%; left: 25%; }
+#icono-transmision { top: 55%; left: 50%; }
+#icono-baterias { top: 40%; left: 60%; }
+#icono-mofle { top: 75%; left: 70%; }
+#icono-pintura { top: 45%; left: 50%; }
+#icono-suspension { top: 70%; left: 40%; }
+#icono-frenos { top: 75%; left: 55%; }
 
 /* Reset */
 * { box-sizing: border-box; margin:0; padding:0; }
@@ -123,98 +209,11 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
   .gallery-item img{height:120px} 
   h2{font-size:24px} 
 }
-  .servicios-destacados {
-  text-align: center;
-  padding: 60px 20px;
-  background: #f4f4f4;
-}
-
-.servicios-destacados h2 {
-  font-size: 2.2rem;
-  color: #004aad;
-  margin-bottom: 10px;
-}
-
-.servicios-destacados p {
-  color: #555;
-  margin-bottom: 40px;
-}
-
-.contenedor-auto {
-  position: relative;
-  display: inline-block;
-  max-width: 900px;
-}
-
-.auto-imagen {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* Íconos sobre el carro */
-.icono {
-  position: absolute;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #004aad;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.3s, background 0.3s;
-}
-
-.icono img {
-  width: 28px;
-  height: 28px;
-  filter: invert(1);
-}
-
-/* Animación hover */
-.icono:hover {
-  transform: scale(1.2);
-  background: #0077ff;
-}
-
-/* Tooltip */
-.icono::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  bottom: 65px;
-  background: #222;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.icono:hover::after {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Posiciones aproximadas (ajustables según el auto) */
-#icono-diagnostico { top: 15%; left: 25%; }
-#icono-motor { top: 30%; left: 35%; }
-#icono-liquidos { top: 25%; left: 45%; }
-#icono-llantas { top: 80%; left: 25%; }
-#icono-transmision { top: 55%; left: 50%; }
-#icono-baterias { top: 40%; left: 60%; }
-#icono-mofle { top: 75%; left: 70%; }
-#icono-pintura { top: 45%; left: 50%; }
-#icono-suspension { top: 70%; left: 40%; }
-#icono-frenos { top: 75%; left: 55%; }
-
 </style>
 </head>
 <body>
 <canvas id="particles"></canvas>
-
+  
 <header>
   <div class="logo"><img src="imagenes/logo.png" alt="Taller El Progreso"></div>
   <p>Confianza y calidad en cada reparación</p>
@@ -240,15 +239,34 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
       <div class="service">Revisión Preventiva</div>
     </div>
   </section>
-<!-- Sección de Servicios Destacados -->
-<section class="servicios-destacados" id="servicios-destacados">
-  <h2>Nuestros Servicios Destacados</h2>
-  <p>Ofrecemos diagnóstico, reparación y mantenimiento de automóviles</p>
-  
-  <div class="contenedor-auto">
-    <img src="imagenes/auto-azul-metalico.png" alt="Auto metálico" class="auto-imagen">
+<!-- ============================= -->
+<!-- SECCIÓN: NUESTROS SERVICIOS DESTACADOS (con animación y 7 iconos) -->
+<!-- ============================= -->
+<section class="servicios-destacados" aria-label="Nuestros servicios destacados">
+  <div class="contenedor-servicios">
+    <div class="imagen-auto">
+      <!-- Imagen genérica: reemplaza por otra si quieres -->
+      <img src="https://cdn.pixabay.com/photo/2015/01/19/13/51/car-604019_1280.jpg" alt="Auto lateral elegante">
+      <div class="texto-sobre-auto">
+        <h3>Diagnóstico Preciso</h3>
+        <p>Si tu motor presenta fallas o sensores activos, contamos con equipos especializados para detectar y solucionar cualquier problema de manera eficiente.</p>
+        <a href="#contacto" class="btn-saber">Saber más</a>
+      </div>
+    </div>
 
-    <!-- Íconos interactivos -->
+    <div class="info-servicios">
+      <h2>Nuestros Servicios Destacados</h2>
+      <p>Ofrecemos servicio completo de reparación y mantenimiento automotriz, con personal experto y tecnología avanzada para que tu vehículo vuelva a su mejor estado.</p>
+
+      <div class="iconos-servicios" role="list" aria-label="Lista de servicios">
+      <!-- Íconos animados -->
+      <div class="iconos-servicios">
+        <div class="icono" style="top: 25%; left: 18%;">
+          <img src="iconos/diagnostico.png" alt="Diagnóstico">
+          <p>Diagnóstico</p>
+        </div>
+
+        <!-- Íconos interactivos -->
     <div class="icono" id="icono-diagnostico" data-tooltip="Diagnóstico">
       <img src="imagenes/icono-diagnostico.png" alt="Diagnóstico">
     </div>
@@ -388,4 +406,5 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
