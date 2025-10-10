@@ -104,6 +104,19 @@
 #icono-suspension  { top: 60%; left: 35%; }
 #icono-frenos      { top: 66%; left: 58%; }
 
+  /* === Corrección de anchura uniforme desde galería hacia abajo === */
+#galeria-motos,
+#galeria-modelos,
+#marcas,
+#porque-elegirnos,
+#contacto {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
+
 /* Reset */
 * { box-sizing: border-box; margin:0; padding:0; }
 html, body { height:100%; font-family: var(--font-primary); background: var(--main-bg); color:#fff; scroll-behavior:smooth; }
@@ -395,6 +408,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
