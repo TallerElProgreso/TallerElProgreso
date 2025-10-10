@@ -17,49 +17,78 @@
   --card-bg: rgba(255,255,255,0.05);
   --shadow: rgba(0,0,0,0.6);
   --font-primary: 'Arial', sans-serif;
-}
+/* ======= SECCIÓN SERVICIOS DESTACADOS MEJORADA ======= */
 .servicios-destacados {
   text-align: center;
-  padding: 60px 20px;
-  /* Degradado radial + lineal combinado */
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, rgba(30, 42, 71, 0.9) 70%),
-              linear-gradient(90deg, #1E2A47 0%, #111A2D 100%);
+  padding: 70px 25px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.08) 0%, rgba(17,17,17,0.9) 80%),
+              linear-gradient(180deg, #1E2A47 0%, #0C1323 100%);
   color: #fff;
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  box-shadow: 0 0 30px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
 }
 
-.servicios-destacados h2 {
-  font-size: 2.2rem;
-  color: var(--gold);
-  margin-bottom: 10px;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+/* animación de brillo dorado */
+.servicios-destacados::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(212,175,55,0.1) 0%, rgba(255,215,0,0.05) 50%, transparent 100%);
+  animation: brillo-dorado 6s linear infinite;
+}
+@keyframes brillo-dorado {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-.servicios-destacados p {
-  color: #fff;
-  font-size: 1.1rem;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
+.titulo-dorado {
+  font-size: 2.6rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffdd55, #d4af37, #b88a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(255, 223, 80, 0.6);
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.intro-texto {
+  font-size: 1.2rem;
+  color: #eaeaea;
+  max-width: 850px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+.texto-secundario {
+  margin-top: 40px;
+  color: #ddd;
+  font-size: 1.05rem;
   line-height: 1.6;
+  max-width: 800px;
+  margin-inline: auto;
+  opacity: 0.9;
 }
-  
-.servicios-destacados .btn {
+
+.btn-luminoso {
   display: inline-block;
+  margin-top: 25px;
+  padding: 14px 36px;
+  border-radius: 40px;
   background: linear-gradient(145deg, #d4af37, #b8901e);
   color: #fff;
   font-weight: bold;
-  text-decoration: none;
-  padding: 14px 32px;
-  border-radius: 40px;
-  box-shadow: 0 0 20px rgba(212,175,55,0.4);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px rgba(255,215,0,0.4);
   transition: all 0.3s ease;
-  margin-top: 20px;
 }
-
-.servicios-destacados .btn:hover {
+.btn-luminoso:hover {
   background: linear-gradient(145deg, #ffcf4d, #d4af37);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+  box-shadow: 0 0 35px rgba(255,215,0,0.8);
   transform: scale(1.08);
 }
 
@@ -280,55 +309,62 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
     </div>
   </section>
 <!-- ============================= -->
-<!-- SECCIÓN: NUESTROS SERVICIOS DESTACADOS (con animación y 7 iconos) -->
+<!-- SECCIÓN MEJORADA: NUESTROS SERVICIOS DESTACADOS -->
 <!-- ============================= -->
 <section class="servicios-destacados" aria-label="Nuestros servicios destacados">
-   <div class="info-servicios">
-      <h2>Nuestros Servicios Destacados</h2>
-      <p>Ofrecemos servicio completo de reparación y mantenimiento automotriz, con personal experto y tecnología avanzada para que tu vehículo vuelva a su mejor estado.</p>
-  <div class="contenedor-auto">
-  <img src="https://servicioscannerautomotriz.com/wp-content/uploads/2020/04/service-tab.png" alt="Auto lateral elegante" class="auto-imagen">
+  <div class="info-servicios">
+    <h2 class="titulo-dorado">⚙️ Nuestros Servicios Destacados</h2>
+    <p class="intro-texto">
+      En <strong>Taller El Progreso</strong> tu vehículo recibe atención experta y detallada. 
+      Utilizamos tecnología avanzada y personal calificado para ofrecer resultados confiables, 
+      duraderos y con acabado profesional.
+    </p>
 
-  <!-- Íconos posicionados encima -->
-  <div class="icono" id="icono-diagnostico" data-tooltip="Diagnóstico">
-    <img src="imagenes/icono-diagnostico.png" alt="Diagnóstico">
-  </div>
-  <div class="icono" id="icono-motor" data-tooltip="Motor">
-    <img src="imagenes/icono-motor.png" alt="Motor">
-  </div>
-  <div class="icono" id="icono-liquidos" data-tooltip="Líquidos">
-    <img src="imagenes/icono-liquidos.png" alt="Líquidos">
-  </div>
-  <div class="icono" id="icono-llantas" data-tooltip="Llantas">
-    <img src="imagenes/icono-llantas.png" alt="Llantas">
-  </div>
-  <div class="icono" id="icono-transmision" data-tooltip="Transmisión">
-    <img src="imagenes/icono-transmision.png" alt="Transmisión">
-  </div>
-  <div class="icono" id="icono-baterias" data-tooltip="Baterías">
-    <img src="imagenes/icono-baterias.png" alt="Baterías">
-  </div>
-  <div class="icono" id="icono-mofle" data-tooltip="Mofle/Exosto">
-    <img src="imagenes/icono-mofle.png" alt="Mofle">
-  </div>
-  <div class="icono" id="icono-pintura" data-tooltip="Pintura">
-    <img src="imagenes/icono-pintura.png" alt="Pintura">
-  </div>
-  <div class="icono" id="icono-suspension" data-tooltip="Suspensión">
-    <img src="imagenes/icono-suspension.png" alt="Suspensión">
-  </div>
-  <div class="icono" id="icono-frenos" data-tooltip="Frenos">
-    <img src="imagenes/icono-frenos.png" alt="Frenos">
-  </div>
-</div>
-        <p>Si tu motor presenta fallas o sensores activos, contamos con equipos especializados para detectar y solucionar cualquier problema de manera eficiente.</p>
-        <a href="#contacto" class="btn-saber">Saber más</a>
+    <div class="contenedor-auto">
+      <img src="https://servicioscannerautomotriz.com/wp-content/uploads/2020/04/service-tab.png" alt="Auto lateral elegante" class="auto-imagen">
+
+      <!-- Íconos posicionados encima -->
+      <div class="icono" id="icono-diagnostico" data-tooltip="Diagnóstico">
+        <img src="imagenes/icono-diagnostico.png" alt="Diagnóstico">
+      </div>
+      <div class="icono" id="icono-motor" data-tooltip="Motor">
+        <img src="imagenes/icono-motor.png" alt="Motor">
+      </div>
+      <div class="icono" id="icono-liquidos" data-tooltip="Líquidos">
+        <img src="imagenes/icono-liquidos.png" alt="Líquidos">
+      </div>
+      <div class="icono" id="icono-llantas" data-tooltip="Llantas">
+        <img src="imagenes/icono-llantas.png" alt="Llantas">
+      </div>
+      <div class="icono" id="icono-transmision" data-tooltip="Transmisión">
+        <img src="imagenes/icono-transmision.png" alt="Transmisión">
+      </div>
+      <div class="icono" id="icono-baterias" data-tooltip="Baterías">
+        <img src="imagenes/icono-baterias.png" alt="Baterías">
+      </div>
+      <div class="icono" id="icono-pintura" data-tooltip="Pintura">
+        <img src="imagenes/icono-pintura.png" alt="Pintura">
+      </div>
+      <div class="icono" id="icono-suspension" data-tooltip="Suspensión">
+        <img src="imagenes/icono-suspension.png" alt="Suspensión">
+      </div>
+      <div class="icono" id="icono-frenos" data-tooltip="Frenos">
+        <img src="imagenes/icono-frenos.png" alt="Frenos">
+      </div>
+      <div class="icono" id="icono-mofle" data-tooltip="Mofle / Exosto">
+        <img src="imagenes/icono-mofle.png" alt="Mofle">
       </div>
     </div>
-     
-      <div class="iconos-servicios" role="list" aria-label="Lista de servicios">
-    
+
+    <p class="texto-secundario">
+      Si tu motor presenta fallas o luces de advertencia, contamos con equipos especializados 
+      para detectar y solucionar cualquier problema de manera precisa y eficiente.
+    </p>
+
+    <a href="#contacto" class="btn btn-luminoso">🚗 Saber más</a>
+  </div>
 </section>
+
 
   <section id="galeria-motos">
     <h2>Galería de Motos</h2>
@@ -436,6 +472,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
