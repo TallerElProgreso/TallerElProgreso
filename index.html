@@ -17,7 +17,8 @@
   --card-bg: rgba(255,255,255,0.05);
   --shadow: rgba(0,0,0,0.6);
   --font-primary: 'Arial', sans-serif;
-}  
+} /* ✅ cierre del bloque de variables */
+
 /* ======= SECCIÓN SERVICIOS DESTACADOS MEJORADA ======= */
 .servicios-destacados {
   text-align: center;
@@ -434,7 +435,15 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 (function(){
   const secs=document.querySelectorAll('section');
   const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // animación específica para .fade-in-up
+        e.target.querySelectorAll('.fade-in-up').forEach(el=>{
+          el.classList.add('visible');
+        });
+      }
+    });
   },{threshold:0.15});
   secs.forEach(s=>io.observe(s));
 })();
@@ -452,7 +461,7 @@ function closeLightbox(){ document.getElementById('lightbox').classList.remove('
 const canvas=document.getElementById('particles'), ctx=canvas.getContext('2d');
 canvas.width=window.innerWidth; canvas.height=window.innerHeight;
 let particles=[];
-for(let i=0;i<60;i++){ // antes 120
+for(let i=0;i<60;i++){
   particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5+0.5, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3});
 }
 function animate(){
@@ -471,24 +480,3 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
