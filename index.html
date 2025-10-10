@@ -21,7 +21,12 @@
 .servicios-destacados {
   text-align: center;
   padding: 60px 20px;
-  background: #f4f4f4;
+  /* Degradado radial + lineal combinado */
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, rgba(30, 42, 71, 0.9) 70%),
+              linear-gradient(90deg, #1E2A47 0%, #111A2D 100%);
+  color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
 .servicios-destacados h2 {
@@ -408,6 +413,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
