@@ -627,87 +627,145 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
   100% { transform: translateX(100%); }
 }
 
-/* === POR QUÉ ELEGIRNOS === */
-#porque-elegirnos {
+/* === SECCIÓN POR QUÉ ELEGIRNOS === */
+.porque-elegirnos-section {
   text-align: center;
   padding: 100px 20px;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.9) 80%);
+  background: radial-gradient(circle at top, rgba(255,255,255,0.04), rgba(10,10,20,0.95) 85%);
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
   margin-bottom: 90px;
   position: relative;
   overflow: hidden;
 }
 
-#porque-elegirnos h2 {
-  font-size: 2.4rem;
-  font-weight: 800;
-  color: var(--gold);
-  text-shadow: 0 0 10px rgba(255,215,0,0.6);
-  margin-bottom: 40px;
-  letter-spacing: 1px;
-}
-
-.razones {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
-  justify-items: center;
-}
-
-.razon {
-  background: linear-gradient(145deg, rgba(212,175,55,0.08), rgba(0,0,0,0.6));
-  padding: 30px 20px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,215,0,0.15);
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
-  max-width: 340px;
-}
-
-.razon::before {
+/* Fondo con brillo dorado animado */
+.porque-elegirnos-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(255,215,0,0.1), transparent, rgba(255,215,0,0.1));
-  transform: translateX(-100%);
-  transition: transform 0.8s ease;
+  background: linear-gradient(120deg, rgba(255,215,0,0.06), transparent, rgba(255,215,0,0.08));
+  animation: fondoBrilloElegirnos 12s linear infinite;
+}
+@keyframes fondoBrilloElegirnos {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
-.razon:hover::before {
-  transform: translateX(100%);
+/* Título principal */
+.titulo-elegirnos {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-shadow: 0 0 12px rgba(255,215,0,0.6);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
-.razon:hover {
-  transform: translateY(-10px) scale(1.03);
+/* Texto introductorio */
+.intro-elegirnos {
+  font-size: 1.1rem;
+  color: #ddd;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  opacity: 0.9;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+/* Contenedor de razones */
+.razones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tarjetas individuales */
+.razon-card {
+  background: linear-gradient(145deg, rgba(255,215,0,0.08), rgba(15,15,25,0.85));
+  border-radius: 18px;
+  padding: 35px 25px;
+  border: 1px solid rgba(255,215,0,0.15);
+  box-shadow: 0 8px 35px rgba(0,0,0,0.6);
+  transition: all 0.5s ease;
+  max-width: 350px;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea decorativa dorada al pasar */
+.razon-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: translateX(-50%);
+  transition: width 0.5s ease;
+}
+
+.razon-card:hover::after {
+  width: 80%;
+}
+
+/* Hover: elevación y brillo */
+.razon-card:hover {
+  transform: translateY(-12px) scale(1.03);
   box-shadow: 0 15px 45px rgba(255,215,0,0.25);
 }
 
-.razon h3 {
+/* Íconos */
+.razon-card i {
+  font-size: 2.6rem;
+  color: var(--gold);
+  margin-bottom: 18px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.razon-card:hover i {
+  transform: scale(1.15) rotate(6deg);
+  filter: drop-shadow(0 0 12px rgba(255,215,0,0.7));
+}
+
+/* Títulos */
+.razon-card h3 {
   color: var(--gold);
   font-size: 1.4rem;
   margin-bottom: 10px;
+  letter-spacing: 0.6px;
 }
 
-.razon p {
-  color: #ddd;
+/* Texto */
+.razon-card p {
+  color: #ccc;
   font-size: 1rem;
   line-height: 1.6;
   opacity: 0.9;
 }
 
-/* Animación de aparición */
-.razon {
+/* Animación de entrada */
+.razon-card {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
+  transform: translateY(30px);
+  animation: fadeInElegirnos 1s ease forwards;
+}
+.razon-card:nth-child(1) { animation-delay: 0.2s; }
+.razon-card:nth-child(2) { animation-delay: 0.4s; }
+.razon-card:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInElegirnos {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.razon:nth-child(1) { animation-delay: 0.2s; }
-.razon:nth-child(2) { animation-delay: 0.4s; }
-.razon:nth-
 
 
 /* Contacto */
@@ -1014,6 +1072,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
