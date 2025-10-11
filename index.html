@@ -364,101 +364,116 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
 }
 
 
-/* === GALERÍAS MEJORADAS === */
-#galeria-motos, #galeria-modelos {
+/* === GALERÍAS MODERNAS === */
+.galeria-section {
   text-align: center;
-  padding: 80px 25px;
-  background: linear-gradient(180deg, #0C1323 0%, #1E2A47 100%);
+  padding: 80px 20px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05) 0%, rgba(10,10,20,0.9) 80%);
   border-radius: 20px;
   box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  margin-bottom: 80px;
   position: relative;
   overflow: hidden;
-  margin-top: 60px;
 }
 
-#galeria-motos h2, #galeria-modelos h2 {
+.titulo-galeria {
   font-size: 2.4rem;
-  font-weight: 900;
-  background: linear-gradient(90deg, #ffdd55, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 18px rgba(255,255,255,0.3);
-  margin-bottom: 40px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px rgba(255,215,0,0.5);
 }
 
-/* Cuadrícula flexible */
+.intro-galeria {
+  font-size: 1.1rem;
+  color: #ddd;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  opacity: 0.9;
+}
+
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
   justify-items: center;
 }
 
-/* Cada contenedor de imagen */
 .gallery-item {
   position: relative;
+  border-radius: 14px;
   overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 0 18px rgba(255,255,255,0.1);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.6);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .gallery-item:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 0 28px rgba(255,255,255,0.4);
+  transform: scale(1.05);
+  box-shadow: 0 12px 40px rgba(255,255,255,0.25);
 }
 
-/* Imágenes */
 .gallery-item img {
   width: 100%;
-  height: 220px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 16px;
-  transition: transform 0.4s ease, filter 0.4s ease;
-  filter: brightness(0.9);
+  filter: brightness(0.9) saturate(1.1);
+  transition: filter 0.4s ease;
 }
 
 .gallery-item:hover img {
-  transform: scale(1.1);
-  filter: brightness(1.2);
+  filter: brightness(1.1) contrast(1.1);
 }
 
-/* Animación de entrada */
-@keyframes fadeInGallery {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.gallery-item {
-  animation: fadeInGallery 0.8s ease both;
-}
-
-/* === LIGHTBOX === */
+/* === LIGHTBOX MODERNO === */
 #lightbox {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
   justify-content: center;
   align-items: center;
-  z-index: 10000;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+#lightbox.open {
+  display: flex;
+  animation: fadeInLightbox 0.4s ease;
+}
+
+@keyframes fadeInLightbox {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 #lightbox img {
   max-width: 90%;
-  max-height: 80%;
-  border-radius: 12px;
-  box-shadow: 0 0 30px rgba(255,255,255,0.4);
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255,255,255,0.3);
+  transition: transform 0.4s ease;
 }
 
-#lightbox span {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
+#lightbox img:hover {
+  transform: scale(1.03);
 }
+
+.close-btn {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 0 0 15px rgba(255,255,255,0.7);
+  transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
 
 /* Lightbox */
 .lightbox { position: fixed; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.9); z-index:9999; opacity:0; pointer-events:none; transition: opacity .25s; padding:18px; }
@@ -619,24 +634,47 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
   </div>
 </section>
 
-  <section id="galeria-motos">
-    <h2>Galería de Motos</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="motos/hunk_despues1.jpg" alt="moto 1" onclick="openLightbox(this.src,this.alt)"></div>
-      <div class="gallery-item"><img src="motos/honda125i_despues2.jpg" alt="moto 2" onclick="openLightbox(this.src,this.alt)"></div>
-      <div class="gallery-item"><img src="motos/hunk_despues2.jpg" alt="moto 3" onclick="openLightbox(this.src,this.alt)"></div>
+<!-- ===== GALERÍA DE MOTOS ===== -->
+<section id="galeria-motos" class="galeria-section fade-in-up">
+  <h2 class="titulo-galeria">🏍️ Galería de Motos</h2>
+  <p class="intro-galeria">Conoce algunos de nuestros trabajos en reparación, pintura y mantenimiento de motocicletas.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="motos/hunk_despues1.jpg" alt="Moto 1" onclick="openLightbox(this.src,this.alt)">
     </div>
-  </section>
-
-  <section id="galeria-modelos">
-    <h2>Galería de Modelos</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item"><img src="imagenes/volkswagen_despues1.jpg" alt="modelo 1" onclick="openLightbox(this.src,this.alt)"></div>
-      <div class="gallery-item"><img src="imagenes/tucson_despues1.jpg" alt="modelo 2" onclick="openLightbox(this.src,this.alt)"></div>
-      <div class="gallery-item"><img src="imagenes/toyota_despues1.jpg" alt="modelo 3" onclick="openLightbox(this.src,this.alt)"></div>
+    <div class="gallery-item">
+      <img src="motos/honda125i_despues2.jpg" alt="Moto 2" onclick="openLightbox(this.src,this.alt)">
     </div>
-  </section>
+    <div class="gallery-item">
+      <img src="motos/hunk_despues2.jpg" alt="Moto 3" onclick="openLightbox(this.src,this.alt)">
+    </div>
+  </div>
+</section>
 
+<!-- ===== GALERÍA DE MODELOS ===== -->
+<section id="galeria-modelos" class="galeria-section fade-in-up">
+  <h2 class="titulo-galeria">🚗 Galería de Modelos</h2>
+  <p class="intro-galeria">Algunos de los vehículos que han pasado por nuestro taller para quedar como nuevos.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="imagenes/volkswagen_despues1.jpg" alt="Modelo 1" onclick="openLightbox(this.src,this.alt)">
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/tucson_despues1.jpg" alt="Modelo 2" onclick="openLightbox(this.src,this.alt)">
+    </div>
+    <div class="gallery-item">
+      <img src="imagenes/toyota_despues1.jpg" alt="Modelo 3" onclick="openLightbox(this.src,this.alt)">
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+  
   <section id="marcas">
     <h2>Marcas que trabajamos</h2>
     <div class="marcas-scroll">
@@ -732,4 +770,5 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
