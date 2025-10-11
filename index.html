@@ -340,7 +340,7 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
 .service-card img {
   width: 60px;
   height: 60px;
-  filter: drop-shadow(0 4px 8px rgba(255,215,0,0.4));
+  filter: brightness(1) drop-shadow(0 2px 6px rgba(255,255,255,0.3)); /* ← blanco suave */
   margin-bottom: 15px;
 }
 
@@ -634,3 +634,4 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
+
