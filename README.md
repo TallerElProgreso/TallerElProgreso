@@ -10,7 +10,7 @@ Nos especializamos en brindar un servicio de calidad en:
 ---
 
 ## 🌐 Página Web Oficial
-👉 [Visítanos aquí](https://tallerelprogreso.github.io/TallerElProgreso/index.html)
+👉 [Visítanos aquí](https://tallerelprogreso.github.io/TallerElProgreso/)
 
 ---
 
