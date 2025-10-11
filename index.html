@@ -682,17 +682,14 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 </div>
 
 <script>
-// Intersection Observer para animar secciones
+// Intersection Observer
 (function(){
   const secs=document.querySelectorAll('section');
   const io=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
         e.target.classList.add('visible');
-        // animación específica para .fade-in-up
-        e.target.querySelectorAll('.fade-in-up').forEach(el=>{
-          el.classList.add('visible');
-        });
+        e.target.querySelectorAll('.fade-in-up').forEach(el=>el.classList.add('visible'));
       }
     });
   },{threshold:0.15});
@@ -706,22 +703,10 @@ function openLightbox(src,alt){
   lb.querySelector('img').alt=alt;
   lb.classList.add('open');
 }
-function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
-
-<div id="lightbox">
-  <span onclick="closeLightbox()">&times;</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-function openLightbox(src, alt) {
-  document.getElementById("lightbox-img").src = src;
-  document.getElementById("lightbox-img").alt = alt;
-  document.getElementById("lightbox").style.display = "flex";
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
 }
-function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
-}
-  
+
 // Partículas doradas suaves
 const canvas=document.getElementById('particles'), ctx=canvas.getContext('2d');
 canvas.width=window.innerWidth; canvas.height=window.innerHeight;
@@ -745,7 +730,6 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
-
-
-
+</body>
+</html>
 
