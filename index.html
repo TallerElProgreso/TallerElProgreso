@@ -582,17 +582,19 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
   animation: scrollMarcas 25s linear infinite;
 }
 
+/* Logos a color normal */
 .marcas-inner img {
   width: 140px;
   height: auto;
-  opacity: 0.85;
-  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.2));
-  transition: transform 0.4s ease, filter 0.4s ease;
+  opacity: 0.9;
+  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
 }
 
+/* Efecto dorado y zoom al pasar el mouse */
 .marcas-inner img:hover {
   transform: scale(1.15);
-  filter: brightness(1.2) drop-shadow(0 0 25px rgba(255,215,0,0.8));
+  filter: drop-shadow(0 0 25px rgba(255,215,0,0.7));
+  opacity: 1;
 }
 
 /* Animación de desplazamiento */
@@ -601,7 +603,7 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
   100% { transform: translateX(-50%); }
 }
 
-/* Brillo dorado sutil de fondo */
+/* Efecto dorado de fondo animado sutil */
 .marcas-section::before {
   content: "";
   position: absolute;
@@ -904,6 +906,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
