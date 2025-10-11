@@ -1074,9 +1074,103 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
 }
 
 
+.footer-progreso {
+  position: relative;
+  background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(20,20,20,1));
+  color: #ddd;
+  padding: 70px 20px 40px;
+  text-align: center;
+  border-top: 1px solid rgba(212,175,55,0.2);
+  box-shadow: 0 -10px 25px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
 
-/* Footer */
-footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4); border-top:1px solid rgba(255,255,255,0.02); }
+.footer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,215,0,0.08), transparent, rgba(255,215,0,0.15));
+  animation: footerGlow 10s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes footerGlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.footer-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo img {
+  width: 90px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(212,175,55,0.5);
+  transition: transform 0.4s ease;
+}
+.footer-logo img:hover {
+  transform: scale(1.08);
+}
+
+.footer-logo h3 {
+  color: var(--gold, #d4af37);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 10px 0 0;
+}
+
+.footer-text {
+  font-size: 1rem;
+  color: #ccc;
+  margin: 20px auto;
+  max-width: 700px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 25px 0;
+}
+
+.footer-social a {
+  color: var(--gold, #d4af37);
+  font-size: 1.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.footer-social a:hover {
+  color: #ffde59;
+  transform: scale(1.2);
+}
+
+.footer-copy {
+  font-size: 0.95rem;
+  color: #999;
+  margin-top: 25px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .footer-text { font-size: 0.95rem; padding: 0 15px; }
+  .footer-social a { font-size: 1.4rem; }
+}
+
+
 
 /* Animaciones */
 @keyframes scrollLogos {0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -1380,8 +1474,35 @@ function enviarWhatsApp(e) {
 </script>
  
    
-<footer>
-  <p>&copy; 2025 Taller El Progreso - Todos los derechos reservados</p>
+<footer class="footer-progreso">
+  <div class="footer-overlay"></div>
+
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="imagenes/logo.png" alt="Taller El Progreso">
+      <h3>Taller El Progreso</h3>
+    </div>
+
+    <p class="footer-text">
+      🚗 Confianza y calidad en cada reparación — <strong>Candelaria-Florida / RN32-02 San Antonio de los Caballeros</strong>
+    </p>
+
+    <div class="footer-social">
+      <a href="https://wa.me/573225990026" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="mailto:tallerautomotrizelprogreso2022@gmail.com" aria-label="Correo">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="#" aria-label="Ubicación">
+        <i class="fas fa-map-marker-alt"></i>
+      </a>
+    </div>
+
+    <p class="footer-copy">
+      &copy; 2025 <strong>Taller El Progreso</strong> — Todos los derechos reservados
+    </p>
+  </div>
 </footer>
 
 <div class="lightbox" id="lightbox">
@@ -1440,4 +1561,5 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
