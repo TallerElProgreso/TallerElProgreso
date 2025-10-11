@@ -713,7 +713,6 @@ function closeLightbox(){ document.getElementById('lightbox').classList.remove('
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<script>
 function openLightbox(src, alt) {
   document.getElementById("lightbox-img").src = src;
   document.getElementById("lightbox-img").alt = alt;
@@ -746,6 +745,7 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
+
 
 
 
