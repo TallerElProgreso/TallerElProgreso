@@ -546,11 +546,74 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
 .lightbox img { max-width:95%; max-height:85%; border-radius:12px; box-shadow:0 30px 80px rgba(0,0,0,0.8); }
 .lightbox .close { position:absolute; top:18px; right:18px; color:#fff; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.06); padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
 
-/* Marcas */
-.marcas-scroll { overflow:hidden; margin-top:14px; border-radius:14px; border:1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.3); padding:14px 0; }
-.marcas-inner { display:flex; gap:40px; animation:scrollLogos 35s linear infinite; }
-.marcas-inner img { height:72px; opacity:0.95; filter: drop-shadow(0 2px 10px rgba(212,175,55,0.6)); transition: transform 0.3s; }
-.marcas-inner img:hover { transform: scale(1.12); }
+/* === MARCAS QUE TRABAJAMOS === */
+.marcas-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 80%);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+
+.titulo-marcas {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(255,215,0,0.6);
+  margin-bottom: 35px;
+  letter-spacing: 1px;
+}
+
+/* Contenedor con movimiento infinito */
+.marcas-scroll {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marcas-inner {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  animation: scrollMarcas 25s linear infinite;
+}
+
+.marcas-inner img {
+  width: 140px;
+  height: auto;
+  opacity: 0.85;
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.2));
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.marcas-inner img:hover {
+  transform: scale(1.15);
+  filter: brightness(1.2) drop-shadow(0 0 25px rgba(255,215,0,0.8));
+}
+
+/* Animación de desplazamiento */
+@keyframes scrollMarcas {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Brillo dorado sutil de fondo */
+.marcas-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(212,175,55,0.05), transparent, rgba(255,215,0,0.05));
+  animation: brilloDoradoFondo 10s linear infinite;
+}
+
+@keyframes brilloDoradoFondo {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
 
 /* Razones */
 .razones { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin-top:18px; }
@@ -740,20 +803,26 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 </div>
 
   
-  <section id="marcas">
-    <h2>Marcas que trabajamos</h2>
-    <div class="marcas-scroll">
-      <div class="marcas-inner">
-        <img src="imagenes/logo1.png" alt="Marca 1">
-        <img src="imagenes/logo2.png" alt="Marca 2">
-        <img src="imagenes/logo3.png" alt="Marca 3">
-        <img src="imagenes/logo4.png" alt="Marca 4">
-        <img src="imagenes/logo5.png" alt="Marca 5">
-        <img src="imagenes/logo6.png" alt="Marca 6">
-        <img src="imagenes/logo7.png" alt="Marca 7">
-      </div>
+  <section id="marcas" class="marcas-section">
+  <h2 class="titulo-marcas">Marcas que Trabajamos</h2>
+  <div class="marcas-scroll">
+    <div class="marcas-inner">
+      <img src="imagenes/logo1.png" alt="Marca 1">
+      <img src="imagenes/logo2.png" alt="Marca 2">
+      <img src="imagenes/logo3.png" alt="Marca 3">
+      <img src="imagenes/logo4.png" alt="Marca 4">
+      <img src="imagenes/logo5.png" alt="Marca 5">
+      <img src="imagenes/logo6.png" alt="Marca 6">
+      <img src="imagenes/logo7.png" alt="Marca 7">
+      <!-- duplicadas para efecto infinito -->
+      <img src="imagenes/logo1.png" alt="Marca 1">
+      <img src="imagenes/logo2.png" alt="Marca 2">
+      <img src="imagenes/logo3.png" alt="Marca 3">
+      <img src="imagenes/logo4.png" alt="Marca 4">
     </div>
-  </section>
+  </div>
+</section>
+
 
   <section id="porque-elegirnos">
     <h2>Por Qué Elegirnos</h2>
@@ -835,6 +904,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
