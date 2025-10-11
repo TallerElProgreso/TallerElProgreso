@@ -364,11 +364,101 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
 }
 
 
-/* Galerías */
-.gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; }
-.gallery-item { overflow:hidden; border-radius:12px; border:1px solid rgba(255,255,255,0.03); background: var(--card-bg); cursor:pointer; }
-.gallery-item img { width:100%; height:150px; object-fit:cover; transition: transform 0.35s, filter 0.35s; border-radius:10px; }
-.gallery-item img:hover { transform: scale(1.08); filter: brightness(1.08) drop-shadow(0 6px 14px rgba(212,175,55,0.6)); }
+/* === GALERÍAS MEJORADAS === */
+#galeria-motos, #galeria-modelos {
+  text-align: center;
+  padding: 80px 25px;
+  background: linear-gradient(180deg, #0C1323 0%, #1E2A47 100%);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+  margin-top: 60px;
+}
+
+#galeria-motos h2, #galeria-modelos h2 {
+  font-size: 2.4rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffdd55, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 18px rgba(255,255,255,0.3);
+  margin-bottom: 40px;
+}
+
+/* Cuadrícula flexible */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+/* Cada contenedor de imagen */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 0 18px rgba(255,255,255,0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 28px rgba(255,255,255,0.4);
+}
+
+/* Imágenes */
+.gallery-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0.9);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Animación de entrada */
+@keyframes fadeInGallery {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gallery-item {
+  animation: fadeInGallery 0.8s ease both;
+}
+
+/* === LIGHTBOX === */
+#lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.4);
+}
+
+#lightbox span {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
 
 /* Lightbox */
 .lightbox { position: fixed; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(0,0,0,0.9); z-index:9999; opacity:0; pointer-events:none; transition: opacity .25s; padding:18px; }
@@ -618,6 +708,21 @@ function openLightbox(src,alt){
 }
 function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
 
+<div id="lightbox">
+  <span onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src, alt) {
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox-img").alt = alt;
+  document.getElementById("lightbox").style.display = "flex";
+}
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+}
+  
 // Partículas doradas suaves
 const canvas=document.getElementById('particles'), ctx=canvas.getContext('2d');
 canvas.width=window.innerWidth; canvas.height=window.innerHeight;
@@ -641,5 +746,6 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
+
 
 
