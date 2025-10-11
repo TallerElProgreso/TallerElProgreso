@@ -766,16 +766,125 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
   to { opacity: 1; transform: translateY(0); }
 }
 
-
-
-/* Contacto */
-.contact { line-height:1.8; font-size:18px; }
-.whatsapp-btn {
-  display:inline-block; margin-top:14px; padding:16px 24px;
-  background: linear-gradient(135deg,#25d366,#1ebc4a); color:#fff; border-radius:14px; font-weight:800;
-  box-shadow:0 10px 30px rgba(0,0,0,0.7); transition: transform 0.25s, box-shadow 0.25s;
+/* === SECCIÓN CONTACTO === */
+.contacto-section {
+  padding: 90px 25px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 80%);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
+  max-width: 1100px;
+  margin: 100px auto 90px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
-.whatsapp-btn:hover { transform: translateY(-4px); box-shadow:0 14px 44px rgba(0,0,0,0.8); }
+
+/* Brillo de fondo animado */
+.contacto-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,215,0,0.08), transparent, rgba(255,215,0,0.12));
+  animation: brilloContacto 12s linear infinite;
+}
+@keyframes brilloContacto {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Título e introducción */
+.titulo-contacto {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(255,215,0,0.5);
+  margin-bottom: 20px;
+}
+.intro-contacto {
+  font-size: 1.1rem;
+  color: #ddd;
+  max-width: 800px;
+  margin: 0 auto 45px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Grid principal */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  align-items: start;
+}
+
+/* Información */
+.contacto-info {
+  text-align: left;
+  color: #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+.info-item i {
+  color: var(--gold);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.info-item a {
+  color: #25d366;
+  text-decoration: none;
+  font-weight: 500;
+}
+.info-item a:hover {
+  text-decoration: underline;
+}
+
+/* Formulario */
+.contacto-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contacto-form input,
+.contacto-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,215,0,0.3);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.contacto-form input:focus,
+.contacto-form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(255,215,0,0.4);
+}
+
+/* Botón */
+.btn-enviar {
+  background: linear-gradient(135deg, var(--gold), #b8860b);
+  color: #000;
+  font-weight: 700;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-enviar:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px rgba(255,215,0,0.6);
+}
+
 
 /* Footer */
 footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4); border-top:1px solid rgba(255,255,255,0.02); }
@@ -1000,18 +1109,45 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
   </div>
 </section>
 
+<section id="contacto" class="contacto-section">
+  <h2 class="titulo-contacto">Contáctanos</h2>
+  <p class="intro-contacto">
+    En <strong>Taller El Progreso</strong> estamos listos para atenderte con compromiso y calidad.  
+    Escríbenos o visítanos para resolver tus inquietudes o agendar tu próximo servicio.
+  </p>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p class="contact">
-      <strong>Teléfono:</strong> 📞 322 599 0026<br>
-      <strong>Correo:</strong> 📧 tallerautomotrizelprogreso2022@gmail.com<br>
-      <strong>Dirección:</strong> 📍 Próximamente
-    </p>
-    <a class="whatsapp-btn" href="https://wa.me/573225990026" target="_blank">📲 Escríbenos por WhatsApp</a>
-  </section>
-</div>
+  <div class="contacto-grid">
+    <!-- Información de contacto -->
+    <div class="contacto-info">
+      <div class="info-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <p><strong>Dirección:</strong> Candelaria-Florida / RN32-02 San Antonio de los Caballeros</p>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-phone-alt"></i>
+        <p><strong>Teléfono:</strong> 322 599 0026</p>
+      </div>
+      <div class="info-item">
+        <i class="fas fa-envelope"></i>
+        <p><strong>Correo:</strong> tallerautomotrizelprogreso2022@gmail.com</p>
+      </div>
+      <div class="info-item">
+        <i class="fab fa-whatsapp"></i>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/573225990026" target="_blank">+57 322 599 0026</a></p>
+      </div>
+    </div>
 
+    <!-- Formulario -->
+    <form class="contacto-form">
+      <input type="text" placeholder="Tu nombre" required>
+      <input type="email" placeholder="Tu correo" required>
+      <textarea rows="4" placeholder="Tu mensaje" required></textarea>
+      <button type="submit" class="btn-enviar">Enviar mensaje</button>
+    </form>
+  </div>
+</section>
+
+  
 <footer>
   <p>&copy; 2025 Taller El Progreso - Todos los derechos reservados</p>
 </footer>
@@ -1072,6 +1208,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
