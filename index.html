@@ -19,7 +19,54 @@
   --font-primary: 'Arial', sans-serif;
 }  /* ← ✅ ESTA LLAVE FALTABA */
 
+/* === Menú Hamburguesa para móviles === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
 
+.menu-toggle span {
+  width: 26px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* animación del icono al abrir */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* versión responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background: rgba(10, 10, 10, 0.9);
+    border-top: 1px solid rgba(212,175,55,0.2);
+    width: 100%;
+    padding: 20px 0;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+  
 /* ======= SECCIÓN SERVICIOS DESTACADOS MEJORADA ======= */
 .servicios-destacados {
   text-align: center;
@@ -418,6 +465,11 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
       <span>Taller El Progreso</span>
     </a>
 
+    <!-- Botón hamburguesa -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+
     <div class="nav-links">
       <a href="index.html" class="active">Inicio</a>
       <a href="#servicios">Servicios</a>
@@ -602,6 +654,14 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
   secs.forEach(s=>io.observe(s));
 })();
 
+  // Menú responsive
+const toggle = document.getElementById("menu-toggle");
+const links = document.getElementById("nav-links");
+toggle.addEventListener("click", () => {
+  toggle.classList.toggle("active");
+  links.classList.toggle("open");
+});
+
 // Lightbox
 function openLightbox(src,alt){
   const lb=document.getElementById('lightbox');
@@ -634,6 +694,7 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
+
 
 
 
