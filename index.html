@@ -340,9 +340,16 @@ h2 { display:inline-block; border-bottom:3px solid var(--gold); padding-bottom:6
 .service-card img {
   width: 60px;
   height: 60px;
-  filter: brightness(1) drop-shadow(0 2px 6px rgba(255,255,255,0.3)); /* ← blanco suave */
+  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255,255,255,0.6)); /* Blanco + brillo suave */
   margin-bottom: 15px;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
+
+.service-card img:hover {
+  transform: scale(1.1);
+  filter: brightness(0) invert(1) drop-shadow(0 0 18px rgba(255,255,255,0.9)); /* Más brillo al pasar el mouse */
+}
+
 
 .service-card h3 {
   color: var(--gold);
@@ -634,4 +641,5 @@ function animate(){
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
 </script>
+
 
