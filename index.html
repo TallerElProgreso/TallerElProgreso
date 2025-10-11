@@ -8,6 +8,13 @@
 <meta name="keywords" content="taller mecánico, mecánica general, taller automotriz, alineación, balanceo, cambio de aceite, latonería y pintura, revisión preventiva, mecánica de motos, mantenimiento de autos, autos, vehículos, reparación, autoservicio, mecánica en Colombia, taller en Cúcuta, reparación de motores, taller El Progreso, taller de confianza">
 <meta name="author" content="Taller El Progreso">
 <link rel="icon" type="image/png" href="imagenes/logo.png">
+  <!-- Íconos Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Tu hoja de estilos -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
 <style>
 :root {
   --gold: #d4af37;
@@ -829,14 +836,34 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 </section>
 
 
-  <section id="porque-elegirnos">
-    <h2>Por Qué Elegirnos</h2>
-    <div class="razones">
-      <div class="razon"><h3>Profesionalismo</h3><p>Técnicos calificados con años de experiencia.</p></div>
-      <div class="razon"><h3>Equipos Modernos</h3><p>Herramientas de última tecnología para resultados impecables.</p></div>
-      <div class="razon"><h3>Atención Personalizada</h3><p>Soluciones adaptadas a cada vehículo y necesidad.</p></div>
+  <section id="porque-elegirnos" class="porque-elegirnos-section">
+  <h2 class="titulo-elegirnos">¿Por Qué Elegirnos?</h2>
+  <p class="intro-elegirnos">
+    En <strong>Taller El Progreso</strong> trabajamos con compromiso, precisión y tecnología avanzada
+    para ofrecerte un servicio automotriz confiable y de calidad superior.
+  </p>
+
+  <div class="razones">
+    <div class="razon-card">
+      <i class="fas fa-user-tie"></i>
+      <h3>Profesionalismo</h3>
+      <p>Técnicos certificados con amplia experiencia y pasión por su trabajo.</p>
     </div>
-  </section>
+
+    <div class="razon-card">
+      <i class="fas fa-cogs"></i>
+      <h3>Equipos Modernos</h3>
+      <p>Utilizamos herramientas y tecnología de última generación para resultados precisos.</p>
+    </div>
+
+    <div class="razon-card">
+      <i class="fas fa-handshake"></i>
+      <h3>Atención Personalizada</h3>
+      <p>Ofrecemos soluciones adaptadas a las necesidades únicas de cada vehículo.</p>
+    </div>
+  </div>
+</section>
+
 
   <section id="contacto">
     <h2>Contacto</h2>
@@ -909,6 +936,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
