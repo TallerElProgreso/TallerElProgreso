@@ -208,21 +208,23 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
-/* === HEADER PRINCIPAL === */
+/* === HEADER HERO === */
 .header-principal {
   position: relative;
   text-align: center;
   color: #fff;
-  padding: 80px 20px 60px;
-  background: linear-gradient(135deg, #0a0f1f, #1e3a5f);
+  padding: 90px 20px 70px;
+  background: linear-gradient(140deg, #0b0f19, #1b2738, #0d111a);
   overflow: hidden;
+  border-bottom: 1px solid rgba(212,175,55,0.2);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
 .header-principal::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('imagenes/fondo_header.jpg') center/cover no-repeat;
+  background: url("imagenes/fondo_header.jpg") center/cover no-repeat;
   opacity: 0.25;
   z-index: 0;
 }
@@ -230,8 +232,15 @@ a { color: inherit; text-decoration: none; }
 .header-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(212,175,55,0.2), rgba(0,0,0,0.8));
+  background: radial-gradient(circle at center, rgba(212,175,55,0.15), rgba(0,0,0,0.85));
   z-index: 1;
+  animation: brilloHeader 10s linear infinite;
+}
+
+@keyframes brilloHeader {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .logo-container {
@@ -240,33 +249,34 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  animation: fadeDown 1.2s ease-out;
+  gap: 18px;
+  animation: fadeIn 1.2s ease-out;
 }
 
 .logo-img {
-  width: 160px;
+  width: 170px;
   border-radius: 16px;
-  box-shadow: 0 0 30px rgba(212,175,55,0.6);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 35px rgba(212,175,55,0.6);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 .logo-img:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 50px rgba(212,175,55,0.8);
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 0 60px rgba(212,175,55,0.8);
 }
 
 .logo-texto h1 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
+  font-weight: 900;
   color: var(--gold, #d4af37);
+  letter-spacing: 1.5px;
   margin: 0;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  text-shadow: 0 0 15px rgba(255,215,0,0.5);
 }
 .logo-texto p {
-  margin: 6px 0 0;
+  font-size: 1.2rem;
   font-style: italic;
-  font-size: 1.1rem;
-  color: #f0f0f0;
+  color: #ddd;
+  opacity: 0.9;
 }
 
 /* === NAVBAR === */
@@ -274,20 +284,30 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   width: 100%;
-  background: rgba(10, 10, 10, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(212,175,55,0.3);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+  transition: all 0.4s ease;
   z-index: 1000;
+}
+
+.navbar.scrolled {
+  background: rgba(5,5,5,0.9);
+  padding: 6px 0;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.7);
+  border-bottom: 1px solid rgba(255,215,0,0.4);
+  backdrop-filter: blur(16px);
 }
 
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 12px 25px;
+  padding: 14px 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all 0.3s ease;
 }
 
 .nav-logo {
@@ -296,25 +316,24 @@ a { color: inherit; text-decoration: none; }
   gap: 10px;
   color: var(--gold, #d4af37);
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   text-transform: uppercase;
+  letter-spacing: 0.6px;
 }
 
 .nav-logo img {
   height: 48px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(212,175,55,0.6);
-  transition: transform 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(212,175,55,0.5);
+  transition: transform 0.4s ease;
 }
 .nav-logo:hover img {
-  transform: rotate(-8deg) scale(1.05);
+  transform: rotate(-6deg) scale(1.08);
 }
 
-/* Enlaces */
 .nav-links {
   display: flex;
-  gap: 28px;
-  flex-wrap: wrap;
+  gap: 30px;
   transition: all 0.3s ease;
 }
 
@@ -322,10 +341,13 @@ a { color: inherit; text-decoration: none; }
   color: #eee;
   font-weight: 600;
   position: relative;
-  padding: 6px 8px;
-  transition: color 0.3s ease;
+  padding: 6px 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
-
+.nav-links a:hover {
+  color: var(--gold, #d4af37);
+  transform: translateY(-2px);
+}
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -336,33 +358,32 @@ a { color: inherit; text-decoration: none; }
   background: var(--gold, #d4af37);
   transition: width 0.3s ease;
 }
-
-.nav-links a:hover {
-  color: var(--gold, #d4af37);
-}
 .nav-links a:hover::after {
   width: 100%;
 }
 .nav-links a.active {
   color: var(--gold, #d4af37);
 }
+.nav-links a.active::after {
+  width: 100%;
+}
 
-/* === BOTÓN HAMBURGUESA (Responsive) === */
+/* === BOTÓN HAMBURGUESA === */
 .nav-toggle {
   display: none;
   background: none;
   border: none;
   color: var(--gold, #d4af37);
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 .nav-toggle:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 /* === ANIMACIONES === */
-@keyframes fadeDown {
+@keyframes fadeIn {
   from { opacity: 0; transform: translateY(-40px); }
   to { opacity: 1; transform: translateY(0); }
 }
@@ -370,31 +391,36 @@ a { color: inherit; text-decoration: none; }
 /* === RESPONSIVE === */
 @media (max-width: 850px) {
   .logo-texto h1 {
-    font-size: 1.7rem;
+    font-size: 1.9rem;
   }
+
   .nav-links {
     position: absolute;
-    top: 70px;
+    top: 72px;
     right: 0;
-    background: rgba(10, 10, 10, 0.95);
+    background: rgba(10,10,10,0.95);
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 22px;
     width: 100%;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     transition: all 0.4s ease;
+    border-top: 1px solid rgba(212,175,55,0.2);
   }
+
   .nav-links.open {
     max-height: 400px;
     opacity: 1;
     padding: 20px 0;
   }
+
   .nav-toggle {
     display: block;
   }
 }
+
 
 
 /* Contenedor principal */
@@ -1066,7 +1092,7 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 <body>
 <canvas id="particles"></canvas>
 
-<!-- ====== HEADER PRINCIPAL ====== -->
+<!-- ====== HEADER HERO ====== -->
 <header class="header-principal">
   <div class="header-overlay"></div>
 
@@ -1080,7 +1106,7 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
 </header>
 
 <!-- ====== NAVBAR ====== -->
-<nav class="navbar">
+<nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="index.html" class="nav-logo">
       <img src="imagenes/logo.png" alt="Taller El Progreso">
@@ -1099,9 +1125,20 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
   </div>
 </nav>
 
+<!-- ====== SCRIPT NAVBAR ====== -->
 <script>
 document.getElementById("menu-btn").addEventListener("click", () => {
   document.getElementById("nav-links").classList.toggle("open");
+});
+
+// Efecto al hacer scroll
+window.addEventListener("scroll", () => {
+  const navbar = document.getElementById("navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
 });
 </script>
 
@@ -1403,3 +1440,4 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
