@@ -1179,56 +1179,7 @@ footer { padding:24px; text-align:center; color:#fff; background: rgba(0,0,0,0.4
   </div>
 </section>
 
-<section id="contacto" class="contacto-section">
-  <h2 class="titulo-contacto">Contáctanos</h2>
-  <p class="intro-contacto">
-    En <strong>Taller El Progreso</strong> estamos listos para atenderte con compromiso y calidad.  
-    Escríbenos o visítanos para resolver tus inquietudes o agendar tu próximo servicio.
-  </p>
-
-  <div class="contacto-grid">
-    <!-- Información de contacto -->
-    <div class="contacto-info">
-      <div class="info-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <p><strong>Dirección:</strong> Candelaria-Florida / RN32-02 San Antonio de los Caballeros</p>
-      </div>
-      <div class="info-item">
-        <i class="fas fa-phone-alt"></i>
-        <p><strong>Teléfono:</strong> 322 599 0026</p>
-      </div>
-      <div class="info-item">
-        <i class="fas fa-envelope"></i>
-        <p><strong>Correo:</strong> tallerautomotrizelprogreso2022@gmail.com</p>
-      </div>
-      <div class="info-item">
-        <i class="fab fa-whatsapp"></i>
-        <p><strong>WhatsApp:</strong> <a href="https://wa.me/573225990026" target="_blank">+57 322 599 0026</a></p>
-      </div>
-    </div>
-
-    <!-- Formulario -->
-   <form class="contacto-form" onsubmit="enviarWhatsApp(event)">
-  <input type="text" id="nombre" placeholder="Tu nombre" required>
-  <input type="email" id="correo" placeholder="Tu correo" required>
-  <textarea id="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
-  <button type="submit" class="btn-enviar">Enviar mensaje por WhatsApp</button>
-</form>
-
-<script>
-function enviarWhatsApp(e) {
-  e.preventDefault();
-  const nombre = document.getElementById("nombre").value.trim();
-  const correo = document.getElementById("correo").value.trim();
-  const mensaje = document.getElementById("mensaje").value.trim();
-
-  const texto = `Hola Taller El Progreso,%0A👤 Nombre: ${nombre}%0A📧 Correo: ${correo}%0A💬 Mensaje: ${mensaje}`;
-  const numero = "573225990026"; // Tu número de WhatsApp
-  const url = `https://wa.me/${numero}?text=${texto}`;
-
-  window.open(url, "_blank");
-}
-<script>
+  
    
 <footer>
   <p>&copy; 2025 Taller El Progreso - Todos los derechos reservados</p>
@@ -1290,6 +1241,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
