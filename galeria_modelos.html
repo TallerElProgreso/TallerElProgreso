@@ -634,24 +634,40 @@ h1 {
 <a href="#inicio" class="volver-inicio">⬆ Volver al inicio</a>
 
 <script>
-/* ===== INTERACCIÓN DE TABS ===== */
-document.querySelectorAll('.model-tab').forEach(tab => {
+/* ===== MOSTRAR MODELO SELECCIONADO Y DESPLAZAR ===== */
+const modelTabs = document.querySelectorAll('.model-tab');
+const galleries = document.querySelectorAll('.gallery');
+
+modelTabs.forEach(tab => {
     tab.addEventListener('click', () => {
-        document.querySelectorAll('.model-tab').forEach(t => t.classList.remove('active'));
+        // Quitar la clase activa de todos
+        modelTabs.forEach(t => t.classList.remove('active'));
+        galleries.forEach(g => g.classList.remove('active'));
+        
+        // Activar el seleccionado
         tab.classList.add('active');
-        document.querySelectorAll('.model-content').forEach(c => c.classList.remove('active'));
-        document.getElementById(tab.dataset.target).classList.add('active');
+        const targetGallery = document.getElementById(tab.dataset.target);
+        targetGallery.classList.add('active');
+
+        // Desplazamiento suave al área de la galería
+        targetGallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 
-document.querySelectorAll('.sub-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-        const parent = tab.closest('.model-content');
-        parent.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        parent.querySelectorAll('.gallery').forEach(g => g.classList.remove('active'));
-        parent.querySelector('#' + tab.dataset.target).classList.add('active');
+/* ===== LIGHTBOX ===== */
+const images = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+
+images.forEach(img => {
+    img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
     });
+});
+
+lightbox.addEventListener('click', e => {
+    if (e.target !== lightboxImg) lightbox.style.display = 'none';
 });
 </script>
 
