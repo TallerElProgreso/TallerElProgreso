@@ -30,60 +30,6 @@
    ✨ ESPACIADO ENTRE SECCIONES - ESTILO PREMIUM
    ========================================================= */
 
-/* Espaciado general entre secciones */
-section {
-  padding: 80px 20px;   /* espacio interno */
-  margin: 80px 0;       /* separación vertical */
-  box-sizing: border-box;
-  scroll-margin-top: 100px; /* mejora navegación con anclas */
-}
-
-/* Header */
-header {
-  padding: 100px 20px 60px;
-  margin: 0;
-}
-
-/* Sección de servicios */
-.servicios-grid {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  padding: 80px 20px;
-}
-
-/* Sección "Por qué elegirnos" */
-.porque-elegirnos {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  padding: 80px 20px;
-}
-
-/* Sección de galería o proyectos */
-.galeria-modelos,
-.galeria-motos,
-.portafolio {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  padding: 80px 20px;
-}
-
-/* Sección de contacto */
-.contacto {
-  margin-top: 80px;
-  margin-bottom: 80px;
-  padding: 80px 20px;
-}
-
-/* Footer */
-footer {
-  margin-top: 60px;
-  padding: 60px 20px;
-  text-align: center;
-  color: #94a3b8;
-  border-top: 1px solid rgba(148,163,184,0.15);
-  background: rgba(15,23,42,0.85);
-  backdrop-filter: blur(6px);
-}
 /* Para pantallas medianas */
 @media (max-width: 1024px) {
   section {
@@ -519,57 +465,56 @@ section.visible {
 }
 
 /* =========================================================
-   📏 ESPACIADO GLOBAL ENTRE SECCIONES
+   📏 ESPACIADO GLOBAL ENTRE SECCIONES (INDEX PRINCIPAL)
    ========================================================= */
 
-/* Márgenes globales suaves y uniformes */
+/* Secciones generales con aire y acabado premium */
 section {
   padding-top: 100px;
   padding-bottom: 100px;
   margin-top: 120px;
   margin-bottom: 120px;
+  background: #ffffff;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.08); /* ✨ sombra elegante */
-  border-radius: 24px; /* esquinas suaves */
+  border-radius: 24px; /* bordes suaves y modernos */
+  transition: all 0.3s ease;
 }
 
-/* Espaciado extra entre secciones destacadas */
-.galeria-section {
-  margin-bottom: 160px; /* más aire antes de Marcas */
-}
-
-.marcas-section {
-  margin-top: 160px;
-  margin-bottom: 160px; /* separación más amplia con Por Qué Elegirnos */
-}
-
+/* Espaciado adicional entre secciones destacadas */
+.galeria-section,
+.servicios-destacados,
 .porque-elegirnos-section {
   margin-top: 160px;
-  margin-bottom: 160px; /* separa de Contacto */
+  margin-bottom: 160px;
 }
 
+/* Espaciado balanceado para Marcas y Contacto */
+.marcas-section,
 .contacto-section {
-  margin-top: 160px;
-  margin-bottom: 160px;
+  margin-top: 140px;
+  margin-bottom: 140px;
 }
 
 /* =========================================================
    🪄 AJUSTES DE COMPATIBILIDAD VISUAL
    ========================================================= */
 
-/* Evita que el footer quede demasiado cerca de la última sección */
+/* Separación suave antes del footer */
 footer {
   margin-top: 100px;
   padding-top: 60px;
   padding-bottom: 40px;
+  background: linear-gradient(180deg, #0d1b2a, #1b263b);
+  color: #fff;
 }
 
-/* Desplazamiento suave entre secciones */
+/* Desplazamiento suave al navegar por el menú */
 html {
   scroll-behavior: smooth;
 }
 
 /* =========================================================
-   📱 AJUSTES RESPONSIVOS - VERSIÓN OPTIMIZADA
+   📱 AJUSTES RESPONSIVOS - VERSIÓN MÓVIL
    ========================================================= */
 @media (max-width: 768px) {
   /* Espaciado general de secciones */
@@ -577,9 +522,10 @@ html {
     padding: 60px 15px;
     margin: 60px 0;
     border-radius: 16px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
   }
 
-  /* Secciones principales con más aire visual */
+  /* Secciones destacadas con aire extra */
   .galeria-section,
   .marcas-section,
   .porque-elegirnos-section,
@@ -602,7 +548,7 @@ html {
     padding: 50px 15px;
   }
 
-  /* Ajustes tipográficos */
+  /* Tipografía adaptada */
   .titulo-servicios {
     font-size: 2rem;
   }
@@ -612,11 +558,12 @@ html {
     margin-bottom: 50px;
   }
 
-  /* Galería / servicios */
+  /* Grilla de servicios */
   .services {
     gap: 30px;
   }
 }
+
 
 
 
@@ -2009,5 +1956,6 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
