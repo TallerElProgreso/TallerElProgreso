@@ -19,55 +19,62 @@ body {
 /* === ENCABEZADO === */
 h1 {
   text-align: center;
-  padding: 50px 15px;
+  padding: 60px 20px;
   color: #c084fc;
   font-size: 3em;
   letter-spacing: 1px;
-  text-shadow: 0 0 30px rgba(192,132,252,0.6);
-  animation: fadeInDown 1s ease;
-  border-bottom: 2px solid rgba(192,132,252,0.3);
+  text-shadow: 0 0 35px rgba(192,132,252,0.7);
+  border-bottom: 2px solid rgba(192,132,252,0.25);
+  background: rgba(15,23,42,0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 20px 20px;
+  animation: fadeInDown 1.2s ease;
 }
 
 /* === PESTAÑAS DE MODELOS === */
 .model-tabs {
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 14px;
   flex-wrap: wrap;
-  margin: 35px auto;
+  margin: 40px auto;
+  padding: 10px 20px;
+  max-width: 1200px;
 }
 
 .model-tab {
-  padding: 14px 30px;
+  padding: 14px 32px;
   cursor: pointer;
   background: rgba(30, 41, 59, 0.8);
   color: #e0f2fe;
-  border-radius: 20px 20px 0 0;
+  border-radius: 18px;
   font-weight: 600;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
   transition: all 0.35s ease;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(125,211,252,0.2);
 }
 
 .model-tab.active {
   background: linear-gradient(135deg, #38bdf8, #7dd3fc);
   color: #0f172a;
-  box-shadow: 0 6px 25px rgba(56,189,248,0.7);
+  box-shadow: 0 6px 25px rgba(56,189,248,0.6);
   transform: translateY(-3px);
+  border-color: transparent;
 }
 
 .model-tab:hover {
   background: linear-gradient(135deg, #7dd3fc, #38bdf8);
   color: #0f172a;
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 }
 
 /* === SUBTABS === */
 .sub-tabs {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 25px;
+  gap: 14px;
+  margin: 30px 0;
   flex-wrap: wrap;
 }
 
@@ -80,17 +87,18 @@ h1 {
   font-weight: bold;
   box-shadow: 0 4px 10px rgba(0,0,0,0.5);
   transition: all 0.3s ease;
+  border: 1px solid rgba(125,211,252,0.15);
 }
 
 .sub-tab.active {
   background: linear-gradient(135deg, #38bdf8, #7dd3fc);
   color: #0f172a;
   transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(125,211,252,0.7);
+  box-shadow: 0 0 20px rgba(125,211,252,0.6);
 }
 
 .sub-tab:hover {
-  transform: scale(1.08);
+  transform: scale(1.07);
 }
 
 /* === GALERÍA === */
@@ -98,8 +106,8 @@ h1 {
   display: none;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 25px;
-  padding: 40px 20px;
+  gap: 28px;
+  padding: 40px 25px;
   opacity: 0;
   transform: translateY(15px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -115,16 +123,17 @@ h1 {
   width: 280px;
   height: 190px;
   object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 0 25px rgba(56,189,248,0.4);
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(56,189,248,0.35);
   cursor: pointer;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(56,189,248,0.2);
 }
 
 .gallery img:hover {
-  transform: scale(1.15) rotate(-1deg);
+  transform: scale(1.1);
   filter: brightness(1.15) contrast(1.1);
-  box-shadow: 0 0 50px rgba(192,132,252,0.8);
+  box-shadow: 0 0 40px rgba(192,132,252,0.8);
 }
 
 /* === LIGHTBOX === */
@@ -134,7 +143,7 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(15,23,42,0.95);
+  background: rgba(15,23,42,0.97);
   display: none;
   justify-content: center;
   align-items: center;
@@ -145,32 +154,33 @@ h1 {
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
-  border-radius: 16px;
-  box-shadow: 0 0 50px rgba(125,211,252,0.9);
+  border-radius: 18px;
+  box-shadow: 0 0 45px rgba(125,211,252,0.9);
   animation: zoomIn 0.6s ease;
+  border: 2px solid rgba(56,189,248,0.3);
 }
 
 .lightbox.active {
   display: flex;
 }
 
-/* === CERRAR === */
+/* === BOTÓN CERRAR === */
 .close {
   position: absolute;
-  top: 20px;
-  right: 35px;
+  top: 25px;
+  right: 40px;
   color: #7dd3fc;
   font-size: 45px;
   text-decoration: none;
   font-weight: bold;
   text-shadow: 0 0 10px rgba(125,211,252,0.8);
   cursor: pointer;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .close:hover {
   color: #c084fc;
-  transform: scale(1.3) rotate(90deg);
+  transform: rotate(90deg) scale(1.3);
 }
 
 /* === BOTÓN VOLVER ARRIBA === */
@@ -180,7 +190,7 @@ h1 {
   right: 25px;
   background: linear-gradient(135deg, #38bdf8, #7dd3fc);
   color: #0f172a;
-  font-weight: bold;
+  font-weight: 600;
   padding: 14px 28px;
   border-radius: 50px;
   text-decoration: none;
@@ -197,12 +207,27 @@ h1 {
 }
 
 /* === ANIMACIONES === */
-@keyframes fadeInDown { from {opacity:0; transform: translateY(-30px);} to {opacity:1; transform: translateY(0);} }
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-@keyframes zoomIn { from {transform: scale(0.7); opacity:0;} to {transform: scale(1); opacity:1;} }
-@keyframes pulse { 0%,100% {box-shadow:0 0 20px rgba(56,189,248,0.7);} 50% {box-shadow:0 0 40px rgba(125,211,252,1);} }
+@keyframes fadeInDown {
+  from {opacity: 0; transform: translateY(-40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
 
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0.7); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+
+@keyframes pulse {
+  0%,100% {box-shadow: 0 0 20px rgba(56,189,248,0.7);}
+  50% {box-shadow: 0 0 40px rgba(125,211,252,1);}
+}
 </style>
+
 </head>
 <body id="inicio">
 <h1>Galería de Modelos - Taller El Progreso</h1>
