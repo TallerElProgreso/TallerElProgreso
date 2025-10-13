@@ -617,30 +617,23 @@ h1 {
 <a href="#inicio" class="volver-inicio">⬆ Volver al inicio</a>
 
 <script>
-/* ===== TABS PRINCIPALES - mantiene sub-tab seleccionada ===== */
+/* ===== TABS PRINCIPALES ===== */
 const modelTabs = document.querySelectorAll('.model-tab');
 const modelContents = document.querySelectorAll('.model-content');
 
 modelTabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    // activar la pestaña visual
-    modelTabs.forEach(t=>t.classList.remove('active'));
+    // activar la pestaña seleccionada visualmente
+    modelTabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
 
-    // mostrar solo el contenido objetivo
+    // ahora NO escondemos los otros modelos,
+    // solo hacemos scroll al modelo seleccionado
     const targetId = tab.dataset.target;
-    modelContents.forEach(mc=>{
-      if(mc.id === targetId){
-        mc.style.display = 'block';
-        mc.classList.add('active'); // optional
-        // scroll al bloque (ligero offset)
-        mc.scrollIntoView({behavior:'smooth', block:'start'});
-      } else {
-        mc.style.display = 'none';
-        mc.classList.remove('active');
-      }
-    });
-    // NOTA: no reseteamos sub-tabs ni galerías: esto preserva la selección previa.
+    const targetModel = document.getElementById(targetId);
+    if (targetModel) {
+      targetModel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
 
@@ -649,19 +642,20 @@ document.querySelectorAll('.model-content').forEach(model => {
   const subTabs = model.querySelectorAll('.sub-tab');
   const galleries = model.querySelectorAll('.gallery');
 
-  // Aseguramos que haya una galería activa por defecto
-  if(!model.querySelector('.gallery.active')){
-    if(galleries[0]) galleries[0].classList.add('active');
+  // mostrar la primera galería si no hay una activa
+  if (!model.querySelector('.gallery.active') && galleries[0]) {
+    galleries[0].classList.add('active');
+    galleries[0].style.display = 'flex';
   }
 
   subTabs.forEach(st => {
     st.addEventListener('click', () => {
-      subTabs.forEach(x=>x.classList.remove('active'));
+      subTabs.forEach(x => x.classList.remove('active'));
       st.classList.add('active');
 
       const targetG = st.dataset.target;
       galleries.forEach(g => {
-        if(g.id === targetG){
+        if (g.id === targetG) {
           g.classList.add('active');
           g.style.display = 'flex';
         } else {
@@ -671,66 +665,50 @@ document.querySelectorAll('.model-content').forEach(model => {
       });
     });
   });
-
-  // Inicializa la visualización según clases (por si el HTML ya trae "active")
-  galleries.forEach(g=>{
-    if(g.classList.contains('active')){
-      g.style.display = 'flex';
-    } else {
-      g.style.display = 'none';
-    }
-  });
 });
 
-/* ===== LIGHTBOX (imagen grande) con X para cerrar y ESC ===== */
+/* ===== LIGHTBOX (imagen grande) ===== */
 const lb = document.getElementById('lightbox');
 const lbImg = lb.querySelector('.lb-img');
 const lbClose = lb.querySelector('.lb-close');
 
-function openLightbox(src, alt){
+function openLightbox(src, alt) {
   lbImg.src = src;
   lbImg.alt = alt || '';
   lb.classList.add('active');
-  lb.setAttribute('aria-hidden','false');
+  lb.style.display = 'flex';
   document.body.style.overflow = 'hidden';
-  // foco en boton cerrar para accesibilidad
-  lbClose.focus();
 }
-function closeLightbox(){
+
+function closeLightbox() {
   lb.classList.remove('active');
+  lb.style.display = 'none';
   lbImg.src = '';
-  lb.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
 }
 
-// abrir al click en cualquier imagen de galería
-document.querySelectorAll('.gallery img').forEach(img=>{
-  img.addEventListener('click', (e)=>{
+// abrir imagen al hacer clic
+document.querySelectorAll('.gallery img').forEach(img => {
+  img.addEventListener('click', () => {
     openLightbox(img.src, img.alt);
   });
 });
 
-// cerrar al click en X o al click fuera de la imagen
+// cerrar con la X o clic fuera
 lbClose.addEventListener('click', closeLightbox);
-lb.addEventListener('click', (e)=>{
-  if(e.target === lb) closeLightbox(); // click en fondo oscuro
+lb.addEventListener('click', (e) => {
+  if (e.target === lb) closeLightbox();
 });
 
-// cerrar con ESC
-document.addEventListener('keydown', (e)=>{
-  if(e.key === 'Escape' && lb.classList.contains('active')) closeLightbox();
+// cerrar con tecla ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lb.classList.contains('active')) closeLightbox();
 });
 
-/* ===== Asegura que al cargar la página muestre el primer modelo correctamente ===== */
+/* ===== ESPACIO ENTRE MODELOS ===== */
 window.addEventListener('load', () => {
-  // mostrar primer model-content si ninguno visible
-  const anyVisible = Array.from(modelContents).some(mc => mc.style.display === 'block' || mc.classList.contains('active'));
-  if(!anyVisible && modelContents[0]){
-    modelContents.forEach(mc => mc.style.display = 'none');
-    modelContents[0].style.display = 'block';
-  }
+  modelContents.forEach(mc => {
+    mc.style.marginBottom = '100px'; // espacio entre modelos
+  });
 });
 </script>
-
-</body>
-</html>
