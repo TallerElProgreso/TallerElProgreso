@@ -734,24 +734,16 @@ footer {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* === CAMBIO ENTRE MODELOS === */
+  /* === DESPLAZAMIENTO SUAVE ENTRE MODELOS === */
   const modelTabs = document.querySelectorAll(".model-tab");
-  const modelContents = document.querySelectorAll(".model-content");
 
   modelTabs.forEach(tab => {
     tab.addEventListener("click", () => {
-      modelTabs.forEach(t => t.classList.remove("active"));
-      tab.classList.add("active");
-
-      const target = tab.dataset.target;
-      modelContents.forEach(content => {
-        content.classList.remove("active");
-        if (content.id === target) {
-          content.classList.add("active");
-          // Desplazamiento suave al modelo
-          content.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      });
+      const targetId = tab.dataset.target;
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
   });
 
@@ -796,7 +788,7 @@ document.addEventListener("DOMContentLoaded", () => {
     volverBtn.style.opacity = window.scrollY > 300 ? "1" : "0";
   });
 
-  /* === LIGHTBOX === */
+  /* === LIGHTBOX (AMPLIAR IMÁGENES) === */
   const lightbox = document.createElement('div');
   lightbox.classList.add('lightbox');
   lightbox.innerHTML = `
