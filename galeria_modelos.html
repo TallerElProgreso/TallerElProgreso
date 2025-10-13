@@ -674,7 +674,11 @@ modelTabs.forEach(tab => {
     const target = tab.dataset.target;
     modelContents.forEach(content => {
       content.classList.remove('active');
-      if (content.id === target) content.classList.add('active');
+      if (content.id === target) {
+        content.classList.add('active');
+        // 👇 Aquí agregamos el scroll suave
+        content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 });
