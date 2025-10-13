@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Galería de Modelos - Taller El Progreso</title>
 <style>
-/* ===== GENERAL ===== */
 body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%); 
@@ -29,7 +28,7 @@ h1 {
     border-bottom: 2px solid rgba(255,215,0,0.3);
 }
 
-/* ===== PESTAÑAS ===== */
+/* ===== PESTAÑAS DE MODELOS ===== */
 .model-tabs { 
     display:flex; 
     justify-content:center; 
@@ -64,12 +63,37 @@ h1 {
     transform: translateY(-5px);
 }
 
-/* ===== CONTENEDOR PRINCIPAL DE GALERÍAS ===== */
-.model-container {
-    max-width: 1200px;
-    margin: auto;
-    padding-bottom: 80px;
-    position: relative;
+/* ===== SUBTABS ===== */
+.sub-tabs { 
+    display:flex; 
+    justify-content:center; 
+    gap:16px; 
+    margin-bottom:25px; 
+    flex-wrap:wrap;
+}
+
+.sub-tab { 
+    padding:10px 26px; 
+    cursor:pointer; 
+    background:#222; 
+    color:#ffd700; 
+    border-radius:12px; 
+    font-weight:bold; 
+    box-shadow:0 4px 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease; 
+}
+
+.sub-tab.active { 
+    background:linear-gradient(135deg, #ffd700, #ffb300);
+    color:#0a0a0a; 
+    box-shadow:0 6px 18px rgba(255,215,0,0.6);
+    transform: scale(1.08);
+}
+
+.sub-tab:hover {
+    background:linear-gradient(135deg, #fff176, #ffd700);
+    color:#0a0a0a;
+    transform: scale(1.08);
 }
 
 /* ===== GALERÍAS ===== */
@@ -82,7 +106,6 @@ h1 {
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 0.6s ease, transform 0.6s ease;
-    /* Elimina el position absolute */
 }
 
 .gallery.active { 
@@ -174,22 +197,10 @@ h1 {
 }
 
 /* ===== ANIMACIONES ===== */
-@keyframes fadeIn {
-    from {opacity:0;}
-    to {opacity:1;}
-}
-@keyframes fadeInDown {
-    from {opacity:0; transform: translateY(-30px);}
-    to {opacity:1; transform: translateY(0);}
-}
-@keyframes zoomIn {
-    from {transform: scale(0.8); opacity:0;}
-    to {transform: scale(1); opacity:1;}
-}
-@keyframes pulse {
-    0%, 100% {box-shadow: 0 0 20px rgba(255,215,0,0.7);}
-    50% {box-shadow: 0 0 40px rgba(255,215,0,1);}
-}
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes fadeInDown { from {opacity:0; transform: translateY(-30px);} to {opacity:1; transform: translateY(0);} }
+@keyframes zoomIn { from {transform: scale(0.8); opacity:0;} to {transform: scale(1); opacity:1;} }
+@keyframes pulse { 0%, 100% {box-shadow: 0 0 20px rgba(255,215,0,0.7);} 50% {box-shadow: 0 0 40px rgba(255,215,0,1);} }
 </style>
 </head>
 <body id="inicio">
@@ -604,35 +615,30 @@ h1 {
     
 <!-- BOTÓN VOLVER AL INICIO -->
 <a href="#inicio" class="volver-inicio">⬆ Volver al inicio</a>
+
 <script>
-/* ===== CONTROL DE PESTAÑAS ===== */
-const modelTabs = document.querySelectorAll('.model-tab');
-const galleries = document.querySelectorAll('.gallery');
+document.querySelectorAll('.model-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.model-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
 
-modelTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        modelTabs.forEach(t => t.classList.remove('active'));
-        galleries.forEach(g => g.classList.remove('active'));
-        tab.classList.add('active');
-        const targetGallery = document.getElementById(tab.dataset.target);
-        targetGallery.classList.add('active');
-    });
+    document.querySelectorAll('.model-content').forEach(c => c.classList.remove('active'));
+    const target = document.getElementById(tab.dataset.target);
+    target.classList.add('active');
+
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
 
-/* ===== LIGHTBOX ===== */
-const images = document.querySelectorAll('.gallery img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = lightbox.querySelector('img');
+document.querySelectorAll('.sub-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const parent = tab.closest('.model-content');
+    parent.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
 
-images.forEach(img => {
-    img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-    });
-});
-
-lightbox.addEventListener('click', e => {
-    if (e.target !== lightboxImg) lightbox.style.display = 'none';
+    parent.querySelectorAll('.gallery').forEach(g => g.classList.remove('active'));
+    parent.querySelector('#' + tab.dataset.target).classList.add('active');
+  });
 });
 </script>
 
