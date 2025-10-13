@@ -26,7 +26,64 @@
   --font-primary: 'Arial', sans-serif;
 }  /* ← ✅ ESTA LLAVE FALTABA */
 
-/* === Espaciado Global entre secciones === */
+/* =========================================================
+   ✨ ESPACIADO ENTRE SECCIONES - ESTILO PREMIUM
+   ========================================================= */
+
+/* Espaciado general entre secciones */
+section {
+  padding: 80px 20px;   /* espacio interno */
+  margin: 80px 0;       /* separación vertical */
+  box-sizing: border-box;
+  scroll-margin-top: 100px; /* mejora navegación con anclas */
+}
+
+/* Header */
+header {
+  padding: 100px 20px 60px;
+  margin: 0;
+}
+
+/* Sección de servicios */
+.servicios-grid {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 80px 20px;
+}
+
+/* Sección "Por qué elegirnos" */
+.porque-elegirnos {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 80px 20px;
+}
+
+/* Sección de galería o proyectos */
+.galeria-modelos,
+.galeria-motos,
+.portafolio {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 80px 20px;
+}
+
+/* Sección de contacto */
+.contacto {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 80px 20px;
+}
+
+/* Footer */
+footer {
+  margin-top: 60px;
+  padding: 60px 20px;
+  text-align: center;
+  color: #94a3b8;
+  border-top: 1px solid rgba(148,163,184,0.15);
+  background: rgba(15,23,42,0.85);
+  backdrop-filter: blur(6px);
+}
 /* Para pantallas medianas */
 @media (max-width: 1024px) {
   section {
@@ -471,21 +528,23 @@ section {
   padding-bottom: 100px;
   margin-top: 120px;
   margin-bottom: 120px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.08); /* ✨ sombra elegante */
+  border-radius: 24px; /* esquinas suaves */
 }
 
 /* Espaciado extra entre secciones destacadas */
 .galeria-section {
-  margin-bottom: 160px;  /* más aire antes de Marcas */
+  margin-bottom: 160px; /* más aire antes de Marcas */
 }
 
 .marcas-section {
   margin-top: 160px;
-  margin-bottom: 160px;  /* separación más amplia con Por Qué Elegirnos */
+  margin-bottom: 160px; /* separación más amplia con Por Qué Elegirnos */
 }
 
 .porque-elegirnos-section {
   margin-top: 160px;
-  margin-bottom: 160px;  /* separa de Contacto */
+  margin-bottom: 160px; /* separa de Contacto */
 }
 
 .contacto-section {
@@ -504,29 +563,61 @@ footer {
   padding-bottom: 40px;
 }
 
+/* Desplazamiento suave entre secciones */
+html {
+  scroll-behavior: smooth;
+}
+
 /* =========================================================
-   📱 AJUSTES RESPONSIVOS
+   📱 AJUSTES RESPONSIVOS - VERSIÓN OPTIMIZADA
    ========================================================= */
 @media (max-width: 768px) {
+  /* Espaciado general de secciones */
   section {
+    padding: 60px 15px;
+    margin: 60px 0;
+    border-radius: 16px;
+  }
+
+  /* Secciones principales con más aire visual */
+  .galeria-section,
+  .marcas-section,
+  .porque-elegirnos-section,
+  .contacto-section,
+  .servicios-grid {
     padding-top: 70px;
     padding-bottom: 70px;
     margin-top: 80px;
     margin-bottom: 80px;
   }
 
-  .galeria-section,
-  .marcas-section,
-  .porque-elegirnos-section,
-  .contacto-section {
-    margin-top: 100px;
-    margin-bottom: 100px;
+  /* Header */
+  header {
+    padding: 80px 15px 40px;
   }
 
+  /* Footer */
   footer {
     margin-top: 60px;
+    padding: 50px 15px;
+  }
+
+  /* Ajustes tipográficos */
+  .titulo-servicios {
+    font-size: 2rem;
+  }
+
+  .intro-servicios {
+    font-size: 1rem;
+    margin-bottom: 50px;
+  }
+
+  /* Galería / servicios */
+  .services {
+    gap: 30px;
   }
 }
+
 
 
 /* =========================================================
@@ -1918,4 +2009,5 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
