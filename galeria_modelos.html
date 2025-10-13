@@ -106,6 +106,81 @@ h1 {
     gap:25px; 
     padding:0 20px 80px 20px; 
     opacity: 0;
+    transform: translateY(15px);<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería de Modelos - Taller El Progreso</title>
+<style>
+/* ===== CONFIGURACIÓN GENERAL ===== */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%); 
+    margin:0; 
+    padding:0; 
+    color:#f5f5f5;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* ===== ENCABEZADO PRINCIPAL ===== */
+h1 { 
+    text-align:center; 
+    padding:50px 15px; 
+    color:#ffd700; 
+    font-size:3em; 
+    letter-spacing: 1px;
+    text-shadow: 0 0 25px rgba(255,215,0,0.6), 3px 3px 12px rgba(0,0,0,0.8);
+    margin: 0;
+    animation: fadeInDown 1s ease;
+    border-bottom: 2px solid rgba(255,215,0,0.3);
+}
+
+/* ===== PESTAÑAS DE MODELOS ===== */
+.model-tabs { 
+    display:flex; 
+    justify-content:center; 
+    gap:18px; 
+    flex-wrap:wrap; 
+    margin:35px auto;
+    animation: fadeIn 1.2s ease;
+}
+
+.model-tab { 
+    padding:14px 30px; 
+    cursor:pointer; 
+    background: rgba(26,26,26,0.9); 
+    color:#ffd700; 
+    border-radius:20px 20px 0 0; 
+    font-weight:600; 
+    box-shadow:0 5px 15px rgba(0,0,0,0.7);
+    transition: all 0.35s ease; 
+    backdrop-filter: blur(4px);
+}
+
+.model-tab.active { 
+    background: linear-gradient(135deg, #ffd700, #ffb300);
+    color:#0a0a0a; 
+    border-bottom:3px solid #0a0a0a; 
+    box-shadow:0 6px 25px rgba(255,215,0,0.8);
+    transform: translateY(-3px);
+}
+
+.model-tab:hover {
+    background:linear-gradient(135deg, #fff176, #ffd700);
+    color:#0a0a0a;
+    transform: translateY(-5px);
+}
+
+/* ===== GALERÍAS ===== */
+.gallery { 
+    display:none; 
+    justify-content:center; 
+    flex-wrap:wrap; 
+    gap:25px; 
+    padding:0 20px 80px 20px; 
+    opacity: 0;
     transform: translateY(15px);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -632,7 +707,6 @@ h1 {
     
 <!-- BOTÓN VOLVER AL INICIO -->
 <a href="#inicio" class="volver-inicio">⬆ Volver al inicio</a>
-
 <script>
 /* ===== MOSTRAR MODELO SELECCIONADO Y DESPLAZAR ===== */
 const modelTabs = document.querySelectorAll('.model-tab');
@@ -649,8 +723,10 @@ modelTabs.forEach(tab => {
         const targetGallery = document.getElementById(tab.dataset.target);
         targetGallery.classList.add('active');
 
-        // Desplazamiento suave al área de la galería
-        targetGallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Esperar un momento antes de hacer scroll
+        setTimeout(() => {
+            targetGallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
     });
 });
 
