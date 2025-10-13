@@ -654,112 +654,62 @@ header h1 {
 </div>
 
 <script>
-/* ===== TABS PRINCIPALES ===== */
+// === CAMBIO ENTRE MODELOS ===
 const modelTabs = document.querySelectorAll('.model-tab');
 const modelContents = document.querySelectorAll('.model-content');
 
 modelTabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    // Quita la clase 'active' de todas las pestañas
+    // Activar pestaña seleccionada
     modelTabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
 
-    // Desplaza suavemente hasta el modelo correspondiente
-    const targetId = tab.dataset.target;
-    const targetModel = document.getElementById(targetId);
-    if (targetModel) {
-      targetModel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
-
-/* ===== SUB-TABS (Antes / Después) ===== */
-document.querySelectorAll('.model-content').forEach(model => {
-  const subTabs = model.querySelectorAll('.sub-tab');
-  const galleries = model.querySelectorAll('.gallery');
-
-  // Muestra la primera galería por defecto
-  if (!model.querySelector('.gallery.active') && galleries[0]) {
-    galleries[0].classList.add('active');
-    galleries[0].style.display = 'flex';
-  }
-
-  subTabs.forEach(st => {
-    st.addEventListener('click', () => {
-      subTabs.forEach(x => x.classList.remove('active'));
-      st.classList.add('active');
-
-      const targetG = st.dataset.target;
-      galleries.forEach(g => {
-        if (g.id === targetG) {
-          g.classList.add('active');
-          g.style.display = 'flex';
-        } else {
-          g.classList.remove('active');
-          g.style.display = 'none';
-        }
-      });
+    // Mostrar contenido correspondiente
+    const target = tab.dataset.target;
+    modelContents.forEach(content => {
+      content.classList.remove('active');
+      if (content.id === target) content.classList.add('active');
     });
   });
 });
 
-/* ===== LIGHTBOX ===== */
-const lb = document.getElementById('lightbox');
-const lbImg = lb.querySelector('.lb-img');
-const lbClose = lb.querySelector('.lb-close');
+// === CAMBIO ENTRE SUBTABS (Antes / Después) ===
+const subTabs = document.querySelectorAll('.sub-tab');
+subTabs.forEach(sub => {
+  sub.addEventListener('click', () => {
+    const parent = sub.closest('.model-content');
+    const subGroup = parent.querySelectorAll('.sub-tab');
+    const galleries = parent.querySelectorAll('.gallery');
 
-function openLightbox(src, alt) {
-  lbImg.src = src;
-  lbImg.alt = alt || '';
-  lb.classList.add('active');
-  lb.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
+    subGroup.forEach(s => s.classList.remove('active'));
+    sub.classList.add('active');
 
-function closeLightbox() {
-  lb.classList.remove('active');
-  lb.style.display = 'none';
-  lbImg.src = '';
-  document.body.style.overflow = '';
-}
-
-// Abrir al hacer clic en una imagen
-document.querySelectorAll('.gallery img').forEach(img => {
-  img.addEventListener('click', () => openLightbox(img.src, img.alt));
-});
-
-// Cerrar con la X o clic fuera
-lbClose.addEventListener('click', closeLightbox);
-lb.addEventListener('click', (e) => {
-  if (e.target === lb) closeLightbox();
-});
-
-// Cerrar con tecla ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && lb.classList.contains('active')) closeLightbox();
-});
-
-/* ===== ESPACIO ENTRE MODELOS ===== */
-window.addEventListener('load', () => {
-  modelContents.forEach(mc => {
-    mc.style.marginBottom = '100px'; // Espacio entre modelos
+    galleries.forEach(g => {
+      g.classList.remove('active');
+      if (g.id === sub.dataset.target) g.classList.add('active');
+    });
   });
 });
 
-/* ===== BOTÓN VOLVER ARRIBA ===== */
-const volver = document.querySelector('.volver-inicio');
+// === EFECTO FADE AL HACER SCROLL ===
+const fadeElements = document.querySelectorAll('.fade');
 window.addEventListener('scroll', () => {
-  volver.style.opacity = window.scrollY > 300 ? 1 : 0;
-});
-
-/* ===== EFECTO DE APARICIÓN (reveal scroll) ===== */
-const elements = document.querySelectorAll('.fade');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
+  fadeElements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) el.classList.add('visible');
   });
 });
-elements.forEach(el => observer.observe(el));
+
+// === BOTÓN VOLVER ARRIBA ===
+const scrollTopBtn = document.createElement('a');
+scrollTopBtn.textContent = "↑";
+scrollTopBtn.classList.add('volver-inicio');
+scrollTopBtn.href = "#";
+document.body.appendChild(scrollTopBtn);
+
+window.addEventListener('scroll', () => {
+  scrollTopBtn.style.opacity = window.scrollY > 400 ? '1' : '0';
+});
 </script>
 
 
