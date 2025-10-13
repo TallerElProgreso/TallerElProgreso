@@ -154,12 +154,37 @@ h2 {
     text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
     margin-bottom:15px;
 }
+/* === BOTÓN VOLVER AL INICIO === */
+.volver-inicio {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #ffcc00;
+  color: #111;
+  font-size: 24px;
+  padding: 12px 16px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 999;
+}
+
+.volver-inicio:hover {
+  transform: scale(1.1);
+  background: #e6b800;
+}
+
+  
 </style>
 </head>
 <body>
 
- <header>
-  <img src="imagenes/logo.png" alt="Logo Taller El Progreso">
+<header style="text-align:center; padding:20px 0;">
+  <img src="imagenes/logo.png" alt="Logo Taller El Progreso" style="width:160px; border-radius:8px;">
+</header>
+
 
 <!-- Pestañas de Modelos -->
 <div class="model-tabs">
