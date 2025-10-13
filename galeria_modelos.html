@@ -8,43 +8,47 @@
 /* ===== CONFIGURACIÓN GENERAL ===== */
 body { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    background: radial-gradient(circle at top, #1c1c1c 0%, #0a0a0a 100%); 
+    background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%); 
     margin:0; 
     padding:0; 
     color:#f5f5f5;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 /* ===== ENCABEZADO PRINCIPAL ===== */
 h1 { 
     text-align:center; 
-    padding:40px 15px; 
+    padding:50px 15px; 
     color:#ffd700; 
-    font-size:2.8em; 
+    font-size:3em; 
     letter-spacing: 1px;
-    text-shadow: 0 0 20px rgba(255,215,0,0.5), 3px 3px 8px rgba(0,0,0,0.8);
+    text-shadow: 0 0 25px rgba(255,215,0,0.6), 3px 3px 12px rgba(0,0,0,0.8);
     margin: 0;
     animation: fadeInDown 1s ease;
+    border-bottom: 2px solid rgba(255,215,0,0.3);
 }
 
 /* ===== PESTAÑAS DE MODELOS ===== */
 .model-tabs { 
     display:flex; 
     justify-content:center; 
-    gap:20px; 
+    gap:18px; 
     flex-wrap:wrap; 
-    margin:30px auto;
+    margin:35px auto;
+    animation: fadeIn 1.2s ease;
 }
 
 .model-tab { 
-    padding:14px 32px; 
+    padding:14px 30px; 
     cursor:pointer; 
-    background: #1a1a1a; 
+    background: rgba(26,26,26,0.9); 
     color:#ffd700; 
-    border-radius:18px 18px 0 0; 
-    font-weight:bold; 
-    box-shadow:0 6px 16px rgba(0,0,0,0.7);
-    transition: all 0.4s ease; 
+    border-radius:20px 20px 0 0; 
+    font-weight:600; 
+    box-shadow:0 5px 15px rgba(0,0,0,0.7);
+    transition: all 0.35s ease; 
+    backdrop-filter: blur(4px);
 }
 
 .model-tab.active { 
@@ -56,12 +60,12 @@ h1 {
 }
 
 .model-tab:hover {
-    background:linear-gradient(135deg, #ffea70, #ffd700);
+    background:linear-gradient(135deg, #fff176, #ffd700);
     color:#0a0a0a;
     transform: translateY(-5px);
 }
 
-/* ===== SUB-TABS (ANTES / DESPUÉS) ===== */
+/* ===== SUB-TABS ===== */
 .sub-tabs { 
     display:flex; 
     justify-content:center; 
@@ -89,7 +93,7 @@ h1 {
 }
 
 .sub-tab:hover {
-    background:linear-gradient(135deg, #ffea70, #ffd700);
+    background:linear-gradient(135deg, #fff176, #ffd700);
     color:#0a0a0a;
     transform: scale(1.08);
 }
@@ -100,7 +104,7 @@ h1 {
     justify-content:center; 
     flex-wrap:wrap; 
     gap:25px; 
-    padding:0 20px 70px 20px; 
+    padding:0 20px 80px 20px; 
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 0.6s ease, transform 0.6s ease;
@@ -123,7 +127,7 @@ h1 {
 }
 
 .gallery img:hover { 
-    transform: scale(1.15) rotate(-1deg); 
+    transform: scale(1.12) rotate(-1deg); 
     box-shadow:0 12px 40px rgba(255,223,0,0.85);
     filter: brightness(1.15) contrast(1.1);
 }
@@ -146,6 +150,7 @@ h1 {
     max-height:88%; 
     border-radius:16px; 
     box-shadow:0 0 30px rgba(255,223,0,0.85);
+    animation: zoomIn 0.5s ease;
 }
 
 .lightbox:target { 
@@ -184,11 +189,12 @@ h1 {
     box-shadow: 0 6px 16px rgba(255,215,0,0.5);
     transition: all 0.3s ease;
     z-index: 2000;
+    animation: pulse 2s infinite;
 }
 
 .volver-inicio:hover {
     transform: scale(1.08);
-    background: linear-gradient(135deg, #ffea70, #ffd700);
+    background: linear-gradient(135deg, #fff176, #ffd700);
     box-shadow: 0 10px 25px rgba(255,223,0,0.75);
 }
 
@@ -202,9 +208,19 @@ h1 {
     from {opacity:0; transform: translateY(-30px);}
     to {opacity:1; transform: translateY(0);}
 }
+
+@keyframes zoomIn {
+    from {transform: scale(0.8); opacity:0;}
+    to {transform: scale(1); opacity:1;}
+}
+
+@keyframes pulse {
+    0%, 100% {box-shadow: 0 0 20px rgba(255,215,0,0.7);}
+    50% {box-shadow: 0 0 40px rgba(255,215,0,1);}
+}
 </style>
 </head>
-<body>
+<body id="inicio">
 
 <h1>Galería de Modelos - Taller El Progreso</h1>
 
@@ -613,70 +629,29 @@ h1 {
 <div class="lightbox" id="m15d1"><a href="#" class="close">&times;</a><img src="imagenes/bolquetaverde_despues1.jpg"></div>
 <div class="lightbox" id="m15d2"><a href="#" class="close">&times;</a><img src="imagenes/bolquetaverde_despues2.jpg"></div>
 <div class="lightbox" id="m15d3"><a href="#" class="close">&times;</a><img src="imagenes/bolquetaverde_despues3.jpg"></div>
+    
+<!-- BOTÓN VOLVER AL INICIO -->
+<a href="#inicio" class="volver-inicio">⬆ Volver al inicio</a>
+
 <script>
-    </section>
-
-<!-- ====== Botón para volver al inicio ====== -->
-<a href="index.html" class="boton-inicio">⬅ Volver al inicio</a>
-
-<footer>
-    &copy; 2025 Taller El Progreso - Todos los derechos reservados
-</footer>
-
-// Cambio de modelos
-const tabs = document.querySelectorAll('.model-tab');
-const modelContents = document.querySelectorAll('.model-content');
-
-tabs.forEach(tab => {
+/* ===== INTERACCIÓN DE TABS ===== */
+document.querySelectorAll('.model-tab').forEach(tab => {
     tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.model-tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-
-        const target = tab.dataset.target;
-        modelContents.forEach(c => c.classList.remove('active'));
-        document.getElementById(target).classList.add('active');
-
-        // Resetea sub-tabs y galerías
-        const subTabs = document.querySelectorAll(`#${target} .sub-tab`);
-        const galleries = document.querySelectorAll(`#${target} .gallery`);
-        subTabs.forEach((st, index) => {
-            st.classList.remove('active');
-            if(index === 0) st.classList.add('active');
-        });
-        galleries.forEach((g, index) => {
-            g.classList.remove('active');
-            if(index === 0) g.classList.add('active');
-        });
+        document.querySelectorAll('.model-content').forEach(c => c.classList.remove('active'));
+        document.getElementById(tab.dataset.target).classList.add('active');
     });
 });
 
-// Cambio de sub-tabs
-const subTabs = document.querySelectorAll('.sub-tab');
-subTabs.forEach(sub => {
-    sub.addEventListener('click', () => {
-        const parent = sub.closest('.model-content');
-        parent.querySelectorAll('.sub-tab').forEach(s => s.classList.remove('active'));
-        sub.classList.add('active');
-
-        const target = sub.dataset.target;
+document.querySelectorAll('.sub-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        const parent = tab.closest('.model-content');
+        parent.querySelectorAll('.sub-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
         parent.querySelectorAll('.gallery').forEach(g => g.classList.remove('active'));
-        document.getElementById(target).classList.add('active');
+        parent.querySelector('#' + tab.dataset.target).classList.add('active');
     });
-});
-    /* ===== JS INTERACTIVO ===== */
-const images = document.querySelectorAll('.gallery img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = lightbox.querySelector('img');
-
-images.forEach(img => {
-    img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-    });
-});
-
-lightbox.addEventListener('click', e => {
-    if (e.target !== lightboxImg) lightbox.style.display = 'none';
 });
 </script>
 
