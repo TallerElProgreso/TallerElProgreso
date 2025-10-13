@@ -26,13 +26,11 @@ header {
   border-bottom: 2px solid rgba(192,132,252,0.25);
   animation: fadeInDown 1.3s ease;
 }
-
 header img {
   width: 110px;
   height: auto;
   animation: logoGlow 4s infinite ease-in-out;
 }
-
 header h1 {
   color: #c084fc;
   font-size: 3em;
@@ -53,7 +51,6 @@ header h1 {
   max-width: 1200px;
   animation: fadeInUp 1.5s ease;
 }
-
 .model-tab {
   padding: 14px 32px;
   cursor: pointer;
@@ -66,14 +63,12 @@ header h1 {
   backdrop-filter: blur(6px);
   border: 1px solid rgba(125,211,252,0.2);
 }
-
 .model-tab.active {
   background: linear-gradient(135deg, #38bdf8, #7dd3fc);
   color: #0f172a;
   box-shadow: 0 6px 25px rgba(56,189,248,0.6);
   transform: translateY(-3px);
 }
-
 .model-tab:hover {
   background: linear-gradient(135deg, #7dd3fc, #38bdf8);
   color: #0f172a;
@@ -89,7 +84,6 @@ header h1 {
   flex-wrap: wrap;
   animation: fadeInUp 2s ease;
 }
-
 .sub-tab {
   padding: 10px 26px;
   cursor: pointer;
@@ -101,14 +95,12 @@ header h1 {
   transition: all 0.3s ease;
   border: 1px solid rgba(125,211,252,0.15);
 }
-
 .sub-tab.active {
   background: linear-gradient(135deg, #38bdf8, #7dd3fc);
   color: #0f172a;
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(125,211,252,0.6);
 }
-
 .sub-tab:hover {
   transform: scale(1.07);
 }
@@ -124,13 +116,11 @@ header h1 {
   transform: translateY(15px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
 .gallery.active {
   display: flex;
   opacity: 1;
   transform: translateY(0);
 }
-
 .gallery img {
   width: 280px;
   height: 190px;
@@ -142,7 +132,6 @@ header h1 {
   border: 1px solid rgba(56,189,248,0.2);
   animation: fadeInZoom 1.2s ease;
 }
-
 .gallery img:hover {
   transform: scale(1.1);
   filter: brightness(1.15) contrast(1.1);
@@ -163,7 +152,6 @@ header h1 {
   z-index: 1000;
   animation: fadeIn 0.4s ease;
 }
-
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
@@ -172,10 +160,7 @@ header h1 {
   animation: zoomIn 0.6s ease;
   border: 2px solid rgba(56,189,248,0.3);
 }
-
-.lightbox.active {
-  display: flex;
-}
+.lightbox.active { display: flex; }
 
 /* === BOTÓN CERRAR === */
 .close {
@@ -190,7 +175,6 @@ header h1 {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .close:hover {
   color: #c084fc;
   transform: rotate(90deg) scale(1.3);
@@ -212,7 +196,6 @@ header h1 {
   z-index: 2000;
   animation: pulse 2s infinite;
 }
-
 .volver-inicio:hover {
   transform: scale(1.1);
   background: linear-gradient(135deg, #7dd3fc, #38bdf8);
@@ -220,45 +203,14 @@ header h1 {
 }
 
 /* === ANIMACIONES === */
-@keyframes fadeInDown {
-  from {opacity: 0; transform: translateY(-40px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes fadeInUp {
-  from {opacity: 0; transform: translateY(40px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes fadeInZoom {
-  from {opacity: 0; transform: scale(0.8);}
-  to {opacity: 1; transform: scale(1);}
-}
-
-@keyframes fadeText {
-  from {opacity: 0; transform: translateY(30px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes logoGlow {
-  0%,100% {filter: drop-shadow(0 0 10px rgba(125,211,252,0.6));}
-  50% {filter: drop-shadow(0 0 25px rgba(192,132,252,0.9));}
-}
-
-@keyframes zoomIn {
-  from {transform: scale(0.7); opacity: 0;}
-  to {transform: scale(1); opacity: 1;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-@keyframes pulse {
-  0%,100% {box-shadow: 0 0 20px rgba(56,189,248,0.7);}
-  50% {box-shadow: 0 0 40px rgba(125,211,252,1);}
-}
+@keyframes fadeInDown { from {opacity: 0; transform: translateY(-40px);} to {opacity: 1; transform: translateY(0);} }
+@keyframes fadeInUp { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
+@keyframes fadeInZoom { from {opacity: 0; transform: scale(0.8);} to {opacity: 1; transform: scale(1);} }
+@keyframes fadeText { from {opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
+@keyframes logoGlow { 0%,100% {filter: drop-shadow(0 0 10px rgba(125,211,252,0.6));} 50% {filter: drop-shadow(0 0 25px rgba(192,132,252,0.9));} }
+@keyframes zoomIn { from {transform: scale(0.7); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes pulse { 0%,100% {box-shadow: 0 0 20px rgba(56,189,248,0.7);} 50% {box-shadow: 0 0 40px rgba(125,211,252,1);} }
 </style>
 
 </head>
