@@ -17,19 +17,20 @@ body {
   scroll-behavior: smooth;
 }
 
-/* === ENCABEZADO CON LOGO Y ANIMACIÓN === */
+/* === ENCABEZADO CON FONDO ANIMADO === */
 header {
   text-align: center;
   padding: 70px 20px 50px;
-  background: rgba(15,23,42,0.6);
+  background: linear-gradient(120deg, #0f172a, #1e293b, #0f172a);
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
   backdrop-filter: blur(10px);
   border-bottom: 2px solid rgba(192,132,252,0.25);
-  animation: fadeInDown 1.3s ease;
 }
 header img {
   width: 110px;
   height: auto;
-  animation: logoGlow 4s infinite ease-in-out;
+  animation: intro 1.5s ease, logoGlow 4s infinite ease-in-out;
 }
 header h1 {
   color: #c084fc;
@@ -37,7 +38,7 @@ header h1 {
   margin-top: 10px;
   letter-spacing: 2px;
   text-shadow: 0 0 30px rgba(192,132,252,0.8);
-  animation: fadeText 2s ease;
+  animation: intro 2s ease;
 }
 
 /* === PESTAÑAS DE MODELOS === */
@@ -73,6 +74,7 @@ header h1 {
   background: linear-gradient(135deg, #7dd3fc, #38bdf8);
   color: #0f172a;
   transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(125,211,252,0.6);
 }
 
 /* === SUBTABS === */
@@ -103,6 +105,7 @@ header h1 {
 }
 .sub-tab:hover {
   transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(125,211,252,0.4);
 }
 
 /* === GALERÍA === */
@@ -194,25 +197,40 @@ header h1 {
   box-shadow: 0 0 25px rgba(56,189,248,0.7);
   transition: all 0.3s ease;
   z-index: 2000;
-  animation: pulse 2s infinite;
+  opacity: 0;
 }
 .volver-inicio:hover {
   transform: scale(1.1);
-  background: linear-gradient(135deg, #7dd3fc, #38bdf8);
   box-shadow: 0 0 40px rgba(125,211,252,1);
 }
 
+/* === EFECTO FADE AL HACER SCROLL === */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* === ANIMACIONES === */
-@keyframes fadeInDown { from {opacity: 0; transform: translateY(-40px);} to {opacity: 1; transform: translateY(0);} }
+@keyframes intro { from {opacity: 0; transform: scale(0.9);} to {opacity: 1; transform: scale(1);} }
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 @keyframes fadeInUp { from {opacity: 0; transform: translateY(40px);} to {opacity: 1; transform: translateY(0);} }
 @keyframes fadeInZoom { from {opacity: 0; transform: scale(0.8);} to {opacity: 1; transform: scale(1);} }
-@keyframes fadeText { from {opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
-@keyframes logoGlow { 0%,100% {filter: drop-shadow(0 0 10px rgba(125,211,252,0.6));} 50% {filter: drop-shadow(0 0 25px rgba(192,132,252,0.9));} }
-@keyframes zoomIn { from {transform: scale(0.7); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+@keyframes logoGlow {
+  0%,100% {filter: drop-shadow(0 0 10px rgba(125,211,252,0.6));}
+  50% {filter: drop-shadow(0 0 25px rgba(192,132,252,0.9));}
+}
+@keyframes zoomIn { from {transform: scale(0.7); opacity: 0;} to {transform: scale(1); opacity: 1);} }
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-@keyframes pulse { 0%,100% {box-shadow: 0 0 20px rgba(56,189,248,0.7);} 50% {box-shadow: 0 0 40px rgba(125,211,252,1);} }
 </style>
-
 </head>
 <body id="inicio">
 <h1>Galería de Modelos - Taller El Progreso</h1>
@@ -639,12 +657,9 @@ const modelContents = document.querySelectorAll('.model-content');
 
 modelTabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    // activar la pestaña seleccionada visualmente
     modelTabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
 
-    // ahora NO escondemos los otros modelos,
-    // solo hacemos scroll al modelo seleccionado
     const targetId = tab.dataset.target;
     const targetModel = document.getElementById(targetId);
     if (targetModel) {
@@ -653,12 +668,11 @@ modelTabs.forEach(tab => {
   });
 });
 
-/* ===== SUB-TABS (Antes / Después) dentro de cada modelo ===== */
+/* ===== SUB-TABS (Antes / Después) ===== */
 document.querySelectorAll('.model-content').forEach(model => {
   const subTabs = model.querySelectorAll('.sub-tab');
   const galleries = model.querySelectorAll('.gallery');
 
-  // mostrar la primera galería si no hay una activa
   if (!model.querySelector('.gallery.active') && galleries[0]) {
     galleries[0].classList.add('active');
     galleries[0].style.display = 'flex';
@@ -683,7 +697,7 @@ document.querySelectorAll('.model-content').forEach(model => {
   });
 });
 
-/* ===== LIGHTBOX (imagen grande) ===== */
+/* ===== LIGHTBOX ===== */
 const lb = document.getElementById('lightbox');
 const lbImg = lb.querySelector('.lb-img');
 const lbClose = lb.querySelector('.lb-close');
@@ -695,36 +709,39 @@ function openLightbox(src, alt) {
   lb.style.display = 'flex';
   document.body.style.overflow = 'hidden';
 }
-
 function closeLightbox() {
   lb.classList.remove('active');
   lb.style.display = 'none';
   lbImg.src = '';
   document.body.style.overflow = '';
 }
-
-// abrir imagen al hacer clic
 document.querySelectorAll('.gallery img').forEach(img => {
-  img.addEventListener('click', () => {
-    openLightbox(img.src, img.alt);
-  });
+  img.addEventListener('click', () => openLightbox(img.src, img.alt));
 });
-
-// cerrar con la X o clic fuera
 lbClose.addEventListener('click', closeLightbox);
-lb.addEventListener('click', (e) => {
-  if (e.target === lb) closeLightbox();
-});
-
-// cerrar con tecla ESC
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && lb.classList.contains('active')) closeLightbox();
-});
+lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lb.classList.contains('active')) closeLightbox(); });
 
 /* ===== ESPACIO ENTRE MODELOS ===== */
 window.addEventListener('load', () => {
-  modelContents.forEach(mc => {
-    mc.style.marginBottom = '100px'; // espacio entre modelos
+  modelContents.forEach(mc => { mc.style.marginBottom = '100px'; });
+});
+
+/* ===== BOTÓN VOLVER ARRIBA ===== */
+const volver = document.querySelector('.volver-inicio');
+window.addEventListener('scroll', () => {
+  volver.style.opacity = window.scrollY > 300 ? 1 : 0;
+});
+
+/* ===== EFECTO DE APARICIÓN (reveal scroll) ===== */
+const elements = document.querySelectorAll('.fade');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 });
+elements.forEach(el => observer.observe(el));
 </script>
+
+</body>
+</html>
