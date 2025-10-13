@@ -679,14 +679,16 @@ h2:hover::after {
 .service-card img {
   width: 70px;
   height: 70px;
-  filter: drop-shadow(0 0 10px rgba(255,215,0,0.6));
+  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255,215,0,0.6));
   margin-bottom: 20px;
   transition: transform 0.4s ease, filter 0.4s ease;
 }
+
 .service-card:hover img {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 15px rgba(255,215,0,0.9));
+  filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(255,215,0,0.9));
 }
+
 
 /* Títulos */
 .service-card h3 {
@@ -1916,30 +1918,4 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
