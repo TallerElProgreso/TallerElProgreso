@@ -673,8 +673,9 @@ header h1 {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-// === CAMBIO ENTRE MODELOS ===
-const modelTabs = document.querySelectorAll(".model-tab");
+
+  /* === CAMBIO ENTRE MODELOS === */
+  const modelTabs = document.querySelectorAll(".model-tab");
   const modelContents = document.querySelectorAll(".model-content");
 
   modelTabs.forEach(tab => {
@@ -682,28 +683,19 @@ const modelTabs = document.querySelectorAll(".model-tab");
       modelTabs.forEach(t => t.classList.remove("active"));
       tab.classList.add("active");
 
-      const target = tab.getAttribute("data-target");
+      const target = tab.dataset.target;
       modelContents.forEach(content => {
         content.classList.remove("active");
-        if (content.id === target) content.classList.add("active");
+        if (content.id === target) {
+          content.classList.add("active");
+          // Desplazamiento suave al modelo
+          content.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       });
     });
   });
 
-    // Mostrar contenido correspondiente
-    const target = tab.dataset.target;
-    modelContents.forEach(content => {
-      content.classList.remove('active');
-      if (content.id === target) {
-        content.classList.add('active');
-        // 👇 Aquí agregamos el scroll suave
-        content.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-});
-
- // --- Cambiar subtabs (Antes / Después) ---
+  /* === CAMBIO ENTRE SUBTABS (Antes / Después) === */
   const subTabGroups = document.querySelectorAll(".sub-tabs");
   subTabGroups.forEach(group => {
     const subTabs = group.querySelectorAll(".sub-tab");
@@ -712,7 +704,7 @@ const modelTabs = document.querySelectorAll(".model-tab");
         subTabs.forEach(t => t.classList.remove("active"));
         tab.classList.add("active");
 
-        const target = tab.getAttribute("data-target");
+        const target = tab.dataset.target;
         const galleries = group.parentElement.querySelectorAll(".gallery");
         galleries.forEach(g => {
           g.classList.remove("active");
@@ -722,58 +714,61 @@ const modelTabs = document.querySelectorAll(".model-tab");
     });
   });
 
-// === EFECTO FADE AL HACER SCROLL ===
-const fadeElements = document.querySelectorAll('.fade');
-window.addEventListener('scroll', () => {
-  fadeElements.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) el.classList.add('visible');
-  });
-});
+  /* === EFECTO FADE AL HACER SCROLL === */
+  const fadeElements = document.querySelectorAll('.fade');
+  const reveal = () => {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) el.classList.add('visible');
+    });
+  };
+  window.addEventListener('scroll', reveal);
+  reveal(); // Ejecutar al cargar
 
- // --- Botón volver arriba ---
+  /* === BOTÓN VOLVER ARRIBA === */
   const volverBtn = document.createElement("a");
   volverBtn.href = "#";
   volverBtn.className = "volver-inicio";
-  volverBtn.textContent = "↑ Inicio";
+  volverBtn.textContent = "↑";
   document.body.appendChild(volverBtn);
 
   window.addEventListener("scroll", () => {
     volverBtn.style.opacity = window.scrollY > 300 ? "1" : "0";
   });
-});
-  // === LIGHTBOX ===
-const lightbox = document.createElement('div');
-lightbox.classList.add('lightbox');
-lightbox.innerHTML = `
-  <span class="close">&times;</span>
-  <img class="lightbox-img" src="" alt="">
-`;
-document.body.appendChild(lightbox);
 
-const lbImg = lightbox.querySelector('.lightbox-img');
-const lbClose = lightbox.querySelector('.close');
+  /* === LIGHTBOX === */
+  const lightbox = document.createElement('div');
+  lightbox.classList.add('lightbox');
+  lightbox.innerHTML = `
+    <span class="close">&times;</span>
+    <img class="lightbox-img" src="" alt="">
+  `;
+  document.body.appendChild(lightbox);
 
-document.querySelectorAll('.gallery img').forEach(img => {
-  img.addEventListener('click', () => {
-    lbImg.src = img.src;
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  const lbImg = lightbox.querySelector('.lightbox-img');
+  const lbClose = lightbox.querySelector('.close');
+
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
   });
-});
 
-lbClose.addEventListener('click', () => {
-  lightbox.classList.remove('active');
-  document.body.style.overflow = '';
-});
-
-lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) {
+  lbClose.addEventListener('click', () => {
     lightbox.classList.remove('active');
     document.body.style.overflow = '';
-  }
-});
+  });
 
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+});
 </script>
 </body>
 </html>
