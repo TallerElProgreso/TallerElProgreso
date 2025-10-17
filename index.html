@@ -2119,10 +2119,17 @@ function closeLightbox(){
 const canvas=document.getElementById('particles');
 if(canvas){
   const ctx=canvas.getContext('2d');
-  canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+  canvas.width=window.innerWidth; 
+  canvas.height=window.innerHeight;
   let particles=[];
   for(let i=0;i<60;i++){
-    particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5+0.5, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3});
+    particles.push({
+      x:Math.random()*canvas.width, 
+      y:Math.random()*canvas.height, 
+      r:Math.random()*1.5+0.5, 
+      dx:(Math.random()-0.5)*0.3, 
+      dy:(Math.random()-0.5)*0.3
+    });
   }
   function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -2144,22 +2151,16 @@ if(canvas){
   });
 }
 
-// === 4. Efecto de flotación sutil (logos de marcas) ===
-document.querySelectorAll('.logo-item img').forEach((img) => {
-  img.style.animation = `floatAnim ${3 + Math.random() * 2}s ease-in-out infinite`;
-  img.style.animationDelay = `${Math.random() * 2}s`;
-});
-
-// === 5. Efecto Parallax en la sección de marcas ===
+// === 4. Parallax suave (solo sección de marcas) ===
 window.addEventListener('scroll', () => {
   const marcasSection = document.querySelector('.marcas-section');
   if (marcasSection) {
-    const offset = window.scrollY * 0.3;
+    const offset = window.scrollY * 0.15;
     marcasSection.style.backgroundPosition = `center ${offset}px`;
   }
 });
 
-// === 6. Scroll suave al hacer clic en anclas ===
+// === 5. Scroll suave en anclas ===
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
     const targetId = anchor.getAttribute('href');
@@ -2173,7 +2174,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// === 7. Keyframes CSS dinámicos ===
+// === 6. Keyframes dinámicos adicionales ===
 const style = document.createElement('style');
 style.textContent = `
 @keyframes floatAnim {
@@ -2188,6 +2189,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
