@@ -879,78 +879,109 @@ h2:hover::after {
 }
 
 /* =========================================================
-   🧾 MÉTODOS DE PAGO - ESTILOS
+   🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO
    ========================================================= */
+
 .metodos-pago-section {
   text-align: center;
-  padding: 100px 20px;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 85%);
+  background: #ffffff;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
   border-radius: 20px;
-  box-shadow: 0 0 50px rgba(0,0,0,0.6);
-  margin-bottom: 100px;
-  position: relative;
-  overflow: hidden;
+  padding: 70px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  transition: all 0.3s ease;
+}
+
+.metodos-pago-section .titulo-dorado {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: #d4af37; /* Dorado */
+}
+
+.metodos-pago-section .intro-texto {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 50px;
+  line-height: 1.7;
 }
 
 .pagos-contenedor {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
-  margin: 50px auto;
-  max-width: 900px;
+  align-items: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .pago-item {
-  background: rgba(255,215,0,0.05);
-  border: 1px solid rgba(255,215,0,0.15);
-  border-radius: 16px;
-  padding: 20px 25px;
-  width: 180px;
-  text-align: center;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 25px 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 160px;
 }
 
 .pago-item:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 15px 40px rgba(255,215,0,0.3);
-  border-color: rgba(255,215,0,0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .pago-item img {
   width: 80px;
-  height: 80px;
+  height: auto;
+  margin-bottom: 15px;
   object-fit: contain;
-  margin-bottom: 10px;
-  transition: transform 0.3s ease;
-}
-
-.pago-item:hover img {
-  transform: scale(1.1);
 }
 
 .pago-item span {
-  display: block;
-  font-size: 1.05rem;
-  color: #ddd;
-  font-weight: 500;
-  margin-top: 8px;
+  font-weight: 600;
+  color: #222;
+  font-size: 1rem;
 }
 
+.metodos-pago-section .texto-secundario {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 30px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   📱 RESPONSIVO - ADAPTADO A MÓVILES
+   ========================================================= */
 @media (max-width: 768px) {
+  .metodos-pago-section {
+    padding: 60px 20px;
+  }
+
   .pagos-contenedor {
     gap: 25px;
   }
+
   .pago-item {
-    width: 140px;
-    padding: 15px;
+    width: 130px;
+    padding: 20px;
   }
+
   .pago-item img {
     width: 60px;
-    height: 60px;
+  }
+
+  .metodos-pago-section .titulo-dorado {
+    font-size: 1.8rem;
+  }
+
+  .metodos-pago-section .intro-texto {
+    font-size: 1rem;
   }
 }
+
 
 
 /* === GALERÍAS MODERNAS === */
@@ -2396,37 +2427,38 @@ function enviarWhatsApp(e) {
 <section class="metodos-pago-section" id="pagos">
   <h2 class="titulo-dorado">🧾 Paga Fácil y Seguro</h2>
   <p class="intro-texto">
-    En <strong>Taller El Progreso</strong> aceptamos múltiples formas de pago para tu comodidad.
-    Queremos que tu experiencia sea rápida, segura y sin complicaciones.
+    En <strong>Taller Automotriz El Progreso</strong> aceptamos múltiples formas de pago 
+    para tu comodidad. Queremos que tu experiencia sea rápida, segura y sin complicaciones.
   </p>
 
   <div class="pagos-contenedor">
     <div class="pago-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Efectivo_icono.png" alt="Pago en efectivo">
+      <img src="imagenes/efectivo.png" alt="Pago en efectivo">
       <span>Efectivo</span>
     </div>
 
     <div class="pago-item">
-      <img src="https://seeklogo.com/images/N/nequi-logo-417ABF173A-seeklogo.com.png" alt="Nequi">
+      <img src="imagenes/nequi.png" alt="Nequi">
       <span>Nequi</span>
     </div>
 
     <div class="pago-item">
-      <img src="https://seeklogo.com/images/B/bancolombia-logo-5E9B3C0A3C-seeklogo.com.png" alt="Bancolombia">
+      <img src="imagenes/bancolombia.png" alt="Bancolombia">
       <span>Bancolombia</span>
     </div>
 
     <div class="pago-item">
-      <img src="https://seeklogo.com/images/B/banco-union-logo-2A816C1F22-seeklogo.com.png" alt="Banco Unión">
+      <img src="imagenes/banco-union.png" alt="Banco Unión">
       <span>Banco Unión</span>
     </div>
   </div>
 
   <p class="texto-secundario">
-    💳 También puedes consultar otros medios disponibles al momento de tu servicio.  
+    💳 También puedes consultar otros medios disponibles al momento de tu servicio.<br>
     Tu confianza y seguridad son nuestra prioridad.
   </p>
 </section>
+
 
   
 <footer class="footer-progreso">
@@ -2571,6 +2603,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
