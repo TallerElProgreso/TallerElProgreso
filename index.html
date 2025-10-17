@@ -1443,103 +1443,145 @@ h2:hover::after {
 }
 
 /* =========================================================
-   🚘 SECCIÓN DE MARCAS - ESTILO PREMIUM
+   🚘 SECCIÓN DE MARCAS - ESTILO ULTRA PREMIUM
    ========================================================= */
 
 .marcas-section {
   text-align: center;
-  padding: 100px 20px;
-  background: radial-gradient(circle at top, rgba(255,215,0,0.05), rgba(10,10,20,0.95) 85%);
-  border-radius: 28px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.4);
+  padding: 120px 30px;
+  background: radial-gradient(circle at top, rgba(255,215,0,0.08), rgba(10,10,20,0.97) 90%);
+  border-radius: 32px;
+  box-shadow: 0 0 50px rgba(255,215,0,0.15);
   overflow: hidden;
   position: relative;
+  isolation: isolate;
 }
 
-/* ✨ Encabezado */
+/* ✨ Fondo animado con brillo dorado en movimiento */
+.marcas-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,215,0,0.15), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(255,215,0,0.1), transparent 70%);
+  animation: fondoBrillo 8s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes fondoBrillo {
+  0% { transform: scale(1) translateY(0); opacity: 0.8; }
+  100% { transform: scale(1.1) translateY(-10px); opacity: 1; }
+}
+
+/* Encabezado */
 .marcas-header h2 {
-  font-size: 2.8rem;
-  font-weight: 800;
+  font-size: 3rem;
+  font-weight: 900;
   color: var(--gold, #FFD700);
-  text-shadow: 0 0 18px rgba(255,215,0,0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 25px rgba(255,215,0,0.6);
   margin-bottom: 20px;
-  letter-spacing: 1px;
+  animation: fadeInDown 1s ease both;
 }
 
 .marcas-header p {
-  color: #ccc;
-  max-width: 750px;
-  margin: 0 auto 60px;
-  font-size: 1.1rem;
-  opacity: 0.9;
-  line-height: 1.7;
+  color: #d1d5db;
+  max-width: 800px;
+  margin: 0 auto 70px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  animation: fadeInUp 1.2s ease both;
 }
 
-/* Línea decorativa animada */
+/* Línea decorativa */
 .divider {
-  width: 120px;
-  height: 3px;
-  margin: 0 auto 25px;
+  width: 160px;
+  height: 4px;
+  margin: 20px auto 35px;
   background: linear-gradient(90deg, transparent, var(--gold, #FFD700), transparent);
-  border-radius: 3px;
-  animation: brilloLinea 3s linear infinite;
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.6);
+  animation: brilloLinea 2.5s linear infinite;
 }
 
 @keyframes brilloLinea {
-  0% { filter: brightness(0.6); }
-  50% { filter: brightness(1.4); }
-  100% { filter: brightness(0.6); }
+  0%, 100% { filter: brightness(0.7); }
+  50% { filter: brightness(1.8); }
 }
 
 /* 🏁 Grid de logos */
 .logos-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 40px;
+  gap: 60px;
   justify-items: center;
   align-items: center;
+  animation: fadeIn 1.5s ease both;
 }
 
 /* 🔧 Logo individual */
 .logo-item img {
-  width: 100px;
-  height: auto;
+  width: 110px;
   opacity: 0.8;
   filter: grayscale(100%) brightness(1.3);
   transition: all 0.5s ease;
+  animation: flotar 4s ease-in-out infinite;
 }
 
+.logo-item:nth-child(odd) img {
+  animation-delay: 0.5s;
+}
+
+/* Hover con efecto de brillo dorado */
 .logo-item:hover img {
-  transform: scale(1.2);
-  filter: grayscale(0%) brightness(1.6) drop-shadow(0 0 15px rgba(255,215,0,0.5));
+  transform: scale(1.25) rotate(3deg);
+  filter: grayscale(0%) brightness(1.8) drop-shadow(0 0 25px rgba(255,215,0,0.6));
   opacity: 1;
 }
 
-/* ✨ Animaciones al aparecer */
-[data-animate] {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+/* ✨ Animaciones al entrar */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-[data-animate].visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efecto flotante suave */
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 🌐 Responsivo */
 @media (max-width: 768px) {
+  .marcas-section {
+    padding: 80px 20px;
+  }
+
   .marcas-header h2 {
     font-size: 2.2rem;
   }
+
   .marcas-header p {
     font-size: 1rem;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
   }
+
   .logo-item img {
     width: 80px;
   }
 }
+
 
 
   
@@ -2035,70 +2077,110 @@ function enviarWhatsApp(e) {
 </div>
 
 <script>
-// Intersection Observer
+/* =========================================================
+   ⚙️ ANIMACIONES Y EFECTOS PREMIUM - Taller El Progreso
+   ========================================================= */
+
+// === 1. Intersection Observer (para secciones y animaciones suaves) ===
 (function(){
-  const secs=document.querySelectorAll('section');
-  const io=new IntersectionObserver((entries)=>{
+  const observer = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
         e.target.classList.add('visible');
-        e.target.querySelectorAll('.fade-in-up').forEach(el=>el.classList.add('visible'));
+        e.target.querySelectorAll('.fade-in-up,[data-animate]').forEach(el=>el.classList.add('visible'));
       }
     });
   },{threshold:0.15});
-  secs.forEach(s=>io.observe(s));
+
+  document.querySelectorAll('section,[data-animate]').forEach(sec => observer.observe(sec));
 })();
 
-// Lightbox
+// === 2. Lightbox (para galerías) ===
 function openLightbox(src,alt){
   const lb=document.getElementById('lightbox');
+  if(!lb) return;
   lb.querySelector('img').src=src;
   lb.querySelector('img').alt=alt;
   lb.classList.add('open');
 }
 function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('open');
+  const lb=document.getElementById('lightbox');
+  if(lb) lb.classList.remove('open');
 }
 
-// Partículas doradas suaves
-const canvas=document.getElementById('particles'), ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-let particles=[];
-for(let i=0;i<60;i++){
-  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5+0.5, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3});
-}
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle='rgba(212,175,55,0.6)';
-    ctx.fill();
-    p.x+=p.dx; p.y+=p.dy;
-    if(p.x<0||p.x>canvas.width) p.dx*=-1;
-    if(p.y<0||p.y>canvas.height) p.dy*=-1;
+// === 3. Fondo de partículas doradas ===
+const canvas=document.getElementById('particles');
+if(canvas){
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+  let particles=[];
+  for(let i=0;i<60;i++){
+    particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*1.5+0.5, dx:(Math.random()-0.5)*0.3, dy:(Math.random()-0.5)*0.3});
+  }
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(212,175,55,0.6)';
+      ctx.fill();
+      p.x+=p.dx; p.y+=p.dy;
+      if(p.x<0||p.x>canvas.width) p.dx*=-1;
+      if(p.y<0||p.y>canvas.height) p.dy*=-1;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+  window.addEventListener('resize',()=>{
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
   });
-  requestAnimationFrame(animate);
 }
-animate();
-window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
-  
-  // Efecto de aparición al hacer scroll
-const items = document.querySelectorAll('[data-animate]');
-const showOnScroll = () => {
-  items.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < window.innerHeight - 100) el.classList.add('visible');
-  });
-};
-window.addEventListener('scroll', showOnScroll);
-window.addEventListener('load', showOnScroll);
 
+// === 4. Efecto de flotación sutil (logos de marcas) ===
+document.querySelectorAll('.logo-item img').forEach((img) => {
+  img.style.animation = `floatAnim ${3 + Math.random() * 2}s ease-in-out infinite`;
+  img.style.animationDelay = `${Math.random() * 2}s`;
+});
+
+// === 5. Efecto Parallax en la sección de marcas ===
+window.addEventListener('scroll', () => {
+  const marcasSection = document.querySelector('.marcas-section');
+  if (marcasSection) {
+    const offset = window.scrollY * 0.3;
+    marcasSection.style.backgroundPosition = `center ${offset}px`;
+  }
+});
+
+// === 6. Scroll suave al hacer clic en anclas ===
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    const targetId = anchor.getAttribute('href');
+    if (targetId && targetId.length > 1) {
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  });
+});
+
+// === 7. Keyframes CSS dinámicos ===
+const style = document.createElement('style');
+style.textContent = `
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}`;
+document.head.appendChild(style);
 </script>
 </body>
 </html>
-
-
 
 
 
