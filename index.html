@@ -1442,77 +1442,105 @@ h2:hover::after {
   }
 }
 
-/* ======== SECCIÓN MARCAS ======== */
+/* =========================================================
+   🚘 SECCIÓN DE MARCAS - ESTILO PREMIUM
+   ========================================================= */
+
 .marcas-section {
   text-align: center;
   padding: 100px 20px;
-  background: #fff;
-  position: relative;
+  background: radial-gradient(circle at top, rgba(255,215,0,0.05), rgba(10,10,20,0.95) 85%);
+  border-radius: 28px;
+  box-shadow: 0 0 40px rgba(0,0,0,0.4);
   overflow: hidden;
+  position: relative;
 }
 
-.marcas-section h2 {
-  font-size: 2.2em;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #222;
-  animation: fadeDown 1s ease-out;
+/* ✨ Encabezado */
+.marcas-header h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--gold, #FFD700);
+  text-shadow: 0 0 18px rgba(255,215,0,0.6);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
-.marcas-section p {
-  color: #666;
-  font-size: 1.1em;
-  margin-bottom: 40px;
-  animation: fadeDown 1.2s ease-out;
+.marcas-header p {
+  color: #ccc;
+  max-width: 750px;
+  margin: 0 auto 60px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.7;
 }
 
+/* Línea decorativa animada */
+.divider {
+  width: 120px;
+  height: 3px;
+  margin: 0 auto 25px;
+  background: linear-gradient(90deg, transparent, var(--gold, #FFD700), transparent);
+  border-radius: 3px;
+  animation: brilloLinea 3s linear infinite;
+}
+
+@keyframes brilloLinea {
+  0% { filter: brightness(0.6); }
+  50% { filter: brightness(1.4); }
+  100% { filter: brightness(0.6); }
+}
+
+/* 🏁 Grid de logos */
 .logos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 40px;
   justify-items: center;
   align-items: center;
-  animation: fadeUp 1.5s ease-out;
 }
 
-.logos-grid img {
+/* 🔧 Logo individual */
+.logo-item img {
   width: 100px;
   height: auto;
-  filter: grayscale(100%);
   opacity: 0.8;
-  transition: all 0.3s ease;
+  filter: grayscale(100%) brightness(1.3);
+  transition: all 0.5s ease;
 }
 
-.logos-grid img:hover {
-  filter: grayscale(0%);
+.logo-item:hover img {
+  transform: scale(1.2);
+  filter: grayscale(0%) brightness(1.6) drop-shadow(0 0 15px rgba(255,215,0,0.5));
   opacity: 1;
-  transform: scale(1.1);
 }
 
-/* ======== ANIMACIONES ======== */
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ✨ Animaciones al aparecer */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+[data-animate].visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ======== RESPONSIVE ======== */
+/* Responsive */
 @media (max-width: 768px) {
-  .marcas-section {
-    padding: 60px 10px;
+  .marcas-header h2 {
+    font-size: 2.2rem;
   }
-  .logos-grid {
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-    gap: 15px;
+  .marcas-header p {
+    font-size: 1rem;
+    margin-bottom: 40px;
   }
-  .logos-grid img {
+  .logo-item img {
     width: 80px;
   }
 }
+
 
   
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
@@ -1740,32 +1768,34 @@ window.addEventListener("scroll", () => {
     </div>
   </div>
 </section>
-  
-  <section class="marcas-section" id="marcas">
+
+  <!-- ============================= -->
+<!-- SECCIÓN MEJORADA: MARCAS DE AUTOMOVILES-->
+<!-- ============================= -->
+ <section class="marcas-section" id="marcas">
   <div class="container">
-    <div class="marcas-header">
+    <div class="marcas-header" data-animate="fade-up">
       <h2>Reparamos todas las marcas de automóviles</h2>
       <div class="divider"></div>
-      <p>Trabajamos con todas las marcas y modelos de vehículos. Calidad garantizada en cada reparación.</p>
+      <p>Trabajamos con todas las marcas y modelos de vehículos, ofreciendo piezas originales y precisión en cada reparación.</p>
     </div>
 
     <div class="logos-grid">
-      <!-- Fila 1 -->
-      <div class="logo-item"><img src="img/marcas/audi.png" alt="Audi"></div>
-      <div class="logo-item"><img src="img/marcas/chevrolet.png" alt="Chevrolet"></div>
-      <div class="logo-item"><img src="img/marcas/toyota.png" alt="Toyota"></div>
-      <div class="logo-item"><img src="img/marcas/nissan.png" alt="Nissan"></div>
-      <div class="logo-item"><img src="img/marcas/honda.png" alt="Honda"></div>
-
-      <!-- Fila 2 -->
-      <div class="logo-item"><img src="img/marcas/mazda.png" alt="Mazda"></div>
-      <div class="logo-item"><img src="img/marcas/ford.png" alt="Ford"></div>
-      <div class="logo-item"><img src="img/marcas/kia.png" alt="Kia"></div>
-      <div class="logo-item"><img src="img/marcas/suzuki.png" alt="Suzuki"></div>
-      <div class="logo-item"><img src="img/marcas/volkswagen.png" alt="Volkswagen"></div>
+      <!-- Logos -->
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/audi.png" alt="Audi"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/chevrolet.png" alt="Chevrolet"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/toyota.png" alt="Toyota"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/nissan.png" alt="Nissan"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/honda.png" alt="Honda"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/mazda.png" alt="Mazda"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/ford.png" alt="Ford"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/kia.png" alt="Kia"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/suzuki.png" alt="Suzuki"></div>
+      <div class="logo-item" data-animate="zoom-in"><img src="img/marcas/volkswagen.png" alt="Volkswagen"></div>
     </div>
   </div>
 </section>
+
 
 <!-- ============================= -->
 <!-- SECCIÓN MEJORADA: NUESTROS SERVICIOS DESTACADOS -->
@@ -2055,6 +2085,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
