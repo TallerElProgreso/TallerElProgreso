@@ -553,35 +553,39 @@ section {
 }
   
 /* =========================================================
-   🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO (VERSIÓN OSCURA)
+   🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO (ESTILO UNIFICADO)
    ========================================================= */
 .metodos-pago-section {
   text-align: center;
   padding: 100px 20px;
-  background: radial-gradient(circle at top, rgba(25, 25, 35, 0.9), rgba(10, 10, 20, 1) 90%);
-  border: 1px solid rgba(212, 175, 55, 0.15);
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 85%);
   border-radius: 20px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
   margin-bottom: 90px;
   position: relative;
   overflow: hidden;
-  color: #fff;
+  border: 1px solid rgba(255,215,0,0.1);
 }
 
-/* Título e intro */
+/* Título dorado igual que las demás secciones */
 .metodos-pago-section h2 {
   color: var(--gold);
   font-weight: 800;
   font-size: 2.2rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   text-shadow: 0 0 10px rgba(255,215,0,0.3);
 }
 
+/* Texto principal */
 .metodos-pago-section p {
-  color: #dcdcdc;
+  color: #ddd;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-/* Contenedor de íconos */
+/* Contenedor de los íconos */
 .pagos-contenedor {
   display: flex;
   justify-content: center;
@@ -591,28 +595,29 @@ section {
   margin-top: 50px;
 }
 
-/* Caja individual */
+/* Cada método de pago */
 .pago-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(212,175,55,0.2);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,215,0,0.15);
   border-radius: 15px;
-  padding: 25px 35px;
+  padding: 20px 30px;
   width: 160px;
   height: 160px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .pago-item:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 0 40px rgba(212,175,55,0.35);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 30px rgba(255,215,0,0.4);
   background: rgba(255,215,0,0.05);
 }
 
+/* Imágenes */
 .pago-item img {
   width: 70px;
   height: 70px;
@@ -621,14 +626,28 @@ section {
   filter: brightness(1.1) contrast(1.1);
 }
 
+/* Nombre debajo del ícono */
 .pago-item span {
   color: #fff;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-/* Adaptación móvil */
+/* Texto final */
+.texto-secundario {
+  color: #ccc;
+  font-size: 1rem;
+  margin-top: 40px;
+}
+
+/* =========================================================
+   📱 ADAPTACIÓN MÓVIL
+   ========================================================= */
 @media (max-width: 768px) {
+  .metodos-pago-section {
+    padding: 70px 15px;
+  }
+
   .pagos-contenedor {
     gap: 30px;
   }
@@ -648,6 +667,7 @@ section {
     font-size: 0.9rem;
   }
 }
+
 
 /* =========================================================
    🪄 AJUSTES DE COMPATIBILIDAD VISUAL
@@ -2642,6 +2662,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
