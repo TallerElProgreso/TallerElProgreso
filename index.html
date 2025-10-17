@@ -553,39 +553,38 @@ section {
 }
   
 /* =========================================================
-   🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO (ESTILO UNIFICADO)
+   🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO
    ========================================================= */
 .metodos-pago-section {
   text-align: center;
   padding: 100px 20px;
   background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 85%);
   border-radius: 20px;
+  border: 1px solid rgba(255,215,0,0.1);
   box-shadow: 0 0 50px rgba(0,0,0,0.6);
   margin-bottom: 90px;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255,215,0,0.1);
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
-/* Título dorado igual que las demás secciones */
 .metodos-pago-section h2 {
   color: var(--gold);
-  font-weight: 800;
   font-size: 2.2rem;
-  margin-bottom: 20px;
-  text-shadow: 0 0 10px rgba(255,215,0,0.3);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
 }
 
-/* Texto principal */
-.metodos-pago-section p {
+.metodos-pago-section .intro-texto {
+  max-width: 800px;
+  margin: 0 auto 40px;
   color: #ddd;
   font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 900px;
-  margin: 0 auto;
+  line-height: 1.7;
 }
 
-/* Contenedor de los íconos */
 .pagos-contenedor {
   display: flex;
   justify-content: center;
@@ -595,49 +594,58 @@ section {
   margin-top: 50px;
 }
 
-/* Cada método de pago */
 .pago-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,215,0,0.15);
+  border: 1px solid rgba(255,215,0,0.2);
   border-radius: 15px;
   padding: 20px 30px;
   width: 160px;
   height: 160px;
   box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pago-item:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 0 30px rgba(255,215,0,0.4);
-  background: rgba(255,215,0,0.05);
 }
 
-/* Imágenes */
 .pago-item img {
   width: 70px;
   height: 70px;
   object-fit: contain;
   margin-bottom: 15px;
-  filter: brightness(1.1) contrast(1.1);
+  filter: brightness(1) contrast(1.1);
 }
 
-/* Nombre debajo del ícono */
 .pago-item span {
   color: #fff;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
-/* Texto final */
 .texto-secundario {
-  color: #ccc;
-  font-size: 1rem;
   margin-top: 40px;
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  padding-top: 20px;
+}
+
+/* =========================================================
+   🎨 CORRECCIÓN DE ESTILO PARA EVITAR FONDO BLANCO GLOBAL
+   ========================================================= */
+.metodos-pago-section {
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 85%) !important;
+  color: #fff;
 }
 
 /* =========================================================
@@ -666,7 +674,12 @@ section {
   .pago-item span {
     font-size: 0.9rem;
   }
+
+  .texto-secundario {
+    font-size: 0.95rem;
+  }
 }
+
 
 
 /* =========================================================
@@ -2662,6 +2675,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
