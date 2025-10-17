@@ -190,17 +190,16 @@
 #icono-frenos      { top: 65%; left: 62%; }   /* frenos traseros */
 #icono-pintura     { top: 42%; left: 72%; }   /* carrocería parte trasera */
 #icono-mofle       { top: 70%; left: 80%; }   /* exosto parte trasera baja */
-
-  /* === Corrección de anchura uniforme desde galería hacia abajo === */
-#galeria-motos,
-#galeria-modelos,
+  
+/* === Corrección de anchura uniforme desde galería hacia abajo === */
+#galeria-motos, #galeria-modelos,
 #marcas,
 #porque-elegirnos,
 #contacto {
-  max-width: 1100px;
-  margin: 20 auto;
-  padding: 0 18px;
-  box-sizing: border-box;
+  max-width: 1100px;       /* límite de ancho del contenido */
+  margin: 0 auto;           /* centra horizontalmente */
+  padding: 0 18px;          /* espacio interno lateral */
+  box-sizing: border-box;   /* mantiene proporciones al aplicar padding */
 }
 
 /* ==== Animación suave de entrada (fade + subida) ==== */
@@ -470,13 +469,13 @@ section.visible {
 
 /* Secciones generales con aire y acabado premium */
 section {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   background: #ffffff;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.08); /* ✨ sombra elegante */
-  border-radius: 24px; /* bordes suaves y modernos */
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.06); /* ✨ sombra más suave */
+  border-radius: 20px; /* bordes un poco menos marcados */
   transition: all 0.3s ease;
 }
 
@@ -484,15 +483,15 @@ section {
 .galeria-section,
 .servicios-destacados,
 .porque-elegirnos-section {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 /* Espaciado balanceado para Marcas y Contacto */
 .marcas-section,
 .contacto-section {
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 /* =========================================================
@@ -501,9 +500,9 @@ section {
 
 /* Separación suave antes del footer */
 footer {
-  margin-top: 80px;
-  padding-top: 60px;
-  padding-bottom: 40px;
+  margin-top: 40px;
+  padding-top: 50px;
+  padding-bottom: 35px;
   background: linear-gradient(180deg, #0d1b2a, #1b263b);
   color: #fff;
 }
@@ -2189,6 +2188,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
