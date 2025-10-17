@@ -1874,8 +1874,8 @@ h2:hover::after {
   }
 }
 
- /* =========================================================
-   🧾 MÉTODOS DE PAGO - ESTILO DINÁMICO IGUAL AL RESTO
+/* =========================================================
+   🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO
    ========================================================= */
 .metodos-pago-section {
   text-align: center;
@@ -1889,81 +1889,113 @@ h2:hover::after {
   overflow: hidden;
 }
 
-/* ✨ Efecto de brillo dorado animado igual al de servicios destacados */
+/* ✨ Efecto de brillo dorado animado */
 .metodos-pago-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(212,175,55,0.1) 0%, rgba(255,215,0,0.05) 50%, transparent 100%);
+  background: linear-gradient(120deg, rgba(212,175,55,0.15) 0%, rgba(255,215,0,0.07) 50%, transparent 100%);
   animation: brillo-dorado 6s linear infinite;
   z-index: 0;
 }
-
-/* Contenido encima del fondo animado */
 .metodos-pago-section > * {
   position: relative;
   z-index: 1;
 }
 
-/* Contenedor de íconos */
-.pagos-contenedor {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-top: 40px;
+/* ===== Textos ===== */
+.titulo-dorado {
+  font-size: 2.6rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffdd55, #d4af37, #b88a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 223, 80, 0.7);
+  margin-bottom: 18px;
+  letter-spacing: 1px;
 }
 
-/* Cada ítem de pago */
-.pago-item {
-  background: rgba(255,255,255,0.06);
-  border-radius: 15px;
-  padding: 25px 20px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.4);
-  transition: all 0.4s ease;
-  width: 140px;
-  text-align: center;
+.intro-texto {
+  font-size: 1.2rem;
+  color: #ffffff; /* 🔥 blanco puro */
+  max-width: 850px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+  text-shadow: 0 0 12px rgba(0,0,0,0.8);
+  opacity: 1;
 }
 
-.pago-item:hover {
-  background: rgba(255,215,0,0.1);
-  transform: scale(1.08);
-  box-shadow: 0 0 25px rgba(255,215,0,0.4);
-}
-
-/* Íconos */
-.pago-item img {
-  width: 70px;
-  height: auto;
-  filter: brightness(1.2);
-}
-
-/* Texto debajo de íconos */
-.pago-item span {
-  display: block;
-  color: #fff; /* 🔥 texto blanco */
-  margin-top: 10px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  letter-spacing: 0.5px;
-}
-
-/* Texto secundario */
 .texto-secundario {
   margin-top: 40px;
-  color: #ddd;
+  color: #ffffff; /* 🔥 blanco puro */
   font-size: 1.05rem;
   line-height: 1.6;
   max-width: 800px;
   margin-inline: auto;
-  opacity: 0.9;
+  opacity: 1;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
-/* Animación dorada (compartida) */
+/* ===== Contenedor ===== */
+.pagos-contenedor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+/* ===== Tarjetas ===== */
+.pago-item {
+  background: rgba(10,10,20,0.85);
+  border: 1px solid rgba(255,215,0,0.15);
+  border-radius: 15px;
+  padding: 25px 20px;
+  width: 150px;
+  text-align: center;
+  box-shadow: inset 0 0 8px rgba(255,215,0,0.1),
+              0 0 25px rgba(0,0,0,0.5);
+  transition: all 0.4s ease;
+}
+.pago-item:hover {
+  background: rgba(255,215,0,0.1);
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255,215,0,0.6);
+}
+
+/* ===== Íconos uniformes ===== */
+.pago-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid rgba(255,215,0,0.2);
+  filter: brightness(1.15) contrast(1.1);
+  transition: all 0.3s ease;
+}
+.pago-item:hover img {
+  filter: brightness(1.3) drop-shadow(0 0 8px rgba(255,215,0,0.7));
+}
+
+/* ===== Nombres debajo ===== */
+.pago-item span {
+  display: block;
+  color: #fff;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+}
+
+/* ===== Animación dorada ===== */
 @keyframes brillo-dorado {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+
  
   
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
@@ -2638,6 +2670,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
