@@ -826,105 +826,146 @@ h2:hover::after {
 /* =========================================================
    🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO
    ========================================================= */
-
 .metodos-pago-section {
   text-align: center;
-  background: #ffffff;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
+  padding: 75px 35px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.08) 0%, rgba(17,17,17,0.9) 80%),
+              linear-gradient(180deg, #1E2A47 0%, #0C1323 100%);
+  color: #fff;
   border-radius: 20px;
-  padding: 70px 40px;
-  margin-top: 60px;
-  margin-bottom: 60px;
-  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
 }
 
-.metodos-pago-section .titulo-dorado {
-  font-size: 2.2rem;
-  margin-bottom: 25px;
-  color: #d4af37; /* Dorado */
+/* ✨ Fondo animado dorado */
+.metodos-pago-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(212,175,55,0.15) 0%, rgba(255,215,0,0.07) 50%, transparent 100%);
+  animation: brillo-dorado 6s linear infinite;
+  z-index: 0;
+}
+.metodos-pago-section > * {
+  position: relative;
+  z-index: 1;
 }
 
-.metodos-pago-section .intro-texto {
-  font-size: 1.1rem;
-  color: #333;
-  margin-bottom: 50px;
-  line-height: 1.7;
+.titulo-dorado {
+  font-size: 2.6rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffdd55, #d4af37, #b88a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 223, 80, 0.7);
+  margin-bottom: 18px;
+  letter-spacing: 1px;
 }
 
+.intro-texto {
+  font-size: 1.2rem;
+  color: #ffffff;
+  max-width: 850px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+  text-shadow: 0 0 12px rgba(0,0,0,0.8);
+}
+
+.texto-secundario {
+  margin-top: 40px;
+  color: #ffffff;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-inline: auto;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+}
+
+/* ===== Contenedor ===== */
 .pagos-contenedor {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 50px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  gap: 30px;
+  margin-top: 50px;
 }
 
+/* ===== Tarjetas de pago ===== */
 .pago-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(10,10,20,0.85);
+  border: 1px solid rgba(255,215,0,0.15);
   border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  padding: 25px 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 160px;
+  padding: 25px 20px;
+  width: 150px;
+  text-align: center;
+  box-shadow: inset 0 0 8px rgba(255,215,0,0.1),
+              0 0 25px rgba(0,0,0,0.5);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🔥 Aura dorada animada detrás de cada icono */
+.pago-item::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+  animation: pulso-dorado 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes pulso-dorado {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.15); }
 }
 
 .pago-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background: rgba(255,215,0,0.1);
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(255,215,0,0.6);
 }
 
+/* ===== Íconos ===== */
 .pago-item img {
-  width: 80px;
-  height: auto;
-  margin-bottom: 15px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 8px;
+  border: 1px solid rgba(255,215,0,0.25);
+  filter: brightness(1.2) drop-shadow(0 0 10px rgba(255,215,0,0.4));
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
+/* ✨ Brillo dorado más intenso al pasar el cursor */
+.pago-item:hover img {
+  filter: brightness(1.4) drop-shadow(0 0 15px rgba(255,215,0,0.9));
+  transform: scale(1.05);
+}
+
+/* ===== Nombres debajo ===== */
 .pago-item span {
+  display: block;
+  color: #fff;
+  margin-top: 12px;
   font-weight: 600;
-  color: #222;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
 }
 
-.metodos-pago-section .texto-secundario {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 30px;
-  line-height: 1.6;
-}
-
-/* =========================================================
-   📱 RESPONSIVO - ADAPTADO A MÓVILES
-   ========================================================= */
-@media (max-width: 768px) {
-  .metodos-pago-section {
-    padding: 60px 20px;
-  }
-
-  .pagos-contenedor {
-    gap: 25px;
-  }
-
-  .pago-item {
-    width: 130px;
-    padding: 20px;
-  }
-
-  .pago-item img {
-    width: 60px;
-  }
-
-  .metodos-pago-section .titulo-dorado {
-    font-size: 1.8rem;
-  }
-
-  .metodos-pago-section .intro-texto {
-    font-size: 1rem;
-  }
+/* ===== Animación dorada del fondo ===== */
+@keyframes brillo-dorado {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 
@@ -2670,6 +2711,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
