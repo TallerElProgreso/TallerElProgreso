@@ -2082,9 +2082,22 @@ function animate(){
 }
 animate();
 window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
+  
+  // Efecto de aparición al hacer scroll
+const items = document.querySelectorAll('[data-animate]');
+const showOnScroll = () => {
+  items.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) el.classList.add('visible');
+  });
+};
+window.addEventListener('scroll', showOnScroll);
+window.addEventListener('load', showOnScroll);
+
 </script>
 </body>
 </html>
+
 
 
 
