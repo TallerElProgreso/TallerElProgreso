@@ -1598,44 +1598,99 @@ h2:hover::after {
   background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 85%);
   border-radius: 20px;
   box-shadow: 0 0 50px rgba(0,0,0,0.6);
-  margin-bottom: 90px;
+  margin-top: 120px;
+  margin-bottom: 120px;
   position: relative;
   overflow: hidden;
 }
 
-.mapa-contenedor {
-  margin: 40px auto;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
-  max-width: 1000px;
+/* Fondo dorado sutil animado */
+.ubicacion-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,215,0,0.05), transparent, rgba(255,215,0,0.07));
+  animation: brilloUbicacion 10s linear infinite;
+  z-index: 0;
+}
+@keyframes brilloUbicacion {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
+/* Contenido principal */
+.ubicacion-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Título */
+.titulo-ubicacion {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-shadow: 0 0 12px rgba(255,215,0,0.5);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* Texto informativo */
 .info-ubicacion {
   color: #ddd;
   font-size: 1.1rem;
-  margin-top: 30px;
-  line-height: 1.7;
+  margin-top: 20px;
+  line-height: 1.8;
+  max-width: 800px;
+  margin-inline: auto;
+  opacity: 0.9;
 }
 
-.info-ubicacion a {
-  color: var(--gold);
+/* Contenedor del mapa */
+.mapa-contenedor {
+  margin: 50px auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  max-width: 1000px;
+}
+.mapa-contenedor iframe {
+  width: 100%;
+  height: 450px;
+  border: 0;
+}
+
+/* Botón “Cómo llegar” blanco */
+.btn-luminoso {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 38px;
+  border-radius: 40px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  color: #111;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+  transition: all 0.3s ease;
   text-decoration: none;
-  transition: color 0.3s ease;
 }
-.info-ubicacion a:hover {
-  color: #ffdd55;
+.btn-luminoso:hover {
+  background: linear-gradient(145deg, #fff8d6, #fff2b3);
+  color: #000;
+  box-shadow: 0 0 35px rgba(255,215,0,0.7);
+  transform: scale(1.08);
 }
 
+/* Horarios */
 .horarios {
-  margin-top: 30px;
+  margin-top: 40px;
   background: rgba(255,215,0,0.05);
   border: 1px solid rgba(255,215,0,0.15);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 15px;
+  padding: 25px 40px;
   display: inline-block;
   text-align: left;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 .horarios h3 {
   color: var(--gold);
@@ -1645,18 +1700,26 @@ h2:hover::after {
 .horarios ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 .horarios li {
-  margin: 5px 0;
+  margin: 6px 0;
+  color: #ccc;
+  font-size: 1rem;
 }
 
 /* Adaptación móvil */
 @media (max-width: 768px) {
   .ubicacion-section {
     padding: 70px 15px;
+    margin-top: 80px;
+    margin-bottom: 80px;
   }
   .mapa-contenedor iframe {
-    height: 300px;
+    height: 320px;
+  }
+  .horarios {
+    padding: 20px;
   }
 }
 
@@ -2295,3 +2358,4 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
