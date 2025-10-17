@@ -1442,7 +1442,79 @@ h2:hover::after {
   }
 }
 
+/* ======== SECCIÓN MARCAS ======== */
+.marcas-section {
+  text-align: center;
+  padding: 100px 20px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
 
+.marcas-section h2 {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+  animation: fadeDown 1s ease-out;
+}
+
+.marcas-section p {
+  color: #666;
+  font-size: 1.1em;
+  margin-bottom: 40px;
+  animation: fadeDown 1.2s ease-out;
+}
+
+.logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  align-items: center;
+  animation: fadeUp 1.5s ease-out;
+}
+
+.logos-grid img {
+  width: 100px;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.logos-grid img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ======== ANIMACIONES ======== */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .marcas-section {
+    padding: 60px 10px;
+  }
+  .logos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 15px;
+  }
+  .logos-grid img {
+    width: 80px;
+  }
+}
+
+  
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
 .footer-progreso {
   position: relative;
@@ -1668,6 +1740,33 @@ window.addEventListener("scroll", () => {
     </div>
   </div>
 </section>
+  
+  <section class="marcas-section" id="marcas">
+  <div class="container">
+    <div class="marcas-header">
+      <h2>Reparamos todas las marcas de automóviles</h2>
+      <div class="divider"></div>
+      <p>Trabajamos con todas las marcas y modelos de vehículos. Calidad garantizada en cada reparación.</p>
+    </div>
+
+    <div class="logos-grid">
+      <!-- Fila 1 -->
+      <div class="logo-item"><img src="img/marcas/audi.png" alt="Audi"></div>
+      <div class="logo-item"><img src="img/marcas/chevrolet.png" alt="Chevrolet"></div>
+      <div class="logo-item"><img src="img/marcas/toyota.png" alt="Toyota"></div>
+      <div class="logo-item"><img src="img/marcas/nissan.png" alt="Nissan"></div>
+      <div class="logo-item"><img src="img/marcas/honda.png" alt="Honda"></div>
+
+      <!-- Fila 2 -->
+      <div class="logo-item"><img src="img/marcas/mazda.png" alt="Mazda"></div>
+      <div class="logo-item"><img src="img/marcas/ford.png" alt="Ford"></div>
+      <div class="logo-item"><img src="img/marcas/kia.png" alt="Kia"></div>
+      <div class="logo-item"><img src="img/marcas/suzuki.png" alt="Suzuki"></div>
+      <div class="logo-item"><img src="img/marcas/volkswagen.png" alt="Volkswagen"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================= -->
 <!-- SECCIÓN MEJORADA: NUESTROS SERVICIOS DESTACADOS -->
 <!-- ============================= -->
@@ -1956,6 +2055,7 @@ window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.he
 </script>
 </body>
 </html>
+
 
 
 
