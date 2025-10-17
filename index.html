@@ -776,6 +776,79 @@ h2:hover::after {
   }
 }
 
+/* =========================================================
+   🧾 MÉTODOS DE PAGO - ESTILOS
+   ========================================================= */
+.metodos-pago-section {
+  text-align: center;
+  padding: 100px 20px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 85%);
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
+  margin-bottom: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pagos-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin: 50px auto;
+  max-width: 900px;
+}
+
+.pago-item {
+  background: rgba(255,215,0,0.05);
+  border: 1px solid rgba(255,215,0,0.15);
+  border-radius: 16px;
+  padding: 20px 25px;
+  width: 180px;
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.pago-item:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(255,215,0,0.3);
+  border-color: rgba(255,215,0,0.4);
+}
+
+.pago-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.pago-item:hover img {
+  transform: scale(1.1);
+}
+
+.pago-item span {
+  display: block;
+  font-size: 1.05rem;
+  color: #ddd;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .pagos-contenedor {
+    gap: 25px;
+  }
+  .pago-item {
+    width: 140px;
+    padding: 15px;
+  }
+  .pago-item img {
+    width: 60px;
+    height: 60px;
+  }
+}
 
 
 /* === GALERÍAS MODERNAS === */
@@ -2215,7 +2288,45 @@ function enviarWhatsApp(e) {
 }
 </script>
  
-   
+<!-- =========================================================
+     🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO
+     ========================================================= -->
+<section class="metodos-pago-section" id="pagos">
+  <h2 class="titulo-dorado">🧾 Paga Fácil y Seguro</h2>
+  <p class="intro-texto">
+    En <strong>Taller El Progreso</strong> aceptamos múltiples formas de pago para tu comodidad.
+    Queremos que tu experiencia sea rápida, segura y sin complicaciones.
+  </p>
+
+  <div class="pagos-contenedor">
+    <div class="pago-item">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Efectivo_icono.png" alt="Pago en efectivo">
+      <span>Efectivo</span>
+    </div>
+
+    <div class="pago-item">
+      <img src="https://seeklogo.com/images/N/nequi-logo-417ABF173A-seeklogo.com.png" alt="Nequi">
+      <span>Nequi</span>
+    </div>
+
+    <div class="pago-item">
+      <img src="https://seeklogo.com/images/B/bancolombia-logo-5E9B3C0A3C-seeklogo.com.png" alt="Bancolombia">
+      <span>Bancolombia</span>
+    </div>
+
+    <div class="pago-item">
+      <img src="https://seeklogo.com/images/B/banco-union-logo-2A816C1F22-seeklogo.com.png" alt="Banco Unión">
+      <span>Banco Unión</span>
+    </div>
+  </div>
+
+  <p class="texto-secundario">
+    💳 También puedes consultar otros medios disponibles al momento de tu servicio.  
+    Tu confianza y seguridad son nuestra prioridad.
+  </p>
+</section>
+
+  
 <footer class="footer-progreso">
   <div class="footer-overlay"></div>
 
@@ -2358,4 +2469,5 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
