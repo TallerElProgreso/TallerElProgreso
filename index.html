@@ -1101,7 +1101,123 @@ h2:hover::after {
   }
 }
 
+/* =========================================================
+   🏆 EXPERIENCIA Y TRAYECTORIA (Estilo Premium)
+   ========================================================= */
+.experiencia-section {
+  text-align: center;
+  padding: 100px 40px;
+  background: radial-gradient(circle at center top, rgba(255,215,0,0.08), rgba(10,10,20,0.95)),
+              linear-gradient(180deg, #1E2A47 0%, #0B1222 100%);
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
+}
 
+/* Resplandor dorado animado */
+.experiencia-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,
+    rgba(255,255,255,0.1) 0%,
+    rgba(212,175,55,0.1) 50%,
+    transparent 100%);
+  animation: experiencia-brillo 8s linear infinite;
+}
+@keyframes experiencia-brillo {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* contenedor de estadísticas */
+.estadisticas {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 45px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* cada bloque */
+.stat-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 20px;
+  padding: 35px 25px;
+  width: 280px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4),
+              inset 0 0 20px rgba(255,215,0,0.08);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(6px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* brillo constante blanco en íconos */
+.stat-icon {
+  width: 85px;
+  height: 85px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 25px rgba(255,255,255,0.4);
+  animation: brillo-iconos 3s ease-in-out infinite;
+}
+@keyframes brillo-iconos {
+  0%, 100% { box-shadow: 0 0 25px rgba(255,255,255,0.4); }
+  50% { box-shadow: 0 0 45px rgba(255,255,255,0.8); }
+}
+
+.stat-icon img {
+  width: 45px;
+  height: 45px;
+  filter: brightness(2) contrast(1.1);
+}
+
+/* texto de las estadísticas */
+.stat-item h3 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffdd55, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+  text-shadow: 0 0 15px rgba(255,215,0,0.6);
+}
+
+.stat-item p {
+  color: #ddd;
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+/* efecto hover */
+.stat-item:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 40px rgba(255,215,0,0.4);
+  border-color: rgba(255,215,0,0.7);
+}
+
+/* móvil */
+@media (max-width: 768px) {
+  .experiencia-section {
+    padding: 80px 25px;
+  }
+  .stat-item {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+  
 /* === GALERÍAS MODERNAS === */
 .galeria-section {
   text-align: center;
@@ -2700,6 +2816,50 @@ function enviarWhatsApp(e) {
   </p>
 </section>
 
+  <!-- =========================================================
+     🏆 EXPERIENCIA Y TRAYECTORIA
+     ========================================================= -->
+<section class="experiencia-section" id="experiencia">
+  <h2 class="titulo-dorado">🏆 Experiencia y Trayectoria</h2>
+  <p class="intro-texto">
+    En <strong>Taller Automotriz El Progreso</strong> contamos con más de <strong>22 años</strong> 
+    de experiencia al servicio de nuestros clientes.  
+    Nuestra pasión por la mecánica se refleja en cada vehículo que restauramos y mantenemos con excelencia.
+  </p>
+
+  <div class="estadisticas">
+    <div class="stat-item">
+      <div class="stat-icon">
+        <img src="imagenes/experiencia.png" alt="Años de experiencia">
+      </div>
+      <h3>+22 Años</h3>
+      <p>de experiencia profesional</p>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-icon">
+        <img src="imagenes/autos-restaurados.png" alt="Autos restaurados">
+      </div>
+      <h3>+250 Vehículos</h3>
+      <p>restaurados y en óptimas condiciones</p>
+    </div>
+
+    <div class="stat-item">
+      <div class="stat-icon">
+        <img src="imagenes/clientes-felices.png" alt="Clientes felices">
+      </div>
+      <h3>100%</h3>
+      <p>clientes satisfechos</p>
+    </div>
+  </div>
+
+  <p class="texto-secundario">
+    Gracias a nuestra trayectoria, garantizamos calidad, confianza y precisión en cada servicio.  
+    ¡Tu vehículo está en las mejores manos!
+  </p>
+</section>
+
+
 <!-- =========================================================
      🎯 MISIÓN, VISIÓN Y VALORES
      ========================================================= -->
@@ -2881,6 +3041,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
