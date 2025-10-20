@@ -969,6 +969,137 @@ h2:hover::after {
   100% { transform: translateX(100%); }
 }
 
+/* =========================================================
+   🎯 MISIÓN, VISIÓN Y VALORES (Versión Premium)
+   ========================================================= */
+.mision-vision-valores {
+  text-align: center;
+  padding: 110px 35px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.1) 0%, rgba(10,10,20,0.9) 85%),
+              linear-gradient(180deg, #1E2A47 0%, #0A0F1A 100%);
+  color: #fff;
+  border-radius: 22px;
+  box-shadow: 0 0 60px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✨ brillo dorado dinámico de fondo */
+.mision-vision-valores::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,
+    rgba(255,215,0,0.15) 0%,
+    rgba(255,255,255,0.04) 45%,
+    transparent 100%);
+  animation: brillo-dorado-premium 8s linear infinite;
+  mix-blend-mode: overlay;
+}
+@keyframes brillo-dorado-premium {
+  0% { transform: translateX(-100%); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0.6; }
+}
+
+/* ✨ brillo ambiental tenue */
+.mision-vision-valores::after {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,215,0,0.15), transparent 70%);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+/* contenedor general */
+.mvv-contenedor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 45px;
+  margin-top: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tarjetas con borde dorado brillante */
+.mvv-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,215,0,0.25);
+  border-radius: 16px;
+  padding: 35px 28px;
+  width: 310px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.4),
+              inset 0 0 15px rgba(255,215,0,0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
+  backdrop-filter: blur(4px);
+  animation: aparecer 1.2s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ✨ brillo constante sutil */
+.mvv-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.15), transparent 70%);
+  opacity: 0.3;
+  animation: pulso-brillo 4s ease-in-out infinite;
+}
+@keyframes pulso-brillo {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Hover efecto relieve dorado */
+.mvv-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  border-color: rgba(255,215,0,0.6);
+  box-shadow: 0 0 45px rgba(255,215,0,0.3);
+}
+
+/* títulos dentro de las tarjetas */
+.mvv-card h3 {
+  color: var(--gold);
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  text-shadow: 0 0 12px rgba(255,215,0,0.5);
+}
+
+/* párrafos */
+.mvv-card p {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.75;
+  opacity: 0.95;
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* animación de entrada */
+@keyframes aparecer {
+  0% { transform: translateY(40px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* 📱 Adaptación móvil */
+@media (max-width: 768px) {
+  .mision-vision-valores {
+    padding: 80px 20px;
+  }
+  .mvv-card {
+    width: 100%;
+    max-width: 360px;
+  }
+  .mvv-card h3 {
+    font-size: 1.4rem;
+  }
+}
 
 
 /* === GALERÍAS MODERNAS === */
@@ -2272,7 +2403,7 @@ window.addEventListener("scroll", () => {
  <section class="marcas-section" id="marcas">
   <div class="container">
     <div class="marcas-header" data-animate="fade-up">
-      <h2>Reparamos todas las marcas de automóviles</h2>
+      <h2>Restauramos todas las marcas de automóviles</h2>
       <div class="divider"></div>
       <p>Trabajamos con todas las marcas y modelos de vehículos, ofreciendo piezas originales y precisión en cada reparación.</p>
     </div>
@@ -2569,6 +2700,44 @@ function enviarWhatsApp(e) {
   </p>
 </section>
 
+<!-- =========================================================
+     🎯 MISIÓN, VISIÓN Y VALORES
+     ========================================================= -->
+<section class="mision-vision-valores" id="mision-vision">
+  <h2 class="titulo-dorado">🎯 Misión, Visión y Valores</h2>
+  <p class="intro-texto">
+    En <strong>Taller Automotriz El Progreso</strong> trabajamos con compromiso, pasión y calidad,
+    buscando siempre ofrecer el mejor servicio para ti y tu vehículo.
+  </p>
+
+  <div class="mvv-contenedor">
+    <div class="mvv-card">
+      <h3>🚗 Misión</h3>
+      <p>
+        Brindar servicios automotrices confiables, rápidos y de alta calidad, 
+        garantizando la satisfacción total de nuestros clientes mediante un trabajo honesto 
+        y profesional.
+      </p>
+    </div>
+
+    <div class="mvv-card">
+      <h3>🔭 Visión</h3>
+      <p>
+        Ser reconocidos como el taller automotriz líder en la región, destacado por la innovación,
+        la confianza y el compromiso con el mantenimiento seguro de cada vehículo.
+      </p>
+    </div>
+
+    <div class="mvv-card">
+      <h3>💎 Valores</h3>
+      <p>
+        Responsabilidad, Honestidad, Compromiso, Innovación y Respeto.  
+        Cada reparación refleja nuestros principios y dedicación.
+      </p>
+    </div>
+  </div>
+</section>
+
   
 <footer class="footer-progreso">
   <div class="footer-overlay"></div>
@@ -2712,6 +2881,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
