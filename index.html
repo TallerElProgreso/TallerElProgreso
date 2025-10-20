@@ -2286,131 +2286,76 @@ h2:hover::after {
 }
 
 /* =========================================================
-   🌐 SECCIÓN DE REDES SOCIALES - DISEÑO MODERNO Y RESPONSIVO
+   🌐 SECCIÓN REDES SOCIALES - ESTILO PREMIUM DORADO
    ========================================================= */
 .redes-cards {
   text-align: center;
-  padding: 80px 20px;
-  background: var(--main-bg);
+  padding: 80px 30px;
+  background: rgba(17,17,17,0.6);
   color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 0 35px rgba(0,0,0,0.7);
   position: relative;
   overflow: hidden;
+  margin-top: 60px;
 }
 
 /* Título */
 .redes-cards h2 {
-  color: var(--gold);
-  font-size: 2.3em;
+  font-size: 2.4rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffdd55, #d4af37, #b88a00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(255, 223, 80, 0.6);
   margin-bottom: 40px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  position: relative;
-  display: inline-block;
+  letter-spacing: 1px;
 }
 
-/* Línea decorativa debajo del título */
-.redes-cards h2::after {
-  content: "";
-  display: block;
-  width: 80px;
-  height: 3px;
-  background: var(--gold);
-  margin: 12px auto 0;
-  border-radius: 3px;
-}
-
-/* Contenedor flexible de las tarjetas */
+/* Contenedor de redes */
 .contenedor-redes {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 25px;
 }
 
-/* Tarjeta base */
+/* Tarjetas */
 .card-red {
+  width: 160px;
+  height: 160px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(212,175,55,0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 180px;
-  height: 180px;
-  border-radius: 20px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.2em;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  transition: all 0.35s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* Ícono principal */
+/* Íconos */
 .card-red i {
-  font-size: 2.8em;
+  font-size: 2.4rem;
   margin-bottom: 10px;
-  z-index: 2;
+  color: #ffde59;
+  text-shadow: 0 0 10px rgba(255,215,0,0.7);
 }
 
-/* Efecto hover elegante */
-.card-red::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(255,255,255,0.2);
-  transition: width 0.4s ease;
-  z-index: 1;
-}
-.card-red:hover::before {
-  width: 100%;
-}
-
-/* Hover con movimiento */
+/* Hover con brillo dorado */
 .card-red:hover {
-  transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 0 25px rgba(255,255,255,0.3);
+  transform: scale(1.08);
+  background: rgba(212,175,55,0.15);
+  box-shadow: 0 0 35px rgba(255,215,0,0.6);
 }
 
-/* Colores personalizados */
-.facebook { background: linear-gradient(145deg, #3b5998, #2d4373); }
-.instagram { background: linear-gradient(145deg, #e4405f, #b92b49); }
-.whatsapp { background: linear-gradient(145deg, #25d366, #128c7e); }
-
-/* Texto dentro de la tarjeta */
-.card-red span {
-  z-index: 2;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-/* 💡 Animación de aparición */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.card-red {
-  opacity: 0;
-  animation: fadeUp 0.8s ease forwards;
-}
-
-.card-red:nth-child(1) { animation-delay: 0.2s; }
-.card-red:nth-child(2) { animation-delay: 0.4s; }
-.card-red:nth-child(3) { animation-delay: 0.6s; }
-
-/* 📱 Adaptación móvil */
-@media (max-width: 768px) {
-  .card-red {
-    width: 140px;
-    height: 140px;
-    font-size: 1em;
-  }
-  .card-red i { font-size: 2.2em; }
-}
- 
   
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
 .footer-progreso {
@@ -3187,6 +3132,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
