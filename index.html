@@ -2285,6 +2285,131 @@ h2:hover::after {
   100% { transform: translateX(100%); }
 }
 
+/* =========================================================
+   🌐 SECCIÓN DE REDES SOCIALES - DISEÑO MODERNO Y RESPONSIVO
+   ========================================================= */
+.redes-cards {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--main-bg);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Título */
+.redes-cards h2 {
+  color: var(--gold);
+  font-size: 2.3em;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Línea decorativa debajo del título */
+.redes-cards h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 12px auto 0;
+  border-radius: 3px;
+}
+
+/* Contenedor flexible de las tarjetas */
+.contenedor-redes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+/* Tarjeta base */
+.card-red {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ícono principal */
+.card-red i {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+  z-index: 2;
+}
+
+/* Efecto hover elegante */
+.card-red::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255,0.2);
+  transition: width 0.4s ease;
+  z-index: 1;
+}
+.card-red:hover::before {
+  width: 100%;
+}
+
+/* Hover con movimiento */
+.card-red:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 0 25px rgba(255,255,255,0.3);
+}
+
+/* Colores personalizados */
+.facebook { background: linear-gradient(145deg, #3b5998, #2d4373); }
+.instagram { background: linear-gradient(145deg, #e4405f, #b92b49); }
+.whatsapp { background: linear-gradient(145deg, #25d366, #128c7e); }
+
+/* Texto dentro de la tarjeta */
+.card-red span {
+  z-index: 2;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* 💡 Animación de aparición */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-red {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.card-red:nth-child(1) { animation-delay: 0.2s; }
+.card-red:nth-child(2) { animation-delay: 0.4s; }
+.card-red:nth-child(3) { animation-delay: 0.6s; }
+
+/* 📱 Adaptación móvil */
+@media (max-width: 768px) {
+  .card-red {
+    width: 140px;
+    height: 140px;
+    font-size: 1em;
+  }
+  .card-red i { font-size: 2.2em; }
+}
  
   
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
@@ -2421,6 +2546,8 @@ h2:hover::after {
   h2{font-size:24px} 
 }
 
+
+  
 </style>
 </head>
 <body>
@@ -2898,6 +3025,24 @@ function enviarWhatsApp(e) {
   </div>
 </section>
 
+<section class="redes-cards">
+  <h2>Conéctate con Nosotros</h2>
+  <div class="contenedor-redes">
+    <a href="https://www.facebook.com/tuPagina" target="_blank" class="card-red facebook">
+      <i class="fab fa-facebook-f"></i>
+      <span>Facebook</span>
+    </a>
+    <a href="https://www.instagram.com/tuPagina" target="_blank" class="card-red instagram">
+      <i class="fab fa-instagram"></i>
+      <span>Instagram</span>
+    </a>
+    <a href="https://wa.me/573225990026" target="_blank" class="card-red whatsapp">
+      <i class="fab fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+</section>
+
   
 <footer class="footer-progreso">
   <div class="footer-overlay"></div>
@@ -3042,6 +3187,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
