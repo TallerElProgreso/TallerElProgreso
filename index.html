@@ -2420,6 +2420,95 @@ h2:hover::after {
   .gallery-item img{height:120px} 
   h2{font-size:24px} 
 }
+
+/* =========================================================
+   🎧 BOTÓN DE MÚSICA PREMIUM CON ANIMACIÓN DE ENTRADA
+   ========================================================= */
+.btn-musica {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.08), rgba(212,175,55,0.15));
+  border: 2px solid rgba(212,175,55,0.4);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 0 25px rgba(212,175,55,0.4);
+  transition: all 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  opacity: 0;
+  transform: translateY(40px) scale(0.8);
+  animation: aparecerMusica 1.6s ease-out 1.2s forwards;
+}
+
+/* Animación de entrada flotante */
+@keyframes aparecerMusica {
+  0% { opacity: 0; transform: translateY(40px) scale(0.8); }
+  60% { opacity: 1; transform: translateY(-8px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Hover con brillo */
+.btn-musica:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 45px rgba(255,215,0,0.8);
+  background: radial-gradient(circle at top, rgba(255,215,0,0.3), rgba(212,175,55,0.35));
+}
+
+/* Ondas animadas */
+.ondas {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  display: none;
+}
+
+.ondas span {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  animation: ondasAnim 2.5s linear infinite;
+  opacity: 0;
+}
+
+.ondas span:nth-child(1) { animation-delay: 0s; }
+.ondas span:nth-child(2) { animation-delay: 0.8s; }
+.ondas span:nth-child(3) { animation-delay: 1.6s; }
+
+@keyframes ondasAnim {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.btn-musica.activo .ondas {
+  display: block;
+}
+
+.btn-musica.activo {
+  animation: brilloMusica 3s infinite ease-in-out;
+  color: #ffde59;
+}
+
+@keyframes brilloMusica {
+  0%, 100% { box-shadow: 0 0 25px rgba(255,215,0,0.4); }
+  50% { box-shadow: 0 0 50px rgba(255,215,0,1); }
+}
+
+.icono-musica {
+  z-index: 2;
+  pointer-events: none;
+}
+
+  
 </style>
 </head>
 <body>
@@ -2474,6 +2563,20 @@ window.addEventListener("scroll", () => {
   }
 });
 </script>
+
+  <!-- =========================================================
+     🎵 BOTÓN DE MÚSICA DE FONDO PREMIUM
+     ========================================================= -->
+<audio id="musicaFondo" loop>
+  <source src="musica/fondo.mp3" type="audio/mpeg">
+</audio>
+
+<div class="btn-musica" id="btnMusica" title="Reproducir música">
+  <span class="icono-musica">🎵</span>
+  <div class="ondas">
+    <span></span><span></span><span></span>
+  </div>
+</div>
 
 
 <div class="container">
@@ -3038,9 +3141,57 @@ style.textContent = `
   to { opacity: 1; transform: translateY(0); }
 }`;
 document.head.appendChild(style);
+
+const musica = document.getElementById("musicaFondo");
+const btn = document.getElementById("btnMusica");
+const icono = btn.querySelector(".icono-musica");
+let fadeInterval = null;
+
+btn.addEventListener("click", async () => {
+  if (musica.paused) {
+    try {
+      musica.volume = 0;
+      await musica.play();
+      btn.classList.add("activo");
+      icono.textContent = "🔊";
+      btn.title = "Pausar música";
+
+      // Efecto FADE-IN (sube volumen gradualmente)
+      let vol = 0;
+      clearInterval(fadeInterval);
+      fadeInterval = setInterval(() => {
+        if (vol < 0.25) {
+          vol += 0.01;
+          musica.volume = vol;
+        } else {
+          clearInterval(fadeInterval);
+        }
+      }, 150);
+    } catch (e) {
+      console.log("El navegador bloqueó la reproducción automática hasta que el usuario interactúe.");
+    }
+  } else {
+    // Efecto FADE-OUT (baja volumen gradualmente)
+    clearInterval(fadeInterval);
+    fadeInterval = setInterval(() => {
+      if (musica.volume > 0.01) {
+        musica.volume -= 0.02;
+      } else {
+        clearInterval(fadeInterval);
+        musica.pause();
+        musica.volume = 0.25;
+        btn.classList.remove("activo");
+        icono.textContent = "🎵";
+        btn.title = "Reproducir música";
+      }
+    }, 100);
+  }
+});
+  
 </script>
 </body>
 </html>
+
 
 
 
