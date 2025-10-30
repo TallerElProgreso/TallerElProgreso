@@ -2287,75 +2287,129 @@ h2:hover::after {
 }
 
 /* =========================================================
-   🌐 SECCIÓN REDES SOCIALES - ESTILO PREMIUM DORADO
+   🌐 SECCIÓN DE REDES SOCIALES
    ========================================================= */
 .redes-cards {
   text-align: center;
-  padding: 80px 30px;
-  background: rgba(17,17,17,0.6);
-  color: #fff;
-  border-radius: 25px;
-  box-shadow: 0 0 35px rgba(0,0,0,0.7);
+  padding: 100px 20px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.04), rgba(10,10,20,0.95) 85%);
+  border-radius: 28px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  max-width: 1200px;
+  margin: 100px auto;
   position: relative;
   overflow: hidden;
-  margin-top: 60px;
+  backdrop-filter: blur(6px);
+  isolation: isolate;
+}
+
+.redes-cards::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,215,0,0.06), transparent, rgba(255,215,0,0.1));
+  animation: brilloRedes 12s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+@keyframes brilloRedes {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* Título */
-.redes-cards h2 {
-  font-size: 2.4rem;
-  font-weight: 900;
-  background: linear-gradient(90deg, #ffdd55, #d4af37, #b88a00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 12px rgba(255, 223, 80, 0.6);
-  margin-bottom: 40px;
-  letter-spacing: 1px;
+.titulo-redes {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--gold);
+  text-shadow: 0 0 15px rgba(255,215,0,0.6);
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
 }
 
-/* Contenedor de redes */
+/* Texto introductorio */
+.intro-redes {
+  font-size: 1.1rem;
+  color: #ccc;
+  opacity: 0.9;
+  max-width: 750px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+  z-index: 2;
+  position: relative;
+}
+
+/* Contenedor de tarjetas */
 .contenedor-redes {
   display: flex;
   justify-content: center;
+  gap: 40px;
   flex-wrap: wrap;
-  gap: 25px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Tarjetas */
 .card-red {
-  width: 160px;
-  height: 160px;
-  border-radius: 25px;
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2rem;
-  transition: all 0.4s ease;
-  border: 1px solid rgba(212,175,55,0.3);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+  gap: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,215,0,0.15);
+  border-radius: 18px;
+  padding: 18px 30px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
 }
 
-/* Íconos */
 .card-red i {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-  color: #ffde59;
-  text-shadow: 0 0 10px rgba(255,215,0,0.7);
+  font-size: 1.6rem;
+  transition: transform 0.4s ease, color 0.4s ease;
 }
 
-/* Hover con brillo dorado */
+/* Hover general */
 .card-red:hover {
-  transform: scale(1.08);
-  background: rgba(212,175,55,0.15);
-  box-shadow: 0 0 35px rgba(255,215,0,0.6);
+  transform: translateY(-8px);
+  border-color: var(--gold);
+  box-shadow: 0 12px 35px rgba(255,215,0,0.25);
 }
+
+/* Colores por red */
+.facebook:hover i { color: #1877F2; }
+.instagram:hover i { color: #E1306C; }
+.whatsapp:hover i { color: #25D366; }
+
+.card-red:hover span {
+  color: var(--gold);
+}
+
+.card-red:hover i {
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .titulo-redes {
+    font-size: 2rem;
+  }
+  .intro-redes {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  .card-red {
+    font-size: 1rem;
+    padding: 14px 24px;
+  }
+  .card-red i {
+    font-size: 1.4rem;
+  }
+}
+
 
   
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
@@ -2971,23 +3025,33 @@ function enviarWhatsApp(e) {
   </div>
 </section>
 
-<section class="redes-cards">
-  <h2>Conéctate con Nosotros</h2>
+<!-- =========================================================
+     🌐 SECCIÓN DE REDES SOCIALES
+     ========================================================= -->
+<section class="redes-cards" id="redes">
+  <h2 class="titulo-redes">🌟 Conéctate con Nosotros</h2>
+  <p class="intro-redes">
+    Síguenos en nuestras redes para conocer promociones, proyectos y novedades del taller.
+  </p>
+
   <div class="contenedor-redes">
     <a href="https://www.facebook.com/tuPagina" target="_blank" class="card-red facebook">
       <i class="fab fa-facebook-f"></i>
       <span>Facebook</span>
     </a>
+
     <a href="https://www.instagram.com/tuPagina" target="_blank" class="card-red instagram">
       <i class="fab fa-instagram"></i>
       <span>Instagram</span>
     </a>
+
     <a href="https://wa.me/573225990026" target="_blank" class="card-red whatsapp">
       <i class="fab fa-whatsapp"></i>
       <span>WhatsApp</span>
     </a>
   </div>
 </section>
+
 
   
 <footer class="footer-progreso">
@@ -3133,6 +3197,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
