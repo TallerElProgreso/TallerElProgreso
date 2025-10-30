@@ -1494,26 +1494,22 @@ h2:hover::after {
 .marca-item img {
   height: 80px;
   width: auto;
-  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255,215,0,0.6));
+  filter: brightness(1) drop-shadow(0 0 6px rgba(255,215,0,0.4));
   transition: transform 0.5s ease, filter 0.5s ease;
   animation: logoBrillo 3s ease-in-out infinite;
   opacity: 0.95;
 }
 
-/* ✨ Brillo pulsante constante */
 @keyframes logoBrillo {
   0%, 100% {
-    filter: brightness(0.8) invert(1)
-      drop-shadow(0 0 10px rgba(255,215,0,0.4));
+    filter: brightness(1) drop-shadow(0 0 6px rgba(255,215,0,0.3));
     transform: scale(1);
   }
   50% {
-    filter: brightness(1.4) invert(1)
-      drop-shadow(0 0 25px rgba(255,215,0,1));
-    transform: scale(1.08);
+    filter: brightness(1.25) drop-shadow(0 0 15px rgba(255,215,0,0.8));
+    transform: scale(1.07);
   }
 }
-
 /* Hover aún más brillante */
 .marca-item img:hover {
   transform: scale(1.15);
@@ -3240,6 +3236,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
