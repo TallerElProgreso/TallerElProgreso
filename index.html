@@ -2060,138 +2060,139 @@ h2:hover::after {
 
 
 /* =========================================================
-   📍 UBICACIÓN INTERACTIVA
+   📍 SECCIÓN UBICACIÓN INTERACTIVA
    ========================================================= */
 .ubicacion-section {
-  text-align: center;
   padding: 100px 20px;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 85%);
-  border-radius: 20px;
-  box-shadow: 0 0 50px rgba(0,0,0,0.6);
-  margin-top: 120px;
-  margin-bottom: 120px;
+  text-align: center;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.03), rgba(10,10,20,0.95) 90%);
+  border-radius: 28px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  max-width: 1200px;
+  margin: 100px auto;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(6px);
+  isolation: isolate;
 }
 
-/* Fondo dorado sutil animado */
 .ubicacion-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(255,215,0,0.05), transparent, rgba(255,215,0,0.07));
-  animation: brilloUbicacion 10s linear infinite;
+  background: linear-gradient(120deg, rgba(255,215,0,0.07), transparent, rgba(255,215,0,0.12));
+  animation: fondoBrilloUbicacion 14s linear infinite;
   z-index: 0;
 }
-@keyframes brilloUbicacion {
+@keyframes fondoBrilloUbicacion {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
 
-/* Contenido principal */
-.ubicacion-section > * {
-  position: relative;
-  z-index: 2;
-}
-
-/* Título */
 .titulo-ubicacion {
   font-size: 2.6rem;
   font-weight: 800;
   color: var(--gold);
-  text-shadow: 0 0 12px rgba(255,215,0,0.5);
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  text-shadow: 0 0 18px rgba(255,215,0,0.6);
+  margin-bottom: 15px;
+  z-index: 2;
+  position: relative;
 }
 
-/* Texto informativo */
-.info-ubicacion {
+.intro-ubicacion {
+  font-size: 1.15rem;
   color: #ddd;
-  font-size: 1.1rem;
-  margin-top: 20px;
-  line-height: 1.8;
-  max-width: 800px;
-  margin-inline: auto;
+  max-width: 850px;
+  margin: 0 auto 50px;
   opacity: 0.9;
+  line-height: 1.7;
+  z-index: 2;
+  position: relative;
 }
 
-/* Contenedor del mapa */
+/* 🗺️ MAPA */
 .mapa-contenedor {
-  margin: 50px auto;
-  border-radius: 15px;
+  position: relative;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
-  max-width: 1000px;
+  box-shadow: 0 0 25px rgba(255,215,0,0.15);
+  margin-bottom: 40px;
+  z-index: 2;
 }
 .mapa-contenedor iframe {
   width: 100%;
-  height: 450px;
-  border: 0;
+  height: 400px;
+  border: none;
+  transition: transform 0.4s ease;
+}
+.mapa-contenedor:hover iframe {
+  transform: scale(1.02);
 }
 
-/* Botón “Cómo llegar” blanco */
-.btn-luminoso {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 14px 38px;
-  border-radius: 40px;
-  background: linear-gradient(145deg, #ffffff, #e6e6e6);
-  color: #111;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  box-shadow: 0 0 20px rgba(255,255,255,0.4);
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-.btn-luminoso:hover {
-  background: linear-gradient(145deg, #fff8d6, #fff2b3);
-  color: #000;
-  box-shadow: 0 0 35px rgba(255,215,0,0.7);
-  transform: scale(1.08);
-}
-
-/* Horarios */
-.horarios {
-  margin-top: 40px;
-  background: rgba(255,215,0,0.05);
+/* 🧭 INFO */
+.info-ubicacion {
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,215,0,0.15);
-  border-radius: 15px;
-  padding: 25px 40px;
-  display: inline-block;
-  text-align: left;
-  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 2;
 }
-.horarios h3 {
+
+.info-ubicacion h3 {
   color: var(--gold);
-  margin-bottom: 10px;
-  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
+
+.info-ubicacion p, 
+.info-ubicacion ul li {
+  color: #ddd;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.info-ubicacion a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+}
+
 .horarios ul {
   list-style: none;
   padding: 0;
-  margin: 0;
-}
-.horarios li {
-  margin: 6px 0;
-  color: #ccc;
-  font-size: 1rem;
+  margin: 10px 0 20px;
 }
 
-/* Adaptación móvil */
-@media (max-width: 768px) {
-  .ubicacion-section {
-    padding: 70px 15px;
-    margin-top: 80px;
-    margin-bottom: 80px;
-  }
-  .mapa-contenedor iframe {
-    height: 320px;
-  }
-  .horarios {
-    padding: 20px;
-  }
+/* ✨ BOTÓN */
+.btn-luminoso {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, var(--gold), #ffea8a);
+  color: #111;
+  font-weight: 700;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(255,215,0,0.4);
+  transition: all 0.3s ease;
 }
+.btn-luminoso:hover {
+  background: linear-gradient(90deg, #ffec80, var(--gold));
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255,215,0,0.7);
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .titulo-ubicacion { font-size: 2rem; }
+  .intro-ubicacion { font-size: 1rem; }
+  .mapa-contenedor iframe { height: 300px; }
+  .info-ubicacion { padding: 25px; }
+}
+
 
 /* =========================================================
    🧾 MÉTODOS DE PAGO - PAGA FÁCIL Y SEGURO
@@ -2697,29 +2698,31 @@ window.addEventListener("scroll", () => {
 </section>
 
 <!-- =========================================================
-     📍 UBICACIÓN INTERACTIVA
+     📍 UBICACIÓN INTERACTIVA (MEJORADA)
      ========================================================= -->
 <section class="ubicacion-section" id="ubicacion">
-  <h2 class="titulo-dorado">📍 Nuestra Ubicación</h2>
-  <p class="intro-texto">
-    Encuéntranos fácilmente y visítanos cuando necesites atención profesional para tu vehículo.
+  <h2 class="titulo-ubicacion">📍 Nuestra Ubicación</h2>
+
+  <p class="intro-ubicacion">
+    Encuéntranos fácilmente y visítanos cuando necesites atención profesional para tu vehículo.  
     Estamos ubicados en un punto estratégico para ofrecerte comodidad y acceso rápido.
   </p>
 
   <div class="mapa-contenedor">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.907715709168!2d-76.313!3d3.412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sTaller%20Automotriz%20El%20Progreso!5e0!3m2!1ses!2sco!4v0000000000000"
-      width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+      allowfullscreen="" loading="lazy">
     </iframe>
   </div>
 
   <div class="info-ubicacion">
+    <h3>📞 Información de Contacto</h3>
     <p><strong>Dirección:</strong> Candelaria - Florida / RN32-02 San Antonio de los Caballeros</p>
     <p><strong>Teléfono:</strong> 322 599 0026</p>
     <p><strong>WhatsApp:</strong> <a href="https://wa.me/573225990026" target="_blank">+57 322 599 0026</a></p>
 
     <div class="horarios">
-      <h3>🕒 Horarios de atención</h3>
+      <h3>🕒 Horarios de Atención</h3>
       <ul>
         <li><strong>Lunes a Viernes:</strong> 8:00 a.m. - 6:00 p.m.</li>
         <li><strong>Sábado:</strong> 8:00 a.m. - 6:00 p.m.</li>
@@ -2727,11 +2730,13 @@ window.addEventListener("scroll", () => {
       </ul>
     </div>
 
-    <a href="https://www.google.com/maps/dir/?api=1&destination=Taller+Automotriz+El+Progreso+Candelaria" target="_blank" class="btn-luminoso">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Taller+Automotriz+El+Progreso+Candelaria"
+       target="_blank" class="btn-luminoso">
       🚗 Cómo llegar
     </a>
   </div>
 </section>
+
 
   
 <!-- ============================= -->
@@ -3236,6 +3241,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
