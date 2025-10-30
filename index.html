@@ -1420,103 +1420,122 @@ h2:hover::after {
 .lightbox .close { position:absolute; top:18px; right:18px; color:#fff; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.06); padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
 
 /* =========================================================
-   🚘 SECCIÓN MARCAS QUE TRABAJAMOS
+   🚘 SECCIÓN MARCAS QUE TRABAJAMOS - VERSIÓN PREMIUM
    ========================================================= */
 .marcas-section {
   text-align: center;
-  padding: 75px 35px;
-  background: radial-gradient(circle at top, rgba(255,255,255,0.04), rgba(10,10,20,0.95) 85%);
-  border-radius: 28px;
+  padding: 90px 25px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(17,17,17,0.95) 80%),
+              linear-gradient(180deg, #1E2A47 0%, #0C1323 100%);
+  border-radius: 25px;
   box-shadow: 0 0 25px rgba(0,0,0,0.6);
   position: relative;
   overflow: hidden;
-  isolation: isolate;
-  backdrop-filter: blur(6px);
-  margin: 100px auto;
-  max-width: 1200px;
 }
 
+/* ✨ Fondo dinámico */
 .marcas-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(255,215,0,0.07), transparent, rgba(255,215,0,0.1));
-  animation: brilloMarcas 12s linear infinite;
+  background: linear-gradient(120deg, rgba(255,215,0,0.1), transparent, rgba(255,215,0,0.1));
+  animation: fondoBrilloMarcas 10s linear infinite;
   z-index: 0;
 }
-@keyframes brilloMarcas {
+@keyframes fondoBrilloMarcas {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
 
+/* 🏆 Título */
 .titulo-marcas {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: var(--gold);
-  text-shadow: 0 0 18px rgba(255,215,0,0.6);
-  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--gold, #d4af37);
+  text-shadow: 0 0 15px rgba(255,215,0,0.7);
+  margin-bottom: 15px;
   position: relative;
   z-index: 2;
-  letter-spacing: 1px;
 }
 
-.subtitulo-marcas {
-  font-size: 1.1rem;
-  color: #ccc;
-  max-width: 800px;
-  margin: 0 auto 60px;
+/* Texto introductorio */
+.texto-intro-marcas {
+  font-size: 1.15rem;
+  color: #ddd;
+  max-width: 850px;
+  margin: 0 auto 50px;
   line-height: 1.8;
-  opacity: 0.9;
   position: relative;
   z-index: 2;
+  opacity: 0.9;
 }
 
-/* 🎡 Contenedor del scroll */
+/* 🌀 Contenedor del carrusel */
 .marcas-scroll {
   overflow: hidden;
-  position: relative;
   width: 100%;
+  position: relative;
   z-index: 2;
 }
 
-/* 🎞️ Carrusel infinito */
 .marcas-inner {
   display: flex;
-  gap: 90px;
+  gap: 60px;
+  animation: scrollMarcas 25s linear infinite;
   align-items: center;
-  animation: scrollMarcas 35s linear infinite;
-  width: max-content;
+  justify-content: center;
 }
 @keyframes scrollMarcas {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* 🚗 Logos individuales */
+/* 💫 Logos activos con brillo */
 .marca-item img {
-  height: 70px;
+  height: 80px;
   width: auto;
   filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255,215,0,0.6));
-  transition: transform 0.4s ease, filter 0.4s ease;
-  opacity: 0.9;
+  transition: transform 0.5s ease, filter 0.5s ease;
+  animation: logoBrillo 3s ease-in-out infinite;
+  opacity: 0.95;
 }
+
+/* ✨ Brillo pulsante constante */
+@keyframes logoBrillo {
+  0%, 100% {
+    filter: brightness(0.8) invert(1)
+      drop-shadow(0 0 10px rgba(255,215,0,0.4));
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.4) invert(1)
+      drop-shadow(0 0 25px rgba(255,215,0,1));
+    transform: scale(1.08);
+  }
+}
+
+/* Hover aún más brillante */
 .marca-item img:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2) drop-shadow(0 0 15px rgba(255,215,0,1));
+  transform: scale(1.15);
+  filter: brightness(1.6) invert(1)
+    drop-shadow(0 0 35px rgba(255,215,0,1));
   opacity: 1;
 }
 
 /* 📱 Responsive */
 @media (max-width: 768px) {
   .titulo-marcas {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
-  .subtitulo-marcas {
+  .texto-intro-marcas {
     font-size: 1rem;
-    margin-bottom: 40px;
   }
   .marcas-inner {
-    gap: 60px;
+    gap: 40px;
+    animation-duration: 35s;
+  }
+  .marca-item img {
+    height: 65px;
   }
 }
 
@@ -2818,43 +2837,34 @@ window.addEventListener("scroll", () => {
 </div>
 
   
- <!-- =========================================================
-     🚘 SECCIÓN: MARCAS QUE TRABAJAMOS (VERSIÓN PREMIUM)
+<!-- =========================================================
+     🚘 MARCAS QUE TRABAJAMOS (VERSIÓN PREMIUM ACTIVA)
      ========================================================= -->
 <section id="marcas" class="marcas-section">
-  <div class="contenedor-marcas">
-    
-    <!-- 🏆 Título -->
-    <header class="encabezado-marcas">
-      <h2 class="titulo-marcas">Marcas que Trabajamos</h2>
-      <p class="subtitulo-marcas">
-        En <strong>Taller El Progreso</strong> reparamos, restauramos y mantenemos vehículos de las marcas más reconocidas del mercado.  
-        Conocemos cada detalle técnico y estético para ofrecer resultados impecables.
-      </p>
-    </header>
+  <h2 class="titulo-marcas">🚗 Marcas Con Las Que Trabajamos</h2>
+  <p class="texto-intro-marcas">
+    En <strong>Taller Automotriz El Progreso</strong> trabajamos con todas las marcas,
+    asegurando calidad, repuestos originales y precisión en cada reparación.
+  </p>
 
-    <!-- 🎞️ Carrusel de Logos -->
-    <div class="marcas-scroll">
-      <div class="marcas-inner">
-        <!-- Logos originales -->
-        <figure class="marca-item"><img src="imagenes/logo1.png" alt="Audi"></figure>
-        <figure class="marca-item"><img src="imagenes/logo2.png" alt="Chevrolet"></figure>
-        <figure class="marca-item"><img src="imagenes/logo3.png" alt="Toyota"></figure>
-        <figure class="marca-item"><img src="imagenes/logo4.png" alt="Nissan"></figure>
-        <figure class="marca-item"><img src="imagenes/logo5.png" alt="Honda"></figure>
-        <figure class="marca-item"><img src="imagenes/logo6.png" alt="Ford"></figure>
-        <figure class="marca-item"><img src="imagenes/logo7.png" alt="Kia"></figure>
-
-        <!-- Duplicados para el efecto infinito -->
-        <figure class="marca-item"><img src="imagenes/logo1.png" alt="Audi"></figure>
-        <figure class="marca-item"><img src="imagenes/logo2.png" alt="Chevrolet"></figure>
-        <figure class="marca-item"><img src="imagenes/logo3.png" alt="Toyota"></figure>
-        <figure class="marca-item"><img src="imagenes/logo4.png" alt="Nissan"></figure>
-      </div>
+  <div class="marcas-scroll">
+    <div class="marcas-inner">
+      <div class="marca-item"><img src="imagenes/logo1.png" alt="Marca 1"></div>
+      <div class="marca-item"><img src="imagenes/logo2.png" alt="Marca 2"></div>
+      <div class="marca-item"><img src="imagenes/logo3.png" alt="Marca 3"></div>
+      <div class="marca-item"><img src="imagenes/logo4.png" alt="Marca 4"></div>
+      <div class="marca-item"><img src="imagenes/logo5.png" alt="Marca 5"></div>
+      <div class="marca-item"><img src="imagenes/logo6.png" alt="Marca 6"></div>
+      <div class="marca-item"><img src="imagenes/logo7.png" alt="Marca 7"></div>
+      <!-- duplicadas para efecto infinito -->
+      <div class="marca-item"><img src="imagenes/logo1.png" alt="Marca 1"></div>
+      <div class="marca-item"><img src="imagenes/logo2.png" alt="Marca 2"></div>
+      <div class="marca-item"><img src="imagenes/logo3.png" alt="Marca 3"></div>
+      <div class="marca-item"><img src="imagenes/logo4.png" alt="Marca 4"></div>
     </div>
-
   </div>
 </section>
+
 
 
 
@@ -3230,6 +3240,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
