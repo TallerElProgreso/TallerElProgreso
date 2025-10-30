@@ -1419,93 +1419,107 @@ h2:hover::after {
 .lightbox img { max-width:95%; max-height:85%; border-radius:12px; box-shadow:0 30px 80px rgba(0,0,0,0.8); }
 .lightbox .close { position:absolute; top:18px; right:18px; color:#fff; background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.06); padding:10px 12px; border-radius:10px; cursor:pointer; font-weight:700; }
 
-/* === MARCAS QUE TRABAJAMOS === */
+/* =========================================================
+   🚘 SECCIÓN MARCAS QUE TRABAJAMOS
+   ========================================================= */
 .marcas-section {
   text-align: center;
-  padding: 75px 35px; /* 🔹 Espacio interno más amplio y equilibrado */
-  background: radial-gradient(circle at top, rgba(255,255,255,0.05), rgba(10,10,20,0.95) 85%);
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  padding: 75px 35px;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.04), rgba(10,10,20,0.95) 85%);
+  border-radius: 28px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
   position: relative;
   overflow: hidden;
-  max-width: 1200px;  /* 🔹 Centrado y equilibrado en pantallas grandes */
-  transition: all 0.3s ease;
+  isolation: isolate;
+  backdrop-filter: blur(6px);
+  margin: 100px auto;
+  max-width: 1200px;
 }
 
-/* 🔸 Ajuste en pantallas medianas */
-@media (max-width: 1024px) {
-  .marcas-section {
-    margin: 90px auto;
-    padding: 80px 18px;
-  }
+.marcas-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,215,0,0.07), transparent, rgba(255,215,0,0.1));
+  animation: brilloMarcas 12s linear infinite;
+  z-index: 0;
 }
-
-/* 🔸 Más compacto y legible en móviles */
-@media (max-width: 640px) {
-  .marcas-section {
-    margin: 70px auto;
-    padding: 60px 16px;
-  }
+@keyframes brilloMarcas {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .titulo-marcas {
-  font-size: 2.4rem;
+  font-size: 2.8rem;
   font-weight: 800;
   color: var(--gold);
-  text-shadow: 0 0 10px rgba(255,215,0,0.6);
-  margin-bottom: 35px;
+  text-shadow: 0 0 18px rgba(255,215,0,0.6);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
   letter-spacing: 1px;
 }
 
-/* Contenedor con movimiento infinito */
+.subtitulo-marcas {
+  font-size: 1.1rem;
+  color: #ccc;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.8;
+  opacity: 0.9;
+  position: relative;
+  z-index: 2;
+}
+
+/* 🎡 Contenedor del scroll */
 .marcas-scroll {
   overflow: hidden;
   position: relative;
   width: 100%;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  z-index: 2;
 }
 
+/* 🎞️ Carrusel infinito */
 .marcas-inner {
   display: flex;
+  gap: 90px;
   align-items: center;
-  gap: 70px;
-  animation: scrollMarcas 25s linear infinite;
+  animation: scrollMarcas 35s linear infinite;
+  width: max-content;
 }
-
-/* Logos a color normal */
-.marcas-inner img {
-  width: 140px;
-  height: auto;
-  opacity: 0.9;
-  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
-}
-
-/* Efecto dorado y zoom al pasar el mouse */
-.marcas-inner img:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 25px rgba(255,215,0,0.7));
-  opacity: 1;
-}
-
-/* Animación de desplazamiento */
 @keyframes scrollMarcas {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* Efecto dorado de fondo animado sutil */
-.marcas-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(212,175,55,0.05), transparent, rgba(255,215,0,0.05));
-  animation: brilloDoradoFondo 10s linear infinite;
+/* 🚗 Logos individuales */
+.marca-item img {
+  height: 70px;
+  width: auto;
+  filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255,215,0,0.6));
+  transition: transform 0.4s ease, filter 0.4s ease;
+  opacity: 0.9;
+}
+.marca-item img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2) drop-shadow(0 0 15px rgba(255,215,0,1));
+  opacity: 1;
 }
 
-@keyframes brilloDoradoFondo {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .titulo-marcas {
+    font-size: 2.2rem;
+  }
+  .subtitulo-marcas {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  .marcas-inner {
+    gap: 60px;
+  }
 }
+
 
 /* === SECCIÓN POR QUÉ ELEGIRNOS === */
 .porque-elegirnos-section {
@@ -2804,25 +2818,44 @@ window.addEventListener("scroll", () => {
 </div>
 
   
-  <section id="marcas" class="marcas-section">
-  <h2 class="titulo-marcas">Marcas que Trabajamos</h2>
-  <div class="marcas-scroll">
-    <div class="marcas-inner">
-      <img src="imagenes/logo1.png" alt="Marca 1">
-      <img src="imagenes/logo2.png" alt="Marca 2">
-      <img src="imagenes/logo3.png" alt="Marca 3">
-      <img src="imagenes/logo4.png" alt="Marca 4">
-      <img src="imagenes/logo5.png" alt="Marca 5">
-      <img src="imagenes/logo6.png" alt="Marca 6">
-      <img src="imagenes/logo7.png" alt="Marca 7">
-      <!-- duplicadas para efecto infinito -->
-      <img src="imagenes/logo1.png" alt="Marca 1">
-      <img src="imagenes/logo2.png" alt="Marca 2">
-      <img src="imagenes/logo3.png" alt="Marca 3">
-      <img src="imagenes/logo4.png" alt="Marca 4">
+ <!-- =========================================================
+     🚘 SECCIÓN: MARCAS QUE TRABAJAMOS (VERSIÓN PREMIUM)
+     ========================================================= -->
+<section id="marcas" class="marcas-section">
+  <div class="contenedor-marcas">
+    
+    <!-- 🏆 Título -->
+    <header class="encabezado-marcas">
+      <h2 class="titulo-marcas">Marcas que Trabajamos</h2>
+      <p class="subtitulo-marcas">
+        En <strong>Taller El Progreso</strong> reparamos, restauramos y mantenemos vehículos de las marcas más reconocidas del mercado.  
+        Conocemos cada detalle técnico y estético para ofrecer resultados impecables.
+      </p>
+    </header>
+
+    <!-- 🎞️ Carrusel de Logos -->
+    <div class="marcas-scroll">
+      <div class="marcas-inner">
+        <!-- Logos originales -->
+        <figure class="marca-item"><img src="imagenes/logo1.png" alt="Audi"></figure>
+        <figure class="marca-item"><img src="imagenes/logo2.png" alt="Chevrolet"></figure>
+        <figure class="marca-item"><img src="imagenes/logo3.png" alt="Toyota"></figure>
+        <figure class="marca-item"><img src="imagenes/logo4.png" alt="Nissan"></figure>
+        <figure class="marca-item"><img src="imagenes/logo5.png" alt="Honda"></figure>
+        <figure class="marca-item"><img src="imagenes/logo6.png" alt="Ford"></figure>
+        <figure class="marca-item"><img src="imagenes/logo7.png" alt="Kia"></figure>
+
+        <!-- Duplicados para el efecto infinito -->
+        <figure class="marca-item"><img src="imagenes/logo1.png" alt="Audi"></figure>
+        <figure class="marca-item"><img src="imagenes/logo2.png" alt="Chevrolet"></figure>
+        <figure class="marca-item"><img src="imagenes/logo3.png" alt="Toyota"></figure>
+        <figure class="marca-item"><img src="imagenes/logo4.png" alt="Nissan"></figure>
+      </div>
     </div>
+
   </div>
 </section>
+
 
 
   <section id="porque-elegirnos" class="porque-elegirnos-section">
@@ -3197,6 +3230,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
