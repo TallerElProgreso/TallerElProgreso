@@ -2441,42 +2441,33 @@ h2:hover::after {
 }
 
 /* ==========================================
-   ENCABEZADO — BANDERAS LATERALES ANIMADAS
+   ENCABEZADO — NUEVO SISTEMA CON FLEXBOX
    ========================================== */
 
-.hero-header {
+.header-principal {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 40px 60px;
+  gap: 50px; /* espacio entre banderas y logo */
   position: relative;
-}
-
-/* Contenedor del centro */
-.hero-center {
-  text-align: center;
-}
-
-.hero-logo {
-  width: 140px;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.4));
-  margin-bottom: 10px;
+  z-index: 2;
 }
 
 /* =========================
-   BANDERAS CON EFECTOS
+   BANDERAS GRANDES Y A LOS LADOS
    ========================= */
 .flag {
-  width: 120px;
+  width: 150px;          /* ⭐ tamaño grande */
+  height: auto;
   opacity: 1;
   animation: viento 4s ease-in-out infinite;
   filter: drop-shadow(0 0 18px rgba(255,255,255,0.5));
-  position: relative;
   border-radius: 6px;
 }
 
-/* ✨ Brillo en bordes */
+/* Brillo */
 .flag::after {
   content: "";
   position: absolute;
@@ -2488,13 +2479,29 @@ h2:hover::after {
   pointer-events: none;
 }
 
-/* 🇻🇪 inclinación izquierda */
+/* 🇻🇪 izquierda */
 .flag-left { transform: rotate(-12deg); }
 
-/* 🇨🇴 inclinación derecha */
+/* 🇨🇴 derecha */
 .flag-right { transform: rotate(12deg); }
 
-/* 🌬️ animación viento */
+/* =========================
+   LOGO CENTRADO
+   ========================= */
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo-img {
+  width: 160px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.3));
+}
+
+/* Animación viento */
 @keyframes viento {
   0%   { transform: rotate(var(--r)) translateX(0); }
   25%  { transform: rotate(calc(var(--r) + 2deg)) translateX(3px); }
@@ -2506,10 +2513,19 @@ h2:hover::after {
 .flag-left { --r: -12deg; }
 .flag-right { --r: 12deg; }
 
-/* Móvil */
+/* ==========================================
+   RESPONSIVE MÓVIL
+   ========================================== */
 @media (max-width: 720px) {
-  .flag { width: 70px; }
-  .hero-header { padding: 20px; }
+  .header-principal {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .flag {
+    width: 90px; /* tamaño móvil */
+  }
 }
 
   
@@ -2652,23 +2668,31 @@ h2:hover::after {
 <body>
 <canvas id="particles"></canvas>
 
-<!-- ====== HEADER HERO ====== -->
-<header class="header-principal">
-  <div class="header-overlay"></div>
+<!-- ============================================
+     HEADER PRINCIPAL CON BANDERAS ANIMADAS
+================================================= -->
 
-  <!-- ===== Banderas Laterales ===== -->
-  <img src="imagenes/bandera-venezuela.png" alt="Bandera de Venezuela" class="flag flag-left">
+<header class="hero-header">
 
-  <div class="logo-container">
-    <img src="imagenes/logo.png" alt="Taller El Progreso" class="logo-img">
-    <div class="logo-texto">
-      <h1>Taller El Progreso</h1>
-      <p>Confianza y calidad en cada reparación</p>
+    <!-- 🇻🇪 Bandera Venezuela -->
+    <img src="imagenes/bandera-venezuela.png" 
+         alt="Bandera de Venezuela" 
+         class="flag flag-left">
+
+    <!-- LOGO + TEXTO CENTRAL -->
+    <div class="hero-center">
+        <img src="imagenes/logo.png" alt="Taller El Progreso" class="hero-logo">
+        <h1 class="hero-titulo">Taller El Progreso</h1>
+        <p class="hero-sub">Confianza y calidad en cada reparación</p>
     </div>
-  </div>
 
-  <img src="imagenes/bandera-colombia.png" alt="Bandera de Colombia" class="flag flag-right">
+    <!-- 🇨🇴 Bandera Colombia -->
+    <img src="imagenes/bandera-colombia.png" 
+         alt="Bandera de Colombia" 
+         class="flag flag-right">
+
 </header>
+
 
 
 <!-- ====== NAVBAR ====== -->
@@ -3312,10 +3336,79 @@ style.textContent = `
   to { opacity: 1; transform: translateY(0); }
 }`;
 document.head.appendChild(style);
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const leftFlag = document.querySelector(".flag-left");
+  const rightFlag = document.querySelector(".flag-right");
+
+  // ================================
+  //  ⭐ ANIMACIÓN DE ENTRADA
+  // ================================
+  leftFlag.style.opacity = "0";
+  rightFlag.style.opacity = "0";
+
+  leftFlag.style.transform += " translateX(-40px)";
+  rightFlag.style.transform += " translateX(40px)";
+
+  setTimeout(() => {
+    leftFlag.style.transition = "0.8s ease";
+    rightFlag.style.transition = "0.8s ease";
+
+    leftFlag.style.opacity = "1";
+    rightFlag.style.opacity = "1";
+
+    leftFlag.style.transform = leftFlag.style.transform.replace(" translateX(-40px)", "");
+    rightFlag.style.transform = rightFlag.style.transform.replace(" translateX(40px)", "");
+  }, 200);
+
+
+  // ====================================
+  //  ⭐ AJUSTAR TAMAÑO DINÁMICO OPCIONAL
+  // ====================================
+  function ajustarTamañoBanderas() {
+    const ancho = window.innerWidth;
+    const flags = document.querySelectorAll(".flag");
+
+    if (ancho > 1200) {
+      flags.forEach(f => f.style.width = "160px");
+    } else if (ancho > 900) {
+      flags.forEach(f => f.style.width = "140px");
+    } else if (ancho > 600) {
+      flags.forEach(f => f.style.width = "110px");
+    } else {
+      flags.forEach(f => f.style.width = "85px");
+    }
+  }
+
+  // Ejecuta al cargar
+  ajustarTamañoBanderas();
+
+  // Ejecuta cuando cambie el tamaño
+  window.addEventListener("resize", ajustarTamañoBanderas);
+
+
+  // ====================================
+  // ⭐ EFECTO “flotado” (extra cool)
+  // ====================================
+  function efectoFloat(elemento) {
+    let pos = 0;
+    setInterval(() => {
+      pos = pos === 1 ? -1 : 1;
+      elemento.style.transform += ` translateY(${pos}px)`;
+    }, 900);
+  }
+
+  efectoFloat(leftFlag);
+  efectoFloat(rightFlag);
+
+});
+</script>
 
 </script>
 </body>
 </html>
+
 
 
 
