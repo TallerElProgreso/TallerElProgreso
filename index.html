@@ -2440,6 +2440,77 @@ h2:hover::after {
   }
 }
 
+/* ==========================================
+   ENCABEZADO — BANDERAS LATERALES ANIMADAS
+   ========================================== */
+
+.hero-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 60px;
+  position: relative;
+}
+
+/* Contenedor del centro */
+.hero-center {
+  text-align: center;
+}
+
+.hero-logo {
+  width: 140px;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.4));
+  margin-bottom: 10px;
+}
+
+/* =========================
+   BANDERAS CON EFECTOS
+   ========================= */
+.flag {
+  width: 120px;
+  opacity: 1;
+  animation: viento 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 18px rgba(255,255,255,0.5));
+  position: relative;
+  border-radius: 6px;
+}
+
+/* ✨ Brillo en bordes */
+.flag::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  box-shadow: 
+      0 0 25px rgba(255,255,255,0.6),
+      0 0 40px rgba(255,255,255,0.25) inset;
+  pointer-events: none;
+}
+
+/* 🇻🇪 inclinación izquierda */
+.flag-left { transform: rotate(-12deg); }
+
+/* 🇨🇴 inclinación derecha */
+.flag-right { transform: rotate(12deg); }
+
+/* 🌬️ animación viento */
+@keyframes viento {
+  0%   { transform: rotate(var(--r)) translateX(0); }
+  25%  { transform: rotate(calc(var(--r) + 2deg)) translateX(3px); }
+  50%  { transform: rotate(calc(var(--r) - 2deg)) translateX(-3px); }
+  75%  { transform: rotate(calc(var(--r) + 1deg)) translateX(2px); }
+  100% { transform: rotate(var(--r)) translateX(0); }
+}
+
+.flag-left { --r: -12deg; }
+.flag-right { --r: 12deg; }
+
+/* Móvil */
+@media (max-width: 720px) {
+  .flag { width: 70px; }
+  .hero-header { padding: 20px; }
+}
 
   
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
@@ -2575,9 +2646,7 @@ h2:hover::after {
   .gallery-item img{height:120px} 
   h2{font-size:24px} 
 }
-
-
-  
+ 
 </style>
 </head>
 <body>
@@ -2587,6 +2656,9 @@ h2:hover::after {
 <header class="header-principal">
   <div class="header-overlay"></div>
 
+  <!-- ===== Banderas Laterales ===== -->
+  <img src="imagenes/bandera-venezuela.png" alt="Bandera de Venezuela" class="flag flag-left">
+
   <div class="logo-container">
     <img src="imagenes/logo.png" alt="Taller El Progreso" class="logo-img">
     <div class="logo-texto">
@@ -2594,7 +2666,10 @@ h2:hover::after {
       <p>Confianza y calidad en cada reparación</p>
     </div>
   </div>
+
+  <img src="imagenes/bandera-colombia.png" alt="Bandera de Colombia" class="flag flag-right">
 </header>
+
 
 <!-- ====== NAVBAR ====== -->
 <nav class="navbar" id="navbar">
@@ -3241,6 +3316,7 @@ document.head.appendChild(style);
 </script>
 </body>
 </html>
+
 
 
 
