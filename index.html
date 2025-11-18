@@ -3232,93 +3232,139 @@ function enviarWhatsApp(e) {
    ⚙️ ANIMACIONES Y EFECTOS PREMIUM - Taller El Progreso
    ========================================================= */
 
-// === 1. Intersection Observer (para secciones y animaciones suaves) ===
-(function(){
-  const observer = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
-        e.target.querySelectorAll('.fade-in-up,[data-animate]').forEach(el=>el.classList.add('visible'));
-      }
-    });
-  },{threshold:0.15});
 
-  document.querySelectorAll('section,[data-animate]').forEach(sec => observer.observe(sec));
+/* =========================================================
+   1. Intersection Observer (animación de aparición)
+   ========================================================= */
+(function () {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+
+        e.target
+          .querySelectorAll('.fade-in-up, [data-animate]')
+          .forEach(el => el.classList.add('visible'));
+      }
+
+    });
+  }, { threshold: 0.15 });
+
+  document
+    .querySelectorAll('section, [data-animate]')
+    .forEach(sec => observer.observe(sec));
 })();
 
-// === 2. Lightbox (para galerías) ===
-function openLightbox(src,alt){
-  const lb=document.getElementById('lightbox');
-  if(!lb) return;
-  lb.querySelector('img').src=src;
-  lb.querySelector('img').alt=alt;
+
+/* =========================================================
+   2. Lightbox (galerías)
+   ========================================================= */
+function openLightbox(src, alt) {
+  const lb = document.getElementById('lightbox');
+  if (!lb) return;
+
+  lb.querySelector('img').src = src;
+  lb.querySelector('img').alt = alt;
   lb.classList.add('open');
 }
-function closeLightbox(){
-  const lb=document.getElementById('lightbox');
-  if(lb) lb.classList.remove('open');
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  if (lb) lb.classList.remove('open');
 }
 
-// === 3. Fondo de partículas doradas ===
-const canvas=document.getElementById('particles');
-if(canvas){
-  const ctx=canvas.getContext('2d');
-  canvas.width=window.innerWidth; 
-  canvas.height=window.innerHeight;
-  let particles=[];
-  for(let i=0;i<60;i++){
+
+/* =========================================================
+   3. Fondo de partículas doradas
+   ========================================================= */
+const canvas = document.getElementById('particles');
+
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+
+  // Crear partículas
+  for (let i = 0; i < 60; i++) {
     particles.push({
-      x:Math.random()*canvas.width, 
-      y:Math.random()*canvas.height, 
-      r:Math.random()*1.5+0.5, 
-      dx:(Math.random()-0.5)*0.3, 
-      dy:(Math.random()-0.5)*0.3
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
     });
   }
-  function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p=>{
+
+  // Animación de partículas
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach(p => {
       ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(212,175,55,0.6)';
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(212,175,55,0.6)';
       ctx.fill();
-      p.x+=p.dx; p.y+=p.dy;
-      if(p.x<0||p.x>canvas.width) p.dx*=-1;
-      if(p.y<0||p.y>canvas.height) p.dy*=-1;
+
+      p.x += p.dx;
+      p.y += p.dy;
+
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
     });
+
     requestAnimationFrame(animate);
   }
+
   animate();
-  window.addEventListener('resize',()=>{
-    canvas.width=window.innerWidth;
-    canvas.height=window.innerHeight;
+
+  // Ajustar al cambiar ventana
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   });
 }
 
-// === 4. Parallax suave (solo sección de marcas) ===
+
+/* =========================================================
+   4. Parallax suave (marcas)
+   ========================================================= */
 window.addEventListener('scroll', () => {
   const marcasSection = document.querySelector('.marcas-section');
+
   if (marcasSection) {
     const offset = window.scrollY * 0.15;
     marcasSection.style.backgroundPosition = `center ${offset}px`;
   }
 });
 
-// === 5. Scroll suave en anclas ===
+
+/* =========================================================
+   5. Scroll suave para anclas internas
+   ========================================================= */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
+
     const targetId = anchor.getAttribute('href');
+
     if (targetId && targetId.length > 1) {
       const target = document.querySelector(targetId);
+
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth' });
       }
     }
+
   });
 });
 
-// === 6. Keyframes dinámicos adicionales ===
+
+/* =========================================================
+   6. Keyframes dinámicos adicionales
+   ========================================================= */
 const style = document.createElement('style');
 style.textContent = `
 @keyframes floatAnim {
@@ -3330,60 +3376,51 @@ style.textContent = `
   to { opacity: 1; transform: translateY(0); }
 }`;
 document.head.appendChild(style);
+
+
+/* =========================================================
+   7. ANIMACIONES EXTRAS PARA BANDERAS
+   ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
 
-  const leftFlag = document.querySelector(".flag-left");
+  const leftFlag  = document.querySelector(".flag-left");
   const rightFlag = document.querySelector(".flag-right");
 
-  // ================================
-  //  ⭐ ANIMACIÓN DE ENTRADA
-  // ================================
-  leftFlag.style.opacity = "0";
+  /* --- ANIMACIÓN DE ENTRADA --- */
+  leftFlag.style.opacity  = "0";
   rightFlag.style.opacity = "0";
 
-  leftFlag.style.transform += " translateX(-40px)";
+  leftFlag.style.transform  += " translateX(-40px)";
   rightFlag.style.transform += " translateX(40px)";
 
   setTimeout(() => {
-    leftFlag.style.transition = "0.8s ease";
+    leftFlag.style.transition  = "0.8s ease";
     rightFlag.style.transition = "0.8s ease";
 
-    leftFlag.style.opacity = "1";
+    leftFlag.style.opacity  = "1";
     rightFlag.style.opacity = "1";
 
-    leftFlag.style.transform = leftFlag.style.transform.replace(" translateX(-40px)", "");
+    leftFlag.style.transform  = leftFlag.style.transform.replace(" translateX(-40px)", "");
     rightFlag.style.transform = rightFlag.style.transform.replace(" translateX(40px)", "");
   }, 200);
 
 
-  // ====================================
-  //  ⭐ AJUSTAR TAMAÑO DINÁMICO OPCIONAL
-  // ====================================
+  /* --- AJUSTE DINÁMICO DE TAMAÑO --- */
   function ajustarTamañoBanderas() {
     const ancho = window.innerWidth;
     const flags = document.querySelectorAll(".flag");
 
-    if (ancho > 1200) {
-      flags.forEach(f => f.style.width = "160px");
-    } else if (ancho > 900) {
-      flags.forEach(f => f.style.width = "140px");
-    } else if (ancho > 600) {
-      flags.forEach(f => f.style.width = "110px");
-    } else {
-      flags.forEach(f => f.style.width = "85px");
-    }
+    if (ancho > 1200)       flags.forEach(f => f.style.width = "160px");
+    else if (ancho > 900)   flags.forEach(f => f.style.width = "140px");
+    else if (ancho > 600)   flags.forEach(f => f.style.width = "110px");
+    else                    flags.forEach(f => f.style.width = "85px");
   }
 
-  // Ejecuta al cargar
-  ajustarTamañoBanderas();
-
-  // Ejecuta cuando cambie el tamaño
+  ajustarTamañoBanderas(); // Ejecuta al cargar
   window.addEventListener("resize", ajustarTamañoBanderas);
 
 
-  // ====================================
-  // ⭐ EFECTO “flotado” (extra cool)
-  // ====================================
+  /* --- EFECTO “FLOAT” SUAVE --- */
   function efectoFloat(elemento) {
     let pos = 0;
     setInterval(() => {
@@ -3399,47 +3436,4 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
