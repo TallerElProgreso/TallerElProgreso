@@ -2441,92 +2441,111 @@ h2:hover::after {
 }
 
 /* ==========================================
-   ENCABEZADO — NUEVO SISTEMA CON FLEXBOX
+   ENCABEZADO — DISEÑO PROFESIONAL MEJORADO
    ========================================== */
 
 .header-principal {
   width: 100%;
+  position: relative;
+  padding: 60px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 60px;
-  gap: 50px; /* espacio entre banderas y logo */
-  position: relative;
-  z-index: 2;
+  z-index: 5;
 }
 
-/* =========================
-   BANDERAS GRANDES Y A LOS LADOS
-   ========================= */
+/* ==========================================
+   BANDERAS LATERALES GRANDES + ANIMADAS
+   ========================================== */
+
 .flag {
-  width: 150px;          /* ⭐ tamaño grande */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 180px;              /* ⭐ tamaño mejorado */
   height: auto;
   opacity: 1;
-  animation: viento 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 18px rgba(255,255,255,0.5));
-  border-radius: 6px;
+  animation: viento 3.8s ease-in-out infinite;
+  filter: drop-shadow(0 0 25px rgba(255,255,255,0.9));
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
 }
 
-/* Brillo */
+/* ⭐ Borde brillante */
 .flag::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 6px;
-  box-shadow: 
-      0 0 25px rgba(255,255,255,0.6),
-      0 0 40px rgba(255,255,255,0.25) inset;
+  border-radius: 8px;
+  box-shadow:
+      0 0 25px rgba(255,255,255,0.8),
+      0 0 50px rgba(255,255,255,0.3) inset;
   pointer-events: none;
 }
 
 /* 🇻🇪 izquierda */
-.flag-left { transform: rotate(-12deg); }
+.flag-left {
+  left: 40px;                  /* mejor posición */
+  --r: -10deg;
+}
 
 /* 🇨🇴 derecha */
-.flag-right { transform: rotate(12deg); }
+.flag-right {
+  right: 40px;                 /* mejor posición */
+  --r: 10deg;
+}
 
-/* =========================
+/* ========== Animación viento mucho más suave ========== */
+@keyframes viento {
+  0%   { transform: translateY(-50%) rotate(var(--r)) translateX(0); }
+  25%  { transform: translateY(-50%) rotate(calc(var(--r) + 1.5deg)) translateX(4px); }
+  50%  { transform: translateY(-50%) rotate(calc(var(--r) - 1.5deg)) translateX(-4px); }
+  75%  { transform: translateY(-50%) rotate(calc(var(--r) + 1deg)) translateX(2px); }
+  100% { transform: translateY(-50%) rotate(var(--r)) translateX(0); }
+}
+
+/* ==========================================
    LOGO CENTRADO
-   ========================= */
+   ========================================== */
+
 .logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 .logo-img {
-  width: 160px;
+  width: 180px;
   margin-bottom: 8px;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.3));
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));
 }
-
-/* Animación viento */
-@keyframes viento {
-  0%   { transform: rotate(var(--r)) translateX(0); }
-  25%  { transform: rotate(calc(var(--r) + 2deg)) translateX(3px); }
-  50%  { transform: rotate(calc(var(--r) - 2deg)) translateX(-3px); }
-  75%  { transform: rotate(calc(var(--r) + 1deg)) translateX(2px); }
-  100% { transform: rotate(var(--r)) translateX(0); }
-}
-
-.flag-left { --r: -12deg; }
-.flag-right { --r: 12deg; }
 
 /* ==========================================
-   RESPONSIVE MÓVIL
+   RESPONSIVE — MÓVIL
    ========================================== */
+
 @media (max-width: 720px) {
+
   .header-principal {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
+    padding: 40px 0 80px;
   }
 
   .flag {
-    width: 90px; /* tamaño móvil */
+    width: 110px;     /* más grande en móvil */
+    top: auto;
+    bottom: 10px;     /* baja las banderas para que no choquen el logo */
+    transform: none;
+    opacity: 0.9;
+  }
+
+  .flag-left { left: 10px; }
+  .flag-right { right: 10px; }
+
+  .logo-img {
+    width: 150px;
   }
 }
+
 
   
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
@@ -3436,4 +3455,5 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
