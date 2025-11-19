@@ -2440,98 +2440,65 @@ h2:hover::after {
   }
 }
 
-/* ==========================================
-   ENCABEZADO — NUEVO SISTEMA CON FLEXBOX
-   ========================================== */
+/* =========================================================
+   🏳️‍🌈 BANDERAS LATERALES - HEADER PREMIUM
+   ========================================================= */
 
 .header-principal {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 60px;
-  gap: 50px; /* espacio entre banderas y logo */
-  position: relative;
-  z-index: 2;
+    position: relative;
+    width: 100%;
+    height: 420px; /* Ajusta si quieres más alto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px;
 }
 
-/* =========================
-   BANDERAS GRANDES Y A LOS LADOS
-   ========================= */
-.flag {
-  width: 150px; /* ⭐ tamaño grande */
-  height: auto;
-  opacity: 1;
-  animation: viento 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 18px rgba(255,255,255,0.5));
-  border-radius: 6px;
-}
-
-/* Brillo */
-.flag::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 6px;
-  box-shadow:
-      0 0 25px rgba(255,255,255,0.6),
-      0 0 40px rgba(255,255,255,0.25) inset;
-  pointer-events: none;
-}
-
-/* 🇻🇪 izquierda */
-.flag-left {
-  transform: rotate(-12deg);
-}
-
-/* 🇨🇴 derecha */
-.flag-right {
-  transform: rotate(12deg);
-}
-
-/* =========================
-   LOGO CENTRADO
-   ========================= */
+/* ----- LOGO Y TEXTO CENTRADO ----- */
 .logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    text-align: center;
+    z-index: 5;
 }
 
-.logo-img {
-  width: 160px;
-  margin-bottom: 8px;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.3));
+/* ----- BANDERAS LATERALES ----- */
+.flag {
+    position: absolute;
+    top: 50%;                                
+    transform: translateY(-50%);             
+    width: 240px;           /* Tamaño GRANDE 🔥 */
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.8));
+    animation: viento 4s ease-in-out infinite;
+    z-index: 3;
 }
 
-/* Animación viento */
+/* Lado izquierdo - Venezuela */
+.flag-left {
+    left: 40px;               /* ACERCA al centro */
+    transform: translateY(-50%) rotate(-12deg);
+}
+
+/* Lado derecho - Colombia */
+.flag-right {
+    right: 40px;              /* ACERCA al centro */
+    transform: translateY(-50%) rotate(12deg);
+}
+
+/* Efecto "viento" suave */
 @keyframes viento {
-  0%   { transform: rotate(var(--r)) translateX(0); }
-  25%  { transform: rotate(calc(var(--r) + 2deg)) translateX(3px); }
-  50%  { transform: rotate(calc(var(--r) - 2deg)) translateX(-3px); }
-  75%  { transform: rotate(calc(var(--r) + 1deg)) translateX(2px); }
-  100% { transform: rotate(var(--r)) translateX(0); }
+    0%   { transform: translateY(-50%) rotate(0deg); }
+    50%  { transform: translateY(-50%) rotate(3deg); }
+    100% { transform: translateY(-50%) rotate(0deg); }
 }
 
-.flag-left { --r: -12deg; }
-.flag-right { --r: 12deg; }
+/* ----- RESPONSIVE ----- */
+@media (max-width: 768px) {
+    .flag {
+        width: 140px;
+    }
 
-/* ==========================================
-   RESPONSIVE MÓVIL
-   ========================================== */
-@media (max-width: 720px) {
-  .header-principal {
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .flag {
-    width: 90px; /* tamaño móvil */
-  }
+    .flag-left { left: 10px; }
+    .flag-right { right: 10px; }
 }
-
 
   
 /* === 🌟 FOOTER ELEGANTE Y PROFESIONAL === */
@@ -3441,6 +3408,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
