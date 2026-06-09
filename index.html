@@ -2634,7 +2634,26 @@ h2:hover::after {
   .gallery-item img{height:120px} 
   h2{font-size:24px} 
 }
- 
+/* =========================================================
+   🛒 BOTÓN TIENDA VIRTUAL
+   ========================================================= */
+
+.btn-tienda{
+    background: linear-gradient(135deg,#d4af37,#f5d76e);
+    color:#111 !important;
+    padding:10px 18px;
+    border-radius:30px;
+    font-weight:700;
+    box-shadow:0 0 15px rgba(212,175,55,.5);
+    transition:all .3s ease;
+}
+
+.btn-tienda:hover{
+    transform:translateY(-2px) scale(1.05);
+    box-shadow:0 0 25px rgba(212,175,55,.9);
+    color:#111 !important;
+}
+  
 </style>
 </head>
 <body>
@@ -2673,6 +2692,9 @@ h2:hover::after {
       <a href="index.html" class="active">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="galeria_Motos.html">Galería de Motos</a>
+       <a href="tienda.html" target="_blank" class="btn-tienda">
+        🛒 Tienda Virtual
+      </a>
       <a href="galeria_modelos.html">Galería de Modelos</a>
       <a href="#contacto">Contacto</a>
     </div>
