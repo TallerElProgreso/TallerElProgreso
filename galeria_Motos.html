@@ -1,283 +1,424 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Motorcycle Gallery | Taller El Progreso</title>
-<!-- Google Fonts: Hanken Grotesk for Headings, Inter for Body -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;800&amp;family=Inter:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS v3 with Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Tailwind Configuration for Design System -->
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              gold: '#d4af37',
-              surface: '#0c1323',
-              'surface-dim': '#0c1323',
-              'surface-bright': '#32394b',
-              'surface-low': '#141b2c',
-              'surface-lowest': '#070e1e',
-            }
-          },
-          fontFamily: {
-            heading: ['Hanken Grotesk', 'sans-serif'],
-            body: ['Inter', 'sans-serif'],
-          },
-          borderRadius: {
-            'custom': '4px', // Based on ROUND_FOUR
-          },
-          backgroundImage: {
-            'gold-glow': 'radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(12, 19, 35, 0) 70%)',
-          }
-        }
-      }
-    }
-  </script>
-<style data-purpose="custom-glass-effects">
-    .glass-panel {
-      background: rgba(50, 57, 75, 0.4);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(212, 175, 55, 0.1);
-    }
-    
-    .tab-active {
-      color: #d4af37;
-      border-bottom: 2px solid #d4af37;
-      background: rgba(212, 175, 55, 0.05);
-    }
-
-    .gallery-image-container {
-      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-
-    .gallery-image-container:hover {
-      transform: scale(1.02);
-    }
-
-    .gold-shimmer {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .gold-shimmer::after {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 45%,
-        rgba(212, 175, 55, 0.1) 50%,
-        transparent 55%
-      );
-      transform: rotate(-45deg);
-      animation: shimmer 6s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-100%) rotate(-45deg); }
-      20% { transform: translateX(100%) rotate(-45deg); }
-      100% { transform: translateX(100%) rotate(-45deg); }
-    }
-
-    /* Lightbox styling */
-    #lightbox {
-      background: rgba(7, 14, 30, 0.95);
-      backdrop-filter: blur(20px);
-    }
-  </style>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="taller automotriz, mecánica, pintura, restauración, autos, taller el progreso, antes y después, motocicletas reparados">
+  <meta name="author" content="Taller El Progreso"> 
+  <meta name="description" content="Galería de motos reparadas en Taller El Progreso. Antes y después de pintura y restauración de motocicletas.">
+  <title>Galería de Motos - Taller El Progreso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="imagenes/logo.png" type="image/png">
+  <!-- === MISMO CSS DE GALERÍA DE MODELOS === -->
+ <style>
+/* === ESTILO GENERAL === */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+  margin: 0;
+  padding: 0;
+  color: #f1f5f9;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+/* === ENCABEZADO CON FONDO ANIMADO === */
+header {
+  text-align: center;
+  padding: 70px 20px 50px;
+  background: linear-gradient(120deg, #0f172a, #1e293b, #0f172a);
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(192,132,252,0.25);
+}
+header img {
+  width: 110px;
+  height: auto;
+  animation: intro 1.5s ease, logoGlow 4s infinite ease-in-out;
+}
+header h1 {
+  color: #c084fc;
+  font-size: 3em;
+  margin-top: 10px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 30px rgba(192,132,252,0.8);
+  animation: intro 2s ease;
+}
+/* === PESTAÑAS DE MODELOS === */
+.model-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 40px auto;
+  padding: 10px 20px;
+  max-width: 1200px;
+  animation: fadeInUp 1.5s ease;
+}
+.model-tab {
+  padding: 14px 32px;
+  cursor: pointer;
+  background: rgba(30, 41, 59, 0.8);
+  color: #e0f2fe;
+  border-radius: 18px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  transition: all 0.35s ease;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(125,211,252,0.2);
+}
+.model-tab.active {
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  color: #0f172a;
+  box-shadow: 0 6px 25px rgba(56,189,248,0.6);
+  transform: translateY(-3px);
+}
+.model-tab:hover {
+  background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+  color: #0f172a;
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(125,211,252,0.6);
+}
+/* === SUBTABS (Antes / Después) === */
+.sub-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+  animation: fadeInUp 2s ease;
+}
+.sub-tab {
+  padding: 10px 26px;
+  cursor: pointer;
+  background: #334155;
+  color: #e0f2fe;
+  border-radius: 12px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(125,211,252,0.15);
+}
+.sub-tab.active {
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  color: #0f172a;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(125,211,252,0.6);
+}
+.sub-tab:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 15px rgba(125,211,252,0.4);
+}
+/* === CONTENEDOR DE GALERÍAS === */
+.model-content {
+  display: block;
+  text-align: center;
+  animation: fadeInZoom 1s ease;
+  margin-bottom: 60px; /* opcional: separación entre modelos */
+}
+/* === GALERÍA DE IMÁGENES === */
+.gallery {
+  display: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 40px 25px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.gallery.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery img {
+  width: 280px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(56,189,248,0.35);
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(56,189,248,0.2);
+  animation: fadeInZoom 1.2s ease;
+}
+.gallery img:hover {
+  transform: scale(1.1);
+  filter: brightness(1.15) contrast(1.1);
+  box-shadow: 0 0 40px rgba(192,132,252,0.8);
+}
+/* === LIGHTBOX (AMPLIAR IMAGEN) === */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15,23,42,0.97);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.4s ease;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 18px;
+  box-shadow: 0 0 45px rgba(125,211,252,0.9);
+  animation: zoomIn 0.6s ease;
+  border: 2px solid rgba(56,189,248,0.3);
+}
+.lightbox.active {
+  display: flex;
+}
+/* === BOTÓN CERRAR LIGHTBOX === */
+.close {
+  position: absolute;
+  top: 25px;
+  right: 40px;
+  color: #7dd3fc;
+  font-size: 45px;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(125,211,252,0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.close:hover {
+  color: #c084fc;
+  transform: rotate(90deg) scale(1.3);
+}
+/* === BOTÓN VOLVER ARRIBA === */
+.volver-inicio {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(135deg, #38bdf8, #7dd3fc);
+  color: #0f172a;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 0 25px rgba(56,189,248,0.7);
+  transition: all 0.3s ease;
+  z-index: 2000;
+  opacity: 0;
+}
+.volver-inicio:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(125,211,252,1);
+}
+/* === EFECTO FADE AL HACER SCROLL === */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* === PIE DE PÁGINA === */
+footer {
+  text-align: center;
+  color: #94a3b8;
+  padding: 40px 20px;
+  font-size: 0.9em;
+  border-top: 1px solid rgba(148,163,184,0.15);
+  background: rgba(15,23,42,0.8);
+  backdrop-filter: blur(6px);
+}
+/* === ANIMACIONES === */
+@keyframes intro {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+@keyframes gradientMove {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(40px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInZoom {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}
+@keyframes logoGlow {
+  0%,100% {filter: drop-shadow(0 0 10px rgba(125,211,252,0.6));}
+  50% {filter: drop-shadow(0 0 25px rgba(192,132,252,0.9));}
+}
+@keyframes zoomIn {
+  from {transform: scale(0.7); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  header h1 { font-size: 2em; }
+  .gallery img { width: 95%; height: auto; }
+  .model-tab { padding: 10px 20px; font-size: 0.9em; }
+  .sub-tab { font-size: 0.9em; padding: 8px 18px; }
+  .volver-inicio { padding: 10px 22px; bottom: 20px; right: 20px; }
+}
+</style>
 </head>
-<body class="bg-brand-surface text-gray-100 font-body antialiased">
-<!-- BEGIN: MainHeader -->
-<header class="sticky top-0 z-50 border-b border-brand-gold/10 glass-panel" data-purpose="header">
-<div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-<div class="flex items-center space-x-3">
-<div class="w-10 h-10 bg-brand-gold rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.4)]">
-<svg class="w-6 h-6 text-brand-surface" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
-</div>
-<span class="font-heading font-extrabold text-xl tracking-wider text-white uppercase">Taller <span class="text-brand-gold">El Progreso</span></span>
-</div>
-<nav class="hidden md:flex items-center space-x-8">
-<a class="text-sm font-medium hover:text-brand-gold transition-colors" href="#">Services</a>
-<a class="text-sm font-medium text-brand-gold border-b border-brand-gold" href="#">Gallery</a>
-<a class="text-sm font-medium hover:text-brand-gold transition-colors" href="#">About</a>
-<a class="px-5 py-2 bg-brand-gold text-brand-surface font-bold text-xs uppercase tracking-widest rounded-custom hover:bg-white transition-all" href="#">Book Service</a>
-</nav>
-</div>
+<body>
+<header style="text-align:center; padding:20px 0;">
+  <img src="imagenes/logo.png" alt="Logo Taller El Progreso" style="width:160px; border-radius:8px;">
+  <h1>Galería de Motos</h1>
 </header>
-<!-- END: MainHeader -->
-<!-- BEGIN: HeroSection -->
-<section class="relative py-16 overflow-hidden" data-purpose="hero-section">
-<div class="absolute inset-0 bg-gold-glow pointer-events-none"></div>
-<div class="max-w-7xl mx-auto px-4 text-center relative z-10">
-<h1 class="font-heading text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
-        Mastery in <span class="text-brand-gold">Motion</span>
-</h1>
-<p class="max-w-2xl mx-auto text-gray-400 text-lg">
-        Explore our recent transformations and high-performance maintenance projects. Quality engineering, premium finishes.
-      </p>
+<!-- Pestañas de Modelos -->
+<div class="model-tabs">
+    <div class="model-tab active" data-target="modelo1">Hero Hunk 125R</div>
+    <div class="model-tab" data-target="modelo-honda125i">Honda Click 125i</div>
 </div>
-</section>
-<!-- END: HeroSection -->
-<!-- BEGIN: GallerySection -->
-<main class="max-w-7xl mx-auto px-4 pb-24" data-purpose="main-gallery">
-<!-- Model Tabs -->
-<div class="flex flex-wrap justify-center gap-2 mb-12" data-purpose="model-navigation" id="model-tabs">
-<button class="model-tab px-8 py-3 rounded-custom font-heading font-semibold text-sm uppercase tracking-widest transition-all glass-panel tab-active" data-model="hunk" onclick="switchModel('hunk')">Hero Hunk 125R</button>
-<button class="model-tab px-8 py-3 rounded-custom font-heading font-semibold text-sm uppercase tracking-widest transition-all glass-panel text-gray-400 hover:text-brand-gold" data-model="click" onclick="switchModel('click')">Honda Click 125i</button>
+<!-- Contenido Modelo Hero Hunk 125R -->
+<div class="model-content active" id="modelo1">
+    <div class="sub-tabs">
+        <div class="sub-tab active" data-target="m1-antes">Antes</div>
+        <div class="sub-tab" data-target="m1-despues">Después</div>
+    </div>
+    <h2>Hero Hunk 125R</h2>
+    <div class="gallery active" id="m1-antes">
+        <a href="#m1a1"><img src="motos/hunk_antes1.jpg"></a>
+        <a href="#m1a2"><img src="motos/hunk_antes2.jpg"></a>
+        <a href="#m1a3"><img src="motos/hunk_antes3.jpg"></a>
+    </div>
+    <div class="gallery" id="m1-despues">
+        <a href="#m1d1"><img src="motos/hunk_despues1.jpg"></a>
+        <a href="#m1d2"><img src="motos/hunk_despues2.jpg"></a>
+        <a href="#m1d3"><img src="motos/hunk_despues3.jpg"></a>
+    </div>
 </div>
-<!-- Gallery Container -->
-<div class="glass-panel rounded-lg p-6 md:p-10 shadow-2xl">
-<!-- Sub-Tabs: Before / After -->
-<div class="flex justify-start space-x-6 border-b border-white/5 mb-8" data-purpose="state-navigation" id="sub-tabs">
-<button class="state-tab pb-4 text-sm font-bold uppercase tracking-widest transition-all text-brand-gold border-b-2 border-brand-gold" data-state="after" onclick="switchState('after')">After Service</button>
-<button class="state-tab pb-4 text-sm font-bold uppercase tracking-widest transition-all text-gray-500 hover:text-white" data-state="before" onclick="switchState('before')">Initial Condition</button>
+<!-- Contenido del modelo Honda Click 125i -->
+<div class="model-content" id="modelo-honda125i">
+    <div class="sub-tabs">
+        <div class="sub-tab active" data-target="honda125i-antes">Antes</div>
+        <div class="sub-tab" data-target="honda125i-despues">Después</div>
+    </div>
+    <h2>Honda Click 125i</h2>
+    <div class="gallery active" id="honda125i-antes">
+        <a href="#h125i-a1"><img src="motos/honda125i_antes1.jpg" alt="Honda Click 125i antes 1"></a>
+        <a href="#h125i-a2"><img src="motos/honda125i_antes2.jpg" alt="Honda Click 125i antes 2"></a>
+        <a href="#h125i-a3"><img src="motos/honda125i_antes3.jpg" alt="Honda Click 125i antes 3"></a>
+    </div>
+    <div class="gallery" id="honda125i-despues">
+        <a href="#h125i-d1"><img src="motos/honda125i_despues1.jpg" alt="Honda Click 125i después 1"></a>
+        <a href="#h125i-d2"><img src="motos/honda125i_despues2.jpg" alt="Honda Click 125i después 2"></a>
+        <a href="#h125i-d3"><img src="motos/honda125i_despues3.jpg" alt="Honda Click 125i después 3"></a>
+    </div>
 </div>
-<!-- Image Grid -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6" data-purpose="image-grid" id="gallery-grid">
-<!-- Images populated by JS -->
-</div>
-</div>
-</main>
-<!-- END: GallerySection -->
-<!-- BEGIN: Lightbox -->
-<div class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4" id="lightbox" onclick="closeLightbox()">
-<button class="absolute top-8 right-8 text-white hover:text-brand-gold transition-colors">
-<svg class="w-10 h-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-</button>
-<img alt="Full size view" class="max-w-full max-h-[90vh] object-contain rounded shadow-2xl border-4 border-brand-bright/20" id="lightbox-img" onclick="event.stopPropagation()" src=""/>
-</div>
-<!-- END: Lightbox -->
-<!-- BEGIN: Footer -->
-<footer class="bg-brand-surface-lowest py-12 border-t border-brand-gold/5" data-purpose="footer">
-<div class="max-w-7xl mx-auto px-4 text-center">
-<div class="mb-6 opacity-50">
-<span class="font-heading font-extrabold text-sm uppercase tracking-[0.2em]">Taller El Progreso © 2024</span>
-</div>
-<div class="flex justify-center space-x-6 text-gray-500">
-<a class="hover:text-brand-gold transition-colors" href="#">Instagram</a>
-<a class="hover:text-brand-gold transition-colors" href="#">Facebook</a>
-<a class="hover:text-brand-gold transition-colors" href="#">WhatsApp</a>
-</div>
-</div>
+<!-- Lightboxes para Hero Hunk 125R -->
+<div class="lightbox" id="m1a1"><a href="#" class="close">&times;</a><img src="motos/hunk_antes1.jpg"></div>
+<div class="lightbox" id="m1a2"><a href="#" class="close">&times;</a><img src="motos/hunk_antes2.jpg"></div>
+<div class="lightbox" id="m1a3"><a href="#" class="close">&times;</a><img src="motos/hunk_antes3.jpg"></div>
+<div class="lightbox" id="m1d1"><a href="#" class="close">&times;</a><img src="motos/hunk_despues1.jpg"></div>
+<div class="lightbox" id="m1d2"><a href="#" class="close">&times;</a><img src="motos/hunk_despues2.jpg"></div>
+<div class="lightbox" id="m1d3"><a href="#" class="close">&times;</a><img src="motos/hunk_despues3.jpg"></div>
+<!-- Lightboxes para Honda Click 125i -->
+<div class="lightbox" id="h125i-a1"><a href="#" class="close">&times;</a><img src="motos/honda125i_antes1.jpg"></div>
+<div class="lightbox" id="h125i-a2"><a href="#" class="close">&times;</a><img src="motos/honda125i_antes2.jpg"></div>
+<div class="lightbox" id="h125i-a3"><a href="#" class="close">&times;</a><img src="motos/honda125i_antes3.jpg"></div>
+<div class="lightbox" id="h125i-d1"><a href="#" class="close">&times;</a><img src="motos/honda125i_despues1.jpg"></div>
+<div class="lightbox" id="h125i-d2"><a href="#" class="close">&times;</a><img src="motos/honda125i_despues2.jpg"></div>
+<div class="lightbox" id="h125i-d3"><a href="#" class="close">&times;</a><img src="motos/honda125i_despues3.jpg"></div>
+  <!-- BOTÓN VOLVER AL INICIO -->
+<a href="#inicio" class="volver-inicio">⬆ Volver al inicio</a>
+ <footer style="text-align:center; padding:40px; background:#0f172a; color:#94a3b8; border-top:1px solid rgba(56,189,248,0.2);">
+  <p>&copy; 2025 Taller El Progreso | Mecánica Automotriz - Latonería y Pintura</p>
+  <p><a href="index.html" style="color:#38bdf8; text-decoration:none;">Volver al inicio</a></p>
 </footer>
-<!-- END: Footer -->
-<!-- JavaScript Functionality -->
-<script data-purpose="gallery-logic">
-    const galleryData = {
-      hunk: {
-        after: [
-          { src: 'https://lh3.googleusercontent.com/aida/AP1WRLsQiczSuFJW5bJgh3j3wvPvelfe0V27zLkHH6YMG_8VU-ufh8Z09dG-13I-gr1ze9Idq1Vd9Ww_qMicyjG_ZvkCgVgGYAuNP3Xp1EUjPyN9RRvZ87c4mVPLq8zGfGGWPDhGzi0wmpwxn_b4mokJT97x3l_1GQE4lXV9GgLjdi-ODFoBhK0pZ7QJUiPhu2Krpi47TcbR9x-bgplX6VBee0_Fwg0u64ArmhTGSBMsQxESkVTfE5qLnmAtz74', title: 'Full Synthetic Treatment', desc: 'Engine optimization with Ultra Synth 0W-40.' },
-          { src: 'https://lh3.googleusercontent.com/aida/AP1WRLucEobQfW0gQhBhx1yrpMtB0U98J6P6aV7oCHtgC12vxMM-uuXvYgSDz6a3gfocYjIDVSlYVyyyuNTxo9Sq275S9H1r_S4Tg6jhOp8TIlbvG6NQxJzlhyz-pS-yavFplM_vk9DrvHw5b_vOvOJSy1dR95JMGRdCQqlINaqyLeq0sVqtAdSBi2jY0ZCkptXw5tT2v0-U-I8mKIqR9Q6-JnJrFYc_Z1ltTXp4l8It0eTYVmVUicq9tPhKM2A', title: 'Ignition Upgrade', desc: 'Iridium NGK spark plugs installed for superior throttle response.' }
-        ],
-        before: [
-          { src: 'https://placehold.co/1024x1024/0c1323/d4af37?text=Hunk+Old+Oil', title: 'Old Lubricant', desc: 'High viscosity breakdown and debris accumulation.' },
-          { src: 'https://placehold.co/1024x1024/0c1323/d4af37?text=Hunk+Old+Plug', title: 'Worn Plugs', desc: 'Heavy carbon deposits and electrode erosion.' }
-        ]
-      },
-      click: {
-        after: [
-          { src: 'https://lh3.googleusercontent.com/aida/AP1WRLu3VtN-PtKoAHevYbJibUmPNgLMaMjCuWkXEf5mzc1J94jaKrzNAZw_pjhYH3a1fJOX2b5MlXTMVaq30TKhQeRDXAZuvuHoxWqoC0e5jHjSMQn2UCBpZ-aXdtYYkxfIRfDldYkpAWAWKatAmGd_v7QVSGVWPCRonKS0rtksLt-oxeNuXN2CPjCAwVIS9wurUPlD48SBbrV6ZAzfivAS4VmvBvVLxKbM_zOIOCadET-eFSHFagveYrqhNfo', title: 'Suspension Overhaul', desc: 'Aurum performance shock absorbers for luxury ride quality.' },
-          { src: 'https://lh3.googleusercontent.com/aida/AP1WRLss_R5Fo6hmK74RnTsLiwiHziXhaZCtUL6pUFpWPJW8QjQe8zB3YjnlGMq0W9t91Fh3ixjkV2fZZEtm5n_SkE7wDzhZX_y6ArDKJXFIiVki_jjIuSKwEG96FPQ2hxHafe2QJA4CLAHOKoTLBqpoJR0vGrbfYoW_RJyNQnOGLHAO0ilmnx_umrK6JKgiVmX333L9yaqTwnaO58jqyCLopj8ZiM0Uu-v3Bg5IMg27NGYw8seO2y0ebxEakDs', title: 'Detailing & Final Touch', desc: 'Handcrafted leather accents and premium surface protection.' }
-        ],
-        before: [
-          { src: 'https://placehold.co/1024x1024/0c1323/d4af37?text=Click+Leaking+Shock', title: 'Leaking Suspension', desc: 'Fluid loss and compromised damping performance.' },
-          { src: 'https://placehold.co/1024x1024/0c1323/d4af37?text=Click+Old+Grips', title: 'Weathered Exterior', desc: 'Visible oxidation on metallic components and worn leather.' }
-        ]
+  <!-- ===== LIGHTBOX ===== -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <span class="lb-close">&times;</span>
+  <img class="lb-img" src="" alt="">
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  /* === DESPLAZAMIENTO SUAVE ENTRE MODELOS === */
+  const modelTabs = document.querySelectorAll(".model-tab");
+  modelTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const targetId = tab.dataset.target;
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    };
-
-    let currentModel = 'hunk';
-    let currentState = 'after';
-
-    function updateGallery() {
-      const grid = document.getElementById('gallery-grid');
-      const items = galleryData[currentModel][currentState];
-      
-      grid.innerHTML = '';
-      
-      items.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'gallery-image-container group relative overflow-hidden rounded-custom bg-brand-surface-lowest shadow-lg cursor-zoom-in';
-        div.onclick = () => openLightbox(item.src);
-        
-        div.innerHTML = `
-          <div class="aspect-square overflow-hidden gold-shimmer">
-            <img src="${item.src}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-brand-surface-lowest via-transparent to-transparent opacity-80"></div>
-          <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform">
-            <h3 class="font-heading font-bold text-brand-gold text-lg mb-1">${item.title}</h3>
-            <p class="text-xs text-gray-300 font-medium leading-relaxed">${item.desc}</p>
-          </div>
-          <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-            <div class="bg-brand-gold p-2 rounded-full text-brand-surface">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"></path></svg>
-            </div>
-          </div>
-        `;
-        grid.appendChild(div);
+    });
+  });
+  /* === CAMBIO ENTRE SUBTABS (Antes / Después) === */
+  const subTabGroups = document.querySelectorAll(".sub-tabs");
+  subTabGroups.forEach(group => {
+    const subTabs = group.querySelectorAll(".sub-tab");
+    subTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        subTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        const target = tab.dataset.target;
+        const galleries = group.parentElement.querySelectorAll(".gallery");
+        galleries.forEach(g => {
+          g.classList.remove("active");
+          if (g.id === target) g.classList.add("active");
+        });
       });
-    }
-
-    function switchModel(model) {
-      currentModel = model;
-      
-      // Update UI tabs
-      document.querySelectorAll('.model-tab').forEach(tab => {
-        if(tab.dataset.model === model) {
-          tab.classList.add('tab-active', 'text-brand-gold');
-          tab.classList.remove('text-gray-400');
-        } else {
-          tab.classList.remove('tab-active', 'text-brand-gold');
-          tab.classList.add('text-gray-400');
-        }
-      });
-      
-      updateGallery();
-    }
-
-    function switchState(state) {
-      currentState = state;
-      
-      // Update UI sub-tabs
-      document.querySelectorAll('.state-tab').forEach(tab => {
-        if(tab.dataset.state === state) {
-          tab.classList.add('text-brand-gold', 'border-brand-gold');
-          tab.classList.remove('text-gray-500');
-        } else {
-          tab.classList.remove('text-brand-gold', 'border-brand-gold');
-          tab.classList.add('text-gray-500');
-        }
-      });
-      
-      updateGallery();
-    }
-
-    function openLightbox(src) {
-      const lightbox = document.getElementById('lightbox');
-      const img = document.getElementById('lightbox-img');
-      img.src = src;
-      lightbox.classList.remove('hidden');
+    });
+  });
+  /* === EFECTO FADE AL HACER SCROLL === */
+  const fadeElements = document.querySelectorAll('.fade');
+  const reveal = () => {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) el.classList.add('visible');
+    });
+  };
+  window.addEventListener('scroll', reveal);
+  reveal(); // Ejecutar al cargar
+  /* === BOTÓN VOLVER ARRIBA === */
+  const volverBtn = document.createElement("a");
+  volverBtn.href = "#";
+  volverBtn.className = "volver-inicio";
+  volverBtn.textContent = "↑";
+  document.body.appendChild(volverBtn);
+  window.addEventListener("scroll", () => {
+    volverBtn.style.opacity = window.scrollY > 300 ? "1" : "0";
+  });
+  /* === LIGHTBOX (AMPLIAR IMÁGENES) === */
+  const lightbox = document.createElement('div');
+  lightbox.classList.add('lightbox');
+  lightbox.innerHTML = `
+    <span class="close">&times;</span>
+    <img class="lightbox-img" src="" alt="">
+  `;
+  document.body.appendChild(lightbox);
+  const lbImg = lightbox.querySelector('.lightbox-img');
+  const lbClose = lightbox.querySelector('.close');
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lbImg.src = img.src;
+      lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
+    });
+  });
+  lbClose.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
     }
-
-    function closeLightbox() {
-      const lightbox = document.getElementById('lightbox');
-      lightbox.classList.add('hidden');
-      document.body.style.overflow = 'auto';
-    }
-
-    // Initialize gallery
-    document.addEventListener('DOMContentLoaded', updateGallery);
-  </script>
-</body></html>
+  });
+});
+</script>
+</body>
+</html>
+solo quiero que mejores lo estetico mas no lo funcional es decir modificar solo el estilo o en tu idioma los css
