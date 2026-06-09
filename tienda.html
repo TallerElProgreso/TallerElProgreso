@@ -1,558 +1,482 @@
 <!DOCTYPE html>
-<html class="dark" lang="es">
 
-<head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Tienda Virtual | Taller El Progreso</title>
-
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tienda | Taller El Progreso</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Hanken+Grotesk:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Hanken+Grotesk:wght@600;700;800&amp;family=JetBrains+Mono:wght@500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
-
-body{
-    background:#0c1323;
-    font-family:'Inter',sans-serif;
-}
-
-.glass-card{
-    background:rgba(30,42,71,.4);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(212,175,55,.2);
-    transition:.4s;
-}
-
-.glass-card:hover{
-    border-color:#d4af37;
-    transform:translateY(-5px);
-}
-
-.gold-glow{
-    box-shadow:0 0 15px rgba(212,175,55,.4);
-}
-
-</style>
-
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(30, 42, 71, 0.2);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            background: rgba(30, 42, 71, 0.4);
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-8px);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f2ca50 0%, #d4af37 50%, #ffe088 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-metallic-button {
+            background: linear-gradient(135deg, #f2ca50 0%, #d4af37 100%);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        .gold-metallic-button:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+            transform: scale(1.02);
+        }
+        .shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 45%,
+                rgba(255, 215, 0, 0.1) 50%,
+                transparent 55%
+            );
+            animation: shimmer-effect 8s infinite linear;
+        }
+        @keyframes shimmer-effect {
+            0% { transform: translate(-30%, -30%); }
+            100% { transform: translate(30%, 30%); }
+        }
+        .luxury-border {
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#d4af37",
+                      "primary-container": "#d4af37",
+                      "surface": "#0c1323",
+                      "background": "#0c1323",
+                      "on-surface": "#dce2f9",
+                      "on-primary": "#3c2f00",
+                      "surface-variant": "#2e3446",
+                      "outline": "#99907c",
+                      "text-muted": "#A6A6A6",
+                      "surface-glass": "rgba(12, 19, 35, 0.8)",
+                      "surface-container": "#191f30",
+                      "surface-container-low": "#141b2c",
+                      "surface-container-lowest": "#070e1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "16px",
+                      "xs": "8px",
+                      "container-max": "1280px",
+                      "lg": "48px",
+                      "base": "4px",
+                      "gutter": "24px",
+                      "md": "24px",
+                      "xl": "80px"
+              },
+              "fontFamily": {
+                      "price-tag": ["JetBrains Mono"],
+                      "label-caps": ["JetBrains Mono"],
+                      "body-lg": ["Inter"],
+                      "title-md": ["Hanken Grotesk"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "price-tag": ["20px", {"lineHeight": "1.0", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "title-md": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
 </head>
-
-<body class="bg-[#0c1323] text-white overflow-x-hidden">
-
-<!-- =========================
-     HEADER
-========================= -->
-
-<header class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-md border-b border-yellow-600">
-
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Header -->
+<header class="fixed top-0 w-full z-50 bg-surface-glass backdrop-blur-xl luxury-border h-24">
+<div class="max-w-container-max mx-auto px-gutter flex justify-between items-center h-full">
 <div class="flex items-center gap-4">
-
-<img src="imagenes/logo.png"
-alt="Logo Taller El Progreso"
-class="h-14">
-
-<div>
-
-<h1 class="text-yellow-500 font-bold text-2xl">
-Taller El Progreso
-</h1>
-
-<p class="text-sm text-gray-300">
-Repuestos • Lubricantes • Accesorios
-</p>
-
+<div class="h-14 w-auto flex items-center">
+<!-- Using placeholder for logo as requested -->
+<img alt="Taller El Progreso" class="h-full object-contain" onerror="this.src='https://lh3.googleusercontent.com/aida-public/AB6AXuCr7EDRfOOq2LOzQybWCREAqUXu6G6hxdbXTK9gSb62j-q13wRj8510O-ZgTTNmp2kF7rH6rGy-3x-KMmfpweqvPWpitHXhujjfcwvv8vOUt5YFe5ySoEYbs8smzaiYEiNVTBvjMLgNr-uWD1wy3d_mab3wmbFCiOdCMvNNeYWiQ92MW9ATzG7fgLvdk-OlmzgKbjCMlkMuIkWBoCwP2aByRIY_oOnOT4mW_6hAqDJLQXW0RdF7KGp3XaOny7HAWTuVvMqZYkbV-RE'; this.classList.add('brightness-125')" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTYE3LOdcU0hxCQeIb0aaeXNpVhMkKaDLD9NMJhYTDlGLCe_YI8_im1DNyKArckQ8Q_4cQcAGltREJLoyyy3yXzhN1KjfbPuMxfGsP4cht6IX86tarkujkT8YFAfY-A0tquOUU_H7efCk04LJY85L1q97D8JmgIX52zZD9oz7Xq5SEnYAJXRSnCK_1SxqmAVLbNB4AlvCMe8gSLC0Sj7LTNUkdt4Umnd0a6aKZgKLfIzwHf8UgYbYo8m07o7iY4fe-Dtgmsoe1iiA"/>
 </div>
-
+<div class="hidden lg:block">
+<span class="font-headline-lg text-2xl font-extrabold gold-gradient-text tracking-tight block">EL PROGRESO</span>
+<span class="font-label-caps text-[10px] text-primary tracking-[0.3em] uppercase opacity-80">Ingeniería Automotriz</span>
 </div>
-
-<a href="index.html"
-class="bg-yellow-500 text-black px-5 py-2 rounded-lg font-bold hover:scale-105 transition">
-
-🔧 Volver al Sitio Principal
-
-</a>
-
 </div>
-
+<nav class="hidden md:flex gap-md items-center">
+<a class="text-on-surface hover:text-primary transition-colors font-label-caps text-label-caps" href="index.html">Inicio</a>
+<a class="text-on-surface hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Servicios</a>
+<a class="text-on-surface hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Galería</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-caps text-label-caps" href="#">Tienda</a>
+<a class="text-on-surface hover:text-primary transition-colors font-label-caps text-label-caps" href="#">Contacto</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute -top-2 -right-2 bg-primary text-on-primary text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+</button>
+</div>
+</div>
 </header>
-
-<!-- =========================
-     CONTENIDO
-========================= -->
-
-<main class="pt-28">
-
-<!-- HERO -->
-
-<section class="relative h-[450px] flex items-center justify-center text-center overflow-hidden">
-
-<img src="imagenes/fondo-tienda.jpg"
-alt="Tienda Taller El Progreso"
-class="absolute inset-0 w-full h-full object-cover opacity-30">
-
-<div class="absolute inset-0 bg-black/50"></div>
-
-<div class="relative z-10 max-w-4xl px-6">
-
-<h2 class="text-5xl md:text-6xl font-extrabold text-yellow-500 mb-6">
-
-🛒 Tienda Virtual
-
-</h2>
-
-<p class="text-xl text-gray-200">
-
-Encuentra aceites, filtros, bujías, lubricantes para cadena,
-lubricantes para amortiguadores y productos para el mantenimiento de tu vehículo.
-
-</p>
-
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative h-[460px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-surface/60 to-surface z-10"></div>
+<div class="absolute inset-0 z-0">
+<img alt="Fondo Tienda Premium" class="w-full h-full object-cover scale-105 opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr7EDRfOOq2LOzQybWCREAqUXu6G6hxdbXTK9gSb62j-q13wRj8510O-ZgTTNmp2kF7rH6rGy-3x-KMmfpweqvPWpitHXhujjfcwvv8vOUt5YFe5ySoEYbs8smzaiYEiNVTBvjMLgNr-uWD1wy3d_mab3wmbFCiOdCMvNNeYWiQ92MW9ATzG7fgLvdk-OlmzgKbjCMlkMuIkWBoCwP2aByRIY_oOnOT4mW_6hAqDJLQXW0RdF7KGp3XaOny7HAWTuVvMqZYkbV-RE"/>
 </div>
-
+<div class="relative z-20 text-center px-gutter max-w-4xl">
+<span class="font-label-caps text-primary mb-4 block tracking-[0.2em]">INVENTARIO DE ALTA GAMA</span>
+<h1 class="font-display-lg text-display-lg gold-gradient-text mb-sm leading-tight drop-shadow-2xl">Repuestos y Accesorios</h1>
+<p class="text-on-surface/80 font-body-lg text-body-lg max-w-2xl mx-auto">Excelencia mecánica y personalización exclusiva para vehículos que exigen lo mejor.</p>
+</div>
 </section>
-<!-- =========================
-     CATEGORÍAS
-========================= -->
-
-<section class="max-w-7xl mx-auto px-6 py-16">
-
-<div class="text-center mb-10">
-
-<h2 class="text-4xl font-bold text-yellow-500 mb-3">
-Nuestros Productos
-</h2>
-
-<p class="text-gray-300">
-Todo lo necesario para el mantenimiento de tu vehículo.
-</p>
-
+<!-- Filters -->
+<section class="max-w-container-max mx-auto px-gutter py-md -mt-12 relative z-30">
+<div class="bg-surface-container/60 backdrop-blur-md border border-primary/20 p-sm rounded-xl flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex flex-wrap gap-xs">
+<button class="px-md py-2 rounded-full bg-primary text-on-primary font-label-caps text-xs hover:brightness-110 transition-all">Todos</button>
+<button class="px-md py-2 rounded-full bg-surface-container-highest/50 text-on-surface-variant font-label-caps text-xs border border-primary/10 hover:border-primary/40 transition-all">Mecánica</button>
+<button class="px-md py-2 rounded-full bg-surface-container-highest/50 text-on-surface-variant font-label-caps text-xs border border-primary/10 hover:border-primary/40 transition-all">Accesorios</button>
+<button class="px-md py-2 rounded-full bg-surface-container-highest/50 text-on-surface-variant font-label-caps text-xs border border-primary/10 hover:border-primary/40 transition-all">Mantenimiento</button>
 </div>
-
-<div class="flex flex-wrap justify-center gap-4 mb-12">
-
-<span class="bg-yellow-500 text-black px-4 py-2 rounded-full font-semibold">
-🔧 Repuestos
-</span>
-
-<span class="bg-gray-800 px-4 py-2 rounded-full">
-🛢️ Lubricantes
-</span>
-
-<span class="bg-gray-800 px-4 py-2 rounded-full">
-⚙️ Mantenimiento
-</span>
-
-<span class="bg-gray-800 px-4 py-2 rounded-full">
-🏍️ Motocicletas
-</span>
-
+<div class="flex items-center gap-sm">
+<span class="font-label-caps text-xs text-text-muted">Marca:</span>
+<select class="bg-transparent border-b border-primary/40 border-t-0 border-x-0 text-on-surface focus:ring-0 focus:border-primary py-1 px-4 appearance-none font-body-md">
+<option class="bg-surface">Todas las Marcas</option>
+<option class="bg-surface">Audi</option>
+<option class="bg-surface">BMW</option>
+<option class="bg-surface">Toyota</option>
+</select>
 </div>
-
-<!-- GRID PRODUCTOS -->
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-<!-- PRODUCTO 1 -->
-
-<div class="glass-card rounded-xl overflow-hidden">
-
-<img src="imagenes/bujias.jpg"
-alt="Bujías"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="text-xl font-bold text-yellow-500 mb-2">
-🔥 Bujías
-</h3>
-
-<p class="text-gray-300 mb-4">
-Bujías para diferentes marcas y modelos.
-</p>
-
-<a href="https://wa.me/573000000000"
-target="_blank"
-class="block text-center bg-yellow-500 text-black font-bold py-3 rounded-lg">
-
-Comprar por WhatsApp
-
-</a>
-
 </div>
-
-</div>
-
-<!-- PRODUCTO 2 -->
-
-<div class="glass-card rounded-xl overflow-hidden">
-
-<img src="imagenes/filtro-aceite.jpg"
-alt="Filtro de Aceite"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="text-xl font-bold text-yellow-500 mb-2">
-🛢️ Filtro de Aceite
-</h3>
-
-<p class="text-gray-300 mb-4">
-Filtros de aceite para diferentes vehículos.
-</p>
-
-<a href="https://wa.me/573000000000"
-target="_blank"
-class="block text-center bg-yellow-500 text-black font-bold py-3 rounded-lg">
-
-Comprar por WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 3 -->
-
-<div class="glass-card rounded-xl overflow-hidden">
-
-<img src="imagenes/aceite.jpg"
-alt="Aceites"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="text-xl font-bold text-yellow-500 mb-2">
-🛢️ Aceites
-</h3>
-
-<p class="text-gray-300 mb-4">
-Aceites minerales, semisintéticos y sintéticos.
-</p>
-
-<a href="https://wa.me/573000000000"
-target="_blank"
-class="block text-center bg-yellow-500 text-black font-bold py-3 rounded-lg">
-
-Comprar por WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 4 -->
-
-<div class="glass-card rounded-xl overflow-hidden">
-
-<img src="imagenes/lubricante-cadena.jpg"
-alt="Lubricante para Cadena"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="text-xl font-bold text-yellow-500 mb-2">
-🏍️ Lubricante para Cadena
-</h3>
-
-<p class="text-gray-300 mb-4">
-Protege y prolonga la vida útil de la cadena.
-</p>
-
-<a href="https://wa.me/573000000000"
-target="_blank"
-class="block text-center bg-yellow-500 text-black font-bold py-3 rounded-lg">
-
-Comprar por WhatsApp
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-
 </section>
-<!-- =========================
-     MÁS PRODUCTOS
-========================= -->
-
-<section class="max-w-7xl mx-auto px-6 pb-16">
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-<!-- PRODUCTO 5 -->
-
-<div class="glass-card rounded-xl overflow-hidden">
-
-<img src="imagenes/lubricante-amortiguador.jpg"
-alt="Lubricante para Amortiguadores"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="text-xl font-bold text-yellow-500 mb-2">
-⚙️ Lubricante para Amortiguadores
-</h3>
-
-<p class="text-gray-300 mb-4">
-Ayuda a proteger y mantener el buen funcionamiento de los amortiguadores.
-</p>
-
-<a href="https://wa.me/573000000000"
-target="_blank"
-class="block text-center bg-yellow-500 text-black font-bold py-3 rounded-lg">
-
-Comprar por WhatsApp
-
-</a>
-
+<!-- Product Grid -->
+<section class="max-w-container-max mx-auto px-gutter py-xl">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Product 1: Bujías -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Bujías Iridium NGK" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLucEobQfW0gQhBhx1yrpMtB0U98J6P6aV7oCHtgC12vxMM-uuXvYgSDz6a3gfocYjIDVSlYVyyyuNTxo9Sq275S9H1r_S4Tg6jhOp8TIlbvG6NQxJzlhyz-pS-yavFplM_vk9DrvHw5b_vOvOJSy1dR95JMGRdCQqlINaqyLeq0sVqtAdSBi2jY0ZCkptXw5tT2v0-U-I8mKIqR9Q6-JnJrFYc_Z1ltTXp4l8It0eTYVmVUicq9tPhKM2A"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">ALTA EFICIENCIA</span>
 </div>
-
 </div>
-
-<!-- PRODUCTO 6 -->
-
-<div class="glass-card rounded-xl overflow-hidden">
-
-<img src="imagenes/refrigerante.jpg"
-alt="Refrigerante"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="text-xl font-bold text-yellow-500 mb-2">
-❄️ Refrigerante
-</h3>
-
-<p class="text-gray-300 mb-4">
-Protección contra el sobrecalentamiento y la corrosión del motor.
-</p>
-
-<a href="https://wa.me/573000000000"
-target="_blank"
-class="block text-center bg-yellow-500 text-black font-bold py-3 rounded-lg">
-
-Comprar por WhatsApp
-
-</a>
-
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Bujías Iridium NGK</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Optimización de ignición para motores de alto rendimiento.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$25,000</span>
+<span class="text-[10px] text-text-muted">Unidad</span>
 </div>
-
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20las%20Bujías%20Iridium%20NGK" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
 </div>
-
-<!-- PRODUCTO 7 -->
-
-<div class="glass-card rounded-xl overflow-hidden">
-
-<img src="imagenes/liquido-frenos.jpg"
-alt="Líquido de Frenos"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="text-xl font-bold text-yellow-500 mb-2">
-🛑 Líquido de Frenos
-</h3>
-
-<p class="text-gray-300 mb-4">
-Mantiene un sistema de frenado seguro y eficiente.
-</p>
-
-<a href="https://wa.me/573000000000"
-target="_blank"
-class="block text-center bg-yellow-500 text-black font-bold py-3 rounded-lg">
-
-Comprar por WhatsApp
-
-</a>
-
 </div>
-
 </div>
-
-<!-- PRODUCTO 8 -->
-
-<div class="glass-card rounded-xl overflow-hidden">
-
-<img src="imagenes/aditivos.jpg"
-alt="Aditivos"
-class="w-full h-60 object-cover">
-
-<div class="p-5">
-
-<h3 class="text-xl font-bold text-yellow-500 mb-2">
-🧪 Aditivos
-</h3>
-
-<p class="text-gray-300 mb-4">
-Productos para limpieza y protección del sistema de combustible y motor.
-</p>
-
-<a href="https://wa.me/573000000000"
-target="_blank"
-class="block text-center bg-yellow-500 text-black font-bold py-3 rounded-lg">
-
-Comprar por WhatsApp
-
-</a>
-
+<!-- Product 2: Filtro -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Filtro de Aceite" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLvUbpbz5NThPnAX_XB0nHhmldBLEhfzTGeyr4GNkOO4gwGifxtm6BATxUu2RWUNFaCSwcrWlpSpGGEci0rdDfp1ATqXSnzh7DgHhZAkVzQnlE3Rix9sjInuP3w80CJWC-UzT2y039pv2sjL8iqR6zK0fRTGdaTWaPmU3A3FZZ78TXlxwF5Lx3-1e57iQsKFl5Gbrd4hE2wmAieIgsCZbSOd95qMv7eqOSbCuyCzWXTr2gV2gkY5O3FRKrw"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">MAINTENANCE</span>
 </div>
-
 </div>
-
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Filtro de Aceite</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Protección máxima para componentes internos del motor.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$45,000</span>
+<span class="text-[10px] text-text-muted">Original</span>
 </div>
-
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20el%20Filtro%20de%20Aceite%20Premium" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+<!-- Product 3: Kit Limpieza -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Kit Cuidado de Cuero" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLvtNPuOLx-DYibB-ISq7jPVpaRsbFqRFvJaxxspTXGEFF8xSx5UiVnYcDrJsZxpX9mBmsuRx4eb04fy2tkIWlXfjVSJbjLzS2dAa9Ay8uDLoBaV9CEjurSvFXgO4Id8dgH_fQb-2u-xzmRwftGdqEa9kHoYYCL66VyPsAjTeDKtH9hXRKPe347MVVkTYH3meK6EwmuEwWBrYGpJsAnx-44mHyHdkWYAlRqwmKIOCMIR9JAU8IgoamxUEA"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">LUJO</span>
+</div>
+</div>
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Kit Cuidado de Cuero</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Tratamiento artesanal para interiores de piel exclusivos.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$60,000</span>
+<span class="text-[10px] text-text-muted">Pro Edition</span>
+</div>
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20el%20Kit%20de%20Cuidado%20de%20Cuero" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+<!-- Product 4: Llavero -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Llavero de Autor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLss_R5Fo6hmK74RnTsLiwiHziXhaZCtUL6pUFpWPJW8QjQe8zB3YjnlGMq0W9t91Fh3ixjkV2fZZEtm5n_SkE7wDzhZX_y6ArDKJXFIiVki_jjIuSKwEG96FPQ2hxHafe2QJA4CLAHOKoTLBqpoJR0vGrbfYoW_RJyNQnOGLHAO0ilmnx_umrK6JKgiVmX333L9yaqTwnaO58jqyCLopj8ZiM0Uu-v3Bg5IMg27NGYw8seO2y0ebxEakDs"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">EXCLUSIVO</span>
+</div>
+</div>
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Llavero de Autor</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Piel genuina con el sello de calidad de El Progreso.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$15,000</span>
+<span class="text-[10px] text-text-muted">Signature</span>
+</div>
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20el%20Llavero%20de%20Autor" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+<!-- Product 5: Aceites -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Aceite Sintético Premium" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3FNdty_vraAoIz7A2SwwSHWOo9i_2MngmWGqMIV_vy2K3KSx1t3AW4SeeTNe4lkzZTf0wjU4i4SnVFx7nSyeiPb4C6RmPE4o1fXSsyP-jAWwZYHK5s6qt_ByOJex1C4z43S2olWurNBOqr8HYTdTR0tCVjzYtzWXs36lOUGZZn6Bgn-chEsaj3WVd6klDmcybXyYKBnHxcAcV6LB98jOD7mk650idwaxKVo2hjeiiLTrp8zK6Avk4GjoQzVLK55hzadyiR3snQcg"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">RENDIMIENTO</span>
+</div>
+</div>
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Aceite Sintético Premium</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Fórmula avanzada para una lubricación superior y vida útil extendida.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$120,000</span>
+<span class="text-[10px] text-text-muted">Galón</span>
+</div>
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20el%20Aceite%20Sintético%20Premium" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+<!-- Product 6: Lubricante de Cadena -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Lubricante de Cadena Pro" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5z2RTq6oDt_E3uRO5m7ImzAVbq1rm2_7WWUoies5gZFuma7uNtyjtKUOUM4vMzw3uy9Qs8xdMczNJrA4rNktvFV0_YgmvgTL6PBkDNDU6u2es47AEWyLVeqw3wFSmkMSElgD7InCTpr2D038oZkYhuk1pQ9LhgYUa-iDEYRG1E8u_0iEwXVNQa6iDv_ecQ5WYEf1NI5jEYTs1hbjRORj4THOJYtcSm0e-nNypGD_syczNW2PpYeVrLxdbMUt60ufMPTMi2tNNZ2o"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">MOTOS</span>
+</div>
+</div>
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Lubricante de Cadena Pro</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Protección extrema contra el desgaste y la corrosión en condiciones severas.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$35,000</span>
+<span class="text-[10px] text-text-muted">Spray</span>
+</div>
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20el%20Lubricante%20de%20Cadena%20Pro" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+<!-- Product 7: Refrigerante -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Refrigerante FrostGuard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA4dK1x5urYAtehceF23Ht7yOEQq9szWFYnVgSAulMqgIJChvePKZw8wT5HMhEVEYp8GY8vt-5qW7zzGAYqjEGnf_4psei9M-98tmY25EuRUr65m4ZH3Ia1LyvFWoTHs1As2MEjWsDFxmiRm9xaix-9_ifyp5WUvmu5i_9q79S-1mbbCi0RTWMVQ94dTfYDcjDnAUK4ecCAzjxIEJ0M4p9z85rJXp63x6PdIvbYY6vZ2GojECDDOa4EYxo0YNwUYGdbSA_KTShZIs"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">PROTECCIÓN</span>
+</div>
+</div>
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Refrigerante FrostGuard</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Control térmico óptimo para prevenir el sobrecalentamiento del motor.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$55,000</span>
+<span class="text-[10px] text-text-muted">Galón</span>
+</div>
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20el%20Refrigerante%20FrostGuard" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+<!-- Product 8: Líquido de Frenos -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Líquido de Frenos DOT 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCxTDyIKdnuiFFNhd8YcbsTVUPQA7ZEulHy2wS7Ai0GhfChRi8-9tygHCrRTd2R61ay7VTUusOOlpkHSUIJTuK6dCyVPG6BNQLQSYJEecMmUYLSNUJH11gEnfgClOb6V7DIlKp0sYx8oQo8J8u73Zvgj4R7ScJyXLc5MyLIrul1PxNaKRH0law4prLsgEOCA-W7wcBDpKybCMQjU8Qpxo3eHxle4D55yl2AWxFzJAStz7zAm_u7D0uhEiDVz2UBjC1u1hMA06DSXA"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">SEGURIDAD</span>
+</div>
+</div>
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Líquido de Frenos DOT 4</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Máxima respuesta de frenado y resistencia a altas temperaturas.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$42,000</span>
+<span class="text-[10px] text-text-muted">500ml</span>
+</div>
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20el%20Líquido%20de%20Frenos%20DOT%204" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
+</div>
+</div>
+</div>
+<!-- Product 9: Aditivos -->
+<div class="glass-card group flex flex-col p-2 rounded-xl">
+<div class="relative aspect-square mb-4 overflow-hidden rounded-lg bg-surface-container-lowest">
+<img alt="Octane Boost Pro" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi7i01-J5xJuD1-psxKIolU5wrh8tiCY_3q1qg93C0MEYZF4Zf2DSzIitwvWx_89kkQ2jn0qBHfmmGKq9Rd3Hoky4OsYAWQmUfngIwxCjYzS4qMNGtzgyGaQqqQhUbaVDCb8ZdWQcp-0l1bscYL997-PGclww7ae6kCrjvf-KDLKsXmsgHTZthwOXIP9pORgkTLRiU9FxT9-YiJlDWKm3pSp4HjPedH0vUNzV0BHqScHPuH7GFdbXZa7KpVaKYs18rZ2LvUXXUdeI"/>
+<div class="absolute top-2 left-2 px-3 py-1 bg-primary/20 backdrop-blur-sm border border-primary/40 rounded-full">
+<span class="font-label-caps text-[10px] text-primary">POTENCIA</span>
+</div>
+</div>
+<div class="px-3 pb-4 flex-grow flex flex-col">
+<h3 class="font-title-md text-on-surface mb-2">Octane Boost Pro</h3>
+<p class="text-text-muted text-sm mb-6 line-clamp-2">Incrementa el octanaje y limpia el sistema de inyección para mayor potencia.</p>
+<div class="mt-auto">
+<div class="flex justify-between items-center mb-4">
+<span class="font-price-tag text-primary">$28,000</span>
+<span class="text-[10px] text-text-muted">Botella</span>
+</div>
+<a class="w-full gold-metallic-button text-on-primary font-bold py-3 rounded-lg flex items-center justify-center gap-2 text-sm uppercase tracking-wider" href="https://wa.me/573225990026?text=Hola,%20estoy%20interesado%20en%20el%20Octane%20Boost%20Pro" target="_blank">
+<span class="material-symbols-outlined text-lg">chat</span>
+                            Comprar por WhatsApp
+                        </a>
+</div>
+</div>
+</div></div>
 </section>
-<!-- =========================================================
-     🔍 CONSULTA DE REPUESTOS
-     ========================================================= -->
-<section class="bg-surface-container-lowest py-xl border-t border-gold/10">
-  <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 items-center gap-xl">
-
-    <div>
-      <h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">
-        ¿No encuentras el repuesto que buscas?
-      </h2>
-
-      <p class="text-on-surface-variant font-body-md mb-md">
-        En Taller El Progreso podemos ayudarte a conseguir repuestos,
-        aceites, lubricantes y accesorios para tu moto o vehículo.
-        Escríbenos y te asesoraremos personalmente.
-      </p>
-
-      <a
-        href="https://wa.me/573225990026?text=Hola%20Taller%20El%20Progreso,%20quiero%20consultar%20un%20repuesto"
-        target="_blank"
-        class="inline-flex items-center gap-xs font-label-caps text-label-caps text-primary border-b border-primary pb-1 hover:text-white hover:border-white transition-all">
-
-        Consultar por WhatsApp
-
-        <span class="material-symbols-outlined text-sm">
-          arrow_forward
-        </span>
-      </a>
-    </div>
-
-    <div class="glass-card p-lg rounded-xl flex flex-col gap-md">
-
-      <p class="font-label-caps text-label-caps text-primary">
-        Solicita una cotización rápida
-      </p>
-
-      <input
-        class="flex-grow bg-white/5 border-0 border-b border-gold/40 text-on-surface focus:ring-0 focus:border-primary px-sm py-3 transition-all"
-        placeholder="Nombre"
-        type="text">
-
-      <input
-        class="flex-grow bg-white/5 border-0 border-b border-gold/40 text-on-surface focus:ring-0 focus:border-primary px-sm py-3 transition-all"
-        placeholder="Repuesto o producto que buscas"
-        type="text">
-
-      <a
-        href="https://wa.me/573225990026"
-        target="_blank"
-        class="bg-primary text-on-primary px-md py-3 font-label-caps text-label-caps hover:bg-tertiary transition-all text-center">
-
-        Enviar Consulta
-      </a>
-
-    </div>
-
-  </div>
+<!-- Advisor / Quote Tool -->
+<section class="bg-surface-container-lowest py-20 border-t border-primary/10 shimmer">
+<div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div>
+<span class="font-label-caps text-primary mb-2 block">CONSERJERÍA MECÁNICA</span>
+<h2 class="font-headline-lg text-4xl text-on-surface mb-sm">¿No encuentra lo que busca?</h2>
+<p class="text-on-surface/70 font-body-lg mb-8">Nuestros especialistas localizan repuestos originales y accesorios exclusivos a nivel global para su vehículo específico.</p>
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 text-primary font-bold border-b border-primary/40 pb-1 hover:border-primary transition-all group" href="#">
+                        Solicitar Asesoría Personalizada
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="bg-surface-container/40 backdrop-blur-md p-lg rounded-2xl border border-primary/20 shadow-2xl relative">
+<div class="absolute -top-4 -right-4 w-16 h-16 border-t-2 border-r-2 border-primary/40 rounded-tr-2xl"></div>
+<h3 class="font-title-md mb-6 gold-gradient-text text-xl">Cotización Rápida</h3>
+<form class="space-y-4">
+<input class="w-full bg-white/5 border-0 border-b border-primary/30 text-on-surface placeholder:text-text-muted/50 focus:ring-0 focus:border-primary transition-all py-3" placeholder="Marca y Modelo del Vehículo" type="text"/>
+<input class="w-full bg-white/5 border-0 border-b border-primary/30 text-on-surface placeholder:text-text-muted/50 focus:ring-0 focus:border-primary transition-all py-3" placeholder="Repuesto o Accesorio Requerido" type="text"/>
+<div class="pt-4">
+<button class="w-full gold-metallic-button text-on-primary font-bold py-4 rounded-lg uppercase tracking-widest text-xs" type="submit">Enviar Solicitud</button>
+</div>
+</form>
+</div>
+</div>
 </section>
-<!-- =========================================
-     FOOTER TALLER EL PROGRESO
-========================================= -->
-<footer class="bg-surface-container-lowest border-t border-outline-variant py-12 mt-16">
-    <div class="max-w-7xl mx-auto px-6">
-
-        <div class="grid md:grid-cols-3 gap-10">
-
-            <!-- Información -->
-            <div>
-                <h3 class="text-primary text-2xl font-bold mb-4">
-                    Taller El Progreso
-                </h3>
-
-                <p class="text-gray-300 leading-relaxed">
-                    Especialistas en mecánica automotriz, mantenimiento,
-                    repuestos, lubricantes y accesorios para vehículos y motocicletas.
-                </p>
-            </div>
-
-            <!-- Contacto -->
-            <div>
-                <h3 class="text-primary text-xl font-bold mb-4">
-                    Contacto
-                </h3>
-
-                <ul class="space-y-3 text-gray-300">
-                    <li>📞 322 599 0026</li>
-                    <li>📍 Cali, Colombia</li>
-                    <li>🕒 Lunes a Sábado</li>
-                    <li>⏰ 8:00 AM - 6:00 PM</li>
-                </ul>
-            </div>
-
-            <!-- Enlaces -->
-            <div>
-                <h3 class="text-primary text-xl font-bold mb-4">
-                    Enlaces rápidos
-                </h3>
-
-                <div class="flex flex-col gap-3">
-                    <a href="index.html"
-                       class="text-gray-300 hover:text-primary transition">
-                       🏠 Inicio
-                    </a>
-
-                    <a href="galeria_Motos.html"
-                       class="text-gray-300 hover:text-primary transition">
-                       🏍️ Galería de Motos
-                    </a>
-
-                    <a href="galeria_modelos.html"
-                       class="text-gray-300 hover:text-primary transition">
-                       🚗 Galería de Modelos
-                    </a>
-
-                    <a href="https://wa.me/573225990026"
-                       target="_blank"
-                       class="text-green-400 hover:text-green-300 transition">
-                       💬 WhatsApp
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Línea inferior -->
-        <div class="border-t border-gray-700 mt-10 pt-6 text-center">
-
-            <p class="text-gray-400">
-                © 2026 Taller El Progreso - Todos los derechos reservados.
-            </p>
-
-        </div>
-
-    </div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-primary/10 py-16">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col md:flex-row justify-between items-center gap-lg border-b border-primary/10 pb-12 mb-12">
+<div class="text-center md:text-left">
+<span class="font-headline-lg text-2xl gold-gradient-text block mb-1">TALLER EL PROGRESO</span>
+<span class="font-label-caps text-[10px] text-text-muted tracking-[0.3em]">PRECISION ENGINEERING SINCE 1995</span>
+</div>
+<div class="flex gap-lg">
+<a class="text-text-muted hover:text-primary transition-colors font-label-caps text-xs" href="#">Terminos</a>
+<a class="text-text-muted hover:text-primary transition-colors font-label-caps text-xs" href="#">Privacidad</a>
+<a class="text-text-muted hover:text-primary transition-colors font-label-caps text-xs" href="#">Soporte</a>
+</div>
+<div class="flex gap-md">
+<button class="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-lg">mail</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-md opacity-60">
+<p class="font-label-caps text-[10px]">© 2024 Taller El Progreso. Todos los derechos reservados.</p>
+<p class="font-label-caps text-[10px]">Diseñado para la excelencia.</p>
+</div>
+</div>
 </footer>
-
-<!-- BOTÓN FLOTANTE WHATSAPP -->
-<a href="https://wa.me/573225990026"
-   target="_blank"
-   class="fixed bottom-6 left-6 bg-green-500 hover:bg-green-600
-          w-16 h-16 rounded-full flex items-center justify-center
-          text-white text-3xl shadow-lg z-50">
-
-    💬
-
+<!-- Floating WhatsApp Action -->
+<a class="fixed bottom-8 right-8 w-16 h-16 gold-metallic-button text-on-primary rounded-full flex items-center justify-center z-50 hover:scale-110 active:scale-95 shadow-[0_10px_30px_rgba(212,175,55,0.4)] group" href="https://wa.me/573225990026?text=Hola,%20deseo%20una%20asesoría%20sobre%20un%20repuesto" target="_blank">
+<span class="material-symbols-outlined text-3xl">chat</span>
+<span class="absolute right-full mr-4 bg-surface-container px-3 py-1 rounded border border-primary/30 text-[10px] font-bold text-primary whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Hablar con Asesor</span>
 </a>
+<script>
+    // Sticky Header Scroll Effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('h-20', 'bg-surface/95');
+            header.classList.remove('h-24');
+        } else {
+            header.classList.remove('h-20', 'bg-surface/95');
+            header.classList.add('h-24');
+        }
+    });
+
+    // Form submission simulation
+    document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Su solicitud premium ha sido enviada. Un asesor se contactará con usted en breve.');
+    });
+</script>
+</body></html>
